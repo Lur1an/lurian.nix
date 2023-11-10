@@ -9,7 +9,7 @@ let
     phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/share/fonts
-      cp -r $src/* $out/share/fonts/
+      cp -r $src/* $out/share/fonts
     '';
   };
 in
