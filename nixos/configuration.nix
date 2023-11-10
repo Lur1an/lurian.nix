@@ -22,6 +22,8 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  programs.hyprland.enable = true;
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
