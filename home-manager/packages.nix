@@ -19,6 +19,7 @@ in
     discord
     slack
     neovim
+    gcc
     tmux
     rustup
     telegram-desktop

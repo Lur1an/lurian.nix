@@ -21,10 +21,10 @@
     # ./users.nix
     inputs.home-manager.nixosModules.home-manager
     hyprland.homeManagerModules.default
-    {wayland.windowManager.hyprland.enable = true;}
   ];
 
 
+  wayland.windowManager.hyprland.enable = true;
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -103,7 +103,6 @@
   };
 
   services.flatpak.enable = true;
-  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
   ];
