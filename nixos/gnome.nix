@@ -16,4 +16,4 @@
       gnome.gnome-tweaks
     ];
   };
-};
+}
