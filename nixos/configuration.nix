@@ -19,6 +19,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -66,6 +67,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      lurian = import ../home-manager/home.nix;
+    };
+  };
   # TODO: Configure your system-wide user settings (groups, etc), add more users as neededx.
   users.users = {
     lurian = {
