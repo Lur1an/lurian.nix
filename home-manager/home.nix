@@ -32,7 +32,7 @@
   };
 
   wayland.windowManager.hyprland = {
-    enable = true
+    enable = true;
   };
 
   home.username = "lurian";
