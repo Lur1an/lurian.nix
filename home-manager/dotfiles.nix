@@ -1,11 +1,10 @@
 
 {
   pkgs,
-  fetchgit,
   ...
 }: {
-  ".config/nvim".source = fetchgit {
+  ".config/nvim".source = pkgs.fetchgit {
      url = "https://github.com/lur1an/dotfiles";
-     sparsecheckout = [ "nvim" ];
+     sparseCheckout = [ "nvim" ];
   };
 }
