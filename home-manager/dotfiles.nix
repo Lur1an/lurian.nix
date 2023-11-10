@@ -1,22 +1,15 @@
 
 {
+  config,
   pkgs,
   ...
 }: 
 let
-  # dotfiles = pkgs.stdenv.mkDerivation {
-  #   name = "dotfiles";
-  #   src = pkgs.fetchgit {
-  #     url = "https://github.com/lur1an/dotfiles";
-  #   };
-  #   installPhase = ''
-  #     mkdir -p $out
-  #     cp -r . $out/
-  #   '';
-  # };
-  dotfiles = "~/lurian.nix/dotfiles";
+  dotfiles = "../dotfiles";
 in
 {
-  home.file.".config/nvim".source = "${dotfiles}/nvim";
+  home.file = {
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
+  };
 }
 
