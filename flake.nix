@@ -13,6 +13,8 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Wayland
     hyprland.url = "github:hyprwm/Hyprland";
 
     # Shameless plug: looking for a way to nixify your themes and make
@@ -23,7 +25,6 @@
   outputs = {
     self,
     nixpkgs,
-    hyprland,
     home-manager,
     ...
   } @ inputs: let
