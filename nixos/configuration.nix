@@ -100,8 +100,12 @@
     passwordAuthentication = false;
   };
 
+  services.flatpak.enable = true;
+
 
   environment.systemPackages = with pkgs; [
+    neovim
+    firefox
   ];
 
   # sound
