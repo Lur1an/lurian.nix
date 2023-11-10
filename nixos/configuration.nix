@@ -20,8 +20,10 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     inputs.home-manager.nixosModules.home-manager
-    ./gnome.nix
+    hyprland.homeManagerModules.default
+    {wayland.windowManager.hyprland.enable = true;}
   ];
+
 
   nixpkgs = {
     # You can add overlays here
@@ -101,6 +103,7 @@
   };
 
   services.flatpak.enable = true;
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
   ];
