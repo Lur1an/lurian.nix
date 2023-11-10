@@ -66,7 +66,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
+  # TODO: Configure your system-wide user settings (groups, etc), add more users as neededx.
   users.users = {
     # FIXME: Replace with your username
     lurian = {
@@ -74,7 +74,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       isNormalUser = true;
-      description = "me"
+      description = "me";
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
