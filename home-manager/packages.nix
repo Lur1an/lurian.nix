@@ -5,7 +5,7 @@
 let
   myFonts = pkgs.stdenv.mkDerivation {
     name = "myFonts";
-    src = ../dotfiles/fonts/;  # Replace with the path to your font files
+    src = ../dotfiles/fonts;  # Replace with the path to your font files
     phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/share/fonts
