@@ -24,6 +24,7 @@
       scrollMethod = "twofinger";
       naturalScrolling = true;
       tapping = true;
+      clickMethod = "clickfinger";
     };
   };
   networking.hostName = "lurian-xps15";
