@@ -10,5 +10,6 @@
     tmux
     rustup
     telegram-desktop
+    python311Full
   ];
 }
