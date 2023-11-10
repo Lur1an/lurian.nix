@@ -25,6 +25,7 @@
   outputs = {
     self,
     nixpkgs,
+    hyprland,
     home-manager,
     ...
   } @ inputs: let

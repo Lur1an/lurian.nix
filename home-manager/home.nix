@@ -10,8 +10,6 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    inputs.hyprland.homeManagerModules.default
-
     ./packages.nix
     ./dotfiles.nix
   ];
@@ -29,10 +27,6 @@
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
     };
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
   };
 
   home.username = "lurian";

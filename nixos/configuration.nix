@@ -20,9 +20,11 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.hyprland.nixosModules.default
   ];
 
   programs.hyprland.enable = true;
+  wayland.windowManager.hyprland.enable = true;
 
   nixpkgs = {
     # You can add overlays here
