@@ -67,6 +67,13 @@
           ./nixos/xps15/configuration.nix
         ];
       };
+      desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/desktop/configuration.nix
+        ];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
