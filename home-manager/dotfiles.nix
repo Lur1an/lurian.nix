@@ -1,6 +1,7 @@
 
 {
   pkgs,
+  fetchgit,
   ...
 }: {
   ".config/nvim".source = fetchgit {
