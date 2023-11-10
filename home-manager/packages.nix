@@ -11,5 +11,6 @@
     rustup
     telegram-desktop
     python311Full
+    alacritty
   ];
 }

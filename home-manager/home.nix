@@ -38,6 +38,9 @@
 
   home.username = "lurian";
   home.homeDirectory = "/home/lurian";
+  home.sessionVariables = {
+    TERMINAL = "alacritty";
+  };
 
   # Add stuff for your user as you see fit:
   programs.home-manager.enable = true;
