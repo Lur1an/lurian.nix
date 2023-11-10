@@ -10,13 +10,8 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
+    inputs.hyprland.homeManagerModules.default
 
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
     ./packages.nix
     ./dotfiles.nix
   ];
@@ -34,6 +29,10 @@
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
     };
+  };
+
+  wayland.windowManager.hyprland = {
+    enable = true
   };
 
   home.username = "lurian";
