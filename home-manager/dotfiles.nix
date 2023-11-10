@@ -16,7 +16,7 @@ let
   # };
   dotfiles = pkgs.fetchgit {
     url = "https://github.com/lur1an/dotfiles"
-  }
+  };
 in
 {
   home.file.".config/nvim".source = "${dotfiles}/nvim";
