@@ -12,4 +12,6 @@
     ./hardware-configuration.nix
     ../configuration.nix
   ];
+
+  networking.hostName = "lurian-xps15";
 }
