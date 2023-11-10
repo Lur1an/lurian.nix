@@ -3,6 +3,6 @@
   pkgs,
   ...
 }: {
-  xdg.configFile.nvim.source = ../dotfiles/nvim;
+  home.file.".config/nvim".source = ../dotfiles/nvim;
 }
 
