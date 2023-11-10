@@ -124,8 +124,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim,
-    firefox
   ]
 
 
