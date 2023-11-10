@@ -36,10 +36,8 @@
     };
   };
 
-  home = {
-    username = "lurian";
-    homeDirectory = "/home/lurian";
-  };
+  home.username = "lurian";
+  home.homeDirectory = "/home/lurian";
 
   # Add stuff for your user as you see fit:
   programs.home-manager.enable = true;
