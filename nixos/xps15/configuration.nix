@@ -13,6 +13,10 @@
     ../configuration.nix
   ];
 
+  boot.kernelparams = [ "psmouse.synaptics_intertouch=0" ];
+
+  
+
   services.xserver.libinput = {
     enable = true;
     touchpad = {
