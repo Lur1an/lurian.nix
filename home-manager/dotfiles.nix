@@ -15,7 +15,7 @@ let
   #   '';
   # };
   dotfiles = pkgs.fetchgit {
-    url = "https://github.com/lur1an/dotfiles"
+    url = "https://github.com/lur1an/dotfiles";
   };
 in
 {
