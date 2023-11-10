@@ -14,9 +14,7 @@ let
   #     cp -r . $out/
   #   '';
   # };
-  dotfiles = pkgs.fetchgit {
-    url = "https://github.com/lur1an/dotfiles";
-  };
+  dotfiles = "~/lurian.nix/dotfiles";
 in
 {
   home.file.".config/nvim".source = "${dotfiles}/nvim";
