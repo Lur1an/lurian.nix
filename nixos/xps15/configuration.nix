@@ -11,7 +11,6 @@
   imports = [
     ./hardware-configuration.nix
     ../configuration.nix
-    inputs.nixosModules.gnome
   ];
 
   networking.hostName = "lurian-xps15";
