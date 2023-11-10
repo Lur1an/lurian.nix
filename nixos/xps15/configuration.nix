@@ -14,13 +14,13 @@
   ];
 
   services.xserver.libinput = {
-      enable = true;
-      touchpad = {
-        sendEventsMode = "enabled";
-        scrollMethod = "twofinger";
-        naturalScrolling = true;
-        tapping = true;
-      };
+    enable = true;
+    touchpad = {
+      sendEventsMode = "enabled";
+      scrollMethod = "twofinger";
+      naturalScrolling = true;
+      tapping = true;
     };
+  };
   networking.hostName = "lurian-xps15";
 }

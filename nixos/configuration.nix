@@ -104,8 +104,8 @@
 
 
   environment.systemPackages = with pkgs; [
-    neovim
     firefox
+    neovim
   ];
 
   # sound
