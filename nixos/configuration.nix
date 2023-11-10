@@ -102,8 +102,9 @@
 
   services.flatpak.enable = true;
 
-
   environment.systemPackages = with pkgs; [
+    python3
+    python311.withPackages (ps: with ps; [poetry])
   ];
 
   # sound
