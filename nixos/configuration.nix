@@ -101,6 +101,7 @@
   programs.hyprland = {
     enable = true;
     nvidiaPatches = true;
+    xwayland.hidpi = true;
     xwayland.enable = true;
   };
 
@@ -155,6 +156,14 @@
     swww
     # app-launcher
     rofi-wayland
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xwayland
+    meson
+    wayland-protocols
+    wayland-utils
+    wl-clipboard
+    wlroots
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
