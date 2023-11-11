@@ -12,6 +12,21 @@
   ];
   wayland.windowManager.hyprland.enable = true;
   home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+  wayland.windowManager.hyprland.extraConfig = ''
+    $mod = SUPER
+
+    bind = $mod, B, exec, firefox
+    bind = $mod, T, exec, kitty
+    bind = $mod, S, exec, rofi -show drun -show-icons
+
+    decoration {
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        rounding = 5
+        blur {
+        enabled = false
+      }
+    }
+  '';
 
   home.packages = with pkgs; [
   ];
