@@ -14,11 +14,10 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
-    xwayland = {
-      enable = true;
-    };
     enableNvidiaPatches = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    xwayland.enable = true;
+    # config
     bind = [
       "SUPER,Q,killactive"
       "SUPER,M,exit"
