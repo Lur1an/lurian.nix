@@ -105,8 +105,6 @@
 
     videoDrivers = [ "nvidia" ];
   };
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
 
   # Hyprland stuff ------------------
 
