@@ -10,8 +10,12 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
+  home.file."./config/hypr/start.sh".source = ./start.sh;
+  home.file."Wallpapers".source = ./Wallpapers;
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.extraConfig = ''
+    exec-once = bash ~/.config/hypr/start.sh
     $mod = SUPER
 
     bind = $mod, B, exec, firefox
@@ -28,5 +32,6 @@
   '';
 
   home.packages = with pkgs; [
+    networkmanagerapplet
   ];
 }
