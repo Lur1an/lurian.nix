@@ -104,7 +104,8 @@
     };
 
     videoDrivers = [ "nvidia" ];
-  ;
+  };
+  
 
   # Hyprland stuff ------------------
 
