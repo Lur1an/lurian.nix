@@ -15,7 +15,7 @@
     ./fonts.nix
     ./neovim.nix
     ./packages.nix
-    /hyprland
+    ./hyprland
   ];
 
   nixpkgs = {
