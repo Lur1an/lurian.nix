@@ -15,6 +15,7 @@
     ./fonts.nix
     ./neovim.nix
     ./packages.nix
+    ./kitty.nix
     ./hyprland
   ];
 
@@ -38,7 +39,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    # TERMINAL = "alacritty";
   };
 
   # Add stuff for your user as you see fit:

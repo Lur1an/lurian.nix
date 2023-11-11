@@ -11,11 +11,9 @@
     barrier
     discord
     slack
-    kitty
     tmux
     rustup
     telegram-desktop
     python311Full
-    alacritty
   ];
 }

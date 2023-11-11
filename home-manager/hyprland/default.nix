@@ -15,7 +15,11 @@
     $mod = SUPER
 
     bind = $mod, B, exec, firefox
-    bind = CTRL, Q, exec, kitty
+    bind = $mod, T, exec, kitty
     bind = $mod, S, exec, rofi -show drun -show-icons
   '';
+
+
+  home.packages = with pkgs; [
+  ];
 }
