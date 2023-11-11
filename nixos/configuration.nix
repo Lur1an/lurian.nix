@@ -161,6 +161,8 @@
     git
     sops
     sysstat
+    kitty
+    gtk3
     # notification
     dunst
     libnotify
