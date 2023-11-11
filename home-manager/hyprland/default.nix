@@ -19,13 +19,13 @@
       enable = true;
     };
     enableNvidiaPatches = true;
-    bind = {
+    bind = [
       "SUPER,Q,killactive"
       "SUPER,M,exit"
       "SUPER,B,exec,firefox"
       "SUPER,T,exec,kitty"
       "SUPER,S,exec,rofi -show drun -show-icons"
-    };
+    ];
     decoration = {
       rounding = 5;
       blur = {
