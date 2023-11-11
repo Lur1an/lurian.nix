@@ -17,6 +17,12 @@
     # Wayland
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # Hyprland utils
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
