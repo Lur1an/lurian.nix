@@ -40,7 +40,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    # TERMINAL = "alacritty";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Add stuff for your user as you see fit:
