@@ -11,7 +11,7 @@
     inputs.hyprland.homeManagerModules.default
   ];
   home.file."./config/hypr/start.sh".source = ./start.sh;
-  home.file."Wallpapers".source = ./Wallpapers;
+  home.file."Wallpapers".source = ../../wallpapers;
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.extraConfig = ''
