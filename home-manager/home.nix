@@ -15,10 +15,6 @@
     ./fonts.nix
     ./neovim.nix
     ./packages.nix
-
-    ./i3
-    ./hyprland
-    hyprland.homeManagerModules.default
   ];
 
   nixpkgs = {

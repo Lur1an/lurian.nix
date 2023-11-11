@@ -19,8 +19,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
-    ./hyprland.nix
-    ./i3.nix
+    ./gnome.nix
   ];
 
 
@@ -65,6 +64,7 @@
       lurian = import ../home-manager/home.nix;
     };
   };
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as neededx.
   users.users = {
     lurian = {
@@ -104,10 +104,26 @@
 
   services.flatpak.enable = true;
 
-
- 
   programs.zsh.enable = true;
   programs.dconf.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    nvidiaPatches = true;
+    xwayland.enable = true;
+  };
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
+
+  hardware = {
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
+  };
+
 
   # sound
   sound.enable = true;
@@ -115,12 +131,16 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
+    audio.enable = true;
     pulse.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
-    vim # Anything but Nano please
+    vim
     wget
     killall
     curl
