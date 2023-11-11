@@ -1,7 +1,7 @@
 { pkgs, inputs, hyprland, ... }: {
   imports = [
     inputs.hyprland.nixosModules.default
-  ]
+  ];
 
   hardware = {
     opengl.enable = true;
