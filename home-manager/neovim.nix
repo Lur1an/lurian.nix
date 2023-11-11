@@ -8,6 +8,12 @@
     nodejs
     tree-sitter
   ];
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    extraPackages = with pkgs; [
+      lua-language-server
+      rust-analyzer
+    ];
+  };
   home.file.".config/nvim".source = ../dotfiles/nvim;
 }
