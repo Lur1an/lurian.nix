@@ -104,13 +104,14 @@
     };
 
     videoDrivers = [ "nvidia" ];
-  };
+  ;
 
   # Hyprland stuff ------------------
 
   programs.hyprland = {
     enable = true;
     nvidiaPatches = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.hidpi = true;
     xwayland.enable = true;
   };

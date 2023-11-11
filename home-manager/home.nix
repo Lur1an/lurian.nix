@@ -15,7 +15,9 @@
     ./fonts.nix
     ./neovim.nix
     ./packages.nix
+    inputs.hyprland.homeManagerModules.default
   ];
+  wayland.windowManager.hyprland.enable = true;
 
   nixpkgs = {
     overlays = [
