@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  home.file.".config/nvim".source = ../dotfiles/nvim;
   home.file.".config/alacritty".source = ../dotfiles/alacritty;
   home.file.".zshrc".source = ../dotfiles/zsh/.zshrc;
   home.file.".xresources".source = ../dotfiles/zsh/.xresources;

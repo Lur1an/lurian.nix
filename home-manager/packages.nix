@@ -1,30 +1,21 @@
 {
   pkgs,
   ...
-}: 
-let
-  myFonts = pkgs.stdenv.mkDerivation {
-    name = "myFonts";
-    src = ../dotfiles/fonts;  # Replace with the path to your font files
-    phases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/share/fonts
-      cp -r $src/* $out/share/fonts
-    '';
-  };
-in
-{
+}: {
   home.packages = with pkgs; [
-    firefox
+    ripgrep # recursively searches directories for a regex pattern
+    jq # A lightweight and flexible command-line JSON processor
+    yq-go # yaml processer https://github.com/mikefarah/yq
+    exa # A modern replacement for ‘ls’
+    fzf # A command-line fuzzy finder
+    barrier
     discord
     slack
     neovim
-    gcc
     tmux
     rustup
     telegram-desktop
     python311Full
     alacritty
-    myFonts
   ];
 }

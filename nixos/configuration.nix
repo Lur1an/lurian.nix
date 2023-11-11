@@ -18,13 +18,11 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
     inputs.home-manager.nixosModules.home-manager
-    inputs.hyprland.nixosModules.default
+    ./hyprland.nix
+    ./i3.nix
   ];
 
-  programs.hyprland.enable = true;
-  wayland.windowManager.hyprland.enable = true;
 
   nixpkgs = {
     # You can add overlays here
@@ -105,8 +103,10 @@
 
   services.flatpak.enable = true;
 
-  environment.systemPackages = with pkgs; [
-  ];
+
+ 
+  programs.zsh.enable = true;
+  programs.dconf.enable = true;
 
   # sound
   sound.enable = true;
@@ -118,6 +118,15 @@
     pulse.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    vim # Anything but Nano please
+    wget
+    killall
+    curl
+    git
+    sops
+    sysstat
+  ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }

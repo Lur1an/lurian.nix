@@ -6,12 +6,20 @@
   lib,
   config,
   pkgs,
+  hyprland
   ...
 }: {
   # You can import other home-manager modules here
   imports = [
-    ./packages.nix
     ./dotfiles.nix
+    ./firefox.nix
+    ./fonts.nix
+    ./neovim.nix
+    ./packages.nix
+
+    ./i3
+    ./hyprland
+    hyprland.homeManagerModules.default
   ];
 
   nixpkgs = {
@@ -32,6 +40,8 @@
   home.username = "lurian";
   home.homeDirectory = "/home/lurian";
   home.sessionVariables = {
+    EDITOR = "nvim";
+    BROWSER = "firefox";
     TERMINAL = "alacritty";
   };
 
