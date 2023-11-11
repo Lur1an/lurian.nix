@@ -11,6 +11,7 @@
     barrier
     discord
     slack
+    kitty
     tmux
     rustup
     telegram-desktop
