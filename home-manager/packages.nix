@@ -11,7 +11,6 @@
     barrier
     discord
     slack
-    neovim
     tmux
     rustup
     telegram-desktop
