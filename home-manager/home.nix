@@ -16,6 +16,7 @@
     ./neovim.nix
     ./packages.nix
     ./kitty.nix
+    ./gtk.nix
     ./hyprland
   ];
 
