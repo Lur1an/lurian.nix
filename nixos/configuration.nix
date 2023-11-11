@@ -107,10 +107,19 @@
   programs.zsh.enable = true;
   programs.dconf.enable = true;
 
+  # Hyprland stuff ------------------
+
   programs.hyprland = {
     enable = true;
     nvidiaPatches = true;
     xwayland.enable = true;
+  };
+
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    });
   };
 
   environment.sessionVariables = {
@@ -124,6 +133,9 @@
     nvidia.modesetting.enable = true;
   };
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # ------------------------------
 
   # sound
   sound.enable = true;
@@ -147,6 +159,11 @@
     git
     sops
     sysstat
+    # notification
+    dunst
+    libnotify
+    # wallpaper
+    swww
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
