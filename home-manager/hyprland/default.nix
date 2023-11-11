@@ -12,6 +12,8 @@
   ];
 
   wayland.windowManager.hyprland.extraConfig = ''
+      $mod = SUPER
+
       bind = $mod, B, exec, firefox
 
       bind = $mod, S, exec, rofi -show drun -show-icons
