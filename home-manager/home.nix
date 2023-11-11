@@ -25,6 +25,15 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      (self: super: {
+        discord = super.discord.overrideAttrs (
+          _: {
+            src = builtins.fetchTarball {
+              url = "https://discord.com/api/download?platform=linux&format=tar.gz";
+            };
+          }
+        );
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -41,18 +50,6 @@
     EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "kitty";
-    GBM_BACKEND= "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME= "nvidia";
-    LIBVA_DRIVER_NAME= "nvidia"; # hardware acceleration
-    __GL_VRR_ALLOWED="1";
-    WLR_NO_HARDWARE_CURSORS = "1";
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-    CLUTTER_BACKEND = "wayland";
-    WLR_RENDERER = "vulkan";
-
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
   };
 
   # Add stuff for your user as you see fit:
