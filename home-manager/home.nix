@@ -11,6 +11,7 @@
   # You can import other home-manager modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.hyprland.homeManagerModules.default
     ./dotfiles.nix
     ./firefox.nix
     ./fonts.nix
