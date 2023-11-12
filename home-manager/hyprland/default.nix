@@ -7,9 +7,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
   home.file."Wallpapers".source = ../../wallpapers;
 
   wayland.windowManager.hyprland = {
@@ -25,10 +22,10 @@
       bind = $mod, M, exit
       bind = $mod, B, exec, firefox
       bind = $mod, T, exec, kitty
+      bind = $mod, Return, exec, foot
       bind = $mod, S, exec, rofi -show drun -show-icons
 
       decoration {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
           rounding = 5
           blur {
             enabled = false

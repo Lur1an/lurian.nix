@@ -18,6 +18,7 @@
     ./kitty.nix
     ./gtk.nix
     ./tmux.nix
+    ./foot.nix
     ./hyprland
   ];
 

@@ -11,7 +11,6 @@
     barrier
     discord
     slack
-    tmux
     rustup
     telegram-desktop
     python311Full
