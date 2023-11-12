@@ -1,13 +1,13 @@
-{ 
-    custom ? {
-        font = "ComicCodeLigatures Nerd Font";
-        fontsize = "12";
-        primary_accent = "cba6f7";
-        background = "11111B";
-        opacity = ".7";
-    },
-    ... 
-}:
+{ ... }:
+let
+  custom = {
+    font = "ComicCodeLigatures Nerd Font";
+    fontsize = "12";
+    primary_accent = "cba6f7";
+    background = "11111B";
+    opacity = ".7";
+  };
+in
 {
     programs.foot = {
         enable = true;
@@ -25,7 +25,6 @@
             };
             colors = {
                 alpha="${custom.opacity}";
-                background="${custom.palette.tertiary_background_hex}";
                 regular0="11111B";  # black
                 regular1="ff5555";  # red
                 regular2="afffd7";  # green
