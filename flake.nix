@@ -16,6 +16,7 @@
 
     # Wayland
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     # Hyprland utils
     hyprland-contrib = {
