@@ -103,6 +103,7 @@
       enable = true;
       wayland = true;
     };
+    xkbOptions = "esc:swapcaps";
 
     videoDrivers = [ "nvidia" ];
   };
