@@ -10,6 +10,7 @@
 }: {
   # You can import other home-manager modules here
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./dotfiles.nix
     ./firefox.nix
     ./fonts.nix
