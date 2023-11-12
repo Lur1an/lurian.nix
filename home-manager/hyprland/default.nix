@@ -31,8 +31,8 @@
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
           rounding = 5
           blur {
-          enabled = false
-        }
+            enabled = false
+          }
       }
     '';
   };
