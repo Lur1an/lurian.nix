@@ -59,8 +59,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = false;
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
       lurian = import ../home-manager/home.nix;
