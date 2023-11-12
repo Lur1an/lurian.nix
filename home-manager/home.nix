@@ -17,6 +17,7 @@
     ./packages.nix
     ./kitty.nix
     ./gtk.nix
+    ./tmux.nix
     ./hyprland
   ];
 
