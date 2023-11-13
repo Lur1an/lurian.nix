@@ -13,7 +13,6 @@
       gnome-contacts
       gnome-initial-setup
     ]);
-    programs.dconf.enable = true;
     environment.systemPackages = with pkgs; [
       gnome.gnome-tweaks
     ];
