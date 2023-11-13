@@ -16,7 +16,10 @@
 
     services.xserver = {
       enable = true;
-      displayManager.gdm.wayland = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      }
     };
 
     programs.hyprland = {
