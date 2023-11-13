@@ -14,6 +14,12 @@
         # };
       };
       displayManager = {
+        lightdm = {
+          enable = true;
+          greeters.gtk = {
+            enable = true;
+          };
+        };
         defaultSession = "none+i3";
       };
       windowManager.i3 = {
