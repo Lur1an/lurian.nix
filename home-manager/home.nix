@@ -10,17 +10,15 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    inputs.hyprland.homeManagerModules.default
     ./dotfiles.nix
     ./firefox.nix
     ./fonts.nix
     ./neovim.nix
     ./packages.nix
-    ./kitty.nix
     ./gtk.nix
     ./tmux.nix
     ./foot.nix
-    ./hyprland
+    ./alacritty.nix
   ];
 
   nixpkgs = {

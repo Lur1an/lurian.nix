@@ -21,8 +21,7 @@
       bind = $mod, Q, killactive
       bind = $mod, M, exit
       bind = $mod, B, exec, firefox
-      bind = $mod, T, exec, kitty
-      bind = $mod, Return, exec, foot
+      bind = $mod, T, exec, foot
       bind = $mod, S, exec, rofi -show drun -show-icons
 
       decoration {
