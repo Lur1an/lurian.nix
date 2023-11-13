@@ -67,12 +67,7 @@ in
         "${mod}+Q" = "kill";
       };
     };
-    window.commands = [
-      {
-        command = "border pixel 0";
-        criteria = { class = "^.*"; };
-      }
-    ];
+    window.border = 1;
 
   };
 
