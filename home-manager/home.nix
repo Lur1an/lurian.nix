@@ -56,11 +56,11 @@
   # Add stuff for your user as you see fit:
   programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName  = "lur1an";
-    userEmail = "lurian-code@protonmail.com";
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName  = "lur1an";
+  #   userEmail = "lurian-code@protonmail.com";
+  # };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
