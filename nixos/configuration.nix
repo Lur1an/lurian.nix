@@ -100,7 +100,6 @@
   services.xserver = {
     enable = true;
     xkbOptions = "caps:escape";
-    videoDrivers = [ "nvidia" ];
   };
 
   services.gnome3.gnome-keyring.enable = true;
@@ -143,6 +142,7 @@
     sops
     sysstat
     xdg-desktop-portal-gtk
+    toybox
     gtk3
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
