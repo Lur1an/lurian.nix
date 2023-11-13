@@ -119,8 +119,6 @@
       extraPackages = with pkgs; [nvidia-vaapi-driver];
     };
   };
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # sound
   sound.enable = true;
