@@ -13,6 +13,5 @@
     rustup
     telegram-desktop
     python311Full
-    gh # github cli
   ];
 }
