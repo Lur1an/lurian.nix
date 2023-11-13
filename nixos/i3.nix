@@ -11,7 +11,6 @@
       displayManager = {
         defaultSession = "none+i3";
       };
-      desktopManager.gnome.enable = true;
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [ i3status i3lock i3blocks ];
