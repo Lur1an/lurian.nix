@@ -57,7 +57,7 @@ in
         smartGaps = true;
       };
 
-      keybindings = lib.mkOptionDefault {
+      keybindings = {
         "${mod}+T" = "exec alacritty";
         "${mod}+S" = "exec rofi -show drun";
         "${mod}+B" = "exec firefox";
