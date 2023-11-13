@@ -103,6 +103,9 @@
     videoDrivers = [ "nvidia" ];
   };
 
+  services.gnome3.gnome-keyring.enable = true;
+  services.gnome3.seahorse.enable = true;
+
   # Nvidia drivers
   hardware = {
     nvidia = {
