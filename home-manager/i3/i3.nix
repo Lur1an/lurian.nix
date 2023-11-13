@@ -34,7 +34,6 @@ in
           # smartGaps = true;
           smartBorders = "on";
         };
-s
         terminal = "alacritty";
 
         startup = [

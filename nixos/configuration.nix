@@ -21,6 +21,8 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   nixpkgs = {
     # You can add overlays here
@@ -96,7 +98,6 @@
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
-    defaultSession = "none+i3";
   };
 
   hardware = {
