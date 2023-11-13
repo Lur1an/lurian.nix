@@ -8,9 +8,11 @@
       windowManager.i3 = {
         enable = true;
       };
-      displayManager.sddm.enable = true;
-      displayManager.sddm.settings.General.DisplayServer = "x11-user";
-      defaultSession = "none+i3";
+      displayManager = {
+        sddm.enable = true;
+        sddm.settings.General.DisplayServer = "x11-user";
+        defaultSession = "none+i3";
+      };
     };
   };
 }
