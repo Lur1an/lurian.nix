@@ -12,9 +12,8 @@
       desktopManager = {
         default = "none";
         xterm.enable = false;
-      }
-        # defaultSession = "none+i3";
       };
+        # defaultSession = "none+i3";
     };
   };
 }
