@@ -142,7 +142,7 @@
     sops
     sysstat
     xdg-desktop-portal-gtk
-    toybox
+    pciutils
     gtk3
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
