@@ -19,7 +19,7 @@
     ./tmux.nix
     ./foot.nix
     ./alacritty.nix
-    ./hyprland
+    ./i3
   ];
 
   # wallpaper

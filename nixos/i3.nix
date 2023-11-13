@@ -1,17 +1,14 @@
 { ... }: {
   config = {
+    services.picom = {
+      enable = true;
+    };
     services.xserver = {
       autorun = false;
       windowManager.i3 = {
         enable = true;
       };
-      displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.gtk = {
-            enable = true;
-          };
-        };
+      displayManager.sddm.enable = true;
       desktopManager = {
         default = "none";
         xterm.enable = false;

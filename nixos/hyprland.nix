@@ -11,9 +11,6 @@
   ];
 
   config = {
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
     services.xserver = {
       enable = true;
       displayManager.gdm = {
@@ -66,7 +63,6 @@
       swww
       # app-launcher
       rofi-wayland
-      xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
       xwayland
       meson

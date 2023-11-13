@@ -19,7 +19,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
-    ./hyprland.nix
+    ./i3.nix
   ];
 
 
@@ -142,6 +142,7 @@
     git
     sops
     sysstat
+    xdg-desktop-portal-gtk
     gtk3
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
