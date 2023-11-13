@@ -15,8 +15,6 @@
 
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
 
-  
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia.prime = {
       offload.enable = true;
