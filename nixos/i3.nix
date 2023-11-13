@@ -9,8 +9,14 @@
         enable = true;
       };
       displayManager = {
-        sddm.enable = true;
-        sddm.settings.General.DisplayServer = "x11-user";
+        lightdm = {
+          enable = true;
+          greeters.gtk = {
+            enable = true;
+          };
+        };
+        # sddm.enable = true;
+        # sddm.settings.General.DisplayServer = "x11-user";
         defaultSession = "none+i3";
       };
     };
