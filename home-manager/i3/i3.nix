@@ -9,7 +9,11 @@ let
   mod = "Mod4";
 in
 {
+  services.picom = {
+    enable = true;
+  };
   xsession.enable = true;
+  xsession.scriptPath = ".hm-xsession";
   xsession.windowManager.i3 = {
     enable = true;
 

@@ -101,16 +101,27 @@
     windowManager.i3 = {
       enable = true;
     };
-    displayManager = {
-      lightdm = {
-        enable = true;
-        greeter.enable = true;
-        greeters.gtk = {
-          enable = true;
-        };
-      };
-      defaultSession = "none+i3";
-    };
+    # displayManager = {
+    #   lightdm = {
+    #     enable = true;
+    #     greeter.enable = true;
+    #     greeters.gtk = {
+    #       enable = true;
+    #     };
+    #   };
+    #   defaultSession = "none+i3";
+    # };
+
+    desktopManager.xterm.enable = false;
+    desktopManager.session = [
+      {
+        name = "home-manager";
+        start = ''
+          ${pkgs.runtimeShell} $HOME/.hm-xsession &
+          waitPID=$!
+        '';
+      }
+    ];
     videoDrivers = [ "nvidia" ];
   };
 
