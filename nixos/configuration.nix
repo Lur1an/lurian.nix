@@ -106,6 +106,7 @@
   services.gnome3.seahorse.enable = true;
 
   # Nvidia drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     nvidia = {
       open = true;

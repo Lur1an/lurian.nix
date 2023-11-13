@@ -60,6 +60,7 @@ in
       keybindings = lib.mkOptionDefault {
         "${mod}+T" = "exec alacritty";
         "${mod}+S" = "exec rofi -show drun";
+        "${mod}+B" = "exec firefox";
         "${mod}+Ctrl+H" = "resize shrink width 16px or 1ppt";
         "${mod}+Ctrl+L" = "resize grow width 16px or 1ppt";
         "${mod}+Ctrl+K" = "resize grow height 16px or 1ppt";
