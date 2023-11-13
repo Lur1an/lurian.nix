@@ -19,10 +19,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
+    ./hyprland.nix
   ];
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   nixpkgs = {
     # You can add overlays here
@@ -90,6 +89,9 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  # Flatpak
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   services.flatpak.enable = true;
 
   programs.zsh.enable = true;
@@ -98,33 +100,10 @@
   services.xserver = {
     enable = true;
     xkbOptions = "caps:escape";
-    windowManager.i3 = {
-      enable = true;
-    };
-    # displayManager = {
-    #   lightdm = {
-    #     enable = true;
-    #     greeter.enable = true;
-    #     greeters.gtk = {
-    #       enable = true;
-    #     };
-    #   };
-    #   defaultSession = "none+i3";
-    # };
-
-    desktopManager.xterm.enable = false;
-    desktopManager.session = [
-      {
-        name = "home-manager";
-        start = ''
-          ${pkgs.runtimeShell} $HOME/.hm-xsession &
-          waitPID=$!
-        '';
-      }
-    ];
     videoDrivers = [ "nvidia" ];
   };
 
+  # Nvidia drivers
   hardware = {
     nvidia = {
       open = true;
