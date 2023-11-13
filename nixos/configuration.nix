@@ -102,13 +102,12 @@
       enable = true;
     };
     displayManager = {
-      # lightdm = {
-      #   enable = true;
-      #   greeters.gtk = {
-      #     enable = true;
-      #   };
-      # };
-      gdm.enable = true;
+      lightdm = {
+        enable = true;
+        greeters.gtk = {
+          enable = true;
+        };
+      };
       defaultSession = "none+i3";
     };
     videoDrivers = [ "nvidia" ];

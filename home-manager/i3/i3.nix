@@ -9,47 +9,39 @@ let
   mod = "Mod4";
 in
 {
-
-  xsession = {
+  xsession.windowManager.i3 = {
     enable = true;
 
-    scriptPath = ".hm-xsession";
+    package = pkgs.i3-gaps;
 
-    # i3-gaps
-    windowManager.i3 = {
-      enable = true;
+    config = {
+      modifier = mod;
 
-      package = pkgs.i3-gaps;
-
-      config = {
-        modifier = mod;
-
-        fonts = {
-          names = [ "ComicCodeLigatures Nerd Font" ];
-          size = 16.0;
-        };
-
-        gaps = {
-          inner = 10;
-          # smartGaps = true;
-          smartBorders = "on";
-        };
-        terminal = "alacritty";
-
-        startup = [
-          # { command = "systemctl --user restart polybar"; always = true; notification = false; }
-        ];
-
-        defaultWorkspace = "workspace number 1";
-
-        keybindings = lib.mkOptionDefault {
-          "${mod}+T" = "exec alacritty";
-        };
-
-        window.border = 1; # 新規作成した window にのみ有効
-
-        workspaceOutputAssign = [{ output = "eDP-1-1"; workspace = "10"; }];
+      fonts = {
+        names = [ "ComicCodeLigatures Nerd Font" ];
+        size = 16.0;
       };
+
+      gaps = {
+        inner = 10;
+        # smartGaps = true;
+        smartBorders = "on";
+      };
+      terminal = "alacritty";
+
+      startup = [
+        # { command = "systemctl --user restart polybar"; always = true; notification = false; }
+      ];
+
+      defaultWorkspace = "workspace number 1";
+
+      keybindings = lib.mkOptionDefault {
+        "${mod}+T" = "exec alacritty";
+      };
+
+      window.border = 1; # 新規作成した window にのみ有効
+
+      workspaceOutputAssign = [{ output = "eDP-1-1"; workspace = "10"; }];
     };
   };
 
