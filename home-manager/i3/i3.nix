@@ -9,6 +9,8 @@ let
   mod = "Mod4";
 in
 {
+  xsession.enable = true;
+  xsession.scriptPath = ".hm-xsession";
   xsession.windowManager.i3 = {
     enable = true;
 
