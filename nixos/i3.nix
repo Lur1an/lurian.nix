@@ -9,16 +9,10 @@
         enable = true;
       };
       displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.gtk = {
-            enable = true;
-          };
-        };
-        # sddm.enable = true;
-        # sddm.settings.General.DisplayServer = "x11-user";
+        gdm.enable = true;
         defaultSession = "none+i3";
       };
+      videoDrivers = [ "nvidia" ];
     };
   };
 }
