@@ -4,16 +4,13 @@
       enable = true;
     };
     services.xserver = {
-      autorun = false;
+      autorun = true;
       windowManager.i3 = {
         enable = true;
       };
       displayManager.sddm.enable = true;
-      desktopManager = {
-        default = "none";
-        xterm.enable = false;
-      };
-        # defaultSession = "none+i3";
+      displayManager.sddm.settings.General.DisplayServer = "x11-user";
+      defaultSession = "none+i3";
     };
   };
 }
