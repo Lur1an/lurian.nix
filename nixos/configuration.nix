@@ -104,21 +104,13 @@
     displayManager = {
       lightdm = {
         enable = true;
+        greeter.enable = true;
         greeters.gtk = {
           enable = true;
         };
       };
       defaultSession = "none+i3";
     };
-    desktopManager.session = [
-      {
-        name = "home-manager";
-        start = ''
-          ${pkgs.runtimeShell} $HOME/.hm-xsession &
-          waitPID=$!
-        '';
-      }
-    ];
     videoDrivers = [ "nvidia" ];
   };
 
@@ -132,7 +124,6 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [nvidia-vaapi-driver];
     };
   };
 
