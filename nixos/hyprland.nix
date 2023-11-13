@@ -19,7 +19,7 @@
       displayManager.gdm = {
         enable = true;
         wayland = true;
-      }
+      };
     };
 
     programs.hyprland = {
