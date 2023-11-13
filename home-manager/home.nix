@@ -50,7 +50,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "kitty";
+    TERMINAL = "alacritty";
   };
 
   # Add stuff for your user as you see fit:
