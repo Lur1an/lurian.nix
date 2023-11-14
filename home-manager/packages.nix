@@ -8,7 +8,6 @@
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
     barrier
-    discord
     slack
     rustup
     telegram-desktop

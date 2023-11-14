@@ -12,6 +12,7 @@
     enable = true;
     extraPackages = with pkgs; [
       lua-language-server
+      nil
       rust-analyzer
     ];
   };

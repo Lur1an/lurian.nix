@@ -5,6 +5,7 @@
       desktopManager.gnome.enable = true;    
     };
 
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     environment.gnome.excludePackages = (with pkgs; [
       gnome-photos
       gnome-tour
@@ -15,6 +16,7 @@
     ]);
     environment.systemPackages = with pkgs; [
       gnome.gnome-tweaks
+      xdg-desktop-portal-gtk 
     ];
   };
 }

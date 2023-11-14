@@ -1,12 +1,6 @@
 { pkgs, ... }: {
   programs.tmux = {
     enable = true;
-    extraConfig = ''
-      set -s escape-time 0
-      set -g status-bg "#0a1519"
-      set -g status-fg white
-      set -g default-terminal "screen-256color"
-      set -ga terminal-overrides ',*256col*:Tc'
-    '';
   };
+  home.file.".tmux.conf".source = ../dotfiles/tmux/.tmux.conf;
 }

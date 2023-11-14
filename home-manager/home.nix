@@ -18,6 +18,7 @@
     ./gtk.nix
     ./tmux.nix
     ./foot.nix
+    ./discord.nix
     ./alacritty.nix
     ./i3
   ];
@@ -30,15 +31,15 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      (self: super: {
-        discord = super.discord.overrideAttrs (
-          _: {
-            src = builtins.fetchTarball {
-              url = "https://discord.com/api/download?platform=linux&format=tar.gz";
-            };
-          }
-        );
-      })
+      # (self: super: {
+      #   discord = super.discord.overrideAttrs (
+      #     _: {
+      #       src = builtins.fetchTarball {
+      #         url = "https://discord.com/api/download?platform=linux&format=tar.gz";
+      #       };
+      #     }
+      #   );
+      # })
     ];
     config = {
       allowUnfree = true;
@@ -67,6 +68,17 @@
   programs.gh = {
     enable = true;
     enableGitCredentialHelper = true;
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
   };
 
   # Nicely reload system units when changing configs

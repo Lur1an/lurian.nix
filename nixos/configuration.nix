@@ -91,8 +91,10 @@
 
   # Flatpak
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  
+  services.dbus.enable = true;
   services.flatpak.enable = true;
+
 
   programs.zsh.enable = true;
   programs.dconf.enable = true;
@@ -104,6 +106,8 @@
 
   services.gnome3.gnome-keyring.enable = true;
   services.gnome3.seahorse.enable = true;
+  virtualisation.docker.enable = true;
+
 
   # Nvidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -142,7 +146,6 @@
     git
     sops
     sysstat
-    xdg-desktop-portal-gtk
     pciutils
     gtk3
   ];
