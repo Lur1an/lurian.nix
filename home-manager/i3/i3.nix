@@ -61,10 +61,20 @@ in
         "${mod}+T" = "exec alacritty";
         "${mod}+S" = "exec rofi -show drun";
         "${mod}+B" = "exec firefox";
+
         "${mod}+Ctrl+H" = "resize shrink width 16px or 1ppt";
         "${mod}+Ctrl+L" = "resize grow width 16px or 1ppt";
         "${mod}+Ctrl+K" = "resize grow height 16px or 1ppt";
         "${mod}+Ctrl+J" = "resize shrink height 16px or 1ppt";
+
+        "${mod}+Shift+L" = "move window to output right";
+        "${mod}+Shift+H" = "move window to output left";
+
+        "${mod}+H" = "focus left";
+        "${mod}+L" = "focus right";
+        "${mod}+K" = "focus up";
+        "${mod}+J" = "focus down";
+
         "${mod}+Q" = "kill";
       };
       window.commands = [
