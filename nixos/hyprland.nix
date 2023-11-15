@@ -26,13 +26,6 @@
       xwayland.enable = true;
     };
 
-    programs.waybar = {
-      enable = true;
-      package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    };
-
     xdg.portal.wlr.enable = true;
 
     environment = {
@@ -62,8 +55,8 @@
       # wallpaper
       swww
       # app-launcher
-      rofi-wayland
       xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
       xwayland
       meson
       wayland-protocols

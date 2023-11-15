@@ -15,12 +15,11 @@
     ./fonts.nix
     ./neovim.nix
     ./packages.nix
-    ./gtk.nix
     ./tmux.nix
     ./foot.nix
     ./discord.nix
     ./alacritty.nix
-    ./i3
+    ./hyprland
   ];
 
   # wallpaper
@@ -31,19 +30,9 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      # (self: super: {
-      #   discord = super.discord.overrideAttrs (
-      #     _: {
-      #       src = builtins.fetchTarball {
-      #         url = "https://discord.com/api/download?platform=linux&format=tar.gz";
-      #       };
-      #     }
-      #   );
-      # })
     ];
     config = {
       allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
     };
   };

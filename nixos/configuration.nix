@@ -19,7 +19,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
-    ./i3.nix
+    ./hyprland.nix
   ];
 
 

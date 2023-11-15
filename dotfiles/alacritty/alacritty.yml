@@ -21,6 +21,6 @@ font:
 colors:
   background: "#232232" 
 env:
-    TERM: alacritty
+    TERM: xterm-256color
 import:
      - ~/.config/alacritty/themes/themes/gotham.yaml
