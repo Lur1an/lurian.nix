@@ -5,6 +5,7 @@
   outputs,
   lib,
   config,
+  nix-colors,
   pkgs,
   ...
 }: {
@@ -61,7 +62,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = false;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs nix-colors; };
     users = {
       lurian = import ../home-manager/home.nix;
     };
@@ -104,8 +105,8 @@
     xkbOptions = "caps:escape";
   };
 
-  services.gnome3.gnome-keyring.enable = true;
-  services.gnome3.seahorse.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
   virtualisation.docker.enable = true;
 
 

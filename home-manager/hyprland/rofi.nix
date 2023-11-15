@@ -25,10 +25,10 @@
     configuration{
         modi: "run,drun,window";
         lines: 5;
-        font: "Sans Serif 16";
+        font: "Sans Serif 12";
         show-icons: true;
         icon-theme: "Papirus-Dark";
-        terminal: "st";
+        terminal: "alacritty";
         drun-display-format: "{name}";
         location: 0;
         disable-history: false;

@@ -23,6 +23,12 @@ in
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
     settings = {
+      layerrule = [
+        "blur, waybar"
+        "blur, wofi"
+        "ignorezero, wofi"
+      ];
+
       decoration = {
         rounding = 5;
         shadow_ignore_window = true;
@@ -63,10 +69,10 @@ in
       bind = import ./binds.nix;
       exec-once = [
         "exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "hyprctl setcursor 'macOS-BigSur' 32"
+        "hyprctl setcursor 'macOS-BigSur' 22"
         "dunst &"
         "swww kill"
-        "swww nit"
+        "swww init"
         "waybar"
       ];
     };

@@ -7,5 +7,5 @@ in {
     inputs.nix-colors.homeManagerModule
     ./gtk.nix
   ];
-  colorscheme = oxocarbon-dark;
+  colorscheme = catppuccin-mocha;
 }

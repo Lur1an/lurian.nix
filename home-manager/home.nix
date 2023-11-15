@@ -10,6 +10,7 @@
 }: {
   # You can import other home-manager modules here
   imports = [
+    ./wallpapers.nix
     ./dotfiles.nix
     ./firefox.nix
     ./fonts.nix
@@ -56,7 +57,7 @@
 
   programs.gh = {
     enable = true;
-    enableGitCredentialHelper = true;
+    gitCredentialHelper.enable = true;
   };
 
   xdg.mimeApps = {

@@ -27,7 +27,6 @@ in {
       "hyprland/window"
     ];
     modules-right = [
-      # "custom/colorpicker"
       "custom/notification"
       "custom/cava"
       "memory"
@@ -39,27 +38,20 @@ in {
       "custom/power-menu"
     ];
 
-    "wlr/workspaces" = {
-      active-only = false;
-      on-click = "activate";
-      on-scroll-up = "hyprctl dispatch workspace m+1";
-      on-scroll-down = "hyprctl dispatch workspace m-1";
-      format = "{name}";
-      format-icons = {
-        "1" = "一";
-        "2" = "二";
-        "3" = "三";
-        "4" = "四";
-        "5" = "五";
-        "6" = "六";
-        "7" = "七";
-        "8" = "八";
-        "9" = "九";
-        "10" = "十";
-        # "urgent" = "";
-        # "active" = "";
-        # "default" = "";
-      };
+    "wlr/workspaces"= {
+        active-only= false;
+        all-outputs= false;
+        disable-scroll= false;
+        on-scroll-up= "hyprctl dispatch workspace e-1";
+        on-scroll-down= "hyprctl dispatch workspace e+1";
+        format = "{name}";
+        on-click= "activate";
+        format-icons= {
+            urgent= "";
+            active= "";
+            default = "";
+            sort-by-number= true;
+        };
     };
 
     "hyprland/window" = {
