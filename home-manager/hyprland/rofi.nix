@@ -4,142 +4,128 @@
   inputs,
   config,
   ...
-}: {
+}: 
+let
+  colors = config.colorscheme.colors;
+in 
+{
   home.packages = with pkgs; [
     rofi-wayland
   ];
 
   xdg.configFile."rofi/colors.rasi".text = ''
     * {
-        background:     #1E1D2FFF;
-        background-alt: #282839FF;
-        border:         #000B83FF;
-        foreground:     #D9E0EEFF;
-        selected:       #7AA2F7FF;
-        active:         #ABE9B3FF;
-        urgent:         #F28FADFF;
+        main-bg:            #${colors.base00};
+        main-fg:            #${colors.base04};
+        main-br:            #${colors.base0E};
+        select-bg:          #b4befeff;
+        select-fg:          #11111bff;
+        separatorcolor:     transparent;
+        border-color:       transparent;
     }
   '';
 
   xdg.configFile."rofi/config.rasi".text = ''
-    configuration{
-        modi: "run,drun,window";
-        lines: 5;
-        font: "Sans Serif 12";
-        show-icons: true;
-        icon-theme: "Papirus-Dark";
-        terminal: "alacritty";
-        drun-display-format: "{name}";
-        location: 0;
-        disable-history: false;
-        hide-scrollbar: true;
-        display-drun: " 󰵆  Apps ";
-        display-run: " 󰆍  Run ";
-        display-window: " 󱂬  Window";
-        sidebar-mode: true;
+    // Config //
+    configuration {
+      modi:                        "drun";
+      show-icons:                  false;
+      font:                        "JetBrainsMono Nerd Font 10";
     }
 
-    @theme "./colors.rasi"
+    @theme "~/.config/rofi/colors.rasi"
 
-    element-text, element-icon , mode-switcher {
-        background-color: inherit;
-        text-color:       inherit;
-    }
 
+    // Main //
     window {
-        height: 730px;
-        width:1000px;
-        border: 2px;
-        border-color: @foreground;
-        background-color: @background-alt;
-        border-radius: 12;
+      height:                      55%;
+      width:                       20%;
+      transparency:                "real";
+      fullscreen:                  false;
+      enabled:                     true;
+      cursor:                      "default";
+      spacing:                     0px;
+      padding:                     0px;
+      border:                      2px;
+      border-radius:               15px;
+      border-color:                @main-br;
+      background-color:            transparent;
     }
 
     mainbox {
-        background-color: @background-alt;
-        children: [ mode-switcher, inputbar, listview ];
+      enabled:                     true;
+      spacing:                     0px;
+      orientation:                 vertical;
+      children:                    [ "inputbar" , "listbox" ];
+      background-color:            transparent;
+      background-image:            url("~/wallpapers/gurren_lagann.jpg", height);
     }
 
+
+    // Inputs //
     inputbar {
-        children: [prompt,entry];
-        background-color: @background-alt;
-        border-radius: 5px;
-        padding: 2px;
+      enabled:                     true;
+      padding:                     7px;
+      children:                    [ "entry" ];
+      background-color:            @main-bg;
     }
-
-    prompt {
-        background-color: @selected;
-        padding: 6px;
-        text-color: @background-alt;
-        border-radius: 5px;
-        margin: 20px 0px 0px 20px;
-    }
-
-    textbox-prompt-colon {
-        expand: false;
-        str: ":";
-    }
-
     entry {
-        padding: 6px;
-        margin: 20px 0px 0px 10px;
-        text-color: @foreground;
-        background-color: @background-alt;
+      enabled:                     true;
+      padding:                     70px;
+      text-color:                  @main-fg;
+      background-color:            @main-bg;
+      background-image:            url("~/.config/swww/wall.blur", width);
     }
 
+
+    // Lists //
+    listbox {
+      spacing:                     0px;
+      padding:                     6px;
+      children:                    [ "listview" ];
+      background-color:            @main-bg;
+    }
     listview {
-        border: 0px 0px 0px;
-        padding: 10 10 0;
-        margin: 10 10 0 10;
-        columns: 4;
-        spacing: 15;
-        background-color: @background-alt;
+      enabled:                     true;
+      columns:                     1;
+      cycle:                       true;
+      dynamic:                     true;
+      scrollbar:                   false;
+      layout:                      vertical;
+      reverse:                     false;
+      fixed-height:                false;
+      fixed-columns:               true;
+      cursor:                      "default";
+      background-color:            transparent;
+      text-color:                  @main-fg;
     }
 
+
+    // Elements //
     element {
-        padding: 5px;
-        background-color: @background-alt;
-        text-color: @foreground  ;
-        orientation: vertical;
-        spacing: 10;
+      enabled:                     true;
+      spacing:                     0px;
+      padding:                     12px;
+      border-radius:               10px;
+      cursor:                      pointer;
+      background-color:            transparent;
+      text-color:                  @main-fg;
     }
-
-    element-icon {
-        size: 80px;
-        horizontal-align: 0.5;
+    @media(max-aspect-ratio: 1.8) {
+      element {
+        orientation:             vertical;
+      }
     }
-
-    element selected {
-        background-color:  @foreground ;
-        text-color: @background-alt  ;
-        border-radius: 12px;
+    element selected.normal {
+      background-color:            @select-bg;
+      text-color:                  @select-fg;
     }
-
     element-text {
-        vertical-align: 0.5;
-        horizontal-align: 0.5;
-        expand: true;
-        font: "Sofia Pro Bold 14";
-      }
-
-    mode-switcher {
-        spacing: 0;
-        margin: 5 10 5 10;
-        padding: 10 50 5 50;
-      }
-
-    button {
-        padding: 10px;
-        background-color: @background-alt;
-        text-color: @foreground;
-        vertical-align: 0.5;
-        horizontal-align: 0.5;
-    }
-
-    button selected {
-      background-color:  @active;
-      text-color: @background-alt;
-      border-radius: 10px;
+      vertical-align:              0.0;
+      horizontal-align:            0.0;
+      cursor:                      inherit;
+      background-color:            transparent;
+      text-color:                  inherit;
     }
   '';
 }

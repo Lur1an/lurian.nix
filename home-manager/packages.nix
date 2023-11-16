@@ -13,6 +13,5 @@
     telegram-desktop
     easyeffects
     pavucontrol
-    python311Full
   ];
 }
