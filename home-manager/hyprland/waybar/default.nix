@@ -4,11 +4,12 @@
   config,
   osConfig,
   inputs,
+  custom,
   ...
 }:
 with lib; let
   waybar_config = import ./config.nix {inherit osConfig config lib pkgs;};
-  waybar_style = import ./style.nix {inherit (config) colorscheme;};
+  waybar_style = import ./style.nix {inherit config custom;};
 in {
   home.packages = with pkgs; [
     cava

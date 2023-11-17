@@ -8,10 +8,17 @@
   config,
   pkgs,
   ...
-}: {
+}: 
+let
+  monitors = {
+    main = "DP-4";
+    secondary = "DP-3";
+  };
+in 
+{
   imports = [
     ./hardware-configuration.nix
-    ../configuration.nix
+    ../configuration.nix 
   ];
   services.xserver.screenSection = ''
     Option "metamodes" "DP-2: 3840x2160_144 +3840+0, DP-4: 3840x2160_144 +0+0"

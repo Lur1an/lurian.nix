@@ -12,6 +12,8 @@
     rustup
     telegram-desktop
     easyeffects
+    flameshot
     pavucontrol
+    playerctl
   ];
 }

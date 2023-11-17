@@ -7,8 +7,15 @@
   config,
   pkgs,
   ...
-}: {
-  # You can import other home-manager modules here
+}: 
+let
+  custom = {
+    code_font = "ComicCodeLigatures Nerd Font";
+    font = "ComicCodeLigatures Nerd Font";
+  };
+in 
+{
+  _module.args =  { inherit custom; };
   imports = [
     ./wallpapers.nix
     ./dotfiles.nix

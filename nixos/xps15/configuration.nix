@@ -9,8 +9,8 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
-    ../configuration.nix
+    ./hardware-configuration.nix 
+    ../configuration.nix 
   ];
 
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
