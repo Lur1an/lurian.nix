@@ -21,6 +21,7 @@ in
     ./dev.nix
     ./wallpapers.nix
     ./firefox.nix
+    ./obs.nix
     ./fonts.nix
     ./neovim.nix
     ./packages.nix

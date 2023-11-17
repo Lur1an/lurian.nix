@@ -55,17 +55,15 @@ in {
         format-alt= " {:%d/%m}";
     };
     "wlr/workspaces"= {
-        active-only= false;
-        all-outputs= true;
-        on-scroll-up= "hyprctl dispatch workspace e-1";
-        on-scroll-down= "hyprctl dispatch workspace e+1";
-        format = "{name}";
-        format-icons= {
-            urgent= "";
-            active= "";
-            default = "";
-            sort-by-number= true;
-        };
+      active-only = false;
+      all-outputs = true;
+      format = "{name}";
+      format-icons= {
+          urgent= "";
+          active= "";
+          default = "";
+          sort-by-number= true;
+      };
     };
     "cava#left" = {
         framerate = 60;

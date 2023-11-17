@@ -10,10 +10,10 @@
 let
   colors = config.colorscheme.colors;
   xwaylandbridge_patch = [
-    "windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-    "windowrulev2 = noanim,class:^(xwaylandvideobridge)$"
-    "windowrulev2 = nofocus,class:^(xwaylandvideobridge)$"
-    "windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$"
+    "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+    "noanim,class:^(xwaylandvideobridge)$"
+    "nofocus,class:^(xwaylandvideobridge)$"
+    "noinitialfocus,class:^(xwaylandvideobridge)$"
   ];
 in 
 {
@@ -31,9 +31,10 @@ in
 
       windowrule = [
         "float,^(pavucontrol)"
+        "opacity 0.9,^(discord)"
       ];
 
-      windowrulev2 = [
+      windowrulev2 = xwaylandbridge_patch ++ [
         "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
         "noanim,class:^(xwaylandvideobridge)$"
         "nofocus,class:^(xwaylandvideobridge)$"
@@ -56,6 +57,7 @@ in
         gaps_in = 6;
         gaps_out = 10;
         border_size = 0;
+        cursor_inactive_timeout = 3;
         layout = "dwindle";
       };
       animations = {
@@ -78,20 +80,33 @@ in
       ];
       bind = import ./binds.nix;
       workspace = [
-        name:1,monitor:DP-4
-        name:2,monitor:DP-3
       ];
       wsbind = [];
       exec-once = [
         "exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor 'macOS-BigSur' 22"
         "dunst &"
-        "swww kill"
-        "swww init"
         "swww img ~/wallpapers/winpuccin.jpg"
-        ""
+        "swww init"
         "waybar"
       ];
     };
+    extraConfig = ''
+        submap=resize
+        binde=,L,resizeactive,15 0
+        binde=,H,resizeactive,-15 0
+        binde=,K,resizeactive,0 -15
+        binde=,J,resizeactive,0 15
+
+        bind=,escape,submap,reset 
+        bind=SUPER,R,submap,reset
+
+        # will reset the submap, meaning end the current one and return to the global one
+        submap=reset
+
+        # For tearing
+        env = WLR_DRM_NO_ATOMIC,1
+    '';
+    
   };
 }
