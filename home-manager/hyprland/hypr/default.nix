@@ -80,6 +80,15 @@ in
       ];
       bind = import ./binds.nix;
       workspace = [
+        name:1,monitor:DP-4
+        name:2,monitor:DP-4
+        name:3,monitor:DP-4
+        name:4,monitor:DP-4
+
+        name:5,monitor:DP-3
+        name:6,monitor:DP-3
+        name:7,monitor:DP-3
+        name:8,monitor:DP-3
       ];
       wsbind = [];
       exec-once = [
