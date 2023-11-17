@@ -12,7 +12,7 @@ in
 	"${mod} SHIFT, H, movewindow, l"
   "${mod} SHIFT, K, movewindow, u"
   "${mod} SHIFT, J, movewindow, d"
-
+  ''${mod}, P, exec, mkdir -p ~/Pictures/screenshots; grim -t png -g "$(slurp)" ~/Pictures/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png''
 	"${mod}, H, movefocus, l"
 	"${mod}, L, movefocus, r"
 	"${mod}, K, movefocus, u"

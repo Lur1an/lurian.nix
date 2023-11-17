@@ -12,7 +12,9 @@
     rustup
     telegram-desktop
     easyeffects
-    flameshot
+    neofetch
+    slurp
+    grim
     pavucontrol
     playerctl
   ];

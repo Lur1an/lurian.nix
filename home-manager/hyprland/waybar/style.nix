@@ -28,6 +28,7 @@ in ''
   #cava.right {
       border-radius: 10px 24px 10px 24px;
   }
+
   #workspaces {
       background: #${colors.base02};
       margin: 5px 5px;
@@ -35,12 +36,13 @@ in ''
       border-radius: 16px;
       color: #${colors.base0E}
   }
+
   #workspaces button {
       padding: 0px 5px;
       margin: 0px 3px;
       border-radius: 16px;
-      color: transparent;
-      background: #${colors.base00};
+      color: #${colors.base00};
+      background: #${colors.base07};
       transition: all 0.3s ease-in-out;
   }
 
