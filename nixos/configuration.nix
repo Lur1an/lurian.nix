@@ -71,8 +71,9 @@
 
   users.users = {
     lurian = {
+      shell = pkgs.zsh;
       isNormalUser = true;
-      description = "me";
+      description = "Lurian";
       extraGroups = ["wheel" "networkmanager" "docker" "audio"];
     };
   };
@@ -134,6 +135,7 @@
     enable = true;
     audio.enable = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     alsa = {
       enable = true;
       support32Bit = true;

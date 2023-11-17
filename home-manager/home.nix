@@ -17,6 +17,7 @@ in
 {
   _module.args =  { inherit custom; };
   imports = [
+    ./zsh.nix
     ./dev.nix
     ./wallpapers.nix
     ./firefox.nix

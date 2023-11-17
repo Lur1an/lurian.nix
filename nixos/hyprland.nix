@@ -62,6 +62,7 @@
       wayland-protocols
       wayland-utils
       wl-clipboard
+      xwaylandvideobridge
       wlroots
       mpvpaper
       mpv

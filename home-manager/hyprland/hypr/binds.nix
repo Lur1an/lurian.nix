@@ -5,7 +5,7 @@ in
 	"${mod}, Q, killactive"
 	"${mod}, M, exit"
 	"${mod}, B, exec, firefox"
-	"${mod}, T, exec, alacritty"
+	"${mod}, T, exec, foot"
 	"${mod}, S, exec, rofi -show drun -show-icons"
 	"${mod}, M, fakefullscreen"
 	"${mod} SHIFT, L, movewindow, r"
