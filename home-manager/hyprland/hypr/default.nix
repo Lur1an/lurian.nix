@@ -33,6 +33,13 @@ in
         "float,^(pavucontrol)"
       ];
 
+      windowrulev2 = [
+        "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+        "noanim,class:^(xwaylandvideobridge)$"
+        "nofocus,class:^(xwaylandvideobridge)$"
+        "noinitialfocus,class:^(xwaylandvideobridge)$"
+      ];
+
       decoration = {
         rounding = 10;
         shadow_ignore_window = true;
