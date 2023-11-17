@@ -3,6 +3,7 @@
   outputs,
   lib,
   config,
+  monitors,
   pkgs,
   ...
 }: 
@@ -32,8 +33,8 @@ in
         drop_shadow = true;
         shadow_range = 20;
         shadow_render_power = 3;
-        "col.shadow" = "rgb(${colors.base03})";
-        "col.shadow_inactive" = "rgb(${colors.base02})";
+        "col.shadow" = "rgb(${colors.base0E})";
+        "col.shadow_inactive" = "rgb(${colors.base00})";
         blur = {
           enabled = false;
         };
@@ -43,12 +44,13 @@ in
         gaps_out = 10;
         border_size = 0;
         layout = "dwindle";
-        "col.active_border" = "rgb(${colors.base03})";
-        "col.inactive_border" = "rgb(${colors.base02})";
       };
       animations = {
           enabled = true;
-          bezier = [ "easeinoutsine, 0.37, 0, 0.63, 1" ];
+          bezier = [ 
+            "easeinoutsine, 0.37, 0, 0.63, 1" 
+            "linear, 0.0, 0.0, 1.0, 1.0"
+          ];
           animation = [ 
               "windows,1,2,easeinoutsine,slide" 
               "border,1,10,default"
@@ -57,8 +59,8 @@ in
           ];
       };
       monitor = [
-        "DP-4, 3840x2160@144, 0x0, 1.50"
-        "DP-3, 3840x2160@144, 2560x0, 1.50"
+        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
+        "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
         ",preferred,auto,1"
       ];
       bind = import ./binds.nix;

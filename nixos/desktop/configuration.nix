@@ -11,11 +11,12 @@
 }: 
 let
   monitors = {
-    main = "DP-4";
+    primary = "DP-4";
     secondary = "DP-3";
   };
 in 
 {
+  _module.args = { inherit monitors; };
   imports = [
     ./hardware-configuration.nix
     ../configuration.nix 

@@ -3,6 +3,7 @@
   pkgs,
   lib,
   osConfig,
+  monitors,
   ...
 }:
 with lib; let
@@ -20,6 +21,7 @@ with lib; let
   ];
 in {
   mainBar = {
+    output = monitors.primary;
     position= "top";
     layer= "top";
     height= 35;
@@ -54,12 +56,10 @@ in {
     };
     "wlr/workspaces"= {
         active-only= false;
-        all-outputs= false;
-        disable-scroll= false;
+        all-outputs= true;
         on-scroll-up= "hyprctl dispatch workspace e-1";
         on-scroll-down= "hyprctl dispatch workspace e+1";
         format = "{name}";
-        on-click= "activate";
         format-icons= {
             urgent= "";
             active= "";
