@@ -16,6 +16,7 @@
     networkmanagerapplet
     slurp
     grim
+    ffmpeg
     pavucontrol
     playerctl
   ];
