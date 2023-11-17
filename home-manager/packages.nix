@@ -10,6 +10,7 @@
     barrier
     slack
     telegram-desktop
+    htop
     easyeffects
     neofetch
     networkmanagerapplet

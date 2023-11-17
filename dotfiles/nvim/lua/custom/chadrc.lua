@@ -3,7 +3,7 @@ local M = {}
 
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"
-local transparent = false
+local transparent = true
 M.ui = {
     theme = "catppuccin",
     theme_toggle = { "catppuccin", "one_light" },

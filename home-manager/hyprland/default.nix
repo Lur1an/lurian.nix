@@ -14,8 +14,6 @@
     ./hypr
   ];
   home.packages = with pkgs; [
-    networkmanagerapplet
-    mpvpaper
-    mpv
+    
   ];
 }

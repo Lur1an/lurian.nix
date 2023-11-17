@@ -30,7 +30,7 @@ in ''
   }
 
   #workspaces {
-      background: #${colors.base02};
+      background: #${colors.base01};
       margin: 5px 5px;
       padding: 8px 5px;
       border-radius: 16px;
@@ -42,7 +42,7 @@ in ''
       margin: 0px 3px;
       border-radius: 16px;
       color: #${colors.base00};
-      background: #${colors.base07};
+      background: #${colors.base06};
       transition: all 0.3s ease-in-out;
   }
 
@@ -65,7 +65,7 @@ in ''
 
   #tray, #pulseaudio, #network, #battery,
   #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
-      background: #${colors.base02};
+      background: #${colors.base01};
       font-weight: bold;
       margin: 5px 0px;
   }
@@ -77,7 +77,7 @@ in ''
   }
   #clock {
       color: #${colors.base05};
-      background: #${colors.base02};
+      background: #${colors.base01};
       border-radius: 0px 0px 0px 40px;
       padding: 10px 10px 15px 25px;
       margin-left: 7px;
@@ -86,7 +86,7 @@ in ''
   }
   #custom-launcher {
       color: #${colors.base0D};
-      background: #${colors.base02};
+      background: #${colors.base01};
       border-radius: 0px 0px 40px 0px;
       margin: 0px;
       padding: 0px 35px 0px 15px;
@@ -94,7 +94,7 @@ in ''
   }
 
   #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward {
-      background: #${colors.base02};
+      background: #${colors.base01};
       font-size: 22px;
   }
   #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.foward:hover{
@@ -117,7 +117,7 @@ in ''
       margin-right: 7px
   }
   #custom-playerlabel {
-      background: #${colors.base02};
+      background: #${colors.base01};
       color: #${colors.base05};
       padding: 0 20px;
       border-radius: 24px 10px 24px 10px;
@@ -125,7 +125,7 @@ in ''
       font-weight: bold;
   }
   #window{
-      background: #${colors.base02};
+      background: #${colors.base01};
       padding-left: 15px;
       padding-right: 15px;
       border-radius: 16px;
