@@ -19,6 +19,7 @@ alias ezpush='aicommits --all && git push'
 function rust_dev() {
     RUST_LOG=info cargo-watch -x check -x "test $1 -- --nocapture"
 }
+
 function boot_windows() {
     systemctl reboot --boot-loader-entry=auto-windows
 }

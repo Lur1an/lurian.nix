@@ -9,10 +9,10 @@
     fzf # A command-line fuzzy finder
     barrier
     slack
-    rustup
     telegram-desktop
     easyeffects
     neofetch
+    networkmanagerapplet
     slurp
     grim
     pavucontrol

@@ -17,8 +17,8 @@ in
 {
   _module.args =  { inherit custom; };
   imports = [
+    ./dev.nix
     ./wallpapers.nix
-    ./dotfiles.nix
     ./firefox.nix
     ./fonts.nix
     ./neovim.nix

@@ -63,7 +63,8 @@
       wayland-utils
       wl-clipboard
       wlroots
-
+      mpvpaper
+      mpv
     ];
   };
 }

@@ -75,6 +75,8 @@ in
         "dunst &"
         "swww kill"
         "swww init"
+        "swww img ~/wallpapers/winpuccin.jpg"
+        ""
         "waybar"
       ];
     };
