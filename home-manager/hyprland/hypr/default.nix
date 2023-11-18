@@ -84,11 +84,7 @@ in
               "workspaces,1,2,easeinoutsine,slide"
           ];
       };
-      monitor = [
-        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
-        "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
-        ",preferred,auto,1"
-      ];
+      monitor = monitor_config;
       bind = import ./binds.nix;
       wsbind = [];
       exec-once = [
