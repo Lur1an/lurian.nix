@@ -41,6 +41,7 @@ in
       windowrule = [
         "float,^(pavucontrol)"
         "opacity 0.9,^(discord)"
+        "opacity 0.9,telegram*"
       ];
 
       windowrulev2 = xwaylandbridge_patch ++ [
@@ -49,6 +50,18 @@ in
         "nofocus,class:^(xwaylandvideobridge)$"
         "noinitialfocus,class:^(xwaylandvideobridge)$"
       ];
+
+      workspace = [
+        "${monitors.primary}, 1"
+        "${monitors.primary}, 2"
+        "${monitors.primary}, 3"
+        "${monitors.primary}, 4"
+      ] ++ (if builtins.hasAttr "secondary" monitors then [
+        "${monitors.secondary}, 5"
+        "${monitors.secondary}, 6"
+        "${monitors.secondary}, 7"
+        "${monitors.secondary}, 8"
+      ] else []);
 
       decoration = {
         rounding = 10;

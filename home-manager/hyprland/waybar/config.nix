@@ -56,8 +56,18 @@ in {
         format-alt= " {:%d/%m}";
     };
     "wlr/workspaces"= {
+      "persistent_workspaces" = {
+        "1" = [];
+        "2" = [];
+        "3" = [];
+        "4" = [];
+        "5" = [];
+        "6" = [];
+        "7" = [];
+        "8" = [];
+      };
       active-only = false;
-      all-outputs = true;
+      all-outputs = false;
       on-click= "activate";
       format = "{name}";
       format-icons= {
