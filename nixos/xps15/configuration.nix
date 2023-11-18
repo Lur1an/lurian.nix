@@ -7,7 +7,15 @@
   config,
   pkgs,
   ...
-}: {
+}: 
+let
+  monitors = {
+    primary = "eDP-1";
+  };
+in
+{
+
+  _module.args = { inherit monitors; };
   imports = [
     ./hardware-configuration.nix 
     ../configuration.nix 

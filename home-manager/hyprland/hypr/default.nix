@@ -23,7 +23,7 @@ let
         ",preferred,auto,1"
       ]
     else
-      [ ",preferred,auto,1" ];
+      [ ",preferred,auto, 1.75" ];
 in 
 {
   wayland.windowManager.hyprland = {
@@ -89,8 +89,8 @@ in
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor 'macOS-BigSur' 22"
         "dunst &"
-        "swww img ~/wallpapers/winpuccin.jpg"
         "swww init"
+        "swww img ~/wallpapers/winpuccin.jpg"
         "waybar"
       ];
     };
