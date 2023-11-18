@@ -6,6 +6,7 @@
     # RUST TOOLING
     rustup
     openssl
+    poetry
     pkg-config
   ];
 }

@@ -86,7 +86,7 @@ in
       bind = import ./binds.nix;
       wsbind = [];
       exec-once = [
-        "exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor 'macOS-BigSur' 22"
         "dunst &"
         "swww img ~/wallpapers/winpuccin.jpg"
