@@ -5,7 +5,7 @@ let
     fontsize = "12";
     primary_accent = "cba6f7";
     background = "11111B";
-    opacity = ".7";
+    opacity = ".75";
   };
 in
 {

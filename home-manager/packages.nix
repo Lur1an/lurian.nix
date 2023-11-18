@@ -13,6 +13,7 @@
     htop
     easyeffects
     neofetch
+    google-chrome
     networkmanagerapplet
     slurp
     grim

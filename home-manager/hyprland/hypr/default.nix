@@ -15,6 +15,17 @@ let
     "nofocus,class:^(xwaylandvideobridge)$"
     "noinitialfocus,class:^(xwaylandvideobridge)$"
   ];
+  monitor_config = if builtins.hasAttr monitors "secondary"
+    then
+      [
+        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
+        "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
+        ",preferred,auto,1"
+      ] 
+    else
+      [
+        ",preferred,auto,1"
+      ];
 in 
 {
   wayland.windowManager.hyprland = {
@@ -79,17 +90,6 @@ in
         ",preferred,auto,1"
       ];
       bind = import ./binds.nix;
-      workspace = [
-        name:1,monitor:DP-4
-        name:2,monitor:DP-4
-        name:3,monitor:DP-4
-        name:4,monitor:DP-4
-
-        name:5,monitor:DP-3
-        name:6,monitor:DP-3
-        name:7,monitor:DP-3
-        name:8,monitor:DP-3
-      ];
       wsbind = [];
       exec-once = [
         "exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

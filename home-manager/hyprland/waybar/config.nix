@@ -47,6 +47,7 @@ in {
         "pulseaudio" 
         "network"
         "clock" 
+        "memory"
     ];
     clock= {
         format = " {:%a, %d %b, %H:%M %p}";
@@ -57,6 +58,7 @@ in {
     "wlr/workspaces"= {
       active-only = false;
       all-outputs = true;
+      on-click= "activate";
       format = "{name}";
       format-icons= {
           urgent= "";
