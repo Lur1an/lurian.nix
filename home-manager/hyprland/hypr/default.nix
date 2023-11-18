@@ -15,22 +15,15 @@ let
     "nofocus,class:^(xwaylandvideobridge)$"
     "noinitialfocus,class:^(xwaylandvideobridge)$"
   ];
-  # monitor_config = [
-  #   "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
-  #   "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
-  #   ",preferred,auto,1"
-  # ];
   monitor_config = if builtins.hasAttr "secondary" monitors
     then
-      ([
+      [
         "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
         "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
         ",preferred,auto,1"
-      ])
+      ]
     else
-      ([
-        ",preferred,auto,1"
-      ]);
+      [ ",preferred,auto,1" ];
 in 
 {
   wayland.windowManager.hyprland = {

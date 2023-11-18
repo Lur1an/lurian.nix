@@ -42,12 +42,12 @@ in {
         "cava#right"
     ];
     modules-right= [
+        "memory"
         "tray" 
         "battery"
         "pulseaudio" 
         "network"
         "clock" 
-        "memory"
     ];
     clock= {
         format = " {:%a, %d %b, %H:%M %p}";

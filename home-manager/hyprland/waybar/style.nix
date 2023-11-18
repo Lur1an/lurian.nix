@@ -63,13 +63,13 @@ in ''
       background-size: 400% 400%;
   }
 
-  #tray, #pulseaudio, #network, #battery,
+  #tray, #pulseaudio, #network, #battery, #memory,
   #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
       background: #${colors.base01};
       font-weight: bold;
       margin: 5px 0px;
   }
-  #tray, #pulseaudio, #network, #battery{
+  #tray, #pulseaudio, #network, #battery, #memory {
       color: #${colors.base05};
       border-radius: 10px 24px 10px 24px;
       padding: 0 20px;
