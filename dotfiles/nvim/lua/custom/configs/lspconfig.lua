@@ -29,12 +29,6 @@ lspconfig.rust_analyzer.setup {
     },
 }
 
-lspconfig["nil"].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "nix", }
-}
-
 -- if you just want default config for the servers then put them in a table
 local servers = {
     "tailwindcss",

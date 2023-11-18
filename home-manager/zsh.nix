@@ -18,6 +18,9 @@
       alias rust-dev='rust_dev'
       alias boot-windows='boot_windows'
       export CARGO_TERM_COLOR=always
+      if [ -f ~/.secrets ]; then
+          source ~/.secrets
+      fi
     '';
 
     oh-my-zsh = {
