@@ -21,10 +21,25 @@
 
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
+    inputs.nix-ld.nixosModules.nix-ld
     ./hyprland.nix
   ];
 
-
+  programs.nix-ld.dev.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+      stdenv.cc.cc
+      glib
+      glibc
+      zlib
+      fuse3
+      icu
+      zlib
+      nss
+      nspr
+      openssl
+      curl
+      expat
+    ];
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -126,7 +141,6 @@
       driSupport32Bit = true;
     };
   };
-
   # sound
   sound.enable = true;
   hardware.pulseaudio.enable = false;

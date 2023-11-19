@@ -16,5 +16,6 @@
       rust-analyzer
     ];
   };
-  home.file.".config/nvim".source = ../dotfiles/nvim;
+  xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/nvim";
+  # home.file.".config/nvim".source = ../dotfiles/nvim;
 }

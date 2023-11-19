@@ -5,7 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
-
+    nix-ld.url = "github:Mic92/nix-ld";
     # Home manager
     # home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.url = "github:nix-community/home-manager/master";
@@ -27,6 +27,7 @@
     self,
     nixpkgs,
     hyprland,
+    nix-ld,
     home-manager,
     ...
   } @ inputs: let

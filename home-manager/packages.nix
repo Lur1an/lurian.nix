@@ -13,11 +13,11 @@
     htop
     easyeffects
     neofetch
-    google-chrome
     networkmanagerapplet
     slurp
     grim
     ffmpeg
+    nix-index
     pavucontrol
     playerctl
   ];
