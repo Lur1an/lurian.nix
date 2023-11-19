@@ -42,6 +42,9 @@ in
         "float,^(pavucontrol)"
         "opacity 0.9,^(discord)"
         "opacity 0.9,telegram*"
+        "workspace 3 silent, ^(discord)"
+        "workspace 3 silent, telegram*"
+        "workspace 5 silent, ^(firefox)"
       ];
 
       windowrulev2 = xwaylandbridge_patch ++ [

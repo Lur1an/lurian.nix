@@ -35,10 +35,11 @@
       icu
       zlib
       nss
-      nspr
       openssl
       curl
       expat
+      nspr
+      xorg.libxcb
     ];
   nixpkgs = {
     # You can add overlays here

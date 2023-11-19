@@ -8,6 +8,12 @@
     openssl.dev
     poetry
     pkg-config
+    lldb
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        vadimcn.vscode-lldb
+      ];
+    })
     # NODEJS
     nodejs
     tailwindcss
@@ -20,6 +26,9 @@
     nodePackages_latest.eslint_d # JS linter
     nodePackages_latest.prettier # Formatter
   ];
+  
+  home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";
+
   home.sessionVariables = {
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };

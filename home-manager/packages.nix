@@ -20,5 +20,6 @@
     nix-index
     pavucontrol
     playerctl
+    unzip
   ];
 }
