@@ -1,6 +1,8 @@
-
-{ config, custom, ... }:
-let
+{
+  config,
+  custom,
+  ...
+}: let
   colors = config.colorscheme.colors;
 in ''
   * {
@@ -17,7 +19,7 @@ in ''
 
   #cava.left, #cava.right {
       background: #${colors.base01};
-      margin: 5px; 
+      margin: 5px;
       padding: 8px 16px;
       color: #${colors.base0E};
   }

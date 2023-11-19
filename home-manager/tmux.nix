@@ -1,8 +1,10 @@
-{ pkgs, config, ... }:
-let
-  colors = config.colorscheme.colors;
-in
 {
+  pkgs,
+  config,
+  ...
+}: let
+  colors = config.colorscheme.colors;
+in {
   programs.tmux = {
     enable = true;
     extraConfig = ''

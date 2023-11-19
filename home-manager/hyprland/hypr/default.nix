@@ -6,8 +6,7 @@
   monitors,
   pkgs,
   ...
-}: 
-let
+}: let
   colors = config.colorscheme.colors;
   xwaylandbridge_patch = [
     "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
@@ -15,17 +14,15 @@ let
     "nofocus,class:^(xwaylandvideobridge)$"
     "noinitialfocus,class:^(xwaylandvideobridge)$"
   ];
-  monitor_config = if builtins.hasAttr "secondary" monitors
-    then
-      [
-        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
-        "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
-        ",preferred,auto,1"
-      ]
-    else
-      [ ",preferred,auto, 1.75" ];
-in 
-{
+  monitor_config =
+    if builtins.hasAttr "secondary" monitors
+    then [
+      "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
+      "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
+      ",preferred,auto,1"
+    ]
+    else [",preferred,auto, 1.75"];
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     enableNvidiaPatches = true;
@@ -47,24 +44,32 @@ in
         "workspace 5 silent, ^(firefox)"
       ];
 
-      windowrulev2 = xwaylandbridge_patch ++ [
-        "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "nofocus,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
-      ];
+      windowrulev2 =
+        xwaylandbridge_patch
+        ++ [
+          "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+          "noanim,class:^(xwaylandvideobridge)$"
+          "nofocus,class:^(xwaylandvideobridge)$"
+          "noinitialfocus,class:^(xwaylandvideobridge)$"
+        ];
 
-      workspace = [
-        "${monitors.primary}, 1"
-        "${monitors.primary}, 2"
-        "${monitors.primary}, 3"
-        "${monitors.primary}, 4"
-      ] ++ (if builtins.hasAttr "secondary" monitors then [
-        "${monitors.secondary}, 5"
-        "${monitors.secondary}, 6"
-        "${monitors.secondary}, 7"
-        "${monitors.secondary}, 8"
-      ] else []);
+      workspace =
+        [
+          "${monitors.primary}, 1"
+          "${monitors.primary}, 2"
+          "${monitors.primary}, 3"
+          "${monitors.primary}, 4"
+        ]
+        ++ (
+          if builtins.hasAttr "secondary" monitors
+          then [
+            "${monitors.secondary}, 5"
+            "${monitors.secondary}, 6"
+            "${monitors.secondary}, 7"
+            "${monitors.secondary}, 8"
+          ]
+          else []
+        );
 
       decoration = {
         rounding = 10;
@@ -86,17 +91,17 @@ in
         layout = "dwindle";
       };
       animations = {
-          enabled = true;
-          bezier = [ 
-            "easeinoutsine, 0.37, 0, 0.63, 1" 
-            "linear, 0.0, 0.0, 1.0, 1.0"
-          ];
-          animation = [ 
-              "windows,1,2,easeinoutsine,slide" 
-              "border,1,10,default"
-              "fade,1,1,default"
-              "workspaces,1,2,easeinoutsine,slide"
-          ];
+        enabled = true;
+        bezier = [
+          "easeinoutsine, 0.37, 0, 0.63, 1"
+          "linear, 0.0, 0.0, 1.0, 1.0"
+        ];
+        animation = [
+          "windows,1,2,easeinoutsine,slide"
+          "border,1,10,default"
+          "fade,1,1,default"
+          "workspaces,1,2,easeinoutsine,slide"
+        ];
       };
       monitor = monitor_config;
       bind = import ./binds.nix;
@@ -111,21 +116,20 @@ in
       ];
     };
     extraConfig = ''
-        submap=resize
-        binde=,L,resizeactive,15 0
-        binde=,H,resizeactive,-15 0
-        binde=,K,resizeactive,0 -15
-        binde=,J,resizeactive,0 15
+      submap=resize
+      binde=,L,resizeactive,15 0
+      binde=,H,resizeactive,-15 0
+      binde=,K,resizeactive,0 -15
+      binde=,J,resizeactive,0 15
 
-        bind=,escape,submap,reset 
-        bind=SUPER,R,submap,reset
+      bind=,escape,submap,reset
+      bind=SUPER,R,submap,reset
 
-        # will reset the submap, meaning end the current one and return to the global one
-        submap=reset
+      # will reset the submap, meaning end the current one and return to the global one
+      submap=reset
 
-        # For tearing
-        env = WLR_DRM_NO_ATOMIC,1
+      # For tearing
+      env = WLR_DRM_NO_ATOMIC,1
     '';
-    
   };
 }

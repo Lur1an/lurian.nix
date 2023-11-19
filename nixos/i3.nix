@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   config = {
     services.picom = {
       enable = true;
     };
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
     services.xserver = {
       displayManager = {
         lightdm = {
@@ -16,12 +16,12 @@
       };
       windowManager.i3 = {
         enable = true;
-        extraPackages = with pkgs; [ i3status i3lock i3blocks ];
+        extraPackages = with pkgs; [i3status i3lock i3blocks];
       };
     };
 
     environment.systemPackages = with pkgs; [
-      xdg-desktop-portal-gtk 
+      xdg-desktop-portal-gtk
     ];
   };
 }

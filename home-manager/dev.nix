@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # RUST TOOLING
     rustup
@@ -26,7 +23,7 @@
     nodePackages_latest.eslint_d # JS linter
     nodePackages_latest.prettier # Formatter
   ];
-  
+
   home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";
 
   home.sessionVariables = {

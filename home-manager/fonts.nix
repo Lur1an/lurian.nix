@@ -1,19 +1,14 @@
-{
-  pkgs,
-  ...
-}: 
-let
+{pkgs, ...}: let
   myFonts = pkgs.stdenv.mkDerivation {
     name = "myFonts";
-    src = ../dotfiles/fonts;  # Replace with the path to your font files
-    phases = [ "installPhase" ];
+    src = ../dotfiles/fonts; # Replace with the path to your font files
+    phases = ["installPhase"];
     installPhase = ''
       mkdir -p $out/share/fonts
       cp -r $src/* $out/share/fonts
     '';
   };
-in
-{
+in {
   home.packages = with pkgs; [
     # Fonts
     go-font

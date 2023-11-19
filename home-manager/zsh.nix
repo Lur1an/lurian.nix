@@ -1,10 +1,14 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake"; 
+      update = "sudo nixos-rebuild switch --flake";
     };
     initExtra = ''
       alias ezpush='aicommits --all && git push'
@@ -25,7 +29,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "poetry" ];
+      plugins = ["git" "poetry"];
       theme = "robbyrussell";
     };
   };
@@ -33,16 +37,16 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    settings = {
-      palette = "catppuccin_mocha";
-    }
-    // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "starship";
-        rev = "HEAD";
-        sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+    settings =
+      {
+        palette = "catppuccin_mocha";
       }
-      + /palettes/mocha.toml));
+      // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "starship";
+          rev = "HEAD";
+          sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+        }
+        + /palettes/mocha.toml));
   };
-
 }

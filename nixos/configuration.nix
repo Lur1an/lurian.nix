@@ -27,20 +27,20 @@
 
   programs.nix-ld.dev.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-      stdenv.cc.cc
-      glib
-      glibc
-      zlib
-      fuse3
-      icu
-      zlib
-      nss
-      openssl
-      curl
-      expat
-      nspr
-      xorg.libxcb
-    ];
+    stdenv.cc.cc
+    glib
+    glibc
+    zlib
+    fuse3
+    icu
+    zlib
+    nss
+    openssl
+    curl
+    expat
+    nspr
+    xorg.libxcb
+  ];
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -79,7 +79,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = false;
-    extraSpecialArgs = { inherit inputs outputs nix-colors monitors; };
+    extraSpecialArgs = {inherit inputs outputs nix-colors monitors;};
     users = {
       lurian = import ../home-manager/home.nix;
     };
@@ -110,10 +110,9 @@
 
   # Flatpak
   xdg.portal.enable = true;
-  
+
   services.dbus.enable = true;
   services.flatpak.enable = true;
-
 
   programs.zsh.enable = true;
   programs.dconf.enable = true;
@@ -127,9 +126,8 @@
   programs.seahorse.enable = true;
   virtualisation.docker.enable = true;
 
-
   # Nvidia drivers
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     nvidia = {
       open = true;

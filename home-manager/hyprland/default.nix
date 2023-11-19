@@ -1,4 +1,3 @@
-
 {
   inputs,
   outputs,
@@ -14,6 +13,5 @@
     ./hypr
   ];
   home.packages = with pkgs; [
-    
   ];
 }

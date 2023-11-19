@@ -7,28 +7,24 @@
   config,
   pkgs,
   ...
-}: 
-let
+}: let
   monitors = {
     primary = "eDP-1";
   };
-in
-{
-
-  _module.args = { inherit monitors; };
+in {
+  _module.args = {inherit monitors;};
   imports = [
-    ./hardware-configuration.nix 
-    ../configuration.nix 
+    ./hardware-configuration.nix
+    ../configuration.nix
   ];
 
-  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
-
+  boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
 
   hardware.nvidia.prime = {
-      offload.enable = true;
-      # Make sure to use the correct Bus ID values for your system!
-      nvidiaBusId = "PCI:1:0:0";
-      intelBusId = "PCI:0:2:0";
+    offload.enable = true;
+    # Make sure to use the correct Bus ID values for your system!
+    nvidiaBusId = "PCI:1:0:0";
+    intelBusId = "PCI:0:2:0";
   };
 
   services.xserver.libinput = {

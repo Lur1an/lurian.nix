@@ -4,11 +4,9 @@
   inputs,
   config,
   ...
-}: 
-let
+}: let
   colors = config.colorscheme.colors;
-in 
-{
+in {
   home.packages = with pkgs; [
     rofi-wayland
   ];

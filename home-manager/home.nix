@@ -7,15 +7,13 @@
   config,
   pkgs,
   ...
-}: 
-let
+}: let
   custom = {
     code_font = "ComicCodeLigatures Nerd Font";
     font = "ComicCodeLigatures Nerd Font";
   };
-in 
-{
-  _module.args =  { inherit custom; };
+in {
+  _module.args = {inherit custom;};
   imports = [
     ./zsh.nix
     ./chrome.nix
@@ -34,7 +32,7 @@ in
   ];
 
   # wallpaper
-  xdg.configFile."wallpaper/wallpaper.png".source  = ../wallpapers/mistery_dungeon.png;
+  xdg.configFile."wallpaper/wallpaper.png".source = ../wallpapers/mistery_dungeon.png;
 
   nixpkgs = {
     overlays = [
@@ -60,9 +58,9 @@ in
 
   programs.git = {
     enable = true;
-    userName  = "lur1an";
+    userName = "lur1an";
     userEmail = "lurian-code@protonmail.com";
-    includes = [{ path = "~/.config/git/localconf"; }];
+    includes = [{path = "~/.config/git/localconf";}];
   };
 
   programs.gh = {

@@ -1,4 +1,8 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   gtk = {
     enable = true;
     gtk3.extraConfig = {

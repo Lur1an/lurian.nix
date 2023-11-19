@@ -4,11 +4,9 @@
   lib,
   pkgs,
   ...
-}: 
-let
+}: let
   mod = "Mod4";
-in
-{
+in {
   services.picom = {
     enable = true;
     shadow = true;
@@ -78,13 +76,12 @@ in
         "${mod}+Q" = "kill";
       };
       window.commands = [
-      {
-        command = "border pixel 0";
-        criteria = { class = "^.*"; };
-      }
+        {
+          command = "border pixel 0";
+          criteria = {class = "^.*";};
+        }
       ];
     };
-
   };
 
   programs.rofi = {
