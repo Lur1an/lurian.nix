@@ -67,7 +67,7 @@ in {
         "8" = [];
       };
       active-only = false;
-      all-outputs = false;
+      all-outputs = true;
       on-click = "activate";
       format = "{name}";
       format-icons = {
