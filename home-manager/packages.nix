@@ -19,6 +19,8 @@
     grim
     ffmpeg
     nix-index
+    openvpn
+    openconnect
     pavucontrol
     playerctl
     unzip

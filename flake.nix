@@ -34,10 +34,10 @@
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
-      # "aarch64-linux"
-      # "i686-linux"
-      # "aarch64-darwin"
-      # "x86_64-darwin"
+      "aarch64-linux"
+      "i686-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
       "x86_64-linux"
     ];
     # This is a function that generates an attribute by calling a function you
@@ -52,7 +52,7 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays {inherit inputs nixpkgs;};
     # Reusable nixos modules you might want to export
     # These are usually stuff you would upstream into nixpkgs
     nixosModules = import ./modules/nixos;

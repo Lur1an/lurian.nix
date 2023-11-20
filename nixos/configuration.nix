@@ -22,6 +22,7 @@
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
     inputs.nix-ld.nixosModules.nix-ld
+    ./nordvpn-service.nix
     ./hyprland.nix
   ];
 
@@ -90,7 +91,7 @@
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "Lurian";
-      extraGroups = ["wheel" "networkmanager" "docker" "audio"];
+      extraGroups = ["wheel" "networkmanager" "docker" "audio" "nordvpn"];
     };
   };
 

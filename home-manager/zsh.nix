@@ -9,6 +9,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake";
+      protonvpn = "sudo openvpn --config de.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
     };
     initExtra = ''
       alias ezpush='aicommits --all && git push'
