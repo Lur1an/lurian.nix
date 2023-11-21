@@ -6,7 +6,7 @@ in [
   "${mod}, B, exec, firefox"
   "${mod}, T, exec, foot"
   "${mod}, S, exec, rofi -show drun -show-icons"
-  "${mod}, M, fakefullscreen"
+  "${mod}, F, exec, thunar"
   "${mod} SHIFT, L, movewindow, r"
   "${mod} SHIFT, H, movewindow, l"
   "${mod} SHIFT, K, movetoworkspace, -1"

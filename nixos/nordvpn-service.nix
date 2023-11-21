@@ -1,12 +1,16 @@
-{ config, lib, pkgs, inputs, ... }: 
-let
-  nordvpn = inputs.self.packages.${pkgs.system}.nordvpn;
-in 
 {
-  environment.systemPackages = [ nordvpn ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
+  nordvpn = inputs.self.packages.${pkgs.system}.nordvpn;
+in {
+  environment.systemPackages = [nordvpn];
   users.groups.nordvpn = {};
-  networking.firewall.allowedTCPPorts = [ 443 ];
-  networking.firewall.allowedUDPPorts = [ 1194 ];
+  networking.firewall.allowedTCPPorts = [443];
+  networking.firewall.allowedUDPPorts = [1194];
   networking.firewall.checkReversePath = false;
   systemd = {
     services.nordvpn = {
@@ -28,9 +32,9 @@ in
         RuntimeDirectoryMode = "0750";
         Group = "nordvpn";
       };
-      wantedBy = [ "multi-user.target" ];
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
+      wantedBy = ["multi-user.target"];
+      after = ["network-online.target"];
+      wants = ["network-online.target"];
     };
   };
 }

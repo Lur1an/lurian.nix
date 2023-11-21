@@ -22,7 +22,6 @@
     # You can also split up your configuration and import pieces of it here:
     inputs.home-manager.nixosModules.home-manager
     inputs.nix-ld.nixosModules.nix-ld
-    ./nordvpn-service.nix
     ./hyprland.nix
   ];
 
@@ -56,6 +55,7 @@
     };
   };
 
+  networking.firewall.enable = false;
   networking.networkmanager.enable = true;
   nix = {
     # This will add each flake input as a registry
@@ -155,6 +155,11 @@
       support32Bit = true;
     };
   };
+
+
+  programs.thunar.enable = true;
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   environment.systemPackages = with pkgs; [
     vim

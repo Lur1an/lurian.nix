@@ -67,7 +67,6 @@
       runHook postInstall
     '';
   };
-
 in
   stdenv.mkDerivation {
     inherit pname version;

@@ -20,6 +20,7 @@ in {
     ./dev.nix
     ./wallpapers.nix
     ./firefox.nix
+    ./thunar.nix
     ./obs.nix
     ./fonts.nix
     ./neovim.nix
