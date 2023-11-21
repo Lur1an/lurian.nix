@@ -23,6 +23,7 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.nix-ld.nixosModules.nix-ld
     ./hyprland.nix
+    ./polkit.nix
   ];
 
   programs.nix-ld.dev.enable = true;
