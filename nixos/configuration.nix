@@ -36,6 +36,7 @@
     zlib
     nss
     openssl
+    udev
     curl
     expat
     nspr
@@ -141,6 +142,7 @@
       driSupport32Bit = true;
     };
   };
+
   # sound
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -169,7 +171,9 @@
     git
     sops
     sysstat
+    appimage-run
     pciutils
+    udev
     gtk3
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
