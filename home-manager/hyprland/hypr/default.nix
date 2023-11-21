@@ -113,6 +113,10 @@ in {
         "swww init"
         "swww img ~/wallpapers/winpuccin.jpg"
         "waybar"
+        "discord"
+        "telegram-desktop"
+        "firefox"
+        "exec systemctl start polkit-gnome-authentication-agent-1"
       ];
     };
     extraConfig = ''

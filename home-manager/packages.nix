@@ -11,6 +11,7 @@
     barrier
     slack
     telegram-desktop
+    inputs.self.packages.${system}.bazecor
     htop
     easyeffects
     neofetch

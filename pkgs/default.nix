@@ -2,4 +2,5 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   nordvpn = pkgs.callPackage ./nordvpn {};
+  bazecor = pkgs.callPackage ./bazecor {};
 }
