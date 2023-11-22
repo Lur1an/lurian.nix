@@ -15,6 +15,7 @@ in
     barrier
     slack
     telegram-desktop
+    libreoffice-qt
     inputs.self.packages.${system}.bazecor
     htop
     easyeffects
