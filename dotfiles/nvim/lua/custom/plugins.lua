@@ -31,7 +31,7 @@ local plugins = {
             auto_update = true,
             neovim_image_text = "How do I exit this thing!? Help.",
             main_image = "file",
-            blacklist = { "e1-rust" },
+            blacklist = { "e1" },
             git_commit_text = "commiting war crimes",
         },
     },

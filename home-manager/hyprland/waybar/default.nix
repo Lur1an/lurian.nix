@@ -17,6 +17,7 @@ in {
     (python311Full.withPackages (ps:
       with ps; [
         pip
+        requests
         pygobject3 # Python bindings for Glib
         gst-python # Python bindings for GStreamer
       ]))

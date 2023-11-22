@@ -2,7 +2,11 @@
   inputs,
   pkgs,
   ...
-}: {
+}: 
+let
+  extra_node_packages = import ./node/default.nix { inherit pkgs; };
+in 
+{
   home.packages = with pkgs; [
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
@@ -16,6 +20,7 @@
     easyeffects
     neofetch
     networkmanagerapplet
+    extra_node_packages.aicommits
     slurp
     grim
     ffmpeg
