@@ -42,6 +42,7 @@ in {
         "workspace 3 silent, ^(discord)"
         "workspace 3 silent, telegram*"
         "workspace 5 silent, ^(firefox)"
+        "workspace 7 silent, ^(google-chrome)"
       ];
 
       windowrulev2 =
