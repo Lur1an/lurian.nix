@@ -9,11 +9,13 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake";
-      protonvpn = "sudo openvpn --config de.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
-      copilot = "gh copilot";
+      protonvpn-de = "sudo openvpn --config ~/de.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
+      protonvpn-it = "sudo openvpn --config ~/it.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
+      copilot = "gh copilot suggest";
+      ezpush = "aicommits --all && git push";
     };
     initExtra = ''
-      alias ezpush='aicommits --all && git push'
+      export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       function rust_dev() {
           RUST_LOG=info cargo-watch -x check -x "test $1 -- --nocapture"
       }
@@ -24,6 +26,7 @@
       alias rust-dev='rust_dev'
       alias boot-windows='boot_windows'
       export CARGO_TERM_COLOR=always
+
       if [ -f ~/.secrets ]; then
           source ~/.secrets
       fi

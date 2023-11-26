@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
     # Home manager
     # home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.url = "github:nix-community/home-manager/master";

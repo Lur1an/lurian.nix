@@ -16,12 +16,16 @@ in
     slack
     telegram-desktop
     libreoffice-qt
-    inputs.self.packages.${system}.bazecor
+    bazecor
     htop
+    qbittorrent
     easyeffects
     neofetch
     networkmanagerapplet
+    gparted
+    gnome.gnome-disk-utility
     extra_node_packages.aicommits
+    act # github actions tester
     slurp
     grim
     ffmpeg
