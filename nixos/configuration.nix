@@ -111,6 +111,13 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  # Printing stuff
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
   # Flatpak
   xdg.portal.enable = true;
 
