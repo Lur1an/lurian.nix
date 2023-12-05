@@ -140,7 +140,7 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     nvidia = {
-      open = true;
+      open = false;
       powerManagement.enable = true;
       modesetting.enable = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;

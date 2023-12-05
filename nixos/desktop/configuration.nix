@@ -16,6 +16,7 @@ in {
   _module.args = {inherit monitors;};
   imports = [
     ./hardware-configuration.nix
+    ./openrgb
     ../configuration.nix
   ];
   services.xserver.screenSection = ''

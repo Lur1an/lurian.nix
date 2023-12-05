@@ -17,7 +17,7 @@
     initExtra = ''
       export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       function rust_dev() {
-          RUST_LOG=info cargo-watch -x check -x "test $1 -- --nocapture"
+          RUST_LOG=info cargo watch -x check -x "test $1 -- --nocapture"
       }
 
       function boot_windows() {

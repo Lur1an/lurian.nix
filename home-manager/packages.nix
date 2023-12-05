@@ -19,7 +19,9 @@ in
     bazecor
     htop
     qbittorrent
+    glab
     easyeffects
+    edgedb
     neofetch
     networkmanagerapplet
     gparted
