@@ -9,7 +9,6 @@ local b = null_ls.builtins
 local sources = {
 
     -- frontend dev
-    b.formatting.deno_fmt,
     b.formatting.prettier.with {
         filetypes = { "json", "html", "markdown", "css", "yaml", "svelte", "tsx", "jsx", "typescript", "cjs", "mjs" },
     }, -- so prettier works only on these filetypes
