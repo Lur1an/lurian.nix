@@ -21,7 +21,7 @@
       "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
       ",preferred,auto,1"
     ]
-    else [",preferred,auto, 1.75"];
+    else [",preferred,auto, 1"];
 in {
   wayland.windowManager.hyprland = {
     enable = true;
