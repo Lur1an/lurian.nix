@@ -37,5 +37,6 @@ in
     pavucontrol
     playerctl
     unzip
+    zip
   ];
 }
