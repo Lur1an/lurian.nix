@@ -15,6 +15,7 @@ in
     barrier
     slack
     telegram-desktop
+    nomachine-client
     libreoffice-qt
     bazecor
     htop
@@ -35,7 +36,6 @@ in
     openvpn
     openconnect
     pavucontrol
-    playerctl
     unzip
     zip
   ];

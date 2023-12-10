@@ -13,6 +13,7 @@ with lib; let
   waybar_style = import ./style.nix {inherit config custom;};
 in {
   home.packages = with pkgs; [
+    playerctl
     cava
     (python311Full.withPackages (ps:
       with ps; [
