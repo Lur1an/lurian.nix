@@ -45,7 +45,7 @@ in {
         "workspace 7 silent, ^(google-chrome)"
       ];
       input = {
-        kb_options = "caps:swapescape";
+        kb_options = "caps:escape";
       };
       windowrulev2 =
         xwaylandbridge_patch
