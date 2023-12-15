@@ -15,13 +15,20 @@ in
     barrier
     slack
     telegram-desktop
+    spicedb-zed
     nomachine-client
     libreoffice-qt
-    bazecor
     htop
+    jetbrains-toolbox
     qbittorrent
     glab
     easyeffects
+    shell_gpt
+    minikube
+    kind
+    k9s 
+    openlens
+    direnv
     edgedb
     neofetch
     networkmanagerapplet

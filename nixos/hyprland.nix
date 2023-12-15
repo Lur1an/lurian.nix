@@ -23,7 +23,9 @@
       enable = true;
       enableNvidiaPatches = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      xwayland.enable = true;
+      xwayland = {
+        enable = true;
+      };
     };
 
     xdg.portal.wlr.enable = true;

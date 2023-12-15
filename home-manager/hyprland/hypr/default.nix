@@ -29,6 +29,9 @@ in {
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
     settings = {
+      xwayland = {
+        force_zero_scaling = true;
+      };
       layerrule = [
         "blur, waybar"
         "blur, wofi"
