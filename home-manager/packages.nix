@@ -26,6 +26,8 @@ in
     shell_gpt
     minikube
     kind
+    kubernetes-helm
+    kubectl
     k9s 
     openlens
     direnv

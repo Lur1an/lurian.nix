@@ -179,6 +179,7 @@
     git
     sops
     sysstat
+    gh
     appimage-run
     pciutils
     udev

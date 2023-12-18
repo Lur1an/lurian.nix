@@ -64,10 +64,10 @@ in {
     includes = [{path = "~/.config/git/localconf";}];
   };
 
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper.enable = true;
-  };
+  # programs.gh = {
+  #   enable = true;
+  #   gitCredentialHelper.enable = true;
+  # };
 
   xdg.mimeApps = {
     enable = true;
