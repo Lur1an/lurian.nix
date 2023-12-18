@@ -179,6 +179,7 @@
     git
     sops
     sysstat
+    git
     gh
     appimage-run
     pciutils

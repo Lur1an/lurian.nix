@@ -57,12 +57,12 @@ in {
 
   programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "lur1an";
-    userEmail = "lurian-code@protonmail.com";
-    includes = [{path = "~/.config/git/localconf";}];
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName = "lur1an";
+  #   userEmail = "lurian-code@protonmail.com";
+  #   includes = [{path = "~/.config/git/localconf";}];
+  # };
 
   # programs.gh = {
   #   enable = true;
