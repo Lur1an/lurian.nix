@@ -24,6 +24,7 @@ in
     glab
     easyeffects
     shell_gpt
+    helmfile
     minikube
     kind
     kubernetes-helm
@@ -34,6 +35,7 @@ in
     edgedb
     neofetch
     networkmanagerapplet
+    localstack
     gparted
     gnome.gnome-disk-utility
     extra_node_packages.aicommits
