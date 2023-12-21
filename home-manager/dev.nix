@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # RUST TOOLING
+    protobuf
+    grpcui
     rustup
     openssl.dev
     poetry

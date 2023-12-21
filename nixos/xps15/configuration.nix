@@ -26,6 +26,10 @@ in {
     nvidiaBusId = "PCI:1:0:0";
     intelBusId = "PCI:0:2:0";
   };
+  # bluetooth
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   services.xserver.libinput = {
     enable = true;
