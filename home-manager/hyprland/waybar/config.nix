@@ -170,6 +170,7 @@ in {
       tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
       format-linked = "{ifname} (No IP)";
       format-disconnected = "󰖪 0% ";
+      on-click = "nm-connection-editor";
     };
     tray = {
       icon-size = 20;
