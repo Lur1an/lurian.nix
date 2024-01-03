@@ -6,7 +6,7 @@
   lib,
   config,
   nix-colors,
-  monitors,
+  machineConfig,
   pkgs,
   ...
 }: {
@@ -81,7 +81,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = false;
-    extraSpecialArgs = {inherit inputs outputs nix-colors monitors;};
+    extraSpecialArgs = {inherit inputs outputs nix-colors machineConfig;};
     users = {
       lurian = import ../home-manager/home.nix;
     };

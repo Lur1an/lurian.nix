@@ -5,11 +5,11 @@
   osConfig,
   inputs,
   custom,
-  monitors,
+  machineConfig,
   ...
 }:
 with lib; let
-  waybar_config = import ./config.nix {inherit osConfig config lib pkgs monitors;};
+  waybar_config = import ./config.nix {inherit osConfig config lib pkgs machineConfig;};
   waybar_style = import ./style.nix {inherit config custom;};
 in {
   home.packages = with pkgs; [

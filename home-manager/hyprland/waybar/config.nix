@@ -3,7 +3,7 @@
   pkgs,
   lib,
   osConfig,
-  monitors,
+  machineConfig,
   ...
 }:
 with lib; let
@@ -21,7 +21,7 @@ with lib; let
   ];
 in {
   mainBar = {
-    output = monitors.primary;
+    output = machineConfig.monitors.primary;
     position = "top";
     layer = "top";
     height = 35;
