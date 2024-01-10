@@ -3,7 +3,7 @@
   outputs,
   lib,
   config,
-  monitors,
+  machineConfig,
   pkgs,
   ...
 }: let
@@ -14,6 +14,8 @@
     "nofocus,class:^(xwaylandvideobridge)$"
     "noinitialfocus,class:^(xwaylandvideobridge)$"
   ];
+  specificBinds = machineConfig.binds;
+  monitors = machineConfig.monitors;
   monitor_config =
     if builtins.hasAttr "secondary" monitors
     then [
@@ -109,10 +111,10 @@ in {
         ];
       };
       monitor = monitor_config;
-      bind = import ./binds.nix;
       bindm = ''
         ALT,mouse:272,movewindow
       '';
+      bind = import ./binds.nix ++ specificBinds;
       wsbind = [];
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

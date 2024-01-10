@@ -8,11 +8,17 @@
   pkgs,
   ...
 }: let
-  monitors = {
-    primary = "eDP-1";
+  machineConfig = {
+    monitors = {
+      primary = "eDP-1";
+    };
+    binds = [
+      ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+      ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+    ];
   };
 in {
-  _module.args = {inherit monitors;};
+  _module.args = {inherit machineConfig;};
   imports = [
     ./hardware-configuration.nix
     ../configuration.nix
@@ -43,4 +49,8 @@ in {
   };
 
   networking.hostName = "lurian-xps15";
+
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+  ];
 }

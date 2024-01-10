@@ -8,12 +8,15 @@
   pkgs,
   ...
 }: let
-  monitors = {
-    primary = "DP-4";
-    secondary = "DP-3";
+  machineConfig = {
+    monitors = {
+      primary = "DP-4";
+      secondary = "DP-3";
+    };
+    binds = [];
   };
 in {
-  _module.args = {inherit monitors;};
+  _module.args = {inherit machineConfig;};
   imports = [
     ./hardware-configuration.nix
     ./openrgb
