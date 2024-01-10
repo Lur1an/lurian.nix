@@ -114,7 +114,7 @@
   services.printing.enable = true;
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
   # Flatpak
@@ -170,6 +170,7 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
+  services.udev.packages = [ pkgs.bazecor ];
   environment.systemPackages = with pkgs; [
     vim
     wget

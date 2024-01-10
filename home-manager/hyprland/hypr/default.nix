@@ -110,6 +110,9 @@ in {
       };
       monitor = monitor_config;
       bind = import ./binds.nix;
+      bindm = ''
+        ALT,mouse:272,movewindow
+      '';
       wsbind = [];
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

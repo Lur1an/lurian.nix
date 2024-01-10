@@ -13,6 +13,9 @@ in
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
     barrier
+    buf
+    bazecor
+    sqlite
     slack
     telegram-desktop
     spicedb-zed
@@ -21,6 +24,8 @@ in
     htop
     jetbrains-toolbox
     qbittorrent
+    evince
+    jetbrains.datagrip
     glab
     easyeffects
     shell_gpt
@@ -45,7 +50,6 @@ in
     ffmpeg
     nix-index
     openvpn
-    openconnect
     pavucontrol
     unzip
     zip

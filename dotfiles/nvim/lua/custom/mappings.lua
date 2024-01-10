@@ -47,6 +47,12 @@ M.dap = {
             end,
             "continue",
         },
+        ["<S-F5>"] = {
+            function()
+                require("dap").restart()
+            end,
+            "continue",
+        },
         ["<F17>"] = {
             function()
                 require("dap").restart()
@@ -66,16 +72,6 @@ M.dap = {
                 require("dapui").eval()
             end,
             "evaluate selection",
-        },
-    },
-}
-
-M.gpt = {
-    n = {
-        ["<leader>gpt"] = {
-            function()
-                require("chatgpt").openChat()
-            end,
         },
     },
 }
