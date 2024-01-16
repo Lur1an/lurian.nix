@@ -50,6 +50,7 @@ nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fw <Action>(FindInPath)
 nmap <leader>gc <Action>(Generate)
 nmap <leader>s <Action>(Switcher)
+nmap <leader>e <Action>(ActivateProjectToolWindow)
 "" Debugging
 map <leader>x <Action>(EvaluateExpression)
 nmap <leader>b <Action>(ToggleLineBreakpoint)

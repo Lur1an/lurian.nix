@@ -14,7 +14,6 @@ in
     fzf # A command-line fuzzy finder
     barrier
     buf
-    bazecor
     sqlite
     slack
     telegram-desktop
