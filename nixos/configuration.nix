@@ -177,6 +177,7 @@
     killall
     curl
     bazecor
+    protonvpn-gui
     git
     sops
     sysstat

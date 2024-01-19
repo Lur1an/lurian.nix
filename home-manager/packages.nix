@@ -20,7 +20,6 @@ in
     spicedb-zed
     nomachine-client
     libreoffice-qt
-    protonvpn-gui
     htop
     qbittorrent
     evince
