@@ -20,17 +20,17 @@ in
     spicedb-zed
     nomachine-client
     libreoffice-qt
+    protonvpn-gui
     htop
-    jetbrains-toolbox
     qbittorrent
     evince
     jetbrains.datagrip
+    jetbrains.rust-rover
     glab
     easyeffects
     shell_gpt
     helmfile
     minikube
-    kind
     kubernetes-helm
     kubectl
     k9s 
