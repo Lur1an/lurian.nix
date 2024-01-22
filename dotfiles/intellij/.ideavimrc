@@ -70,6 +70,8 @@ nmap gh <Action>(ShowErrorDescription)
 nmap q <Action>(CloseEditor)
 nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(FindUsages)
+" Tooling remaps
+nmap <leader>cp <Action>(copilot.chat.show)
 
 nmap ; <Action>(GotoAction)
 
