@@ -147,6 +147,7 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
+      extraPackages = [ pkgs.mesa.drivers ];
     };
   };
 

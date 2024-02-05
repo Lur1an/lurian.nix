@@ -17,15 +17,18 @@
     };
     initExtra = ''
       function rust_dev() {
-          RUST_LOG=info cargo watch -x check -x "test $1 -- --nocapture"
+          RUST_LOG=info cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
       }
 
       function boot_windows() {
           systemctl reboot --boot-loader-entry=auto-windows
       }
+
       alias rust-dev='rust_dev'
       alias boot-windows='boot_windows'
+
       export CARGO_TERM_COLOR=always
+      export CLICOLOR_FORCE=true
 
       if [ -f ~/.secrets ]; then
           source ~/.secrets

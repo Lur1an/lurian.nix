@@ -18,6 +18,7 @@ in {
     ./zsh.nix
     ./chrome.nix
     ./dev.nix
+    ./minecraft.nix
     ./wallpapers.nix
     ./firefox.nix
     ./thunar.nix

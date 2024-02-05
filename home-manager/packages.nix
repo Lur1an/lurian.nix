@@ -19,10 +19,13 @@ in
     telegram-desktop
     spicedb-zed
     nomachine-client
+    gnome.nautilus
     libreoffice-qt
     htop
     qbittorrent
     evince
+    postgresql
+    zulu17
     jetbrains.datagrip
     jetbrains.rust-rover
     glab
@@ -38,7 +41,6 @@ in
     edgedb
     neofetch
     networkmanagerapplet
-    localstack
     gparted
     gnome.gnome-disk-utility
     extra_node_packages.aicommits
