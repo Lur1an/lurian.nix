@@ -12,6 +12,7 @@ in
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
+    rclone
     barrier
     buf
     sqlite
@@ -25,7 +26,6 @@ in
     qbittorrent
     evince
     postgresql
-    zulu17
     jetbrains.datagrip
     jetbrains.rust-rover
     glab

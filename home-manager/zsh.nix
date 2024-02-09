@@ -23,9 +23,14 @@
       function boot_windows() {
           systemctl reboot --boot-loader-entry=auto-windows
       }
+      
+      function docker_debug() {
+          docker exec -it $1 /bin/bash
+      }
 
       alias rust-dev='rust_dev'
       alias boot-windows='boot_windows'
+      alias docker-debug='docker_debug'
 
       export CARGO_TERM_COLOR=always
       export CLICOLOR_FORCE=true
