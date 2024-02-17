@@ -15,8 +15,10 @@ in
     rclone
     barrier
     buf
+    filezilla
     sqlite
     slack
+    remmina
     telegram-desktop
     spicedb-zed
     nomachine-client
@@ -28,6 +30,7 @@ in
     postgresql
     jetbrains.datagrip
     jetbrains.rust-rover
+    jetbrains.idea-ultimate
     glab
     easyeffects
     shell_gpt

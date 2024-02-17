@@ -11,7 +11,7 @@ in [
   "${mod} SHIFT, H, movewindow, l"
   "${mod} SHIFT, K, movetoworkspace, -1"
   "${mod} SHIFT, J, movetoworkspace, +1"
-  ''${mod}, P, exec, mkdir -p ~/Pictures/screenshots; grim -t png -g "$(slurp)" ~/Pictures/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png''
+  ''${mod}, P, exec, exec grim -g "$(slurp -d)" - | wl-copy''
   "${mod}, H, movefocus, l"
   "${mod}, L, movefocus, r"
   "${mod}, K, movefocus, u"
