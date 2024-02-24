@@ -15,6 +15,16 @@ M.disabled = {
     },
 }
 
+M.dadbodui = {
+    n = {
+        ["<leader>db"] = {
+            function()
+                vim.cmd("DBUIToggle")
+            end
+        }
+    }
+}
+
 M.dap = {
     n = {
         ["<C-y>"] = {

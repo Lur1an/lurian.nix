@@ -78,6 +78,7 @@ in {
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
+      "text/csv" = "calc.desktop";
       "application/pdf" = ["evince.desktop"];
     };
   };
