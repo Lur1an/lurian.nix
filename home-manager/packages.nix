@@ -12,34 +12,24 @@ in
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
-    rclone
-    barrier
-    buf
     filezilla
     sqlite
     slack
     remmina
     telegram-desktop
-    spicedb-zed
-    nomachine-client
     gnome.nautilus
     libreoffice-qt
     htop
     qbittorrent
     evince
     postgresql
-    jetbrains.datagrip
     jetbrains.rust-rover
-    jetbrains.idea-ultimate
     glab
     easyeffects
-    shell_gpt
     helmfile
     minikube
-    kubernetes-helm
     kubectl
     k9s 
-    openlens
     direnv
     edgedb
     neofetch
@@ -47,7 +37,6 @@ in
     gparted
     gnome.gnome-disk-utility
     extra_node_packages.aicommits
-    act # github actions tester
     slurp
     grim
     ffmpeg

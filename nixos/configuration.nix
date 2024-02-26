@@ -83,7 +83,7 @@
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "Lurian";
-      extraGroups = ["wheel" "networkmanager" "docker" "audio" "nordvpn"];
+      extraGroups = ["wheel" "networkmanager" "docker" "audio"];
     };
   };
 
@@ -158,7 +158,6 @@
   };
 
 
-  programs.thunar.enable = true;
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
@@ -169,17 +168,14 @@
     killall
     curl
     bazecor
-    protonvpn-gui
     git
     sops
     sysstat
     git
     gh
-    appimage-run
     pciutils
     udev
     telepresence2
-    iptables
     gtk3
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
