@@ -27,7 +27,6 @@ in {
     ./neovim.nix
     ./packages.nix
     ./tmux.nix
-    ./foot.nix
     ./discord.nix
     ./alacritty.nix
     ./hyprland
@@ -78,7 +77,7 @@ in {
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
-      "text/csv" = "calc.desktop";
+      "text/csv" = "scalc.desktop";
       "application/pdf" = ["evince.desktop"];
     };
   };

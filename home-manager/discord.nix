@@ -10,7 +10,7 @@
   '';
   xdg.configFile."Vencord/settings/settings.json".text = ''
     {
-      "notifyAboutUpdates": true,
+      "notifyAboutUpdates": false,
       "autoUpdate": false,
       "autoUpdateNotification": true,
       "useQuickCss": true,

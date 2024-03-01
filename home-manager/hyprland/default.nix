@@ -11,6 +11,7 @@
     ./waybar
     ./themes
     ./hypr
+    ./foot.nix
   ];
   home.packages = with pkgs; [
   ];
