@@ -173,6 +173,8 @@
     sysstat
     git
     gh
+    mpvpaper
+    mpv
     pciutils
     udev
     telepresence2

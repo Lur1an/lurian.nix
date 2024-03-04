@@ -65,8 +65,6 @@
       wl-clipboard
       xwaylandvideobridge
       wlroots
-      mpvpaper
-      mpv
     ];
   };
 }
