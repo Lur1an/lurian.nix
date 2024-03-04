@@ -73,9 +73,6 @@ in {
   };
 
   home.packages = with pkgs; [
-    firefox
-    alacritty
-    rofi
     scrot
     xclip
     dunst
