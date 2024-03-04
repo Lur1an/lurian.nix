@@ -7,7 +7,6 @@
   ...
 }: {
   imports = [
-    ./rofi.nix
     ./waybar
     ../themes
     ./hypr
