@@ -19,6 +19,7 @@ in {
     ./chrome.nix
     ./dev.nix
     ./rofi.nix
+    ./themes
     ./minecraft.nix
     ./wallpapers.nix
     ./firefox.nix

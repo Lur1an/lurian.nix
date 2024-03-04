@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./waybar
-    ../themes
     ./hypr
     ./foot.nix
   ];
