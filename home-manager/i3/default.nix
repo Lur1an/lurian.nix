@@ -8,6 +8,15 @@
 }: let
   mod = "Mod4";
 in {
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        uiColor = "#FFFFFF";
+        showHelp = false;
+      };
+    };
+  };
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
@@ -17,6 +26,11 @@ in {
         size = 8.0;
       };
 
+      gaps = {
+        inner = 10;
+        outer = 5;
+      };
+
       modifier = mod;
 
       keybindings = {
@@ -24,7 +38,7 @@ in {
         "${mod}+b" = "exec firefox";
         "${mod}+s" = "exec rofi -show drun -show-icons";
         "${mod}+f" = "exec nautilus";
-        "${mod}+p" = "exec scrot -s | xclip -selection clipboard -t image/png";
+        "${mod}+p" = "exec ${pkgs.flameshot}/bin/flameshot gui -c";
         "${mod}+q" = "kill";
         "${mod}+h" = "focus left";
         "${mod}+j" = "focus down";
@@ -73,7 +87,6 @@ in {
   };
 
   home.packages = with pkgs; [
-    scrot
     xclip
     dunst
     i3status

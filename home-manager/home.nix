@@ -31,8 +31,8 @@ in {
     ./tmux.nix
     ./discord.nix
     ./alacritty.nix
-    # ./hyprland
-    ./i3
+    ./hyprland
+    # ./i3
   ];
 
   # wallpaper
