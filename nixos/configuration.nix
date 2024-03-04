@@ -138,7 +138,7 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
-      extraPackages = [ pkgs.mesa.drivers ];
+      extraPackages = [pkgs.mesa.drivers];
     };
   };
 
@@ -157,11 +157,10 @@
     };
   };
 
-
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
-  services.udev.packages = [ pkgs.bazecor ];
+  services.udev.packages = [pkgs.bazecor];
   environment.systemPackages = with pkgs; [
     vim
     wget

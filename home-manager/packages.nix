@@ -2,11 +2,9 @@
   inputs,
   pkgs,
   ...
-}: 
-let
-  extra_node_packages = import ./node/default.nix { inherit pkgs; };
-in 
-{
+}: let
+  extra_node_packages = import ./node/default.nix {inherit pkgs;};
+in {
   home.packages = with pkgs; [
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
@@ -29,7 +27,7 @@ in
     helmfile
     minikube
     kubectl
-    k9s 
+    k9s
     direnv
     edgedb
     neofetch

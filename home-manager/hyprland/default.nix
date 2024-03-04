@@ -9,7 +9,7 @@
   imports = [
     ./rofi.nix
     ./waybar
-    ./themes
+    ../themes
     ./hypr
     ./foot.nix
   ];
