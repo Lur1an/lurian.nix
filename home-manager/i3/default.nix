@@ -8,6 +8,9 @@
 }: let
   mod = "Mod4";
 in {
+  imports = [
+    ./rofi.nix
+  ];
   services.flameshot = {
     enable = true;
     settings = {
@@ -17,15 +20,17 @@ in {
       };
     };
   };
+
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
     config = {
-      fonts = {
-        names = [ "monospace" ];
-        size = 8.0;
-      };
+      bars = [ ];
 
+      window = {
+        border = 0;
+        hideEdgeBorders = "both";
+      };
       gaps = {
         inner = 10;
         outer = 5;
@@ -77,12 +82,6 @@ in {
           "Escape" = "mode default";
         };
       };
-
-      bars = [
-        {
-          command = "${pkgs.i3status}/bin/i3status";
-        }
-      ];
     };
   };
 

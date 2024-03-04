@@ -18,7 +18,6 @@ in {
     ./zsh.nix
     ./chrome.nix
     ./dev.nix
-    ./rofi.nix
     ./themes
     ./minecraft.nix
     ./wallpapers.nix
@@ -31,8 +30,8 @@ in {
     ./tmux.nix
     ./discord.nix
     ./alacritty.nix
-    ./hyprland
-    # ./i3
+    # ./hyprland
+    ./i3
   ];
 
   # wallpaper

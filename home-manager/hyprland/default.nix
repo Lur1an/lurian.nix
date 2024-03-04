@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./rofi.nix
     ./waybar
     ./hypr
     ./foot.nix
