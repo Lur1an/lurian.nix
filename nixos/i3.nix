@@ -7,6 +7,7 @@
   ...
 }: {
   config = {
+    services.flatpak.enable = true;
     services.xserver = {
       windowManager.i3 = {
         enable = true;

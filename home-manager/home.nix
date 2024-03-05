@@ -31,7 +31,8 @@ in {
     ./discord.nix
     ./alacritty.nix
     # ./hyprland
-    ./i3
+    ./gnome
+    # ./i3
   ];
 
   # wallpaper
