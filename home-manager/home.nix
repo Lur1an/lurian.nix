@@ -30,8 +30,8 @@ in {
     ./tmux.nix
     ./discord.nix
     ./alacritty.nix
-    # ./hyprland
-    ./gnome
+    ./hyprland
+    # ./gnome
     # ./i3
   ];
 

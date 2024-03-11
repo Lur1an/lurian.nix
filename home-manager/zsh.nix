@@ -20,6 +20,14 @@
           RUST_LOG=info cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
       }
 
+      function nvidia_offload() {
+        export __NV_PRIME_RENDER_OFFLOAD=1
+        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __VK_LAYER_NV_optimus=NVIDIA_only
+        exec "$@"
+      }
+
       function boot_windows() {
           systemctl reboot --boot-loader-entry=auto-windows
       }
@@ -28,6 +36,7 @@
           docker exec -it $1 /bin/bash
       }
 
+      alias nvidia-offload='nvidia_offload'
       alias rust-dev='rust_dev'
       alias boot-windows='boot_windows'
       alias docker-debug='docker_debug'
@@ -37,6 +46,10 @@
 
       if [ -f ~/.secrets ]; then
           source ~/.secrets
+      fi
+
+      if [ -f ~/.fvm/env ]; then
+        source ~/.fvm/env
       fi
 
       eval "$(direnv hook zsh)"

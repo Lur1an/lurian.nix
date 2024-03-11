@@ -13,9 +13,9 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     inputs.nix-ld.nixosModules.nix-ld
-    # ./hyprland.nix
+    ./hyprland.nix
     # ./i3.nix
-    ./gnome.nix
+    # ./gnome.nix
     ./polkit.nix
   ];
   programs.nix-ld.enable = true;

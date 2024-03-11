@@ -58,6 +58,7 @@ in {
         xwaylandbridge_patch
         ++ [
           "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+          "noinitialfocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$"
           "noanim,class:^(xwaylandvideobridge)$"
           "nofocus,class:^(xwaylandvideobridge)$"
           "noinitialfocus,class:^(xwaylandvideobridge)$"

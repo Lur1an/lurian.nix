@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    jdk21
     # RUST TOOLING
     protobuf
     grpcui
@@ -30,5 +31,6 @@
 
   home.sessionVariables = {
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    JAVA_21_HOME = "${pkgs.jdk21}";
   };
 }

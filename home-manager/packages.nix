@@ -12,6 +12,7 @@ in {
     fzf # A command-line fuzzy finder
     filezilla
     sqlite
+    postman
     slack
     remmina
     telegram-desktop
@@ -22,6 +23,7 @@ in {
     evince
     postgresql
     jetbrains.rust-rover
+    jetbrains.idea-ultimate
     glab
     easyeffects
     helmfile
