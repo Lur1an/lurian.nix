@@ -8,6 +8,7 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
+      vim = "nvim";
       sgpt = "sgpt --model 'gpt-4'";
       update = "sudo nixos-rebuild switch --flake";
       protonvpn-de = "sudo openvpn --config ~/de.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
@@ -35,6 +36,13 @@
       function docker_debug() {
           docker exec -it $1 /bin/bash
       }
+
+      function video_wallpaper() {
+        killall -9 mpv
+        nohup mpv --no-audio --loop "$1" >/dev/null 2>&1 &
+      }
+
+      alias vpaper='video_wallpaper'
 
       alias nvidia-offload='nvidia_offload'
       alias rust-dev='rust_dev'

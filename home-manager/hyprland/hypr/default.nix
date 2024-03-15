@@ -31,6 +31,9 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+    ];
     xwayland.enable = true;
     settings = {
       xwayland = {
@@ -41,6 +44,12 @@ in {
         "blur, wofi"
         "ignorezero, wofi"
       ];
+
+      plugin = {
+        hyprwinwrap = {
+          class = "mpv";
+        };
+      };
 
       windowrule = [
         "float,^(pavucontrol)"

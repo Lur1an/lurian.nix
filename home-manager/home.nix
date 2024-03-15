@@ -31,6 +31,7 @@ in {
     ./discord.nix
     ./alacritty.nix
     ./hyprland
+    ./k9s.nix
     # ./gnome
     # ./i3
   ];

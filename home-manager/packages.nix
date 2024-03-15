@@ -16,11 +16,15 @@ in {
     slack
     remmina
     telegram-desktop
+    motrix
+    obsidian
     gnome.nautilus
+    ffmpegthumbnailer
     libreoffice-qt
     htop
     qbittorrent
     evince
+    spicedb-zed
     postgresql
     jetbrains.rust-rover
     jetbrains.idea-ultimate
@@ -29,7 +33,6 @@ in {
     helmfile
     minikube
     kubectl
-    k9s
     direnv
     edgedb
     neofetch

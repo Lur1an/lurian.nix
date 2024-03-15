@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    android-tools
     jdk21
     # RUST TOOLING
     protobuf
+    kubernetes-helm
     grpcui
     rustup
     openssl.dev
@@ -14,6 +16,7 @@
         vadimcn.vscode-lldb
       ];
     })
+    flatbuffers
     # NODEJS
     nodejs
     tailwindcss
