@@ -28,6 +28,9 @@
     nodePackages.typescript-language-server # Typescript
     nodePackages_latest.eslint_d # JS linter
     nodePackages_latest.prettier # Formatter
+    # Networking
+    wireshark-cli
+    termshark
   ];
 
   home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";

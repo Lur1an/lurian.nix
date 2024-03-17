@@ -3,7 +3,7 @@ local M = {}
 local transparent = true
 
 M.ui = {
-	theme = "catppuccin",
+    theme = "catppuccin",
 	theme_toggle = { "catppuccin", "one_light" },
 	transparency = transparent,
 	nvdash = {

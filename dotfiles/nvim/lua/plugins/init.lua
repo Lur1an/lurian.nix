@@ -143,18 +143,26 @@ return {
 				"typescript",
 				"tsx",
 				"c",
-                "nix",
+				"nix",
 				"markdown",
 				"markdown_inline",
 				"python",
 				"rust",
 				"proto",
 				"yaml",
-                "sql"
+				"sql",
 			},
 			indent = {
 				enable = true,
 			},
 		},
+	},
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		ft = { "rust" },
+        config = function()
+            require("configs.rustaceanvim")
+        end,
 	},
 }

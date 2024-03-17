@@ -22,7 +22,7 @@ map("n", "<leader>b", function()
 	require("dap").toggle_breakpoint()
 end, { desc = "dap toggle breakpoint" })
 map("n", "<F9>", function()
-	require("custom.language_mappings").debug_test[vim.bo.filetype]()
+	require("language_mappings").debug_test[vim.bo.filetype]()
 end, { desc = "dap debug test" })
 map("n", "<F10>", function()
 	require("dap").step_over()
@@ -71,7 +71,6 @@ map("v", "`", "c``<C-c>P", { desc = "general surround with backticks" })
 map("v", "<leader>d", '"_d', { desc = "general delete into void" })
 map("v", "<leader>p", '"_p', { desc = "general paste and delete previous into void" })
 
--- harpoon mappings
 -- harpoon mappings
 local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
