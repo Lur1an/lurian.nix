@@ -46,6 +46,9 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "nix-2.16.2"
+      ];
     };
   };
 
@@ -164,6 +167,7 @@
 
   services.udev.packages = [pkgs.bazecor];
   environment.systemPackages = with pkgs; [
+    nixd
     vim
     wget
     killall
