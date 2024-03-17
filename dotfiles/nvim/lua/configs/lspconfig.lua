@@ -11,7 +11,6 @@ local servers = {
 	"svelte",
 	"html",
 	"cssls",
-  "nil",
 	"tsserver",
 	"pyright",
 	"marksman",
