@@ -84,12 +84,6 @@ return {
 		opts = require("configs.dap-ui"),
 	},
 	{
-		"mfussenegger/nvim-dap-python",
-		config = function()
-			require("dap-python").setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
-		end,
-	},
-	{
 		"mfussenegger/nvim-dap",
 		config = function()
 			require("configs.dap")
@@ -161,8 +155,23 @@ return {
 		"mrcjkb/rustaceanvim",
 		version = "^4", -- Recommended
 		ft = { "rust" },
-        config = function()
-            require("configs.rustaceanvim")
-        end,
+		config = function()
+			require("configs.rustaceanvim")
+		end,
 	},
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+    config = function()
+      require("configs.neotest")
+    end
+	},
+
+	{
+		"nvim-neotest/neotest-python",
+  }
 }

@@ -43,6 +43,14 @@ map("v", "<C-k>", function()
 	require("dapui").eval()
 end, { desc = "dap evaluate selection" })
 
+-- neotest
+map("n", "<leader>rt", function()
+	require("neotest").run.run()
+end, { desc = "neotest run nearest test" })
+
+map("n", "<leader>dt", function()
+	require("neotest").run.run({ strategy = "dap" })
+end, { desc = "neotest debug nearest test" })
 -- general mappings
 map("i", "<C-c>", "<cmd> w <CR><ESC>", { desc = "general save and exit insert mode" })
 map("n", "q", function()
