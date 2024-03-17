@@ -14,6 +14,7 @@ in {
     sqlite
     postman
     slack
+    protonvpn-gui
     remmina
     telegram-desktop
     motrix

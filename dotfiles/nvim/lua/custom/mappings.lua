@@ -61,19 +61,19 @@ M.dap = {
             function()
                 require("dap").restart()
             end,
-            "continue",
+            "restart",
         },
         ["<F17>"] = {
             function()
                 require("dap").restart()
             end,
-            "continue",
+            "restart",
         },
         ["<F8>"] = {
             function()
                 require("dap").terminate()
             end,
-            "continue",
+            "terminate",
         },
     },
     v = {
