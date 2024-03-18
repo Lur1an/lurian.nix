@@ -23,22 +23,9 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
 lspconfig.nixd.setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
--- lspconfig.nil_ls.setup({
--- 	autostart = true,
--- 	capabilities = capabilities,
--- 	cmd = { "nil" },
--- 	settings = {
--- 		["nil"] = {
--- 			testSetting = 42,
--- 			formatting = {
--- 				command = { "nixpkgs-fmt" },
--- 			},
--- 		},
--- 	},
--- })

@@ -52,9 +52,17 @@ return {
 	},
 
 	{
-		"andweeb/presence.nvim",
-		lazy = false,
-		opts = require("configs.presence"),
+		"IogaMaster/neocord",
+		event = "VeryLazy",
+		config = {
+			main_image = "logo",
+			logo = "https://0x0.st/H3Rh.png",
+			show_time = true,
+			log_level = "debug",
+			workspace_text = function()
+				return "Preparing +10000 lines PR"
+			end,
+		},
 	},
 
 	{
@@ -112,7 +120,6 @@ return {
 				"prettier",
 				"stylua",
 				"tailwindcss-language-server",
-				"nil",
 				"typescript-language-server",
 				"pyright",
 				"marksman",
@@ -166,12 +173,28 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
-    config = function()
-      require("configs.neotest")
-    end
+		config = function()
+			require("configs.neotest")
+		end,
 	},
 
 	{
 		"nvim-neotest/neotest-python",
-  }
+	},
+
+	{
+		"hrsh7th/nvim-cmp",
+		opts = function()
+			local conf = require("nvchad.configs.cmp")
+			conf.mapping["<S-Tab>"] = nil
+			conf.sources = {
+				{ name = "nvim_lsp" },
+				-- { name = "luasnip" },
+				{ name = "buffer" },
+				-- { name = "nvim_lua" },
+        { name = "vim-dadbod-completion"},
+				{ name = "path" },
+			}
+		end,
+	},
 }

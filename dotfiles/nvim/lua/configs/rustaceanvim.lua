@@ -7,6 +7,7 @@ vim.g.rustaceanvim = {
 	tools = {},
 	-- LSP configuration
 	server = {
+		capabilities = require("nvchad.configs.lspconfig").capabilities,
 		on_attach = function(client, bufnr)
 			-- I hate my fucking life why o god why is this a thing with this plugin, I cba refactoring LSP actions, so here is a nice fkin copy and paste.
 			local map = vim.keymap.set
