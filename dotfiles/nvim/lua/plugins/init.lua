@@ -115,7 +115,10 @@ return {
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
+				"helm-ls",
 				"lua-language-server",
+				"docker-compose-language-service",
+				"dockerfile-language-server",
 				"html-lsp",
 				"prettier",
 				"stylua",
@@ -192,9 +195,20 @@ return {
 				-- { name = "luasnip" },
 				{ name = "buffer" },
 				-- { name = "nvim_lua" },
-        { name = "vim-dadbod-completion"},
+				{ name = "vim-dadbod-completion" },
 				{ name = "path" },
 			}
 		end,
+	},
+
+	{
+		"Lur1an/base46",
+		branch = "v2.5",
+		build = function()
+			require("base46").load_all_highlights()
+		end,
+	},
+	{
+		"towolf/vim-helm",
 	},
 }

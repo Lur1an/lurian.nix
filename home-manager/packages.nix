@@ -28,6 +28,7 @@ in {
     spicedb-zed
     postgresql
     jetbrains.rust-rover
+    jetbrains.pycharm-professional
     jetbrains.idea-ultimate
     glab
     easyeffects

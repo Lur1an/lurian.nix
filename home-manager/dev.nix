@@ -31,6 +31,8 @@
     # Networking
     wireshark-cli
     termshark
+    # Go
+    go
   ];
 
   home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";
