@@ -1,6 +1,6 @@
 local M = {}
 
-local transparent = false
+local transparent = true
 
 M.ui = {
     theme = "catppuccin",

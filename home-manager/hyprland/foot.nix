@@ -1,5 +1,5 @@
 {config, ...}: let
-  colors = builtins.mapAttrs (name: value: builtins.replaceStrings ["#"] [""] value) config.colorscheme.colors;
+  colors = builtins.mapAttrs (name: value: builtins.replaceStrings ["#"] [""] value) config.colorscheme.palette;
   custom = {
     font = "ComicCodeLigatures Nerd Font";
     fontsize = "12";

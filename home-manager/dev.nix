@@ -14,6 +14,7 @@
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         vadimcn.vscode-lldb
+        ms-python.vscode-pylance
       ];
     })
     flatbuffers
@@ -33,11 +34,14 @@
     termshark
     # Go
     go
+    cmake
+    rover
   ];
 
   home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";
 
   home.sessionVariables = {
+    PYLANCE_PATH = "${pkgs.vscode-extensions.ms-python.vscode-pylance}";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     JAVA_21_HOME = "${pkgs.jdk21}";
   };

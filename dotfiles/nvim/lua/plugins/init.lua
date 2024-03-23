@@ -115,7 +115,7 @@ return {
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
-				"helm-ls",
+        "graphql-language-service-cli",
 				"lua-language-server",
 				"docker-compose-language-service",
 				"dockerfile-language-server",
@@ -173,6 +173,7 @@ return {
 		"nvim-neotest/neotest",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+      "nvim-neotest/nvim-nio",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},

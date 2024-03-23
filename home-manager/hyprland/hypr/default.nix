@@ -7,7 +7,7 @@
   pkgs,
   ...
 }: let
-  colors = config.colorscheme.colors;
+  colors = config.colorscheme.palette;
   xwaylandbridge_patch = [
     "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
     "noanim,class:^(xwaylandvideobridge)$"
@@ -31,9 +31,9 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
-    ];
+    # plugins = [
+    #   inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+    # ];
     xwayland.enable = true;
     settings = {
       xwayland = {

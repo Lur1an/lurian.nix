@@ -9,8 +9,8 @@ local lspconfig = require("lspconfig")
 local servers = {
 	"docker_compose_language_service",
 	"dockerls",
+	"graphql",
 	"tailwindcss",
-	"helm_ls",
 	"svelte",
 	"vacuum",
 	"html",
@@ -18,16 +18,6 @@ local servers = {
 	"tsserver",
 	"pyright",
 	"marksman",
-}
-
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.gotmpl = {
-	install_info = {
-		url = "https://github.com/ngalaiko/tree-sitter-go-template",
-		files = { "src/parser.c" },
-	},
-	filetype = "gotmpl",
-	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
 }
 
 for _, lsp in ipairs(servers) do
@@ -43,3 +33,37 @@ lspconfig.nixd.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+
+local pylance_dir = vim.env.PYLANCE_PATH
+-- lspconfig.pylance.setup({
+-- 	cmd = {
+-- 		"node",
+-- 		vim.fn.expand(pylance_dir .. "/share/vscode/extensions/MS-python.vscode-pylance/dist/server.bundle.js"),
+-- 		"--stdio",
+-- 	},
+-- 	filetypes = { "python" },
+-- 	root_dir = function(fname)
+-- 		return lspconfig.util.find_git_ancestor(fname) or vim.fn.getcwd()
+-- 	end,
+-- 	settings = {
+-- 		python = {
+-- 			analysis = {
+-- 				typeCheckingMode = "basic",
+-- 				diagnosticMode = "openFilesOnly",
+-- 				stubPath = "./typings",
+-- 				autoSearchPaths = true,
+-- 				useLibraryCodeForTypes = true,
+-- 				diagnosticSeverityOverrides = {},
+-- 				inlayHints = {
+-- 					variableTypes = true,
+-- 					functionReturnTypes = true,
+-- 					callArgumentNames = true,
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- 	-- before_init = function(_, config)
+-- 	-- 	-- Adjust the `pythonPath` based on your environment
+-- 	-- 	config.settings.python.pythonPath = "/path/to/python"
+-- 	-- end,
+-- })

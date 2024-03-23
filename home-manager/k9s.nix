@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  colors = config.colorscheme.colors;
+  colors = config.colorscheme.palette;
 in {
   programs.k9s = {
     enable = true;

@@ -20,6 +20,8 @@ in {
     motrix
     obsidian
     gnome.nautilus
+    gthumb
+    gnome-desktop
     ffmpegthumbnailer
     libreoffice-qt
     htop
@@ -28,7 +30,6 @@ in {
     spicedb-zed
     postgresql
     jetbrains.rust-rover
-    jetbrains.pycharm-professional
     jetbrains.idea-ultimate
     glab
     easyeffects

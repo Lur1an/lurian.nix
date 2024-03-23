@@ -8,7 +8,7 @@
 }:
 with lib; let
   sys = osConfig.modules.system;
-  colors = config.colorscheme.colors;
+  colors = config.colorscheme.palette;
   cavaIcons = [
     "<span foreground='#${colors.base0D}'>▁</span>"
     "<span foreground='#${colors.base0D}'>▂</span>"

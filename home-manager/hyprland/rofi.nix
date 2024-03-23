@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  colors = config.colorscheme.colors;
+  colors = config.colorscheme.palette;
 in {
   home.packages = with pkgs; [
     rofi-wayland

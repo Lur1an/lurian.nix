@@ -3,7 +3,7 @@
   custom,
   ...
 }: let
-  colors = config.colorscheme.colors;
+  colors = config.colorscheme.palette;
 in ''
   * {
       border: none;
