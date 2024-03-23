@@ -8,11 +8,12 @@
   pkgs,
   ...
 }: let
+  monitors = {
+    primary = "DP-3";
+    secondary = "DP-2";
+  };
   machineConfig = {
-    monitors = {
-      primary = "DP-4";
-      secondary = "DP-3";
-    };
+    monitors = monitors;
     binds = [];
   };
 in {
@@ -23,7 +24,7 @@ in {
     ../configuration.nix
   ];
   services.xserver.screenSection = ''
-    Option "metamodes" "DP-2: 3840x2160_144 +3840+0, DP-4: 3840x2160_144 +0+0"
+    Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
   '';
   networking.hostName = "lurian-desktop";
 }

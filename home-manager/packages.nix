@@ -29,8 +29,7 @@ in {
     evince
     spicedb-zed
     postgresql
-    jetbrains.rust-rover
-    jetbrains.idea-ultimate
+    jetbrains-toolbox
     glab
     easyeffects
     helmfile

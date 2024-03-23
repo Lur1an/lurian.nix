@@ -27,7 +27,7 @@
       };
     };
 
-    xdg.portal.wlr.enable = true;
+    # xdg.portal.wlr.enable = true;
 
     environment = {
       variables = {
@@ -50,14 +50,11 @@
     };
 
     environment.systemPackages = with pkgs; [
-      # notification
       dunst
       libnotify
-      # wallpaper
       swww
-      # app-launcher
       xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
+      # xdg-desktop-portal-gtk
       xwayland
       meson
       wayland-protocols
