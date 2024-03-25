@@ -75,18 +75,18 @@ in {
 
       workspace =
         [
-          "${monitors.primary}, 1"
-          "${monitors.primary}, 2"
-          "${monitors.primary}, 3"
-          "${monitors.primary}, 4"
+          "1,monitor:${monitors.primary}"
+          "2,monitor:${monitors.primary}"
+          "3,monitor:${monitors.primary}"
+          "4,monitor:${monitors.primary}"
         ]
         ++ (
           if builtins.hasAttr "secondary" monitors
           then [
-            "${monitors.secondary}, 5"
-            "${monitors.secondary}, 6"
-            "${monitors.secondary}, 7"
-            "${monitors.secondary}, 8"
+            "5,monitor:${monitors.secondary}"
+            "6,monitor:${monitors.secondary}"
+            "7,monitor:${monitors.secondary}"
+            "8,monitor:${monitors.secondary}"
           ]
           else []
         );

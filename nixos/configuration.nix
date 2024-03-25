@@ -130,13 +130,14 @@
   virtualisation.docker.enable = true;
 
   # Nvidia drivers
+
   services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     nvidia = {
       open = false;
       powerManagement.enable = true;
       modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
     opengl = {
       enable = true;
@@ -181,6 +182,10 @@
     udev
     telepresence2
     gtk3
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-tools
+    libglvnd
   ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

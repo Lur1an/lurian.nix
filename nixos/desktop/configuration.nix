@@ -23,6 +23,7 @@ in {
     ./openrgb
     ../configuration.nix
   ];
+
   services.xserver.screenSection = ''
     Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
   '';
