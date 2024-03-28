@@ -50,20 +50,20 @@ return {
 			})
 		end,
 	},
-
-	{
-		"IogaMaster/neocord",
-		event = "VeryLazy",
-		config = {
-			main_image = "logo",
-			logo = "https://0x0.st/H3Rh.png",
-			show_time = true,
-			log_level = "debug",
-			workspace_text = function()
-				return "Preparing +10000 lines PR"
-			end,
-		},
-	},
+	--
+	-- {
+	-- 	"IogaMaster/neocord",
+	-- 	event = "VeryLazy",
+	-- 	config = {
+	-- 		main_image = "logo",
+	-- 		logo = "https://0x0.st/H3Rh.png",
+	-- 		show_time = true,
+	-- 		log_level = "debug",
+	-- 		workspace_text = function()
+	-- 			return "Preparing +10000 lines PR"
+	-- 		end,
+	-- 	},
+	-- },
 
 	{
 		"edgedb/edgedb-vim",
