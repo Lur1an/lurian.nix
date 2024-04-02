@@ -24,6 +24,7 @@ in {
     gnome-desktop
     ffmpegthumbnailer
     libreoffice-qt
+    spacedrive
     htop
     qbittorrent
     evince

@@ -42,8 +42,15 @@
         nohup mpv --no-audio --loop "$1" >/dev/null 2>&1 &
       }
 
+      function git_commit_push_all() {
+        git add -A
+        git commit -m $1
+        git push
+      }
+
       alias vpaper='video_wallpaper'
 
+      alias gcap='git_commit_push_all'
       alias nvidia-offload='nvidia_offload'
       alias rust-dev='rust_dev'
       alias boot-windows='boot_windows'
