@@ -128,6 +128,7 @@
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.docker.liveRestore = false;
 
   # Nvidia drivers
 
@@ -169,6 +170,7 @@
     nixd
     vim
     wget
+    inputs.self.packages.${system}.lurian-etcher
     killall
     curl
     bazecor
