@@ -19,6 +19,7 @@
     })
     flatbuffers
     # NODEJS
+    bun
     nodejs
     tailwindcss
     typescript
