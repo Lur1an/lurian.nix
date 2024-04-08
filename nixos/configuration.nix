@@ -52,7 +52,7 @@
 
   networking.firewall.enable = false;
   networking.extraHosts = ''
-    172.20.0.121 traefik.local.example.com
+    192.168.178.64 argocd.lurian.local
   '';
   networking.networkmanager.enable = true;
   nix = {
