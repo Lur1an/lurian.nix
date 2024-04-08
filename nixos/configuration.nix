@@ -51,6 +51,9 @@
   };
 
   networking.firewall.enable = false;
+  networking.extraHosts = ''
+    172.20.0.121 traefik.local.example.com
+  '';
   networking.networkmanager.enable = true;
   nix = {
     # This will add each flake input as a registry

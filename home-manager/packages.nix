@@ -11,10 +11,14 @@ in {
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
     filezilla
+    kustomize
+    openlens
+    fluxcd
     sqlite
+    go-task
     postman
     slack
-    protonvpn-gui
+    argocd
     remmina
     telegram-desktop
     motrix
