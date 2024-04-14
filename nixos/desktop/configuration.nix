@@ -23,7 +23,20 @@ in {
     ./openrgb
     ../configuration.nix
   ];
-
+  fileSystems = {
+    "/mnt/Shared" = {
+      device = "/dev/disk/by-uuid/18F7DC4E717D1349";
+      fsType = "ntfs";
+    };
+    "/mnt/Backup" = {
+      device = "/dev/disk/by-uuid/14D66766762D4230";
+      fsType = "ntfs";
+    };
+    "/mnt/Data" = {
+      device = "/dev/disk/by-uuid/36EE2E315B2824D1";
+      fsType = "ntfs";
+    };
+  };
   services.xserver.screenSection = ''
     Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
   '';

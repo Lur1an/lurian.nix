@@ -51,9 +51,6 @@
   };
 
   networking.firewall.enable = false;
-  networking.extraHosts = ''
-    192.168.178.64 argocd.lurian.local
-  '';
   networking.networkmanager.enable = true;
   nix = {
     # This will add each flake input as a registry

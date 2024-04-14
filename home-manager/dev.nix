@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     android-tools
     jdk21
+    libnvidia-container
     # RUST TOOLING
     protobuf
     kubernetes-helm
