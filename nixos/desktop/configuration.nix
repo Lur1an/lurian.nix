@@ -37,6 +37,12 @@ in {
       fsType = "ntfs";
     };
   };
+  services.k3s = {
+    enable = true;
+    role = "agent";
+    token = "12345";
+    serverAddr = "https://pi-master:6443";
+  };
   services.xserver.screenSection = ''
     Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
   '';

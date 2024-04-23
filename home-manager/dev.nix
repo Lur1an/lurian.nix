@@ -1,5 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    chromedriver
+    chromium
+    geckodriver
     android-tools
     jdk21
     libnvidia-container
@@ -9,6 +12,8 @@
     grpcui
     rustup
     openssl.dev
+    jetbrains.idea-ultimate
+    jetbrains.pycharm-professional
     poetry
     pkg-config
     lldb
