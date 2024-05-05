@@ -86,7 +86,7 @@
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "Lurian";
-      extraGroups = ["wheel" "networkmanager" "docker" "audio"];
+      extraGroups = ["wheel" "networkmanager" "docker" "audio" "storage"];
     };
   };
 
