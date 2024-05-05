@@ -173,21 +173,17 @@
     killall
     curl
     bazecor
-    git
     sops
     sysstat
     git
     gh
-    mpv
     pciutils
     udev
-    telepresence2
     gtk3
     vulkan-loader
     vulkan-validation-layers
     vulkan-tools
     libglvnd
   ];
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
