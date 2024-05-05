@@ -170,7 +170,6 @@
     nixd
     vim
     wget
-    inputs.self.packages.${system}.lurian-etcher
     killall
     curl
     bazecor
