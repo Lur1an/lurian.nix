@@ -22,7 +22,6 @@ in {
     ./minecraft.nix
     ./wallpapers.nix
     ./firefox.nix
-    ./thunar.nix
     ./obs.nix
     ./fonts.nix
     ./neovim.nix
@@ -32,8 +31,6 @@ in {
     ./alacritty.nix
     ./hyprland
     ./k9s.nix
-    # ./gnome
-    # ./i3
   ];
 
   # wallpaper
