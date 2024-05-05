@@ -23,7 +23,6 @@
       # With 4k monitors, both at 144hz, fractional scale them
       "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
       "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
-      ",preferred,auto,1"
     ]
     # No additional config needed on laptop
     else [",preferred,auto, 1"];
