@@ -15,6 +15,13 @@
       protonvpn-it = "sudo openvpn --config ~/it.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
       copilot = "gh copilot suggest";
       ezpush = "aicommits --all && git push";
+      pydev = "watchfiles python -m src.main --dev";
+      vpaper = "video_wallpaper";
+      gcap = "git_commit_push_all";
+      nvidia-offload = "nvidia_offload";
+      rust-dev = "rust_dev";
+      boot-windows = "boot_windows";
+      docker-debug = "docker_debug";
     };
     initExtra = ''
       function rust_dev() {
@@ -48,13 +55,6 @@
         git push
       }
 
-      alias vpaper='video_wallpaper'
-
-      alias gcap='git_commit_push_all'
-      alias nvidia-offload='nvidia_offload'
-      alias rust-dev='rust_dev'
-      alias boot-windows='boot_windows'
-      alias docker-debug='docker_debug'
 
       export CARGO_TERM_COLOR=always
       export CLICOLOR_FORCE=true
