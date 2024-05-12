@@ -209,7 +209,7 @@ return {
 	},
 
 	{
-		"Lur1an/base46",
+		"NvChad/base46",
 		branch = "v2.5",
 		build = function()
 			require("base46").load_all_highlights()
