@@ -2,7 +2,7 @@ local M = {}
 
 M.debug_test = {
 	rust = function()
-		vim.cmd("RustDebuggables")
+		vim.cmd("RustLsp debuggables")
 	end,
 	python = function()
 		require("dap-python").test_method()

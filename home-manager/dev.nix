@@ -6,6 +6,7 @@
     android-tools
     jdk21
     libnvidia-container
+    ollama
     # RUST TOOLING
     protobuf
     kubernetes-helm
@@ -14,6 +15,7 @@
     openssl.dev
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
+    jetbrains.rust-rover
     poetry
     pkg-config
     lldb
