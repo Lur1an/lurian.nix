@@ -13,10 +13,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Wayland/Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland?submodules=1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
