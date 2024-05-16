@@ -28,7 +28,7 @@ dap.adapters.python = function(cb, config)
 	else
 		cb({
 			type = "executable",
-			command = os.getenv("VIRTUAL_ENV") .. "/bin/python",
+			command = "python",
 			args = { "-m", "debugpy.adapter" },
 			options = {
 				source_filetype = "python",

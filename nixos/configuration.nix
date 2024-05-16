@@ -77,7 +77,10 @@
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 13;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   home-manager = {

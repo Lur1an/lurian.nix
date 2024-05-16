@@ -17,7 +17,6 @@ in {
       set -g @catppuccin-flavour 'mocha'
     '';
     plugins = with pkgs; [
-      tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.catppuccin
     ];
   };
