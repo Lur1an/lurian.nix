@@ -22,6 +22,7 @@ in {
     argocd
     remmina
     telegram-desktop
+    edgedb
     motrix
     obsidian
     gnome.nautilus
@@ -42,7 +43,6 @@ in {
     minikube
     kubectl
     direnv
-    edgedb
     neofetch
     networkmanagerapplet
     gparted
