@@ -106,8 +106,10 @@ in {
         gaps_in = 6;
         gaps_out = 10;
         border_size = 0;
-        cursor_inactive_timeout = 3;
         layout = "dwindle";
+      };
+      cursor = {
+        inactive_timeout = 3;
       };
       animations = {
         enabled = true;

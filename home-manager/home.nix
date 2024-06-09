@@ -79,7 +79,7 @@ in {
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
       "text/csv" = "scalc.desktop";
-      "application/pdf" = ["evince.desktop"];
+      "application/pdf" = "evince.desktop";
     };
   };
 
