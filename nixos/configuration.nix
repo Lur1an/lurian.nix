@@ -189,6 +189,7 @@
     git
     gh
     pciutils
+    usbutils
     udev
     gtk3
     mpv
