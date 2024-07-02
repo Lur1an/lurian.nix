@@ -11,8 +11,6 @@
       vim = "nvim";
       sgpt = "sgpt --model 'gpt-4'";
       update = "sudo nixos-rebuild switch --flake";
-      protonvpn-de = "sudo openvpn --config ~/de.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
-      protonvpn-it = "sudo openvpn --config ~/it.protonvpn.net.udp.ovpn --auth-user-pass ~/proton-credentials";
       copilot = "gh copilot suggest";
       ezpush = "aicommits --all && git push";
       pydev = "watchfiles python -m src.main --dev";
