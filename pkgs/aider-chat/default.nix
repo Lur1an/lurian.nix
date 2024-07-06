@@ -1,47 +1,73 @@
 {
-  dream2nix,
-  pkgs,
+  grep_ast,
+  buildPythonApplication,
+  fetchFromGitHub,
+  configargparse,
+  gitpython,
+  openai,
+  tiktoken,
+  jsonschema,
+  rich,
+  prompt-toolkit,
+  numpy,
+  scipy,
+  backoff,
+  pathspec,
+  networkx,
+  diskcache,
+  packaging,
+  sounddevice,
+  soundfile,
+  beautifulsoup4,
+  pyyaml,
+  pillow,
+  diff-match-patch,
+  playwright,
+  pypandoc,
+  httpx,
+  litellm,
+  streamlit,
 }:
-dream2nix.lib.evalModules {
-  packageSets.nixpkgs = pkgs;
-  modules = [
-    dream2nix.modules.dream2nix.pip
-    (
-      _: rec {
-        deps = {pkgs, ...}: {
-          python = pkgs.python311;
-        };
+buildPythonApplication {
+  pname = "aider";
+  version = "0.42.0";
+  format = "setuptools";
 
-        name = "aider";
-        version = "0.41.0";
+  src = fetchFromGitHub {
+    owner = "paul-gauthier";
+    repo = "aider";
+    rev = "v0.42.0";
+    sha256 = "sha256-VDz5o8KqiDQ5QBvYA4IKG4DYhKqapzjgq6VsMs+GV+s=";
+  };
 
-        mkDerivation = {
-          src = pkgs.fetchFromGitHub {
-            owner = "paul-gauthier";
-            repo = "aider";
-            rev = "v${version}";
-            hash = "sha256-vC3HiIR+5iYWsXI1pMyEmsLb5iTaHgoDPItrux7e2Vk=";
-          };
-        };
-
-        buildPythonPackage = {
-          pythonImportsCheck = [
-            "aider"
-          ];
-        };
-
-        pip = {
-          pypiSnapshotDate = "2024-05-15";
-          flattenDependencies = true;
-          requirementsFiles = [
-            "requirements.txt"
-          ];
-        };
-
-        paths.lockFile = "aider-lock.json";
-        paths.projectRoot = ./.;
-        paths.package = ./.;
-      }
-    )
+  propagatedBuildInputs = [
+    configargparse
+    gitpython
+    openai
+    tiktoken
+    jsonschema
+    rich
+    prompt-toolkit
+    numpy
+    scipy
+    backoff
+    pathspec
+    networkx
+    diskcache
+    grep_ast
+    packaging
+    sounddevice
+    soundfile
+    beautifulsoup4
+    pyyaml
+    pillow
+    diff-match-patch
+    playwright
+    pypandoc
+    httpx
+    litellm
+    streamlit
   ];
+  # No tests
+  doCheck = false;
 }
