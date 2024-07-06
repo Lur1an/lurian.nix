@@ -1,5 +1,7 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # You can build them using 'nix build .#example'
-{pkgs ? import <nixpkgs> {}, ...}: rec {
-  # aider-chat = pkgs.callPackage ./aider-chat {};
+{
+  pkgs, inputs,
+}: rec {
+  aider-chat = import ./aider-chat {dream2nix=inputs.dream2nix;};
 }
