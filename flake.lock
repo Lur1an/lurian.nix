@@ -1,24 +1,5 @@
 {
   "nodes": {
-    "aider-chat": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1716646866,
-        "narHash": "sha256-ft04Gl7uaiNps7DNEQCDqtF+lZ4fhkaUf3PetjkUu18=",
-        "owner": "paul-gauthier",
-        "repo": "aider",
-        "rev": "f0dd728e820df83cd5cffb6585a1973110be0aa3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "paul-gauthier",
-        "ref": "pull/608/head",
-        "repo": "aider",
-        "type": "github"
-      }
-    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -344,16 +325,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1719957072,
-        "narHash": "sha256-gvFhEf5nszouwLAkT9nWsDzocUTqLWHuL++dvNjMp9I=",
+        "lastModified": 1717196966,
+        "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7144d6241f02d171d25fba3edeaf15e0f2592105",
+        "rev": "57610d2f8f0937f39dbd72251e9614b1561942d8",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-23.11",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -374,22 +355,6 @@
       }
     },
     "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1717196966,
-        "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "57610d2f8f0937f39dbd72251e9614b1561942d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
       "locked": {
         "lastModified": 1712963716,
         "narHash": "sha256-WKm9CvgCldeIVvRz87iOMi8CFVB1apJlkUT4GGvA0iM=",
@@ -446,7 +411,6 @@
     },
     "root": {
       "inputs": {
-        "aider-chat": "aider-chat",
         "dream2nix": "dream2nix",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
@@ -454,7 +418,7 @@
         "hyprland-plugins": "hyprland-plugins",
         "nix-colors": "nix-colors",
         "nix-ld": "nix-ld",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
       }
     },
@@ -529,7 +493,7 @@
       "inputs": {
         "hyprland-protocols": "hyprland-protocols_2",
         "hyprlang": "hyprlang_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "systems": "systems_3"
       },
       "locked": {
