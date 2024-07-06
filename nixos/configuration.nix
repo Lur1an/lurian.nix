@@ -178,6 +178,7 @@
 
   services.udev.packages = [pkgs.bazecor];
   environment.systemPackages = with pkgs; [
+    inputs.nixaider.packages.${system}.default
     nixd
     vim
     wget
