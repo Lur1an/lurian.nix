@@ -6,6 +6,7 @@
   extra_node_packages = import ./node/default.nix {inherit pkgs;};
 in {
   home.packages = with pkgs; [
+    sea-orm-cli
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
