@@ -47,21 +47,4 @@ in {
     Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
   '';
   networking.hostName = "lurian-desktop";
-
-  # gaming
-  environment.systemPackages = [
-    pkgs.steam
-    pkgs.steam-run
-    (pkgs.lutris.override {
-      extraPkgs = pkgs: [
-        pkgs.wineWowPackages.stable
-        pkgs.winetricks
-      ];
-    })
-  ];
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
 }
