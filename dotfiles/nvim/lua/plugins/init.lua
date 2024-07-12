@@ -52,19 +52,18 @@ return {
 		end,
 	},
 	--
-	-- {
-	-- 	"IogaMaster/neocord",
-	-- 	event = "VeryLazy",
-	-- 	config = {
-	-- 		main_image = "logo",
-	-- 		logo = "https://0x0.st/H3Rh.png",
-	-- 		show_time = true,
-	-- 		log_level = "debug",
-	-- 		workspace_text = function()
-	-- 			return "Preparing +10000 lines PR"
-	-- 		end,
-	-- 	},
-	-- },
+	{
+		"IogaMaster/neocord",
+		event = "VeryLazy",
+		config = {
+			main_image = "language",
+			show_time = true,
+			log_level = "debug",
+			workspace_text = function()
+				return "trying to exit vim"
+			end,
+		},
+	},
 
 	{
 		"edgedb/edgedb-vim",
@@ -100,14 +99,21 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
-    commit = "f5b6f3a",
+		commit = "f5b6f3a",
 	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = "InsertEnter",
+	-- 	lazy = false,
+	-- 	cmd = "Copilot",
+	-- 	opts = require("configs.copilot"),
+	-- },
 	{
-		"zbirenbaum/copilot.lua",
+		"supermaven-inc/supermaven-nvim",
+    opts = require("configs.supermaven"),
 		event = "InsertEnter",
 		lazy = false,
-		cmd = "Copilot",
-		opts = require("configs.copilot"),
+		cmd = "Supermaven",
 	},
 
 	{
