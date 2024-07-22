@@ -110,7 +110,8 @@ return {
 	-- },
 	{
 		"supermaven-inc/supermaven-nvim",
-    opts = require("configs.supermaven"),
+		-- commit = "df3ecf7",
+		opts = require("configs.supermaven"),
 		event = "InsertEnter",
 		lazy = false,
 		cmd = "Supermaven",
