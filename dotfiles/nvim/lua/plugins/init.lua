@@ -43,7 +43,6 @@ return {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("nvim-ts-autotag").setup({
-				enable = true,
 				enable_rename = true,
 				enable_close = true,
 				enable_close_on_clash = true,
@@ -99,7 +98,6 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
-		commit = "f5b6f3a",
 	},
 	-- {
 	-- 	"zbirenbaum/copilot.lua",

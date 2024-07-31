@@ -2,7 +2,13 @@ require("nvchad.mappings")
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "]d", function()
+	vim.diagnostic.goto_next({ float = { border = "rounded" } })
+end, { desc = "jump to next diagnostic" })
+map("n", "[d", function()
+	vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+end, { desc = "jump to previous diagnostic" })
 
 map("n", "<leader>fm", function()
 	---@diagnostic disable-next-line: different-requires
