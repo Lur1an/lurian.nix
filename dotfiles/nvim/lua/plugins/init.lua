@@ -33,7 +33,12 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
-			git = { enable = true },
+			filters = {
+				dotfiles = false,
+			},
+			git = {
+				enable = true,
+			},
 		},
 	},
 
@@ -99,6 +104,13 @@ return {
 	{
 		"mfussenegger/nvim-dap-python",
 	},
+	{
+		"NvChad/ui",
+		lazy = false,
+		build = function()
+			dofile(vim.fn.stdpath("data") .. "/lazy/ui/lua/nvchad_feedback.lua")()
+		end,
+	},
 	-- {
 	-- 	"zbirenbaum/copilot.lua",
 	-- 	event = "InsertEnter",
@@ -125,19 +137,16 @@ return {
 		opts = {
 			ensure_installed = {
 				"graphql-language-service-cli",
-				"lua-language-server",
 				"docker-compose-language-service",
 				"dockerfile-language-server",
 				"html-lsp",
 				"prettier",
-				"stylua",
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"basedpyright",
 				"pyright",
 				"debugpy",
 				"black",
-				"marksman",
 			},
 		},
 	},
@@ -215,8 +224,9 @@ return {
 	},
 
 	{
-		"NvChad/base46",
-		branch = "v2.5",
+		"lur1an/base46",
+    -- dev = true,
+    -- dir = "~/Projects/base46",
 		build = function()
 			require("base46").load_all_highlights()
 		end,

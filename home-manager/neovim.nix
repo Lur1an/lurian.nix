@@ -15,8 +15,8 @@
     enable = true;
     extraPackages = with pkgs; [
       lua-language-server
-      nil
-      rust-analyzer
+      stylua
+      marksman
     ];
   };
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/nvim";

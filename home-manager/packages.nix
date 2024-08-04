@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: let
-  extra_node_packages = import ./node/default.nix {inherit pkgs;};
 in {
   home.packages = with pkgs; [
     sea-orm-cli
@@ -11,22 +10,17 @@ in {
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
-    cloudflared
     filezilla
     kustomize
-    openlens
-    fluxcd
     sqlite
-    go-task
+    hetzner-k3s
     postman
     slack
-    argocd
     remmina
     telegram-desktop
     edgedb
-    motrix
     obsidian
-    gnome.nautilus
+    nautilus
     gthumb
     gnome-desktop
     ffmpegthumbnailer
@@ -39,7 +33,6 @@ in {
     postgresql
     jetbrains-toolbox
     glab
-    easyeffects
     helmfile
     minikube
     kubectl
@@ -47,8 +40,7 @@ in {
     neofetch
     networkmanagerapplet
     gparted
-    gnome.gnome-disk-utility
-    extra_node_packages.aicommits
+    gnome-disk-utility
     slurp
     grim
     ffmpeg

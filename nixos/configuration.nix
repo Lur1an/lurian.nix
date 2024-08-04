@@ -16,23 +16,7 @@
     ./hyprland.nix
     ./polkit.nix
   ];
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    glib
-    glibc
-    zlib
-    fuse3
-    icu
-    zlib
-    nss
-    openssl
-    udev
-    curl
-    expat
-    nspr
-    xorg.libxcb
-  ];
+  programs.nix-ld.dev.enable = true;
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -149,15 +133,14 @@
       modesetting.enable = true;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = [pkgs.mesa.drivers];
     };
   };
 
   # sound
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -176,7 +159,6 @@
 
   services.udev.packages = [pkgs.bazecor];
   environment.systemPackages = with pkgs; [
-    inputs.nixaider.packages.${system}.default
     nixd
     vim
     wget

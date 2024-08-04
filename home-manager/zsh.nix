@@ -10,7 +10,6 @@
     shellAliases = {
       vim = "nvim";
       sgpt = "sgpt --model 'gpt-4'";
-      aider = "ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY aider --no-auto-commit";
       update = "sudo nixos-rebuild switch --flake";
       copilot = "gh copilot suggest";
       ezpush = "aicommits --all && git push";

@@ -1,14 +1,17 @@
 local M = {}
 
-local transparent = true
+local transparent = false
 
 M.ui = {
-    theme = "catppuccin",
+	theme = "catppuccin",
 	theme_toggle = { "catppuccin", "one_light" },
 	transparency = transparent,
 	nvdash = {
 		load_on_startup = false,
 		header = {},
+	},
+	term = {
+		size = 10,
 	},
 	telescope = {
 		style = "bordered", -- borderless / bordered
