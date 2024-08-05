@@ -8,6 +8,7 @@
   libssh2,
   libevent,
   boehmgc,
+  openssl,
   libyaml,
   pcre,
   gmp,
@@ -35,6 +36,7 @@ in
       libyaml
       pcre
       gmp
+      openssl
     ];
 
     unpackPhase = "true";
@@ -48,7 +50,15 @@ in
     postFixup = ''
       wrapProgram $out/bin/${pname} \
         --prefix PATH : ${lib.makeBinPath [
-        # Add any runtime dependencies here
-      ]}
+          libssh2
+          libevent
+          boehmgc
+          libyaml
+          pcre
+          gmp
+          openssl
+        ]} \
+        --set SSL_CERT_FILE /etc/ssl/certs/ca-certificates.crt \
+        --set SSL_CERT_DIR /etc/ssl/certs
     '';
   }
