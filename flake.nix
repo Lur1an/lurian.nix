@@ -29,6 +29,10 @@
       url = "github:Aylur/ags";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    more-waita = {
+      url = "github:somepaulo/MoreWaita";
+      flake = false;
+    };
   };
 
   outputs = {

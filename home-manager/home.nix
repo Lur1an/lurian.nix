@@ -11,6 +11,7 @@ in {
     ./zsh.nix
     ./chrome.nix
     ./dev.nix
+    ./gtk.nix
     ./themes
     ./minecraft.nix
     ./wallpapers.nix

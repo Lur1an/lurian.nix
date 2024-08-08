@@ -4,7 +4,9 @@
   ...
 }: let
 in {
-  home.packages = with pkgs; [
+  home.packages = with pkgs;
+  with nodePackages_latest;
+  with libsForQt5; [
     sea-orm-cli
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor

@@ -9,22 +9,30 @@
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
+
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
 
     theme = {
-      name = "Catppuccin-Mocha-Compact-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        size = "compact";
-        accents = ["blue"];
-        variant = "mocha";
-      };
+      name = "adw-gtk3-dark";
     };
 
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-folders;
     };
+
+    gtk3.extraCss = ''
+      headerbar, .titlebar,
+      .csd:not(.popup):not(tooltip):not(messagedialog) decoration{
+        border-radius: 0;
+      }
+    '';
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "kde";
   };
 }

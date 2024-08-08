@@ -1,7 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
   config,
   machineConfig,
   pkgs,
@@ -35,6 +33,16 @@ in {
     ];
     xwayland.enable = true;
     settings = {
+      env = [
+        "WLR_DRM_NO_ATOMIC,1"
+        "GTK_IM_MODULE, fcitx"
+        "QT_IM_MODULE, fcitx"
+        "XMODIFIERS, @im=fcitx"
+        "QT_QPA_PLATFORM, wayland"
+        "QT_QPA_PLATFORMTHEME, qt5ct"
+        "QT_STYLE_OVERRIDE,kvantum"
+        "WLR_NO_HARDWARE_CURSORS, 1"
+      ];
       xwayland = {
         force_zero_scaling = true;
       };
@@ -135,7 +143,9 @@ in {
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor 'macOS-BigSur' 22"
-        "swww init"
+        "swww kill; swww init"
+        # "ags &"
+        "fcitx5"
         "swww img ~/wallpapers/winpuccin.jpg"
         "discord"
         "telegram-desktop"
@@ -156,9 +166,6 @@ in {
 
       # will reset the submap, meaning end the current one and return to the global one
       submap=reset
-
-      # For tearing
-      env = WLR_DRM_NO_ATOMIC,1
     '';
   };
 }

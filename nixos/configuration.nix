@@ -12,8 +12,10 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    # inputs.nix-ld.nixosModules.nix-ld
     ./hyprland.nix
+    ./i18n.nix
+    ./gnome.nix
+    ./audio.nix
     ./polkit.nix
   ];
   programs.nix-ld.enable = true;
@@ -34,15 +36,12 @@
     xorg.libxcb
   ];
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       permittedInsecurePackages = [
         "nix-2.16.2"
@@ -95,22 +94,8 @@
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "Lurian";
-      extraGroups = ["wheel" "networkmanager" "docker" "audio" "storage"];
+      extraGroups = ["wheel" "networkmanager" "docker" "audio" "storage" "video" "input" "uinput" "libvirtd"];
     };
-  };
-
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
   };
 
   # Printing stuff
@@ -141,7 +126,6 @@
   virtualisation.docker.liveRestore = false;
 
   # Nvidia drivers
-
   services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     nvidia = {
@@ -154,20 +138,6 @@
       enable = true;
       enable32Bit = true;
       extraPackages = [pkgs.mesa.drivers];
-    };
-  };
-
-  # sound
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
     };
   };
 
@@ -191,7 +161,6 @@
     usbutils
     udev
     gtk3
-    mpv
     vulkan-loader
     vulkan-validation-layers
     vulkan-tools
