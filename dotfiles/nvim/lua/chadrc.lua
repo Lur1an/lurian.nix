@@ -3,8 +3,8 @@ local M = {}
 local transparent = false
 
 M.ui = {
-	theme = "catppuccin",
-	theme_toggle = { "catppuccin", "one_light" },
+	theme = "chadracula-evondev",
+	theme_toggle = { "chadracula-evondev", "one_light" },
 	transparency = transparent,
 	nvdash = {
 		load_on_startup = false,

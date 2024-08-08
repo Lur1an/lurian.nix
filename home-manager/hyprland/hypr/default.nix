@@ -135,10 +135,8 @@ in {
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor 'macOS-BigSur' 22"
-        "dunst &"
         "swww init"
         "swww img ~/wallpapers/winpuccin.jpg"
-        "waybar"
         "discord"
         "telegram-desktop"
         "firefox"

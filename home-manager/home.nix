@@ -1,9 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  outputs,
-  ...
-}: let
+{outputs, ...}: let
   custom = {
     code_font = "ComicCodeLigatures Nerd Font";
     font = "ComicCodeLigatures Nerd Font";
@@ -17,6 +14,7 @@ in {
     ./themes
     ./minecraft.nix
     ./wallpapers.nix
+    ./python.nix
     ./firefox.nix
     ./obs.nix
     ./fonts.nix
