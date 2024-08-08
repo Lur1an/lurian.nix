@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   ...
 }: {
   programs.zsh = {
@@ -11,8 +10,6 @@
       vim = "nvim";
       sgpt = "sgpt --model 'gpt-4'";
       update = "sudo nixos-rebuild switch --flake";
-      copilot = "gh copilot suggest";
-      ezpush = "aicommits --all && git push";
       pydev = "watchfiles python -m src.main --dev";
       vpaper = "video_wallpaper";
       gcap = "git_commit_push_all";

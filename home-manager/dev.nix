@@ -1,16 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    chromedriver
-    chromium
-    geckodriver
     android-tools
     jdk21
     libnvidia-container
     ollama
+    kubernetes-helm
     # RUST TOOLING
     protobuf
-    kubernetes-helm
-    grpcui
     rustup
     openssl.dev
     jetbrains.idea-ultimate
@@ -41,10 +37,6 @@
     # Networking
     wireshark-cli
     termshark
-    # Go
-    go
-    cmake
-    rover
   ];
 
   home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";

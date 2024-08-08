@@ -109,6 +109,8 @@ in {
         layout = "dwindle";
       };
       cursor = {
+        no_hardware_cursors = true;
+        allow_dumb_copy = true;
         inactive_timeout = 3;
       };
       animations = {

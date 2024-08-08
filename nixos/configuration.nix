@@ -120,6 +120,7 @@
     nssmdns4 = true;
     openFirewall = true;
   };
+
   # Flatpak
   xdg.portal.enable = true;
 
@@ -180,6 +181,7 @@
     wget
     killall
     curl
+    hyprlock
     bazecor
     sops
     sysstat

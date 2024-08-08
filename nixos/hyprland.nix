@@ -55,7 +55,7 @@
     libnotify
     swww
     xdg-desktop-portal-hyprland
-    # xdg-desktop-portal-gtk
+    xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
     xwayland
     meson
