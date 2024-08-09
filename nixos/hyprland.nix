@@ -50,7 +50,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dunst
+    # dunst
     libnotify
     swww
     xdg-desktop-portal-hyprland

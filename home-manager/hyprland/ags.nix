@@ -32,10 +32,19 @@ with lib.hm.gvariant; let
 in {
   home.packages = with pkgs; [
     libsForQt5.qt5.qtimageformats
+    libdbusmenu-gtk3
     pywal
     icon-library
+    power-profiles-daemon
+    libsForQt5.qt5ct
+    webp-pixbuf-loader
+    cairomm
+    illogical-icons
+    gtk-layer-shell
     blueberry
     gnome.gnome-control-center
+    bc
+    gradience
     google-fonts
     dart-sass
     gnome.gnome-bluetooth

@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: let
-  colors = config.colorscheme.palette;
   xwaylandbridge_patch = [
     "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
     "noanim,class:^(xwaylandvideobridge)$"
@@ -47,9 +46,24 @@ in {
         force_zero_scaling = true;
       };
       layerrule = [
-        "blur, waybar"
-        "blur, wofi"
-        "ignorezero, wofi"
+        "xray 1, .*"
+        "noanim, selection"
+        "noanim, overview"
+        "noanim, anyrun"
+        "blur, swaylock"
+        "blur, eww"
+        "ignorealpha 0.8, eww"
+        "noanim, noanim"
+        "blur, noanim"
+        "blur, gtk-layer-shell"
+        "ignorezero, gtk-layer-shell"
+        "blur, launcher"
+        "ignorealpha 0.5, launcher"
+        "blur, notifications"
+        "ignorealpha 0.69, notifications"
+        "blur, session"
+        "noanim, sideright"
+        "noanim, sideleft"
       ];
 
       plugin = {
@@ -65,7 +79,14 @@ in {
         "workspace 3 silent, ^(discord)"
         "workspace 3 silent, telegram*"
         "workspace 5 silent, ^(firefox)"
-        "workspace 7 silent, ^(google-chrome)"
+        "noblur,.*" # Disables blur for windows. Substantially improves performance.
+        "pin, ^(showmethekey-gtk)$"
+        "float,title:^(Open File)(.*)$"
+        "float,title:^(Select a File)(.*)$"
+        "float,title:^(Choose wallpaper)(.*)$"
+        "float,title:^(Open Folder)(.*)$"
+        "float,title:^(Save As)(.*)$"
+        "float,title:^(Library)(.*)$ "
       ];
       input = {
         kb_options = "caps:escape";
@@ -78,6 +99,7 @@ in {
           "noanim,class:^(xwaylandvideobridge)$"
           "nofocus,class:^(xwaylandvideobridge)$"
           "noinitialfocus,class:^(xwaylandvideobridge)$"
+          "tile,class:(wpsoffice)" 
         ];
 
       workspace =
@@ -99,47 +121,97 @@ in {
         );
 
       decoration = {
-        rounding = 10;
-        shadow_ignore_window = true;
-        drop_shadow = true;
-        shadow_range = 20;
-        shadow_render_power = 3;
-        "col.shadow" = "rgb(${colors.base0E})";
-        "col.shadow_inactive" = "rgb(${colors.base00})";
+        rounding = 20;
+
         blur = {
-          enabled = false;
+          enabled = true;
+          xray = true;
+          special = false;
+          new_optimizations = true;
+          size = 5;
+          passes = 4;
+          brightness = 1;
+          noise = 1.0e-2;
+          contrast = 1;
         };
+        # Shadow
+        drop_shadow = false;
+        shadow_ignore_window = true;
+        shadow_range = 20;
+        shadow_offset = "0 2";
+        shadow_render_power = 2;
+        "col.shadow" = "rgba(0000001A)";
+
+        # Dim
+        dim_inactive = false;
+        dim_strength = 0.1;
+        dim_special = 0;
       };
+
       general = {
-        gaps_in = 6;
-        gaps_out = 10;
-        border_size = 0;
+        gaps_in = 4;
+        gaps_out = 5;
+        gaps_workspaces = 50;
+        border_size = 1;
         layout = "dwindle";
+        resize_on_border = true;
+        "col.active_border" = "rgba(471868FF)";
+        "col.inactive_border" = "rgba(4f4256CC)";
       };
+
       cursor = {
         no_hardware_cursors = true;
         allow_dumb_copy = true;
         inactive_timeout = 3;
       };
+
       animations = {
         enabled = true;
         bezier = [
-          "easeinoutsine, 0.37, 0, 0.63, 1"
-          "linear, 0.0, 0.0, 1.0, 1.0"
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "md3_accel, 0.3, 0, 0.8, 0.15"
+          "overshot, 0.05, 0.9, 0.1, 1.1"
+          "crazyshot, 0.1, 1.5, 0.76, 0.92"
+          "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+          "fluent_decel, 0.1, 1, 0, 1"
+          "easeInOutCirc, 0.85, 0, 0.15, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutExpo, 0.16, 1, 0.3, 1"
         ];
         animation = [
-          "windows,1,2,easeinoutsine,slide"
-          "border,1,10,default"
-          "fade,1,1,default"
-          "workspaces,1,2,easeinoutsine,slide"
+          "windows, 1, 3, md3_decel, popin 60%"
+          "border, 1, 10, default"
+          "fade, 1, 2.5, md3_decel"
+          # "workspaces, 1, 3.5, md3_decel, slide"
+          "workspaces, 1, 7, fluent_decel, slide"
+          # "workspaces, 1, 7, fluent_decel, slidefade 15%"
+          # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
+          "specialWorkspace, 1, 3, md3_decel, slidevert"
         ];
       };
+
+      misc = {
+        vfr = 1;
+        vrr = 1;
+        # layers_hog_mouse_focus = true;
+        focus_on_activate = true;
+        animate_manual_resizes = false;
+        animate_mouse_windowdragging = false;
+        enable_swallow = false;
+        swallow_regex = "(foot|kitty|allacritty|Alacritty)";
+
+        disable_hyprland_logo = true;
+        new_window_takes_over_fullscreen = 2;
+      };
+
       monitor = monitor_config;
+
       bindm = ''
         ALT,mouse:272,movewindow
       '';
+
       bind = import ./binds.nix ++ specificBinds;
-      wsbind = [];
+
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor 'macOS-BigSur' 22"
@@ -153,6 +225,9 @@ in {
         "exec systemctl start polkit-gnome-authentication-agent-1"
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
       ];
+      # source = [
+      #   "./colors.conf"
+      # ];
     };
     extraConfig = ''
       submap=resize

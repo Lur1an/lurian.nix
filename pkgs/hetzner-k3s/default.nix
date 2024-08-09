@@ -4,7 +4,6 @@
   fetchurl,
   autoPatchelfHook,
   makeWrapper,
-  kubectl,
   libssh2,
   libevent,
   boehmgc,
