@@ -1,9 +1,46 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  cursor-theme = "Bibata-Modern-Classic";
+  cursor-package = pkgs.bibata-cursors;
+  moreWaita = pkgs.stdenv.mkDerivation {
+    name = "MoreWaita";
+    src = inputs.more-waita;
+    installPhase = ''
+      mkdir -p $out/share/icons
+      mv * $out/share/icons
+    '';
+  };
+in {
+  home.packages = [
+    moreWaita
+  ];
+
+  home.file = {
+    ".local/share/icons/MoreWaita" = {
+      source = "${moreWaita}/share/icons";
+    };
+  };
+
+  home.pointerCursor = {
+    package = cursor-package;
+    name = cursor-theme;
+    size = 24;
+    gtk.enable = true;
+  };
+
+  home.sessionVariables = {
+    XCURSOR_THEME = cursor-theme;
+    XCURSOR_SIZE = "24";
+  };
+
   gtk = {
     enable = true;
     cursorTheme = {
-      name = "macOS-BigSur";
-      package = pkgs.apple-cursor;
+      name = cursor-theme;
+      package = cursor-package;
     };
 
     gtk3.extraConfig = {
@@ -19,8 +56,7 @@
     };
 
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-folders;
+      name = moreWaita.name;
     };
 
     gtk3.extraCss = ''

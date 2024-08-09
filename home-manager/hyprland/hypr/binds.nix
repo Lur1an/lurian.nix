@@ -5,7 +5,7 @@ in [
   "${mod}, M, exit"
   "${mod}, B, exec, firefox"
   "${mod}, T, exec, foot"
-  "${mod}, S, exec, rofi -show drun -show-icons"
+  "${mod}, S, exec, pkill fuzzel || fuzzel"
   "${mod}, F, exec, nautilus"
   "${mod} SHIFT, L, movewindow, r"
   "${mod} SHIFT, H, movewindow, l"
@@ -37,4 +37,6 @@ in [
   "${mod} SHIFT, 6, movetoworkspacesilent, 6"
   "${mod} SHIFT, 7, movetoworkspacesilent, 7"
   "${mod} SHIFT, 8, movetoworkspacesilent, 8"
+  # End4
+  "${mod} CTRL, T, exec, ~/.config/ags/scripts/color_generation/switchwall.sh"
 ]

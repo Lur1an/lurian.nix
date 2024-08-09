@@ -41,7 +41,6 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
-      XCURSOR_SIZE = "48";
       GDK_SCALE = "2";
     };
     sessionVariables = {
@@ -62,6 +61,7 @@
     wayland-protocols
     wayland-utils
     wl-clipboard
+    cliphist
     xwaylandvideobridge
     wlroots
   ];

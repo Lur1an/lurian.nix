@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./rofi.nix
     ./hypr
     ./ags.nix
     ./foot.nix

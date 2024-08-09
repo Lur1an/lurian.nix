@@ -44,7 +44,9 @@ in {
     gjs
     ddcutil
     hyprpicker
-    gnome.gnome-system-monitor
+    xdg-user-dirs
+    yad
+    gnome-system-monitor
   ];
 
   imports = [
