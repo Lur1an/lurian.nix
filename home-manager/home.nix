@@ -8,7 +8,7 @@
 in {
   _module.args = {inherit custom;};
   imports = [
-    ./themes
+    ./rice
     ./shell
     ./wallpapers.nix
     ./fonts.nix

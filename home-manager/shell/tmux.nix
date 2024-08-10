@@ -17,6 +17,7 @@ in {
       set -g @catppuccin-flavour 'mocha'
     '';
     plugins = with pkgs; [
+      tmuxPlugins.weather
       tmuxPlugins.catppuccin
     ];
   };
