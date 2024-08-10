@@ -36,7 +36,7 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    TERMINAL = "foot";
   };
 
   programs.home-manager.enable = true;

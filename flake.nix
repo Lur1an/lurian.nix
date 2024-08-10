@@ -24,8 +24,21 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors.url = "github:misterio77/nix-colors";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+
+    matugen.url = "github:InioX/matugen?ref=v2.2.0";
+    ags.url = "github:Aylur/ags";
+    nix-colors.url = "github:misterio77/nix-colors";
+
+    lf-icons = {
+      url = "github:gokcehan/lf";
+      flake = false;
+    };
+
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
   };
 
   outputs = {

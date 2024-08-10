@@ -1,6 +1,9 @@
-{ ... }: {
+{ pkgs, ...}: {
   imports = [
-    ./gtx.nix
-    ./themes
+    ./gtk.nix
+    ./nix-colors
+  ];
+
+  home.packages = with pkgs; [
   ];
 }
