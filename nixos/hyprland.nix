@@ -1,8 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -25,8 +22,6 @@
       enable = true;
     };
   };
-
-  # xdg.portal.wlr.enable = true;
 
   environment = {
     variables = {

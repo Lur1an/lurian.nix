@@ -50,14 +50,14 @@ in
     postFixup = ''
       wrapProgram $out/bin/${pname} \
         --prefix PATH : ${lib.makeBinPath [
-          libssh2
-          libevent
-          boehmgc
-          libyaml
-          pcre
-          gmp
-          openssl
-        ]} \
+        libssh2
+        libevent
+        boehmgc
+        libyaml
+        pcre
+        gmp
+        openssl
+      ]} \
         --set SSL_CERT_FILE /etc/ssl/certs/ca-certificates.crt \
         --set SSL_CERT_DIR /etc/ssl/certs
     '';

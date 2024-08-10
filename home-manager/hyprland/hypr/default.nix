@@ -1,7 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
   config,
   machineConfig,
   pkgs,
@@ -35,6 +33,9 @@ in {
     ];
     xwayland.enable = true;
     settings = {
+      env = [
+        "WLR_DRM_NO_ATOMIC,1"
+      ];
       xwayland = {
         force_zero_scaling = true;
       };

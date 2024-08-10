@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{config, ...}: let
   colors = config.colorscheme.palette;
 in {
   programs.k9s = {

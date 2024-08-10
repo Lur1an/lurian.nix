@@ -1,0 +1,13 @@
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    poetry
+    (python311Full.withPackages (ps:
+      with ps; [
+        pip
+        watchfiles
+        requests
+        pygobject3 # Python bindings for Glib
+        gst-python # Python bindings for GStreamer
+      ]))
+  ];
+}

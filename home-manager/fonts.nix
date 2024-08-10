@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  myFonts = pkgs.stdenv.mkDerivation {
+  manual-fonts = pkgs.stdenv.mkDerivation {
     name = "myFonts";
     src = ../dotfiles/fonts; # Replace with the path to your font files
     phases = ["installPhase"];
@@ -12,7 +12,6 @@ in {
   home.packages = with pkgs; [
     # Fonts
     go-font
-    nerdfonts
     noto-fonts
     dejavu_fonts
     font-awesome
@@ -24,7 +23,7 @@ in {
     fira-code-symbols
     powerline-symbols
     material-design-icons
-    myFonts
+    manual-fonts
     (nerdfonts.override {
       fonts = ["IBMPlexMono" "CascadiaCode" "FiraCode" "JetBrainsMono" "Iosevka"];
     })

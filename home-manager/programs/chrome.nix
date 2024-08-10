@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   wrapper-manager =
     import (builtins.fetchTarball {
       url = "https://github.com/viperML/wrapper-manager/archive/c9debabc8225d96c87e7ff5e86ddc39af694fada.tar.gz";

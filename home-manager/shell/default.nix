@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   imports = [
-    ./rofi.nix
-    ./waybar
-    ./hypr
+    ./zsh.nix
+    ./foot.nix
+    ./tmux.nix
   ];
   home.packages = with pkgs; [
-    slurp
-    grim
+    direnv
+    neofetch
   ];
 }

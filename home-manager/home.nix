@@ -1,9 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  outputs,
-  ...
-}: let
+{outputs, ...}: let
   custom = {
     code_font = "ComicCodeLigatures Nerd Font";
     font = "ComicCodeLigatures Nerd Font";
@@ -11,25 +8,16 @@
 in {
   _module.args = {inherit custom;};
   imports = [
-    ./zsh.nix
-    ./chrome.nix
-    ./dev.nix
     ./themes
-    ./minecraft.nix
+    ./shell
     ./wallpapers.nix
-    ./firefox.nix
-    ./obs.nix
     ./fonts.nix
-    ./neovim.nix
     ./packages.nix
-    ./tmux.nix
-    ./discord.nix
     ./hyprland
-    ./k9s.nix
+    ./mimeapps.nix
+    ./dev
+    ./programs
   ];
-
-  # wallpaper
-  xdg.configFile."wallpaper/wallpaper.png".source = ../wallpapers/mistery_dungeon.png;
 
   nixpkgs = {
     overlays = [
@@ -52,32 +40,6 @@ in {
   };
 
   programs.home-manager.enable = true;
-
-  # programs.git = {
-  #   enable = true;
-  #   userName = "lur1an";
-  #   userEmail = "lurian-code@protonmail.com";
-  #   includes = [{path = "~/.config/git/localconf";}];
-  # };
-
-  # programs.gh = {
-  #   enable = true;
-  #   gitCredentialHelper.enable = true;
-  # };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
-      "text/csv" = "scalc.desktop";
-      "application/pdf" = "org.gnome.Evince.desktop";
-    };
-  };
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
