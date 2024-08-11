@@ -7,11 +7,15 @@
     inputs.hyprland.nixosModules.default
   ];
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm = {
+  services = {
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
+    xserver = {
       enable = true;
-      wayland = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
   };
 
@@ -46,7 +50,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dunst
     libnotify
     swww
     xdg-desktop-portal-hyprland
@@ -59,5 +62,14 @@
     wl-clipboard
     xwaylandvideobridge
     wlroots
+
+    gnome-text-editor
+    gnome-calendar
+    gnome.gnome-boxes
+    gnome-system-monitor
+    gnome.gnome-control-center
+    gnome.gnome-weather
+    gnome-calculator
+    gnome.gnome-clocks
   ];
 }

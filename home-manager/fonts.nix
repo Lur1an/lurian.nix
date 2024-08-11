@@ -24,8 +24,5 @@ in {
     powerline-symbols
     material-design-icons
     manual-fonts
-    (nerdfonts.override {
-      fonts = ["IBMPlexMono" "CascadiaCode" "FiraCode" "JetBrainsMono" "Iosevka"];
-    })
   ];
 }

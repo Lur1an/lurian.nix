@@ -25,6 +25,7 @@
     flatbuffers
 
     # CLI Tools
+    lazydocker
     unzip
     zip
     edgedb

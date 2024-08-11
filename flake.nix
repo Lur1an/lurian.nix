@@ -44,9 +44,6 @@
   outputs = {
     self,
     nixpkgs,
-    hyprland,
-    nix-ld,
-    home-manager,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -67,6 +64,7 @@
     packages = forAllSystems (system:
       import ./pkgs {
         pkgs = nixpkgs.legacyPackages.${system};
+        inputs = inputs;
       });
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'

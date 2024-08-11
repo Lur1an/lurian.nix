@@ -25,6 +25,14 @@
     # No additional config needed on laptop
     else [",preferred,auto, 1"];
 in {
+  xdg.desktopEntries."org.gnome.Settings" = {
+    name = "Settings";
+    comment = "Gnome Control Center";
+    icon = "org.gnome.Settings";
+    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
+    categories = ["X-Preferences"];
+    terminal = false;
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -50,16 +58,7 @@ in {
           class = "mpv";
         };
       };
-
-      windowrule = [
-        "float,^(pavucontrol)"
-        "opacity 0.9,^(discord)"
-        "opacity 0.9,telegram*"
-        "workspace 3 silent, ^(discord)"
-        "workspace 3 silent, telegram*"
-        "workspace 5 silent, ^(firefox)"
-        "workspace 7 silent, ^(google-chrome)"
-      ];
+      windowrule = import ./windowrule.nix;
       input = {
         kb_options = "caps:escape";
       };
@@ -67,7 +66,6 @@ in {
         xwaylandbridge_patch
         ++ [
           "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-          "noinitialfocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$"
           "noanim,class:^(xwaylandvideobridge)$"
           "nofocus,class:^(xwaylandvideobridge)$"
           "noinitialfocus,class:^(xwaylandvideobridge)$"
@@ -92,15 +90,22 @@ in {
         );
 
       decoration = {
-        rounding = 10;
-        shadow_ignore_window = true;
-        drop_shadow = true;
-        shadow_range = 20;
-        shadow_render_power = 3;
-        "col.shadow" = "rgb(${colors.base0E})";
-        "col.shadow_inactive" = "rgb(${colors.base00})";
+        drop_shadow = "yes";
+        shadow_range = 8;
+        shadow_render_power = 2;
+        "col.shadow" = "rgba(00000044)";
+
+        dim_inactive = false;
+
         blur = {
-          enabled = false;
+          enabled = true;
+          size = 8;
+          passes = 3;
+          new_optimizations = "on";
+          noise = 0.01;
+          contrast = 0.9;
+          brightness = 0.8;
+          popups = true;
         };
       };
       general = {
@@ -109,22 +114,25 @@ in {
         border_size = 0;
         layout = "dwindle";
       };
+
+      misc = {
+        disable_splash_rendering = true;
+        force_default_wallpaper = 1;
+      };
       cursor = {
         no_hardware_cursors = true;
         allow_dumb_copy = true;
         inactive_timeout = 3;
       };
       animations = {
-        enabled = true;
-        bezier = [
-          "easeinoutsine, 0.37, 0, 0.63, 1"
-          "linear, 0.0, 0.0, 1.0, 1.0"
-        ];
+        enabled = "yes";
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
-          "windows,1,2,easeinoutsine,slide"
-          "border,1,10,default"
-          "fade,1,1,default"
-          "workspaces,1,2,easeinoutsine,slide"
+          "windows, 1, 5, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "fade, 1, 7, default"
+          "workspaces, 1, 6, default"
         ];
       };
       monitor = monitor_config;
@@ -135,11 +143,8 @@ in {
       wsbind = [];
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "hyprctl setcursor 'macOS-BigSur' 22"
-        "dunst &"
-        "swww init"
-        "swww img ~/wallpapers/winpuccin.jpg"
-        "waybar"
+        "ags -b hypr"
+        "hyprctl setcursor Qogir 24"
         "discord"
         "telegram-desktop"
         "firefox"

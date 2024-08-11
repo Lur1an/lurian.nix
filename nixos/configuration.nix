@@ -181,6 +181,8 @@
     wget
     killall
     curl
+    qogir-icon-theme
+    morewaita-icon-theme
     hyprlock
     bazecor
     sops

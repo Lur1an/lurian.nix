@@ -4,6 +4,7 @@
   additions = final: prev:
     import ../pkgs {
       pkgs = final;
+      inputs = inputs;
     };
   # This one contains whatever you want to overlay
   modifications = final: prev: {
