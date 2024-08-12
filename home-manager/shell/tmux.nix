@@ -14,11 +14,9 @@ in {
       set-window-option -g window-status-current-style fg="#${colors.base06}"
       set-environment -g COLORTERM "truecolor"
       set -ga terminal-overrides ',*256col*:Tc'
-      set -g @catppuccin-flavour 'mocha'
     '';
     plugins = with pkgs; [
       tmuxPlugins.weather
-      tmuxPlugins.catppuccin
     ];
   };
 }

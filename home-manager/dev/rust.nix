@@ -3,6 +3,7 @@
     rustup
     cargo-make
     cargo-flamegraph
+    cargo-nextest
     cargo-watch
     cargo-llvm-cov
     sea-orm-cli

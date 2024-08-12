@@ -15,6 +15,7 @@
     extraPackages = with pkgs; [
       lua-language-server
       stylua
+      pyright
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           vadimcn.vscode-lldb
