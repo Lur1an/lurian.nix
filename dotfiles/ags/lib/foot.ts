@@ -47,7 +47,6 @@ sixel=yes
     `;
     try {
         Utils.writeFileSync(footConfig.replaceAll("#", ""), "/home/lurian/.config/foot/foot.ini")
-        console.log("foot config written", foot)
     } catch (error) {
         console.error(`Failed to write foot config: ${error}`)
     }

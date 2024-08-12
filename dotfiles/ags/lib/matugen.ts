@@ -7,6 +7,111 @@ export default function init() {
     options.autotheme.connect('changed', () => matugen());
 }
 
+function generateK9sSkin(c: Colors) {
+    return `
+k9s:
+  body:
+    bgColor: 'default'
+    fgColor: '${c.on_surface}'
+    logoColor: '${c.primary}'
+  dialog:
+    bgColor: '${c.surface_variant}'
+    buttonBgColor: '${c.primary_container}'
+    buttonFgColor: '${c.on_primary_container}'
+    buttonFocusBgColor: '${c.secondary_container}'
+    buttonFocusFgColor: '${c.on_secondary_container}'
+    fgColor: '${c.on_surface_variant}'
+    fieldFgColor: '${c.on_surface}'
+    labelFgColor: '${c.on_surface_variant}'
+  frame:
+    border:
+      fgColor: '${c.outline}'
+      focusColor: '${c.primary}'
+    crumbs:
+      activeColor: '${c.on_primary_container}'
+      bgColor: '${c.primary_container}'
+      fgColor: '${c.on_primary_container}'
+    menu:
+      fgColor: '${c.on_surface}'
+      keyColor: '${c.primary}'
+      numKeyColor: '${c.secondary}'
+    status:
+      addColor: '${c.tertiary}'
+      completedColor: '${c.surface_variant}'
+      errorColor: '${c.error}'
+      highlightColor: '${c.secondary}'
+      killColor: '${c.error}'
+      modifyColor: '${c.primary}'
+      newColor: '${c.primary}'
+      pendingColor: '${c.secondary}'
+    title:
+      bgColor: '${c.surface}'
+      counterColor: '${c.primary}'
+      fgColor: '${c.on_surface}'
+      filterColor: '${c.tertiary}'
+      highlightColor: '${c.secondary}'
+  help:
+    bgColor: '${c.surface}'
+    fgColor: '${c.on_surface}'
+    keyColor: '${c.primary}'
+    numKeyColor: '${c.secondary}'
+    sectionColor: '${c.tertiary}'
+  info:
+    fgColor: '${c.on_surface_variant}'
+    sectionColor: '${c.on_surface}'
+  prompt:
+    bgColor: '${c.surface_container}'
+    fgColor: '${c.on_surface}'
+    suggestColor: '${c.primary}'
+  views:
+    charts:
+      bgColor: '${c.surface}'
+      chartBgColor: '${c.surface_container}'
+      defaultChartColors:
+      - '${c.primary}'
+      - '${c.secondary}'
+      defaultDialColors:
+      - '${c.primary}'
+      - '${c.secondary}'
+      dialBgColor: '${c.surface_container}'
+      resourceColors:
+        cpu:
+        - '${c.primary}'
+        - '${c.tertiary}'
+        mem:
+        - '${c.secondary}'
+        - '${c.error}'
+    logs:
+      bgColor: '${c.surface}'
+      fgColor: '${c.on_surface}'
+      indicator:
+        bgColor: '${c.surface_container}'
+        fgColor: '${c.on_surface_variant}'
+        toggleOffColor: '${c.outline}'
+        toggleOnColor: '${c.primary}'
+    table:
+      bgColor: '${c.surface}'
+      cursorBgColor: '${c.surface_variant}'
+      cursorFgColor: '${c.on_surface_variant}'
+      fgColor: '${c.on_surface}'
+      header:
+        bgColor: '${c.surface_container}'
+        fgColor: '${c.on_surface_variant}'
+        sorterColor: '${c.primary}'
+      markColor: '${c.secondary}'
+    xray:
+      bgColor: '${c.surface}'
+      cursorColor: '${c.surface_variant}'
+      cursorTextColor: '${c.on_surface_variant}'
+      fgColor: '${c.on_surface}'
+      graphicColor: '${c.tertiary}'
+    yaml:
+      colonColor: '${c.outline}'
+      keyColor: '${c.primary}'
+      valueColor: '${c.on_surface}'
+`;
+}
+
 function animate(...setters: Array<() => void>) {
     const delay = options.transition.value / 2;
     setters.forEach((fn, i) => Utils.timeout(delay * i, fn));
@@ -23,6 +128,10 @@ export async function matugen(
     const { dark, light } = options.theme;
     const foot = options.foot;
     animate(
+        () => {
+            Utils.writeFile(generateK9sSkin(c.dark), "/home/lurian/.config/k9s/skins/matugen.yaml")
+            console.log("k9s skin generated")
+        },
         () => {
             foot.background.value = c.dark.surface;
             foot.foreground.value = c.dark.on_surface;

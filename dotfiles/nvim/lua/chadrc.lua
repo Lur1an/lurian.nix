@@ -3,8 +3,8 @@ local M = {}
 local transparent = true
 
 M.ui = {
-	theme = "chadracula",
-	theme_toggle = { "chadracula", "one_light" },
+	theme = "bearded-arc",
+	theme_toggle = { "bearded-arc", "one_light" },
 	transparency = transparent,
 	nvdash = {
 		load_on_startup = false,
