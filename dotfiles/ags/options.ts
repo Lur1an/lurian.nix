@@ -11,6 +11,31 @@ const options = mkOptions(OPTIONS, {
         market: opt<import("service/wallpaper").Market>("random"),
     },
 
+    foot: {
+        alpha: opt(".85"),
+        background: opt("#171717"),
+        foreground: opt("#eeeeee"),
+        bright0: opt("#585b70"),
+        bright1: opt("#f38ba8"),
+        bright2: opt("#a6e3a1"),
+        bright3: opt("#f9e2af"),
+        bright4: opt("#89b4fa"),
+        bright5: opt("#f5c2e7"),
+        bright6: opt("#94e2d5"),
+        bright7: opt("#a6adc8"),
+        regular0: opt("#45475a"),
+        regular1: opt("#e55f86"),
+        regular2: opt("#a6e3a1"),
+        regular3: opt("#f9e2af"),
+        regular4: opt("#89b4fa"),
+        regular5: opt("#f5c2e7"),
+        regular6: opt("#94e2d5"),
+        regular7: opt("#bac2de"),
+        cursor: {
+            inverseFg: opt("#a6e3a1"),
+            bg: opt("#a6e3a1"),
+        }
+    },
     theme: {
         dark: {
             primary: {

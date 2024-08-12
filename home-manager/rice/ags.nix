@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -22,9 +23,10 @@
     gtk3
   ];
 
+  xdg.configFile.ags.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/ags";
   programs.ags = {
     enable = true;
-    configDir = ../../dotfiles/ags;
+    # configDir = ../../dotfiles/ags;
     extraPackages = with pkgs; [
       accountsservice
     ];
