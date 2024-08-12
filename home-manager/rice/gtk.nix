@@ -10,8 +10,8 @@
     ];
   };
   theme = {
-    name = "Tokyonight-Dark-B";
-    package = pkgs.tokyonight-gtk-theme;
+    name = "adw-gtk3-dark";
+    package = pkgs.adw-gtk3;
   };
   font = {
     name = "Ubuntu Nerd Font";
@@ -24,16 +24,14 @@
     package = pkgs.qogir-icon-theme;
   };
   iconTheme = {
-    package = pkgs.catppuccin-papirus-folders.override {
-      flavor = "mocha";
-      accent = "blue";
-    };
-    name = "Papirus-Dark";
+    name = "MoreWaita";
+    package = pkgs.morewaita-icon-theme;
   };
 in {
   home = {
     packages = with pkgs; [
       cantarell-fonts
+      gtk-engine-murrine
       font-awesome
       theme.package
       font.package

@@ -16,7 +16,6 @@ local servers = {
 	"html",
 	"cssls",
 	"tsserver",
-	-- "basedpyright",
   "pyright",
 	"marksman",
 }

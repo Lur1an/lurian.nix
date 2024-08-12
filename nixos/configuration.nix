@@ -12,7 +12,6 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    # inputs.nix-ld.nixosModules.nix-ld
     ./hyprland.nix
     ./polkit.nix
   ];
@@ -128,7 +127,6 @@
   services.flatpak.enable = true;
 
   programs.zsh.enable = true;
-  programs.dconf.enable = true;
 
   services.xserver = {
     enable = true;
@@ -182,6 +180,7 @@
     killall
     curl
     qogir-icon-theme
+    papirus-icon-theme
     morewaita-icon-theme
     hyprlock
     bazecor

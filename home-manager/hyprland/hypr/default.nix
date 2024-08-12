@@ -1,11 +1,9 @@
 {
   inputs,
-  config,
   machineConfig,
   pkgs,
   ...
 }: let
-  colors = config.colorscheme.palette;
   xwaylandbridge_patch = [
     "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
     "noanim,class:^(xwaylandvideobridge)$"
