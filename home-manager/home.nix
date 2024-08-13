@@ -1,6 +1,10 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{outputs, ...}: let
+{
+  outputs,
+  config,
+  ...
+}: let
   custom = {
     code_font = "ComicCodeLigatures Nerd Font";
     font = "ComicCodeLigatures Nerd Font";
@@ -17,6 +21,15 @@ in {
     ./mimeapps.nix
     ./dev
     ./programs
+  ];
+
+  gtk.gtk3.bookmarks = let
+    home = config.home.homeDirectory;
+  in [
+    "file://${home}/Documents"
+    "file://${home}/Downloads"
+    "file://${home}/Pictures"
+    "file://${home}/Videos"
   ];
 
   nixpkgs = {

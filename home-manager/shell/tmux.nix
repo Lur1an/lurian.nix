@@ -16,6 +16,7 @@ in {
       set -ga terminal-overrides ',*256col*:Tc'
     '';
     plugins = with pkgs; [
+      tmuxPlugins.tokyo-night-tmux
       tmuxPlugins.weather
     ];
   };

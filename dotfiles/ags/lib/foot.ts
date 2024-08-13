@@ -1,17 +1,9 @@
-import options from "options"
+import options from 'options';
 
-
-
-
-const footConfig = options.foot;
-
-const deps = [
-    "terminal",
-    "theme"
-]
+const deps = ['foot'];
 
 async function setupFoot() {
-    const foot = footConfig.value;
+    const foot = options.foot.value;
     const footConfigFile = `
 [colors]
 alpha=${foot.alpha}
@@ -48,13 +40,16 @@ term=xterm-256color
 sixel=yes
     `;
     try {
-        Utils.writeFileSync(footConfigFile.replaceAll("#", ""), "/home/lurian/.config/foot/foot.ini")
+        await Utils.writeFile(
+            footConfigFile.replaceAll('#', ''),
+            '/home/lurian/.config/foot/foot.ini'
+        );
     } catch (error) {
-        console.error(`Failed to write foot config: ${error}`)
+        console.error(`Failed to write foot config: ${error}`);
     }
 }
 
 export default function init() {
-    options.handler(deps, setupFoot)
-    setupFoot()
+    options.handler(deps, setupFoot);
+    setupFoot();
 }

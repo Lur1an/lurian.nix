@@ -10,8 +10,8 @@
     ];
   };
   theme = {
-    name = "adw-gtk3-dark";
-    package = pkgs.adw-gtk3;
+    name = "Tokyonight-Dark";
+    package = pkgs.tokyonight-gtk-theme;
   };
   font = {
     name = "Ubuntu Nerd Font";
@@ -33,7 +33,6 @@ in {
       cantarell-fonts
       gtk-engine-murrine
       font-awesome
-      theme.package
       font.package
       cursorTheme.package
       iconTheme.package
@@ -48,8 +47,15 @@ in {
       // {
         gtk.enable = true;
       };
-    file = {
-      ".config/gtk-4.0/gtk.css".text = ''
+  };
+
+  fonts.fontconfig.enable = true;
+
+  gtk = {
+    inherit font cursorTheme iconTheme theme;
+    enable = true;
+    gtk4 = {
+      extraCss = ''
         window.messagedialog .response-area > button,
         window.dialog.message .dialog-action-area > button,
         .background.csd{
@@ -57,14 +63,6 @@ in {
         }
       '';
     };
-  };
-
-  fonts.fontconfig.enable = true;
-
-  gtk = {
-    inherit font cursorTheme iconTheme;
-    theme.name = theme.name;
-    enable = true;
     gtk3 = {
       extraCss = ''
         headerbar, .titlebar,
@@ -77,6 +75,6 @@ in {
 
   qt = {
     enable = true;
-    platformTheme.name = "kde";
+    platformTheme.name = "gtk2";
   };
 }

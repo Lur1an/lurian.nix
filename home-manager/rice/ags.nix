@@ -26,9 +26,9 @@
   xdg.configFile.ags.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/ags";
   programs.ags = {
     enable = true;
-    # configDir = ../../dotfiles/ags;
     extraPackages = with pkgs; [
       accountsservice
+      nodePackages.js-yaml
     ];
   };
 }
