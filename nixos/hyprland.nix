@@ -63,6 +63,10 @@
     xwaylandvideobridge
     wlroots
 
+    totem
+    gthumb
+    gnome-desktop
+    ffmpegthumbnailer
     gnome-text-editor
     gnome-calendar
     gnome.gnome-boxes

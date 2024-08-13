@@ -101,7 +101,7 @@ in {
           enabled = true;
           size = 8;
           passes = 3;
-          new_optimizations = "on";
+          new_optimizations = false;
           noise = 0.01;
           contrast = 0.9;
           brightness = 0.8;

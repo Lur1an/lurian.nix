@@ -14,6 +14,7 @@
       rust-dev = "rust_dev";
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";
+      make-thumb = "make_thumb";
     };
     initExtra = ''
       function rust_dev() {
@@ -34,6 +35,10 @@
 
       function docker_debug() {
           docker exec -it $1 /bin/bash
+      }
+
+      function make_thumb() {
+        ffmpeg -i $1 -vframes 1 $2
       }
 
       function video_wallpaper() {

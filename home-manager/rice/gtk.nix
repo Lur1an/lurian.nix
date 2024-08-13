@@ -10,8 +10,8 @@
     ];
   };
   theme = {
-    name = "Tokyonight-Dark";
-    package = pkgs.tokyonight-gtk-theme;
+    name = "Dracula";
+    package = pkgs.dracula-theme;
   };
   font = {
     name = "Ubuntu Nerd Font";
@@ -24,8 +24,8 @@
     package = pkgs.qogir-icon-theme;
   };
   iconTheme = {
-    name = "MoreWaita";
-    package = pkgs.morewaita-icon-theme;
+    name = "Dracula";
+    package = pkgs.dracula-icon-theme;
   };
 in {
   home = {

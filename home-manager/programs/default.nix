@@ -13,6 +13,7 @@
     telegram-desktop
     obsidian
     evince
+    kdePackages.kolourpaint
     nautilus
   ];
 }
