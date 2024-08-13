@@ -133,26 +133,35 @@ export async function matugen(
             console.log("k9s skin generated")
         },
         () => {
-            foot.background.value = c.dark.surface;
-            foot.foreground.value = c.dark.on_surface;
-            foot.regular0.value = c.dark.surface_container;
-            foot.regular1.value = c.dark.error;
-            foot.regular2.value = c.dark.primary;
-            foot.regular3.value = c.dark.secondary;
-            foot.regular4.value = c.dark.tertiary;
-            foot.regular5.value = c.dark.error_container;
-            foot.regular6.value = c.dark.primary_container;
-            foot.regular7.value = c.dark.secondary_container;
-            foot.bright0.value = c.dark.surface_container_high;
-            foot.bright1.value = c.dark.on_error;
-            foot.bright2.value = c.dark.on_primary;
-            foot.bright3.value = c.dark.on_secondary;
-            foot.bright4.value = c.dark.on_tertiary;
-            foot.bright5.value = c.dark.on_error_container;
-            foot.bright6.value = c.dark.on_primary_container;
-            foot.bright7.value = c.dark.on_secondary_container;
-            foot.cursor.inverseFg.value = c.dark.on_primary;
-            foot.cursor.bg.value = c.dark.primary;
+            foot.value = {
+                alpha: foot.value.alpha,
+                background: c.dark.surface,
+                foreground: c.dark.on_surface,
+
+                regular0: c.dark.surface_container,
+                regular1: c.dark.error,
+                regular2: c.dark.primary,
+                regular3: c.dark.secondary,
+                regular4: c.dark.tertiary,
+                regular5: c.dark.on_background,
+                regular6: c.dark.primary_container,
+                regular7: c.dark.on_primary,
+
+                bright0: c.dark.surface_variant,
+                bright1: c.dark.error_container,
+                bright2: c.dark.on_primary_container,
+                bright3: c.dark.on_secondary_container,
+                bright4: c.dark.on_tertiary_container,
+                bright5: c.dark.inverse_surface,
+                bright6: c.dark.outline,
+                bright7: c.dark.inverse_primary,
+                cursor: {
+                    inverseFg: c.dark.on_primary,
+                    bg: c.dark.primary,
+                },
+                selectionForeground: c.dark.on_primary,
+                selectionBackground: c.dark.primary,
+            }
         },
         () => {
             dark.widget.value = c.dark.on_surface;

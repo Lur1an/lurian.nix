@@ -1,8 +1,9 @@
 import options from "options"
 
-const {
-    foot
-} = options
+
+
+
+const footConfig = options.foot;
 
 const deps = [
     "terminal",
@@ -10,7 +11,8 @@ const deps = [
 ]
 
 async function setupFoot() {
-    const footConfig = `
+    const foot = footConfig.value;
+    const footConfigFile = `
 [colors]
 alpha=${foot.alpha}
 background=${foot.background}
@@ -19,7 +21,7 @@ bright0=${foot.bright0}
 bright1=${foot.bright1}
 bright2=${foot.bright2}
 bright3=${foot.bright3}
-bright4=${foot.bright4}
+bright4=${foot.bright4} 
 bright5=${foot.bright5}
 bright6=${foot.bright6}
 bright7=${foot.bright7}
@@ -46,7 +48,7 @@ term=xterm-256color
 sixel=yes
     `;
     try {
-        Utils.writeFileSync(footConfig.replaceAll("#", ""), "/home/lurian/.config/foot/foot.ini")
+        Utils.writeFileSync(footConfigFile.replaceAll("#", ""), "/home/lurian/.config/foot/foot.ini")
     } catch (error) {
         console.error(`Failed to write foot config: ${error}`)
     }

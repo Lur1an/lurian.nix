@@ -3,6 +3,34 @@ import { distro } from "lib/variables"
 import { icon } from "lib/utils"
 import icons from "lib/icons"
 
+type FootConfig = {
+    alpha: string,
+    background: string,
+    foreground: string,
+    bright0: string,
+    bright1: string,
+    bright2: string,
+    bright3: string,
+    bright4: string,
+    bright5: string,
+    bright6: string,
+    bright7: string,
+    regular0: string,
+    regular1: string,
+    regular2: string,
+    regular3: string,
+    regular4: string,
+    regular5: string,
+    regular6: string,
+    regular7: string,
+    cursor: {
+        inverseFg: string,
+        bg: string
+    }
+    selectionForeground: string,
+    selectionBackground: string,
+}
+
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),
 
@@ -10,32 +38,33 @@ const options = mkOptions(OPTIONS, {
         resolution: opt<import("service/wallpaper").Resolution>(1920),
         market: opt<import("service/wallpaper").Market>("random"),
     },
-
-    foot: {
-        alpha: opt(".85"),
-        background: opt("#171717"),
-        foreground: opt("#eeeeee"),
-        bright0: opt("#585b70"),
-        bright1: opt("#f38ba8"),
-        bright2: opt("#a6e3a1"),
-        bright3: opt("#f9e2af"),
-        bright4: opt("#89b4fa"),
-        bright5: opt("#f5c2e7"),
-        bright6: opt("#94e2d5"),
-        bright7: opt("#a6adc8"),
-        regular0: opt("#45475a"),
-        regular1: opt("#e55f86"),
-        regular2: opt("#a6e3a1"),
-        regular3: opt("#f9e2af"),
-        regular4: opt("#89b4fa"),
-        regular5: opt("#f5c2e7"),
-        regular6: opt("#94e2d5"),
-        regular7: opt("#bac2de"),
+    foot: opt<FootConfig>({
+        alpha: ".85",
+        background: "#171717",
+        foreground: "#eeeeee",
+        bright0: "#585b70",
+        bright1: "#f38ba8",
+        bright2: "#a6e3a1",
+        bright3: "#f9e2af",
+        bright4: "#89b4fa",
+        bright5: "#f5c2e7",
+        bright6: "#94e2d5",
+        bright7: "#bac2de",
+        regular0: "#211f24",
+        regular1: "#e55f86",
+        regular2: "#a6e3a1",
+        regular3: "#f9e2af",
+        regular4: "#89b4fa",
+        regular5: "#f5c2e7",
+        regular6: "#94e2d5",
+        regular7: "#bac2de",
         cursor: {
-            inverseFg: opt("#a6e3a1"),
-            bg: opt("#a6e3a1"),
-        }
-    },
+            inverseFg: "#a6e3a1",
+            bg: "#a6e3a1",
+        },
+        selectionForeground: "#a6e3a1",
+        selectionBackground: "#a6e3a1",
+    }),
     theme: {
         dark: {
             primary: {
