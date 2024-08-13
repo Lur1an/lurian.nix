@@ -29,6 +29,7 @@ in {
     "file://${home}/Documents"
     "file://${home}/Downloads"
     "file://${home}/Pictures"
+    "file://${home}/wallpapers"
     "file://${home}/Videos"
   ];
 

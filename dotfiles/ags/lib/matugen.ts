@@ -69,7 +69,7 @@ function generateK9sSkin(c: Colors): K9sSkin {
                 },
                 menu: {
                     fgColor: c.on_surface,
-                    keyColor: c.primary,
+                    keyColor: c.tertiary,
                     numKeyColor: c.secondary
                 },
                 status: {
@@ -129,9 +129,9 @@ function generateK9sSkin(c: Colors): K9sSkin {
                     }
                 },
                 table: {
-                    bgColor: c.surface,
+                    bgColor: "default",
                     cursorBgColor: c.surface_variant,
-                    cursorFgColor: c.on_surface_variant,
+                    cursorFgColor: c.on_secondary,
                     fgColor: c.on_surface,
                     header: {
                         bgColor: c.surface_container,

@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   writeShellScript,
   system,
   stdenv,
@@ -63,7 +64,13 @@
     inherit name;
     src = ./.;
 
+    buildInputs = [
+      pkgs.nodePackages.js-yaml
+    ];
+
     buildPhase = ''
+      export NODE_PATH=${pkgs.nodePackages.js-yaml}/lib/node_modules:$NODE_PATH
+
       ${esbuild}/bin/esbuild \
         --bundle ./main.ts \
         --outfile=main.js \
