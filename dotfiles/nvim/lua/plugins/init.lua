@@ -103,6 +103,7 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
+    commit = "3dffa58"
 	},
 	{
 		"NvChad/ui",
