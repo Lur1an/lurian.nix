@@ -77,16 +77,5 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    settings =
-      {
-        palette = "catppuccin_mocha";
-      }
-      // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "starship";
-          rev = "HEAD";
-          sha256 = "sha256-KzXO4dqpufxTew064ZLp3zKIXBwbF8Bi+I0Xa63j/lI=";
-        }
-        + /palettes/mocha.toml));
   };
 }
