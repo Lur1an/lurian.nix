@@ -193,9 +193,6 @@
     udev
     gtk3
     mpv
-    vulkan-loader
-    vulkan-validation-layers
-    vulkan-tools
     libglvnd
   ];
   system.stateVersion = "23.11";
