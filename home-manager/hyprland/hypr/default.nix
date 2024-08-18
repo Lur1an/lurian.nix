@@ -145,11 +145,11 @@ in {
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
-        "discord"
-        "telegram-desktop"
-        "firefox"
+        # "discord"
+        # "telegram-desktop"
+        # "firefox"
         "exec systemctl start polkit-gnome-authentication-agent-1"
-        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
       ];
     };
     extraConfig = ''
