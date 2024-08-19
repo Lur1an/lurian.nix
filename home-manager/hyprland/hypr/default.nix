@@ -13,15 +13,18 @@
   specificBinds = machineConfig.binds;
   monitors = machineConfig.monitors;
   monitor_config =
-    if builtins.hasAttr "secondary" monitors
-    then [
-      # In case a secondary monitor is present, this means we're on Desktop PC
-      # With 4k monitors, both at 144hz, fractional scale them
-      "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
-      "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
-    ]
-    # No additional config needed on laptop
-    else [",preferred,auto, 1"];
+    (
+      if builtins.hasAttr "secondary" monitors
+      then [
+        # In case a secondary monitor is present, this means we're on Desktop PC
+        # With 4k monitors, both at 144hz, fractional scale them
+        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
+        "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
+      ]
+      # No additional config needed on laptop
+      else [",preferred,auto, 1"]
+    )
+    ++ ["Unknown-1,disabled"];
 in {
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";

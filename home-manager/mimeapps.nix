@@ -1,9 +1,7 @@
-{...}: 
-let
+{...}: let
   image-viewer = "org.gnome.Loupe.desktop";
   image-editor = "org.kde.kolourpaint";
-in
-{
+in {
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
