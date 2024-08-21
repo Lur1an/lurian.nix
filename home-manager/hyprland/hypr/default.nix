@@ -91,7 +91,6 @@ in {
           ]
           else []
         );
-
       decoration = {
         drop_shadow = "yes";
         shadow_range = 8;

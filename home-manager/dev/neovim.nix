@@ -14,6 +14,7 @@
     enable = true;
     extraPackages = with pkgs; [
       lua-language-server
+      helm-ls
       stylua
       pyright
       (vscode-with-extensions.override {
@@ -26,7 +27,7 @@
     ];
   };
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/nvim";
-  home.file.".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/intellij/.ideavimrc";
+  home.file.".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/.ideavimrc";
 
   home.file.".vscode-lldb".source = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb";
 

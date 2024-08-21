@@ -16,7 +16,7 @@ local servers = {
 	"html",
 	"cssls",
 	"tsserver",
-  "pyright",
+	"pyright",
 	"marksman",
 }
 
@@ -29,6 +29,12 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.nixd.setup({
+	on_init = on_init,
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.helm_ls.setup({
 	on_init = on_init,
 	on_attach = on_attach,
 	capabilities = capabilities,

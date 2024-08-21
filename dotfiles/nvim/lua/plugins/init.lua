@@ -17,6 +17,10 @@ return {
 		end,
 	},
 	{
+		"towolf/vim-helm",
+		ft = { "yaml", "yml", "helm" },
+	},
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("nvchad.configs.lspconfig").defaults()
@@ -103,7 +107,7 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
-    commit = "3dffa58"
+		commit = "3dffa58",
 	},
 	{
 		"NvChad/ui",
@@ -226,8 +230,8 @@ return {
 
 	{
 		"lur1an/base46",
-    -- dev = true,
-    -- dir = "~/Projects/base46",
+		-- dev = true,
+		-- dir = "~/Projects/base46",
 		build = function()
 			require("base46").load_all_highlights()
 		end,
