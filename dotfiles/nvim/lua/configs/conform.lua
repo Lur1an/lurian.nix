@@ -6,6 +6,7 @@ local options = {
 		python = { "black" },
 		typescript = { "prettier" },
 		svelte = { "prettier" },
+		yaml = { "prettier" },
 		json = { "prettier" },
 		javascript = { "prettier" },
 	},

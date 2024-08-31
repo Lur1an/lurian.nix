@@ -19,6 +19,7 @@
 in {
   _module.args = {inherit machineConfig;};
   imports = [
+    ./nat64.nix
     ./hardware-configuration.nix
     ./openrgb
     ../configuration.nix

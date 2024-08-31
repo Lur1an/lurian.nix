@@ -9,10 +9,8 @@ local lspconfig = require("lspconfig")
 local servers = {
 	"docker_compose_language_service",
 	"dockerls",
-	"graphql",
 	"tailwindcss",
 	"svelte",
-	"vacuum",
 	"html",
 	"cssls",
 	"tsserver",

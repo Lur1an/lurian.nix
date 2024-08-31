@@ -28,6 +28,7 @@
     lazydocker
     unzip
     zip
+    sc-im
     edgedb
     wireshark-cli
     termshark

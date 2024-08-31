@@ -17,10 +17,6 @@ return {
 		end,
 	},
 	{
-		"towolf/vim-helm",
-		ft = { "yaml", "yml", "helm" },
-	},
-	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("nvchad.configs.lspconfig").defaults()
@@ -141,17 +137,7 @@ return {
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
-				"graphql-language-service-cli",
-				"docker-compose-language-service",
-				"dockerfile-language-server",
 				"html-lsp",
-				"prettier",
-				"tailwindcss-language-server",
-				"typescript-language-server",
-				"basedpyright",
-				"pyright",
-				"debugpy",
-				"black",
 			},
 		},
 	},
@@ -229,14 +215,11 @@ return {
 	},
 
 	{
-		"lur1an/base46",
+		"NvChad/base46",
 		-- dev = true,
 		-- dir = "~/Projects/base46",
 		build = function()
 			require("base46").load_all_highlights()
 		end,
-	},
-	{
-		"towolf/vim-helm",
 	},
 }

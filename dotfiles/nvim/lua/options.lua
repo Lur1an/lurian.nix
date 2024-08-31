@@ -13,6 +13,12 @@ opt.expandtab = true
 opt.smartindent = true
 opt.relativenumber = true
 
+vim.filetype.add({
+  pattern = {
+    [".*/templates/.*%.yaml"] = "helm",
+  },
+})
+
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.softtabstop = 4

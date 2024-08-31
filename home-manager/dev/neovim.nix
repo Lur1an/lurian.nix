@@ -15,15 +15,24 @@
     extraPackages = with pkgs; [
       lua-language-server
       helm-ls
-      stylua
+      yaml-language-server
+      tailwindcss-language-server
       pyright
+      docker-compose-language-service
+      dockerfile-language-server-nodejs
+      nodePackages.typescript-language-server
+      stylua
+      nodePackages.svelte-language-server
+      black
+      pyright
+      marksman
+      nodePackages.graphql-language-service-cli
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           vadimcn.vscode-lldb
           ms-python.vscode-pylance
         ];
       })
-      marksman
     ];
   };
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/nvim";
