@@ -43,8 +43,11 @@ in {
   };
   # bluetooth
   services.blueman.enable = true;
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    settings.General.Experimental = true; # for gnome-bluetooth percentage
+  };
 
   services.libinput = {
     enable = true;

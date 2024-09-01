@@ -4,6 +4,7 @@ in {
     libreoffice-qt
     networkmanagerapplet
     gnome-disk-utility
+    gnome.gnome-bluetooth
     ffmpeg
     nix-index
     pavucontrol
