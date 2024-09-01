@@ -5,7 +5,8 @@ in
   [
     "${mod}, Q, killactive"
     "${mod}, M, exit"
-    "${mod}, B, exec, firefox"
+    "${mod}, B, exec, firefox-beta"
+    "${mod}, O, exec, obsidian"
     "${mod}, T, exec, foot"
     "${mod}, F, exec, nautilus"
     "${mod} SHIFT, L, movewindow, r"
@@ -38,6 +39,8 @@ in
     "${mod} SHIFT, 6, movetoworkspacesilent, 6"
     "${mod} SHIFT, 7, movetoworkspacesilent, 7"
     "${mod} SHIFT, 8, movetoworkspacesilent, 8"
+    "${mod} SHIFT, 9, movetoworkspacesilent, 9"
+    "${mod} SHIFT, 0, movetoworkspacesilent, 10"
   ]
   ++ [
     "CTRL ${mod}, R,  ${e} quit; ags -b hypr"

@@ -16,9 +16,10 @@ in [
   (f "pavucontrol")
   "opacity 0.9,^(discord)"
   "opacity 0.9,telegram*"
-  "workspace 3 silent, ^(discord)"
-  "workspace 3 silent, telegram*"
-  "workspace 5 silent, ^(firefox)"
-  "workspace 7 silent, ^(chromium)"
-  "workspace 7 silent, ^(google-chrome)"
+  "workspace 7 silent, ^(discord)"
+  "workspace 7 silent, ^(slack)"
+  "workspace 7 silent, telegram*"
+  "workspace 6 silent, ^(firefox)"
+  "workspace 8 silent, ^(chromium)"
+  "workspace 8 silent, ^(google-chrome)"
 ]

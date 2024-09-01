@@ -62,8 +62,17 @@ in {
         };
       };
       windowrule = import ./windowrule.nix;
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_use_r = true;
+      };
       input = {
         kb_options = "caps:escape";
+        touchpad = {
+          natural_scroll = "yes";
+          disable_while_typing = true;
+          drag_lock = true;
+        };
       };
       windowrulev2 =
         xwaylandbridge_patch
@@ -80,14 +89,16 @@ in {
           "2,monitor:${monitors.primary}"
           "3,monitor:${monitors.primary}"
           "4,monitor:${monitors.primary}"
+          "5,monitor:${monitors.primary}"
         ]
         ++ (
           if builtins.hasAttr "secondary" monitors
           then [
-            "5,monitor:${monitors.secondary}"
             "6,monitor:${monitors.secondary}"
             "7,monitor:${monitors.secondary}"
             "8,monitor:${monitors.secondary}"
+            "9,monitor:${monitors.secondary}"
+            "10,monitor:${monitors.secondary}"
           ]
           else []
         );
