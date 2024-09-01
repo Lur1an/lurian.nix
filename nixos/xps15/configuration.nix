@@ -51,7 +51,7 @@ in {
     touchpad = {
       sendEventsMode = "enabled";
       scrollMethod = "twofinger";
-      naturalScrolling = true;
+      naturalScrolling = false;
       tapping = true;
       clickMethod = "clickfinger";
     };
