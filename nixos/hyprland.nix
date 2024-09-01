@@ -50,7 +50,7 @@
   environment.systemPackages = with pkgs; [
     libnotify
     swww
-    xdg-desktop-portal-hyprland
+    inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
     xwayland
