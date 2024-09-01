@@ -1,11 +1,7 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
-  inputs,
-  outputs,
-  lib,
   config,
-  pkgs,
   ...
 }: let
   monitors = {
@@ -48,4 +44,16 @@ in {
     Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
   '';
   networking.hostName = "lurian-desktop";
+
+  # bluetooth
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  # Nvidia
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+    open = false;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
 }

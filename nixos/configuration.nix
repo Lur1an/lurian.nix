@@ -138,21 +138,10 @@
   virtualisation.docker.enable = true;
   virtualisation.docker.liveRestore = false;
 
-  # Nvidia drivers
-
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware = {
-    nvidia = {
-      open = false;
-      powerManagement.enable = true;
-      modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.production;
-    };
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = [pkgs.mesa.drivers];
-    };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [pkgs.mesa.drivers];
   };
 
   # sound

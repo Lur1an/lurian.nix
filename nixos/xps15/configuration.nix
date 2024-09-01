@@ -1,9 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
   ...
@@ -26,11 +23,23 @@ in {
 
   boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
 
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    # Make sure to use the correct Bus ID values for your system!
-    nvidiaBusId = "PCI:1:0:0";
-    intelBusId = "PCI:0:2:0";
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      # Make sure to use the correct Bus ID values for your system!
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
+    };
   };
   # bluetooth
   services.blueman.enable = true;
