@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -18,6 +18,13 @@
       vpn-on = "sudo wg-quick up ~/wg0.conf";
       vpn-off = "sudo wg-quick down ~/wg0.conf";
     };
+    plugins = [
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
+    ];
     initExtra = ''
       function rust_dev() {
           RUST_LOG=debug cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
