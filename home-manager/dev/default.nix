@@ -27,10 +27,12 @@
     # CLI Tools
     lazydocker
     unzip
+    gh-markdown-preview
     zip
     sc-im
     edgedb
     wireshark-cli
+    wireguard-tools
     termshark
     htop
     spicedb-zed
