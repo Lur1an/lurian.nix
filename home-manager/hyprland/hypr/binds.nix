@@ -25,6 +25,8 @@ in
     "${mod}, 6, workspace, 6"
     "${mod}, 7, workspace, 7"
     "${mod}, 8, workspace, 8"
+    "${mod}, 9, workspace, 9"
+    "${mod}, 0, workspace, 10"
 
     "${mod}, 1, workspace, 1"
     "${mod}, 2, workspace, 2"
