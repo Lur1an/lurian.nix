@@ -50,6 +50,7 @@
   };
 
   networking.firewall.enable = false;
+  networking.enableIPv6 = false;
   networking.networkmanager.enable = true;
   nix = {
     # This will add each flake input as a registry

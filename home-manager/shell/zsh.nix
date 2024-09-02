@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -15,6 +15,8 @@
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";
       make-thumb = "make_thumb";
+      vpn-on = "sudo wg-quick up ~/wg0.conf";
+      vpn-off = "sudo wg-quick down ~/wg0.conf";
     };
     initExtra = ''
       function rust_dev() {
