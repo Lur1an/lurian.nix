@@ -1,16 +1,15 @@
 {pkgs, ...}: {
   programs.obs-studio = {
     enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
+    plugins = (with pkgs.obs-studio-plugins; [
       wlrobs
       obs-vaapi
       obs-vkcapture
-      obs-multi-rtmp
       obs-pipewire-audio-capture
-    ];
+    ]) ++ [pkgs.obs-multi-rtmp];
   };
   home.packages = with pkgs; [
-    obs-studio-plugins.obs-multi-rtmp
+    obs-multi-rtmp
     libcamera
   ];
 }
