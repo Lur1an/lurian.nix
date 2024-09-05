@@ -8,6 +8,7 @@
   machineConfig = {
     monitors = monitors;
     binds = [];
+    extraEnv = [];
   };
 in {
   _module.args = {inherit machineConfig;};

@@ -16,13 +16,14 @@
     (
       if builtins.hasAttr "secondary" monitors
       then [
-        # In case a secondary monitor is present, this means we're on Desktop PC
-        # With 4k monitors, both at 144hz, fractional scale them
         "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
         "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
       ]
       # No additional config needed on laptop
-      else [",preferred,auto, 1"]
+      else [
+        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
+        ",preferred,auto, 1"
+      ]
     )
     ++ ["Unknown-1,disabled"];
 in {
@@ -42,11 +43,13 @@ in {
     # ];
     xwayland.enable = true;
     settings = {
-      env = [
-        "WLR_DRM_NO_ATOMIC,1"
-        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
-        "ELECTRON_ENABLE_WAYLAND,1"
-      ];
+      env =
+        [
+          "WLR_DRM_NO_ATOMIC,1"
+          "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+          "ELECTRON_ENABLE_WAYLAND,1"
+        ]
+        ++ machineConfig.extraEnv;
       xwayland = {
         force_zero_scaling = true;
       };
@@ -177,9 +180,6 @@ in {
 
       # will reset the submap, meaning end the current one and return to the global one
       submap=reset
-
-      # For tearing
-      env = WLR_DRM_NO_ATOMIC,1
     '';
   };
 }

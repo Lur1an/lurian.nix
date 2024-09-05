@@ -6,8 +6,9 @@
   ...
 }: let
   machineConfig = {
+    extraEnv = [];
     monitors = {
-      primary = "eDP-1";
+      primary = "DP-2";
     };
     binds = [
       ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
@@ -26,7 +27,7 @@ in {
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = false;
 
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     powerManagement = {
