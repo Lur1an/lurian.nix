@@ -4,6 +4,7 @@
     cargo-make
     cargo-flamegraph
     cargo-nextest
+    cargo-udeps
     cargo-watch
     cargo-llvm-cov
     sea-orm-cli

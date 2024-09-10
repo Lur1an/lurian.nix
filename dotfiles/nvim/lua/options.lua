@@ -4,6 +4,7 @@ require "nvchad.options"
 --
 local opt = vim.opt
 
+
 opt.incsearch = true
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"

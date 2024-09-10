@@ -1,17 +1,22 @@
 local options = {
-	lsp_fallback = true,
-
-	formatters_by_ft = {
-		lua = { "stylua" },
-		python = { "black" },
-    rust = { "rustfmt" },
-		typescript = { "prettier" },
-		svelte = { "prettier" },
-		html = { "prettier" },
-		yaml = { "prettier" },
-		json = { "prettier" },
-		javascript = { "prettier" },
-	},
+  lsp_fallback = true,
+  yamlfix = {
+    env = {
+      YAMLFIX_SEQUENCE_STYLE = "block_style",
+      YAMLFIX_EXPLICIT_START = "false",
+    },
+  },
+  formatters_by_ft = {
+    lua = { "stylua" },
+    python = { "black" },
+    rust = { "rustfmt", lsp_format = "first" },
+    typescript = { "prettier" },
+    svelte = { "prettier" },
+    html = { "prettier" },
+    yaml = { "yamlfix" },
+    json = { "prettier" },
+    javascript = { "prettier" },
+  },
 }
 
 require("conform").setup(options)

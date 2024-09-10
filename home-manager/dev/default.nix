@@ -26,6 +26,8 @@
 
     # CLI Tools
     lazydocker
+    minicom
+    actionlint
     unzip
     gh-markdown-preview
     zip
@@ -35,6 +37,7 @@
     wireguard-tools
     termshark
     htop
+    argocd
     spicedb-zed
     hetzner-k3s
     sqlite
