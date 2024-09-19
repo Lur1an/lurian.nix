@@ -27,7 +27,7 @@
     ];
     initExtra = ''
       function rust_dev() {
-          RUST_LOG=debug cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
+          RUST_LOG=info cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
       }
 
       function nvidia_offload() {

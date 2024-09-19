@@ -14,7 +14,10 @@ local servers = {
 	"html",
 	"cssls",
 	"tsserver",
-	"pyright",
+  "pyright",
+  "basedpyright",
+  "nixd",
+  "helm_ls",
 	"marksman",
 }
 
@@ -25,49 +28,3 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
-
-lspconfig.nixd.setup({
-	on_init = on_init,
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.helm_ls.setup({
-	on_init = on_init,
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-local pylance_dir = vim.env.PYLANCE_PATH
--- lspconfig.pylance.setup({
--- 	cmd = {
--- 		"node",
--- 		vim.fn.expand(pylance_dir .. "/share/vscode/extensions/MS-python.vscode-pylance/dist/server.bundle.js"),
--- 		"--stdio",
--- 	},
--- 	filetypes = { "python" },
--- 	root_dir = function(fname)
--- 		return lspconfig.util.find_git_ancestor(fname) or vim.fn.getcwd()
--- 	end,
--- 	settings = {
--- 		python = {
--- 			analysis = {
--- 				typeCheckingMode = "basic",
--- 				diagnosticMode = "openFilesOnly",
--- 				stubPath = "./typings",
--- 				autoSearchPaths = true,
--- 				useLibraryCodeForTypes = true,
--- 				diagnosticSeverityOverrides = {},
--- 				inlayHints = {
--- 					variableTypes = true,
--- 					functionReturnTypes = true,
--- 					callArgumentNames = true,
--- 				},
--- 			},
--- 		},
--- 	},
--- 	-- before_init = function(_, config)
--- 	-- 	-- Adjust the `pythonPath` based on your environment
--- 	-- 	config.settings.python.pythonPath = "/path/to/python"
--- 	-- end,
--- })

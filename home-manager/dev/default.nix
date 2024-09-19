@@ -25,6 +25,8 @@
     flatbuffers
 
     # CLI Tools
+    kubeseal
+    curl-impersonate
     lazydocker
     minicom
     actionlint

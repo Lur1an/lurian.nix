@@ -11,6 +11,7 @@ let
       tailwindcss-language-server
       yamlfix
       pyright
+      basedpyright
       docker-compose-language-service
       dockerfile-language-server-nodejs
       nodePackages.typescript-language-server

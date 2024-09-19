@@ -15,5 +15,7 @@
     evince
     kdePackages.kolourpaint
     nautilus
+    monero-gui
+    monero-cli
   ];
 }
