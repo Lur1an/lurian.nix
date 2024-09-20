@@ -14,6 +14,9 @@ let
       basedpyright
       docker-compose-language-service
       dockerfile-language-server-nodejs
+      isort
+      ruff
+      mypy
       nodePackages.typescript-language-server
       stylua
       nodePackages.svelte-language-server
@@ -29,6 +32,8 @@ in
     gcc
     fd
     nodejs
+    isort
+    ruff
     tree-sitter
   ]);
   programs.neovim = {

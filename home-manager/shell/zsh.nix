@@ -14,6 +14,7 @@
       rust-dev = "rust_dev";
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";
+      seal = "kubeseal_encrypt";
       make-thumb = "make_thumb";
       vpn-on = "sudo wg-quick up ~/wg0.conf";
       vpn-off = "sudo wg-quick down ~/wg0.conf";
@@ -36,6 +37,10 @@
         export __GLX_VENDOR_LIBRARY_NAME=nvidia
         export __VK_LAYER_NV_optimus=NVIDIA_only
         exec "$@"
+      }
+
+      function kubeseal_encrypt() {
+        kubeseal --format yaml --scope $1 < $2 > $3
       }
 
       function boot_windows() {

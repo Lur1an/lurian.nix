@@ -14,10 +14,11 @@ local servers = {
 	"html",
 	"cssls",
 	"tsserver",
-  "pyright",
-  "basedpyright",
-  "nixd",
-  "helm_ls",
+	"pyright",
+	-- "basedpyright",
+	"ruff",
+	"nixd",
+	"helm_ls",
 	"marksman",
 }
 
