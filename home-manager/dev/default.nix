@@ -26,6 +26,7 @@
 
     # CLI Tools
     kubeseal
+    drill
     curl-impersonate
     lazydocker
     minicom
