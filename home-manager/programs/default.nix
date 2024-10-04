@@ -10,8 +10,10 @@
   home.packages = with pkgs; [
     slack
     remmina
+    appflowy
     telegram-desktop
     obsidian
+    spacedrive
     evince
     kdePackages.kolourpaint
     nautilus

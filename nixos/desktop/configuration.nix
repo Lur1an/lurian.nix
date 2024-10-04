@@ -2,12 +2,11 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   config,
-  pkgs,
   ...
 }: let
   monitors = {
-    primary = "DP-3";
-    secondary = "DP-2";
+    primary = "DP-4";
+    secondary = "DP-3";
   };
   machineConfig = {
     monitors = monitors;
@@ -38,7 +37,7 @@ in {
   services.k3s = {
     enable = true;
     role = "agent";
-    token = "12345";
+    token = "K10730cf4e30f81f7c38c2a0936d1bd5550cba0c33e5635f830fe59bad0530f327e::server:dab0ba8b99375e3aedb9f440acfb9b4e";
     serverAddr = "https://pi-master:6443";
   };
   services.xserver.screenSection = ''

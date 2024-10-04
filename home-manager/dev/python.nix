@@ -7,6 +7,7 @@
         pip
         watchfiles
         requests
+        python-lsp-server
         pyserial
         pygobject3 # Python bindings for Glib
         gst-python # Python bindings for GStreamer

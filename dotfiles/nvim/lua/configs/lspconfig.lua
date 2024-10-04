@@ -14,8 +14,6 @@ local servers = {
 	"html",
 	"cssls",
 	"tsserver",
-	"pyright",
-	-- "basedpyright",
 	"ruff",
 	"nixd",
 	"helm_ls",
@@ -27,5 +25,34 @@ for _, lsp in ipairs(servers) do
 		on_init = on_init,
 		on_attach = on_attach,
 		capabilities = capabilities,
+	})
+end
+-- read PYTHON_LSP env variable to choose between pyright and basedpyright
+local python_lsp = os.getenv("PYTHON_LSP") or "basedpyright"
+
+if python_lsp == "pyright" then
+	lspconfig.pyright.setup({
+		on_init = on_init,
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
+else
+	lspconfig.basedpyright.setup({
+		on_init = on_init,
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			basedpyright = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "openFilesOnly",
+					useLibraryCodeForTypes = true,
+					diagnosticSeverityOverrides = {
+						reportAny = false,
+            reportUnusedCallResult = false,
+					},
+				},
+			},
+		},
 	})
 end

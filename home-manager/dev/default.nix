@@ -19,12 +19,14 @@
     # Deps
     openssl.dev
     jdk21
+    devenv
     pkg-config
     protobuf
     lldb
     flatbuffers
 
     # CLI Tools
+    k3sup
     kubeseal
     drill
     curl-impersonate
