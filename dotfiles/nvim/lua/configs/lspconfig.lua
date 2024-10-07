@@ -47,9 +47,12 @@ else
 					autoSearchPaths = true,
 					diagnosticMode = "openFilesOnly",
 					useLibraryCodeForTypes = true,
+					enableTypeIgnoreComments = true,
 					diagnosticSeverityOverrides = {
 						reportAny = false,
-            reportUnusedCallResult = false,
+						reportMissingTypeStubs = false,
+						reportUntypedFunctionDecorator = false,
+						reportUnusedCallResult = false,
 					},
 				},
 			},

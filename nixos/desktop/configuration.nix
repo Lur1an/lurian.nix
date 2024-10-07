@@ -2,6 +2,7 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   config,
+  pkgs,
   ...
 }: let
   monitors = {
@@ -35,10 +36,15 @@ in {
     };
   };
   services.k3s = {
+    package = pkgs.k3s_1_30;
     enable = true;
     role = "agent";
     token = "K10730cf4e30f81f7c38c2a0936d1bd5550cba0c33e5635f830fe59bad0530f327e::server:dab0ba8b99375e3aedb9f440acfb9b4e";
     serverAddr = "https://pi-master:6443";
+    agentArgs = [ 
+      "--node-taint=workload=heavy:NoSchedule"
+      "--node-label=workload=heavy"
+    ];
   };
   services.xserver.screenSection = ''
     Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
