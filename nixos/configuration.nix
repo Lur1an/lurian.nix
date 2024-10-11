@@ -16,22 +16,7 @@
     ./polkit.nix
   ];
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    glib
-    glibc
-    zlib
-    fuse3
-    icu
-    zlib
-    nss
-    openssl
-    udev
-    curl
-    expat
-    nspr
-    xorg.libxcb
-  ];
+  programs.nix-ld.libraries = import ./ld.nix {inherit pkgs;};
   nixpkgs = {
     # You can add overlays here
     overlays = [
