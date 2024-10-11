@@ -28,7 +28,8 @@
     ];
     initExtra = ''
       function rust_dev() {
-          RUST_LOG=info cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
+          local log_level=''${2:-info}
+          RUST_LOG=$log_level cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
       }
 
       function nvidia_offload() {
