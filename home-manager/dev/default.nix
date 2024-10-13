@@ -26,8 +26,10 @@
     flatbuffers
 
     # CLI Tools
+    cmake
     k3sup
     kubeseal
+    rover
     drill
     curl-impersonate
     lazydocker

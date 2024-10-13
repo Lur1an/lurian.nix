@@ -114,7 +114,7 @@ in {
         dim_inactive = false;
 
         blur = {
-          enabled = false;
+          enabled = true;
           size = 8;
           passes = 3;
           new_optimizations = true;

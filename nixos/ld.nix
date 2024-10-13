@@ -4,6 +4,7 @@ with pkgs; [
   glib
   glibc
   zlib
+  libz
   fuse3
   icu
   zlib
