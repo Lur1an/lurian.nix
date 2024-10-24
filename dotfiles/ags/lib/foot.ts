@@ -1,20 +1,21 @@
 import options, { Colors } from 'options';
+import { sh } from './utils';
 
 const deps = ['colors'];
 
 function generateFootSkin(c: Colors) {
     return {
         alpha: '.85',
-        background: c.surface,
+        background: c.background,
         foreground: c.on_surface,
 
         regular0: c.surface_container,
         regular1: c.error,
         regular2: c.primary,
-        regular3: c.secondary,
-        regular4: c.tertiary,
-        regular5: c.on_background,
-        regular6: c.primary_container,
+        regular3: c.inverse_primary,
+        regular4: c.primary,
+        regular5: c.tertiary,
+        regular6: c.secondary,
         regular7: c.on_primary,
 
         bright0: c.surface_variant,
@@ -42,14 +43,6 @@ async function setupFoot() {
 alpha=${foot.alpha}
 background=${foot.background}
 foreground=${foot.foreground}
-bright0=${foot.bright0}
-bright1=${foot.bright1}
-bright2=${foot.bright2}
-bright3=${foot.bright3}
-bright4=${foot.bright4} 
-bright5=${foot.bright5}
-bright6=${foot.bright6}
-bright7=${foot.bright7}
 regular0=${foot.regular0}
 regular1=${foot.regular1}
 regular2=${foot.regular2}
@@ -58,6 +51,15 @@ regular4=${foot.regular4}
 regular5=${foot.regular5}
 regular6=${foot.regular6}
 regular7=${foot.regular7}
+
+bright0=${foot.bright0}
+bright1=${foot.bright1}
+bright2=${foot.bright2}
+bright3=${foot.bright3}
+bright4=${foot.bright4} 
+bright5=${foot.bright5}
+bright6=${foot.bright6}
+bright7=${foot.bright7}
 
 [cursor]
 color=${foot.cursor.inverseFg}  ${foot.cursor.bg}
@@ -73,6 +75,7 @@ term=xterm-256color
 sixel=yes
     `;
     try {
+        await sh("mkdir -p /home/lurian/.config/foot");
         await Utils.writeFile(
             footConfigFile.replaceAll('#', ''),
             '/home/lurian/.config/foot/foot.ini'

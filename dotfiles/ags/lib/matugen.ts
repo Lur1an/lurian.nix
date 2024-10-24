@@ -23,7 +23,8 @@ export async function matugen(
     const { dark, light } = options.theme;
     animate(
         () => {
-            options.colors.value = c.dark;
+            options.colors.value =
+                options.theme.scheme.value === 'dark' ? c.dark : c.light;
         },
         () => {
             dark.widget.value = c.dark.on_surface;
