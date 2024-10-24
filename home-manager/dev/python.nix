@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    uv
     poetry
     pre-commit
     (python311Full.withPackages (ps:

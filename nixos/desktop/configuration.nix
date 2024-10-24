@@ -6,8 +6,8 @@
   ...
 }: let
   monitors = {
-    primary = "DP-3";
-    secondary = "DP-2";
+    primary = "DP-4";
+    secondary = "DP-3";
   };
   machineConfig = {
     monitors = monitors;
@@ -60,5 +60,23 @@ in {
   hardware.nvidia = {
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
+  users.users.github-runner = {
+    isNormalUser = true;
+    extraGroups = ["docker"];
+  };
+  services.github-runners = {
+    repricer = {
+      enable = true;
+      url = "https://github.com/Lur1an/repricer/";
+      name = "repricer";
+      user = "github-runner";
+      tokenFile = "/home/lurian/.github-runner-pat";
+      extraLabels = ["nix-phat"];
+      extraPackages = with pkgs; [
+        docker
+        devenv
+      ];
+    };
   };
 }

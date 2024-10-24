@@ -80,6 +80,7 @@
       fi
 
       eval "$(direnv hook zsh)"
+      eval "$(uv generate-shell-completion zsh)"
     '';
 
     oh-my-zsh = {
