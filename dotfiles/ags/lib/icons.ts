@@ -6,6 +6,7 @@ export const substitutes = {
     "org.wezfurlong.wezterm-symbolic": "terminal-symbolic",
     "foot-symbolic": "terminal-symbolic",
     "firefox-beta-symbolic": "firefox-symbolic",
+    "vesktop-symbolic": "application-x-executable-symbolic",
     "audio-headset-bluetooth": "audio-headphones-symbolic",
     "audio-card-analog-usb": "audio-speakers-symbolic",
     "audio-card-analog-pci": "audio-card-symbolic",

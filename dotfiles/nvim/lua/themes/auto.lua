@@ -4,59 +4,66 @@ local M = {}
 local lighten = require("base46.colors").change_hex_lightness
 
 M.base_30 = {
-  white = '#e7e0e8',
-  darker_black = lighten('#141218', -3),
-  black = '#141218',
-  black2 = lighten('#141218', 6),
-  one_bg = lighten('#141218', 10),
-  grey = lighten('#141218', 40),
-  light_grey = '#49454e',
-  red = '#ffb4ab',
-  baby_pink = '#93000a',
-  pink = '#67558e',
-  line = '#49454e',
-  green = '#d1bcfd',
-  vibrant_green = '#4e3d75',
-  nord_blue = '#f0b8c6',
-  blue = '#f0b8c6',
-  yellow = '#ccc2db',
-  sun = lighten('#ccc2db', 6),
-  purple = '#67558e',
-  dark_purple = '#67558e',
-  teal = '#f0b8c6',
-  orange = '#ffb4ab',
-  cyan = '#4a4358',
-  pmenu_bg = '#49454e',
-  folder_bg = '#f0b8c6',
-}
+  white = '#dfe3e7',
+  black = '#0f1417',
+  darker_black = lighten('#0f1417', -3),
+  black2 = lighten('#0f1417', 6),
+  one_bg = lighten('#0f1417', 10),
+  one_bg2 = lighten('#0f1417', 16),
+  one_bg3 = lighten('#0f1417', 22),
 
-M.base_30.statusline_bg = M.base_30.black2
-M.base_30.lightbg = M.base_30.one_bg
-M.base_30.one_bg2 = lighten(M.base_30.one_bg, 6)
-M.base_30.one_bg3 = lighten(M.base_30.one_bg2, 6)
-M.base_30.grey_fg = lighten(M.base_30.grey, 10)
-M.base_30.grey_fg2 = lighten(M.base_30.grey, 5)
+  grey = '#40484c',
+  grey_fg = lighten('#40484c', -10),
+  grey_fg2 = lighten('#40484c', -20),
+  light_grey = '#8a9297',
+
+  red = '#ffb4ab',
+  baby_pink = lighten('#ffb4ab', 10),
+  pink = '#c6c2ea',
+
+  line = '#8a9297',
+
+  green = '#b4cad6',
+  vibrant_green = lighten('#b4cad6', 10),
+
+  blue = '#8bd0ef',
+  nord_blue = lighten('#8bd0ef', 10),
+
+  yellow = lighten('#c6c2ea', 10),
+  sun = lighten('#c6c2ea', 20),
+
+  purple = '#c6c2ea',
+  dark_purple = lighten('#c6c2ea', -10),
+
+  teal = '#354a53',
+  orange = '#ffb4ab',
+  cyan = '#b4cad6',
+
+  statusline_bg = lighten('#0f1417', 6),
+  pmenu_bg = '#40484c',
+  folder_bg = '#004d64',
+}
 
 M.base_16 = {
-  base00 = '#141218',
-  base01 = '#141218',
-  base02 = '#49454e',
-  base03 = '#49454e',
-  base04 = '#e7e0e8',
-  base05 = '#e7e0e8',
-  base06 = '#cbc4cf',
-  base07 = '#cbc4cf',
-  base08 = '#ffb4ab',
-  base09 = '#d1bcfd',
-  base0A = '#ccc2db',
-  base0B = '#f0b8c6',
-  base0C = '#4e3d75',
-  base0D = '#4a4358',
-  base0E = '#ffb4ab',
-  base0F = '#cbc4cf',
+  base00 = '#0f1417',                   -- Default Background
+  base01 = lighten('#0f1417', 5),       -- Lighter Background (status bars)
+  base02 = '#40484c',              -- Selection Background
+  base03 = '#8a9297',                      -- Comments, Invisibles, Line Highlighting
+  base04 = lighten('#dfe3e7', -20),  -- Dark Foreground (status bars)
+  base05 = '#dfe3e7',                -- Default Foreground, Caret, Delimiters, Operators
+  base06 = lighten('#dfe3e7', 20),   -- Light Foreground (Not often used)
+  base07 = '#353a3d',               -- Light Background (Not often used)
+  base08 = '#ffb4ab',                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  base09 = '#b4cad6',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  base0A = '#c6c2ea',                     -- Classes, Markup Bold, Search Text Background
+  base0B = '#8bd0ef',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
+  base0C = '#b4cad6',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
+  base0D = '#8bd0ef',                      -- Functions, Methods, Attribute IDs, Headings
+  base0E = '#c6c2ea',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+  base0F = '#ffb4ab',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 }
 
-M.type = "dark"
+M.type = "dark"  -- or "light" depending on your theme
 
 M.polish_hl = {
   Operator = {

@@ -58,7 +58,6 @@ export type Colors = {
 const defaultColors = JSON.parse(
     await sh(`matugen --dry-run -j hex image ${wallpaper.wallpaper}`)
 ).colors as { light: Colors; dark: Colors };
-console.error('HEY');
 
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),

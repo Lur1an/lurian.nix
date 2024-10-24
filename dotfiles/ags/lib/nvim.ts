@@ -29,59 +29,66 @@ local M = {}
 local lighten = require("base46.colors").change_hex_lightness
 
 M.base_30 = {
-  white = '${colors.on_surface}',
-  darker_black = lighten('${colors.background}', -3),
+  white = '${colors.on_background}',
   black = '${colors.background}',
+  darker_black = lighten('${colors.background}', -3),
   black2 = lighten('${colors.background}', 6),
   one_bg = lighten('${colors.background}', 10),
-  grey = lighten('${colors.background}', 40),
-  light_grey = '${colors.surface_variant}',
-  red = '${colors.error}',
-  baby_pink = '${colors.error_container}',
-  pink = '${colors.inverse_primary}',
-  line = '${colors.surface_variant}',
-  green = '${colors.primary}',
-  vibrant_green = '${colors.primary_container}',
-  nord_blue = '${colors.tertiary}',
-  blue = '${colors.tertiary}',
-  yellow = '${colors.secondary}',
-  sun = lighten('${colors.secondary}', 6),
-  purple = '${colors.inverse_primary}',
-  dark_purple = '${colors.inverse_primary}',
-  teal = '${colors.tertiary}',
-  orange = '${colors.error}',
-  cyan = '${colors.secondary_container}',
-  pmenu_bg = '${colors.surface_variant}',
-  folder_bg = '${colors.tertiary}',
-}
+  one_bg2 = lighten('${colors.background}', 16),
+  one_bg3 = lighten('${colors.background}', 22),
 
-M.base_30.statusline_bg = M.base_30.black2
-M.base_30.lightbg = M.base_30.one_bg
-M.base_30.one_bg2 = lighten(M.base_30.one_bg, 6)
-M.base_30.one_bg3 = lighten(M.base_30.one_bg2, 6)
-M.base_30.grey_fg = lighten(M.base_30.grey, 10)
-M.base_30.grey_fg2 = lighten(M.base_30.grey, 5)
+  grey = '${colors.surface_variant}',
+  grey_fg = lighten('${colors.surface_variant}', -10),
+  grey_fg2 = lighten('${colors.surface_variant}', -20),
+  light_grey = '${colors.outline}',
+
+  red = '${colors.error}',
+  baby_pink = lighten('${colors.error}', 10),
+  pink = '${colors.tertiary}',
+
+  line = '${colors.outline}',
+
+  green = '${colors.secondary}',
+  vibrant_green = lighten('${colors.secondary}', 10),
+
+  blue = '${colors.primary}',
+  nord_blue = lighten('${colors.primary}', 10),
+
+  yellow = lighten('${colors.tertiary}', 10),
+  sun = lighten('${colors.tertiary}', 20),
+
+  purple = '${colors.tertiary}',
+  dark_purple = lighten('${colors.tertiary}', -10),
+
+  teal = '${colors.secondary_container}',
+  orange = '${colors.error}',
+  cyan = '${colors.secondary}',
+
+  statusline_bg = lighten('${colors.background}', 6),
+  pmenu_bg = '${colors.surface_variant}',
+  folder_bg = '${colors.primary_container}',
+}
 
 M.base_16 = {
-  base00 = '${colors.background}',
-  base01 = '${colors.background}',
-  base02 = '${colors.surface_variant}',
-  base03 = '${colors.surface_variant}',
-  base04 = '${colors.on_surface}',
-  base05 = '${colors.on_surface}',
-  base06 = '${colors.on_surface_variant}',
-  base07 = '${colors.on_surface_variant}',
-  base08 = '${colors.error}',
-  base09 = '${colors.primary}',
-  base0A = '${colors.secondary}',
-  base0B = '${colors.tertiary}',
-  base0C = '${colors.primary_container}',
-  base0D = '${colors.secondary_container}',
-  base0E = '${colors.error}',
-  base0F = '${colors.on_surface_variant}',
+  base00 = '${colors.background}',                   -- Default Background
+  base01 = lighten('${colors.background}', 5),       -- Lighter Background (status bars)
+  base02 = '${colors.surface_variant}',              -- Selection Background
+  base03 = '${colors.outline}',                      -- Comments, Invisibles, Line Highlighting
+  base04 = lighten('${colors.on_background}', -20),  -- Dark Foreground (status bars)
+  base05 = '${colors.on_background}',                -- Default Foreground, Caret, Delimiters, Operators
+  base06 = lighten('${colors.on_background}', 20),   -- Light Foreground (Not often used)
+  base07 = '${colors.surface_bright}',               -- Light Background (Not often used)
+  base08 = '${colors.error}',                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  base09 = '${colors.secondary}',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  base0A = '${colors.tertiary}',                     -- Classes, Markup Bold, Search Text Background
+  base0B = '${colors.primary}',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
+  base0C = '${colors.secondary}',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
+  base0D = '${colors.primary}',                      -- Functions, Methods, Attribute IDs, Headings
+  base0E = '${colors.tertiary}',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+  base0F = '${colors.error}',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 }
 
-M.type = "dark"
+M.type = "dark"  -- or "light" depending on your theme
 
 M.polish_hl = {
   Operator = {

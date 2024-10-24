@@ -1,99 +1,123 @@
-import options from "options"
-import { dependencies, sh } from "lib/utils"
+import options from 'options';
+import { dependencies, sh } from 'lib/utils';
 
-export type Resolution = 1920 | 1366 | 3840
+export type Resolution = 1920 | 1366 | 3840;
 export type Market =
-    | "random"
-    | "en-US"
-    | "ja-JP"
-    | "en-AU"
-    | "en-GB"
-    | "de-DE"
-    | "en-NZ"
-    | "en-CA"
+    | 'random'
+    | 'en-US'
+    | 'ja-JP'
+    | 'en-AU'
+    | 'en-GB'
+    | 'de-DE'
+    | 'en-NZ'
+    | 'en-CA';
 
-const WP = `${Utils.HOME}/.config/background`
-const Cache = `${Utils.HOME}/Pictures/Wallpapers/Bing`
+const WP = `${Utils.HOME}/.config/background`;
+const Cache = `${Utils.HOME}/Pictures/Wallpapers/Bing`;
 
 class Wallpaper extends Service {
     static {
-        Service.register(this, {}, {
-            "wallpaper": ["string"],
-        })
+        Service.register(
+            this,
+            {},
+            {
+                wallpaper: ['string']
+            }
+        );
     }
 
-    #blockMonitor = false
+    #blockMonitor = false;
 
     #wallpaper() {
-        if (!dependencies("swww"))
-            return
+        if (!dependencies('swww')) return;
 
-        sh("hyprctl cursorpos").then(pos => {
+        sh('hyprctl cursorpos').then((pos) => {
             sh([
-                "swww", "img",
-                "--invert-y",
-                "--transition-type", "grow",
-                "--transition-pos", pos.replace(" ", ""),
-                WP,
+                'swww',
+                'img',
+                '--invert-y',
+                '--transition-type',
+                'grow',
+                '--transition-pos',
+                pos.replace(' ', ''),
+                WP
             ]).then(() => {
-                this.changed("wallpaper")
-            })
-        })
+                this.changed('wallpaper');
+            });
+        });
     }
 
     async #setWallpaper(path: string) {
-        this.#blockMonitor = true
+        this.#blockMonitor = true;
 
-        await sh(`cp ${path} ${WP}`)
-        this.#wallpaper()
+        const isVideo =
+            path.toLowerCase().endsWith('.mp4') ||
+            path.toLowerCase().endsWith('.mkv');
 
-        this.#blockMonitor = false
+        if (isVideo) {
+            await sh(`ffmpeg -i ${path} -vframes 1 -f image2 -y ${WP}`);
+            try {
+                await sh('killall -9 mpv');
+            } catch (err) {}
+            this.#wallpaper();
+            await sh(
+                `nohup mpv --no-audio --loop "${path}" > /dev/null 2>&1 &`
+            );
+        } else {
+            await sh(`cp ${path} ${WP}`);
+            this.#wallpaper();
+        }
+
+        this.#blockMonitor = false;
     }
 
     async #fetchBing() {
-        const res = await Utils.fetch("https://bing.biturl.top/", {
+        const res = await Utils.fetch('https://bing.biturl.top/', {
             params: {
                 resolution: options.wallpaper.resolution.value,
-                format: "json",
-                image_format: "jpg",
-                index: "random",
-                mkt: options.wallpaper.market.value,
-            },
-        }).then(res => res.text())
+                format: 'json',
+                image_format: 'jpg',
+                index: 'random',
+                mkt: options.wallpaper.market.value
+            }
+        }).then((res) => res.text());
 
-        if (!res.startsWith("{"))
-            return console.warn("bing api", res)
+        if (!res.startsWith('{')) return console.warn('bing api', res);
 
-        const { url } = JSON.parse(res)
-        const file = `${Cache}/${url.replace("https://www.bing.com/th?id=", "")}`
+        const { url } = JSON.parse(res);
+        const file = `${Cache}/${url.replace('https://www.bing.com/th?id=', '')}`;
 
-        if (dependencies("curl")) {
-            Utils.ensureDirectory(Cache)
-            await sh(`curl "${url}" --output ${file}`)
-            this.#setWallpaper(file)
+        if (dependencies('curl')) {
+            Utils.ensureDirectory(Cache);
+            await sh(`curl "${url}" --output ${file}`);
+            this.#setWallpaper(file);
         }
     }
 
-    readonly random = () => { this.#fetchBing() }
-    readonly set = (path: string) => { this.#setWallpaper(path) }
-    get wallpaper() { return WP }
+    readonly random = () => {
+        this.#fetchBing();
+    };
+    readonly set = (path: string) => {
+        this.#setWallpaper(path);
+    };
+    get wallpaper() {
+        return WP;
+    }
 
     constructor() {
-        super()
+        super();
 
-        if (!dependencies("swww"))
-            return this
+        if (!dependencies('swww')) return this;
 
         // gtk portal
         Utils.monitorFile(WP, () => {
-            if (!this.#blockMonitor)
-                this.#wallpaper()
-        })
+            if (!this.#blockMonitor) this.#wallpaper();
+        });
 
-        Utils.execAsync("swww-daemon")
+        Utils.execAsync('swww-daemon')
             .then(this.#wallpaper)
-            .catch(() => null)
+            .catch(() => null);
     }
 }
 
-export default new Wallpaper
+export default new Wallpaper();

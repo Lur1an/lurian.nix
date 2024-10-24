@@ -133,3 +133,9 @@ local zen = require("zen-mode")
 map("n", "<leader>zm", function()
 	zen.toggle()
 end, { desc = "zenmode toggle" })
+
+-- source themes
+map("n", "<leader>ct", function()
+	dofile(vim.g.base46_cache .. "defaults")
+	dofile(vim.g.base46_cache .. "statusline")
+end, { desc = "source themes" })
