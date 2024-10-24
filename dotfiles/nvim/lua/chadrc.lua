@@ -3,13 +3,13 @@ local M = {}
 local transparent = true
 
 M.base46 = {
-	theme = "gruvchad",
+	theme = "auto",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
 
 M.ui = {
-	theme_toggle = { "gruvchad", "one_light" },
+	theme_toggle = { "auto", "one_light" },
 	term = {
 		size = 10,
 	},

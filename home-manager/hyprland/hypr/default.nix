@@ -117,7 +117,7 @@ in {
           enabled = true;
           size = 8;
           passes = 3;
-          new_optimizations = true;
+          new_optimizations = false; # SET true if LAGGING
           noise = 0.01;
           contrast = 0.9;
           brightness = 0.8;

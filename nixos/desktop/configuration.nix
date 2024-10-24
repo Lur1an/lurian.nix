@@ -13,6 +13,10 @@
     monitors = monitors;
     binds = [];
     extraEnv = [];
+    bookmarks = [
+      "file:///mnt/Shared"
+      "file:///mnt/Backup"
+    ];
   };
 in {
   _module.args = {inherit machineConfig;};

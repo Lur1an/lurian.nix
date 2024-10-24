@@ -12,6 +12,67 @@ function gtk() {
 
 const deps = ['colors'];
 
+function generateGtk4ColorsCSS(c: Colors) {
+    return `
+/* GTK4 Theme Colors */
+:root {
+    /* Accent Colors */
+    --accent-color: ${c.primary_fixed_dim};
+    --accent-fg-color: ${c.on_primary_fixed};
+    --accent-bg-color: ${c.primary_fixed_dim};
+
+    /* Window Colors */
+    --window-bg-color: ${c.surface_dim};
+    --window-fg-color: ${c.on_surface};
+
+    /* Header Bar Colors */
+    --headerbar-bg-color: ${c.surface_dim};
+    --headerbar-fg-color: ${c.on_surface};
+
+    /* Popover Colors */
+    --popover-bg-color: ${c.surface_dim};
+    --popover-fg-color: ${c.on_surface};
+
+    /* View Colors */
+    --view-bg-color: ${c.surface};
+    --view-fg-color: ${c.on_surface};
+
+    /* Card Colors */
+    --card-bg-color: ${c.surface};
+    --card-fg-color: ${c.on_surface};
+
+    /* Sidebar Colors */
+    --sidebar-bg-color: var(--window-bg-color);
+    --sidebar-fg-color: var(--window-fg-color);
+    --sidebar-border-color: var(--window-bg-color);
+    --sidebar-backdrop-color: var(--window-bg-color);
+
+    /* Text Colors */
+    --text-color: ${c.on_surface};
+    --text-color-dim: ${c.on_surface_variant};
+    --text-color-bright: ${c.on_surface_variant};
+
+    /* Other Colors */
+    --error-color: ${c.error};
+    --success-color: ${c.tertiary};
+    --warning-color: ${c.secondary};
+    --outline-color: ${c.outline};
+
+    /* Surface Colors */
+    --surface-color: ${c.surface};
+    --surface-bright-color: ${c.surface_bright};
+    --surface-dim-color: ${c.surface_dim};
+    --surface-container-color: ${c.surface_container};
+    --surface-container-high-color: ${c.surface_container_high};
+    --surface-container-highest-color: ${c.surface_container_highest};
+    --surface-container-low-color: ${c.surface_container_low};
+    --surface-container-lowest-color: ${c.surface_container_lowest};
+
+    /* Additional Colors can be added here */
+}
+`;
+}
+
 function generateGtkColorsCSS(c: Colors) {
     return `
 @define-color accent_color ${c.primary_fixed_dim};

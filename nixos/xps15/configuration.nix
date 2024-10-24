@@ -10,6 +10,7 @@
     monitors = {
       primary = "DP-2";
     };
+    bookmarks = [];
     binds = [
       ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"

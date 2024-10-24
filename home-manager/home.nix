@@ -3,6 +3,7 @@
 {
   outputs,
   config,
+  machineConfig,
   ...
 }: let
   custom = {
@@ -31,7 +32,7 @@ in {
     "file://${home}/Pictures"
     "file://${home}/wallpapers"
     "file://${home}/Videos"
-  ];
+  ] ++ machineConfig.bookmarks;
 
   nixpkgs = {
     overlays = [
