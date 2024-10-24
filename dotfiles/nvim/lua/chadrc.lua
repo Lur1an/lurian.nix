@@ -2,14 +2,14 @@ local M = {}
 
 local transparent = true
 
-M.ui = {
-	theme = "bearded-arc",
-	theme_toggle = { "bearded-arc", "one_light" },
+M.base46 = {
+	theme = "chadracula",
 	transparency = transparent,
-	nvdash = {
-		load_on_startup = false,
-		header = {},
-	},
+	integrations = { "dap", "trouble" },
+}
+
+M.ui = {
+	theme_toggle = { "chadracula", "one_light" },
 	term = {
 		size = 10,
 	},
@@ -19,6 +19,10 @@ M.ui = {
 	tabufline = {
 		enabled = true,
 	},
+}
+
+M.nvdash = {
+  load_on_startup = true,
 }
 
 return M

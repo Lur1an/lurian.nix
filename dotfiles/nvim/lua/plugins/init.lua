@@ -92,14 +92,21 @@ return {
 	},
 
 	{
-		"rcarriga/nvim-dap-ui",
-		opts = require("configs.dap-ui"),
-	},
-	{
 		"mfussenegger/nvim-dap",
 		config = function()
 			require("configs.dap")
 		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		config = function()
+			dofile(vim.g.base46_cache .. "dap")
+			require("dapui").setup()
+			require("configs.dap-ui")
+		end,
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
 	},
 	{
 		"mfussenegger/nvim-dap-python",
@@ -190,10 +197,26 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			require("configs.neotest")
+			require(".configs.neotest")
 		end,
 	},
-
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			plugins = {
+				tmux = { enabled = true },
+			},
+		},
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		opts = {},
+		config = function()
+			dofile(vim.g.base46_cache .. "trouble")
+			require("trouble").setup()
+		end,
+	},
 	{
 		"nvim-neotest/neotest-python",
 	},

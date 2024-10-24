@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./gtk.nix
-    ./nix-colors
     ./ags.nix
   ];
 

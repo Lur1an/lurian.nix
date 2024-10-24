@@ -5,7 +5,6 @@
   outputs,
   lib,
   config,
-  nix-colors,
   machineConfig,
   pkgs,
   ...
@@ -70,7 +69,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = false;
-    extraSpecialArgs = {inherit inputs outputs nix-colors machineConfig;};
+    extraSpecialArgs = {inherit inputs outputs machineConfig;};
     users = {
       lurian = import ../home-manager/home.nix;
     };
@@ -159,6 +158,7 @@
     qogir-icon-theme
     papirus-icon-theme
     morewaita-icon-theme
+    inputs.matugen.packages.${system}.default
     hyprlock
     bazecor
     sops

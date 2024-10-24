@@ -9,9 +9,6 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # Dream2nix
-    dream2nix.url = "github:nix-community/dream2nix";
-    dream2nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Wayland/Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -26,9 +23,11 @@
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
-    matugen.url = "github:InioX/matugen?ref=v2.2.0";
-    ags.url = "github:Aylur/ags";
-    nix-colors.url = "github:misterio77/nix-colors";
+    matugen = {
+      url = "github:InioX/matugen";
+    };
+    
+    ags.url = "github:lur1an/ags";
 
     lf-icons = {
       url = "github:gokcehan/lf";

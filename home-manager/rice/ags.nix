@@ -13,7 +13,6 @@
     dart-sass
     fd
     brightnessctl
-    inputs.matugen.packages.${system}.default
     asztal
     wf-recorder
     wayshot

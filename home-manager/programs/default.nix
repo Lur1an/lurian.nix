@@ -13,6 +13,7 @@
     appflowy
     telegram-desktop
     obsidian
+    pywal
     spacedrive
     evince
     kdePackages.kolourpaint

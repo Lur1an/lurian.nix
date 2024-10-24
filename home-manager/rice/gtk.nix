@@ -52,10 +52,11 @@ in {
   fonts.fontconfig.enable = true;
 
   gtk = {
-    inherit font cursorTheme iconTheme theme;
+    inherit font cursorTheme iconTheme;
     enable = true;
     gtk4 = {
       extraCss = ''
+        @import 'colors.css';
         window.messagedialog .response-area > button,
         window.dialog.message .dialog-action-area > button,
         .background.csd{
@@ -65,6 +66,7 @@ in {
     };
     gtk3 = {
       extraCss = ''
+        @import 'colors.css';
         headerbar, .titlebar,
         .csd:not(.popup):not(tooltip):not(messagedialog) decoration{
           border-radius: 0;

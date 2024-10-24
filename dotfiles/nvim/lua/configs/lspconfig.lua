@@ -13,7 +13,7 @@ local servers = {
 	"svelte",
 	"html",
 	"cssls",
-	"tsserver",
+	"ts_ls",
 	"ruff",
 	"nixd",
 	"helm_ls",
