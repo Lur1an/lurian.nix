@@ -26,7 +26,7 @@
     matugen = {
       url = "github:InioX/matugen";
     };
-    
+
     ags.url = "github:lur1an/ags";
 
     lf-icons = {

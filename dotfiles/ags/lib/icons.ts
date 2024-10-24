@@ -5,7 +5,7 @@ export const substitutes = {
     "com.raggesilver.BlackBox-symbolic": "terminal-symbolic",
     "org.wezfurlong.wezterm-symbolic": "terminal-symbolic",
     "foot-symbolic": "terminal-symbolic",
-    "firefox-esr-symbolic": "firefox-symbolic",
+    "firefox-beta-symbolic": "firefox-symbolic",
     "audio-headset-bluetooth": "audio-headphones-symbolic",
     "audio-card-analog-usb": "audio-speakers-symbolic",
     "audio-card-analog-pci": "audio-card-symbolic",

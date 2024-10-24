@@ -1,151 +1,64 @@
 import { opt, mkOptions } from 'lib/option';
 import { distro } from 'lib/variables';
-import { icon } from 'lib/utils';
+import { icon, sh } from 'lib/utils';
+import wallpaper from 'service/wallpaper';
 import icons from 'lib/icons';
 
-export type FootConfig = {
-    alpha: string;
+export type Colors = {
     background: string;
-    foreground: string;
-    bright0: string;
-    bright1: string;
-    bright2: string;
-    bright3: string;
-    bright4: string;
-    bright5: string;
-    bright6: string;
-    bright7: string;
-    regular0: string;
-    regular1: string;
-    regular2: string;
-    regular3: string;
-    regular4: string;
-    regular5: string;
-    regular6: string;
-    regular7: string;
-    cursor: {
-        inverseFg: string;
-        bg: string;
-    };
-    selectionForeground: string;
-    selectionBackground: string;
+    error: string;
+    error_container: string;
+    inverse_on_surface: string;
+    inverse_primary: string;
+    inverse_surface: string;
+    on_background: string;
+    on_error: string;
+    on_error_container: string;
+    on_primary: string;
+    on_primary_container: string;
+    on_primary_fixed: string;
+    on_primary_fixed_variant: string;
+    on_secondary: string;
+    on_secondary_container: string;
+    on_secondary_fixed: string;
+    on_secondary_fixed_variant: string;
+    on_surface: string;
+    on_surface_variant: string;
+    on_tertiary: string;
+    on_tertiary_container: string;
+    on_tertiary_fixed: string;
+    on_tertiary_fixed_variant: string;
+    outline: string;
+    outline_variant: string;
+    primary: string;
+    primary_container: string;
+    primary_fixed: string;
+    primary_fixed_dim: string;
+    scrim: string;
+    secondary: string;
+    secondary_container: string;
+    secondary_fixed: string;
+    secondary_fixed_dim: string;
+    shadow: string;
+    surface: string;
+    surface_bright: string;
+    surface_container: string;
+    surface_container_high: string;
+    surface_container_highest: string;
+    surface_container_low: string;
+    surface_container_lowest: string;
+    surface_dim: string;
+    surface_variant: string;
+    tertiary: string;
+    tertiary_container: string;
+    tertiary_fixed: string;
+    tertiary_fixed_dim: string;
 };
 
-export type K9sSkin = {
-    k9s: {
-        body: {
-            bgColor: string;
-            fgColor: string;
-            logoColor: string;
-        };
-        dialog: {
-            bgColor: string;
-            buttonBgColor: string;
-            buttonFgColor: string;
-            buttonFocusBgColor: string;
-            buttonFocusFgColor: string;
-            fgColor: string;
-            fieldFgColor: string;
-            labelFgColor: string;
-        };
-        frame: {
-            border: {
-                fgColor: string;
-                focusColor: string;
-            };
-            crumbs: {
-                activeColor: string;
-                bgColor: string;
-                fgColor: string;
-            };
-            menu: {
-                fgColor: string;
-                keyColor: string;
-                numKeyColor: string;
-            };
-            status: {
-                addColor: string;
-                completedColor: string;
-                errorColor: string;
-                highlightColor: string;
-                killColor: string;
-                modifyColor: string;
-                newColor: string;
-                pendingColor: string;
-            };
-            title: {
-                bgColor: string;
-                counterColor: string;
-                fgColor: string;
-                filterColor: string;
-                highlightColor: string;
-            };
-        };
-        help: {
-            bgColor: string;
-            fgColor: string;
-            keyColor: string;
-            numKeyColor: string;
-            sectionColor: string;
-        };
-        info: {
-            fgColor: string;
-            sectionColor: string;
-        };
-        prompt: {
-            bgColor: string;
-            fgColor: string;
-            suggestColor: string;
-        };
-        views: {
-            charts: {
-                bgColor: string;
-                chartBgColor: string;
-                defaultChartColors: string[];
-                defaultDialColors: string[];
-                dialBgColor: string;
-                resourceColors: {
-                    cpu: string[];
-                    mem: string[];
-                };
-            };
-            logs: {
-                bgColor: string;
-                fgColor: string;
-                indicator: {
-                    bgColor: string;
-                    fgColor: string;
-                    toggleOffColor: string;
-                    toggleOnColor: string;
-                };
-            };
-            table: {
-                bgColor: string;
-                cursorBgColor: string;
-                cursorFgColor: string;
-                fgColor: string;
-                header: {
-                    bgColor: string;
-                    fgColor: string;
-                    sorterColor: string;
-                };
-                markColor: string;
-            };
-            xray: {
-                bgColor: string;
-                cursorColor: string;
-                cursorTextColor: string;
-                fgColor: string;
-                graphicColor: string;
-            };
-            yaml: {
-                colonColor: string;
-                keyColor: string;
-                valueColor: string;
-            };
-        };
-    };
-};
+const defaultColors = JSON.parse(
+    await sh(`matugen --dry-run -j hex image ${wallpaper.wallpaper}`)
+).colors as { light: Colors; dark: Colors };
+console.error('HEY');
 
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),
@@ -154,148 +67,7 @@ const options = mkOptions(OPTIONS, {
         resolution: opt<import('service/wallpaper').Resolution>(1920),
         market: opt<import('service/wallpaper').Market>('random')
     },
-    k9sSkin: opt<K9sSkin>({
-        k9s: {
-            body: {
-                bgColor: 'default',
-                fgColor: '#e4e1e9',
-                logoColor: '#bec2ff'
-            },
-            dialog: {
-                bgColor: '#46464f',
-                buttonBgColor: '#3e4278',
-                buttonFgColor: '#e0e0ff',
-                buttonFocusBgColor: '#c5c4dd',
-                buttonFocusFgColor: '#e1e0f9',
-                fgColor: '#c7c5d0',
-                fieldFgColor: '#e4e1e9',
-                labelFgColor: '#c7c5d0'
-            },
-            frame: {
-                border: {
-                    fgColor: '#91909a',
-                    focusColor: '#bec2ff'
-                },
-                crumbs: {
-                    activeColor: '#e0e0ff',
-                    bgColor: '#3e4278',
-                    fgColor: '#e0e0ff'
-                },
-                menu: {
-                    fgColor: '#e4e1e9',
-                    keyColor: '#bec2ff',
-                    numKeyColor: '#c5c4dd'
-                },
-                status: {
-                    addColor: '#e8b9d5',
-                    completedColor: '#46464f',
-                    errorColor: '#ffb4ab',
-                    highlightColor: '#c5c4dd',
-                    killColor: '#ffb4ab',
-                    modifyColor: '#bec2ff',
-                    newColor: '#bec2ff',
-                    pendingColor: '#c5c4dd'
-                },
-                title: {
-                    bgColor: '#131318',
-                    counterColor: '#bec2ff',
-                    fgColor: '#e4e1e9',
-                    filterColor: '#e8b9d5',
-                    highlightColor: '#c5c4dd'
-                }
-            },
-            help: {
-                bgColor: '#131318',
-                fgColor: '#e4e1e9',
-                keyColor: '#bec2ff',
-                numKeyColor: '#c5c4dd',
-                sectionColor: '#e8b9d5'
-            },
-            info: {
-                fgColor: '#c7c5d0',
-                sectionColor: '#e4e1e9'
-            },
-            prompt: {
-                bgColor: '#1f1f25',
-                fgColor: '#e4e1e9',
-                suggestColor: '#bec2ff'
-            },
-            views: {
-                charts: {
-                    bgColor: '#131318',
-                    chartBgColor: '#1f1f25',
-                    defaultChartColors: ['#bec2ff', '#c5c4dd'],
-                    defaultDialColors: ['#bec2ff', '#c5c4dd'],
-                    dialBgColor: '#1f1f25',
-                    resourceColors: {
-                        cpu: ['#bec2ff', '#e8b9d5'],
-                        mem: ['#c5c4dd', '#ffb4ab']
-                    }
-                },
-                logs: {
-                    bgColor: '#131318',
-                    fgColor: '#e4e1e9',
-                    indicator: {
-                        bgColor: '#1f1f25',
-                        fgColor: '#c7c5d0',
-                        toggleOffColor: '#91909a',
-                        toggleOnColor: '#bec2ff'
-                    }
-                },
-                table: {
-                    bgColor: '#131318',
-                    cursorBgColor: '#46464f',
-                    cursorFgColor: '#c7c5d0',
-                    fgColor: '#e4e1e9',
-                    header: {
-                        bgColor: '#1f1f25',
-                        fgColor: '#c7c5d0',
-                        sorterColor: '#bec2ff'
-                    },
-                    markColor: '#c5c4dd'
-                },
-                xray: {
-                    bgColor: '#131318',
-                    cursorColor: '#46464f',
-                    cursorTextColor: '#c7c5d0',
-                    fgColor: '#e4e1e9',
-                    graphicColor: '#e8b9d5'
-                },
-                yaml: {
-                    colonColor: '#91909a',
-                    keyColor: '#bec2ff',
-                    valueColor: '#e4e1e9'
-                }
-            }
-        }
-    }),
-    foot: opt<FootConfig>({
-        alpha: '.85',
-        background: '#171717',
-        foreground: '#eeeeee',
-        bright0: '#585b70',
-        bright1: '#f38ba8',
-        bright2: '#a6e3a1',
-        bright3: '#f9e2af',
-        bright4: '#89b4fa',
-        bright5: '#f5c2e7',
-        bright6: '#94e2d5',
-        bright7: '#bac2de',
-        regular0: '#211f24',
-        regular1: '#e55f86',
-        regular2: '#a6e3a1',
-        regular3: '#f9e2af',
-        regular4: '#89b4fa',
-        regular5: '#f5c2e7',
-        regular6: '#94e2d5',
-        regular7: '#bac2de',
-        cursor: {
-            inverseFg: '#a6e3a1',
-            bg: '#a6e3a1'
-        },
-        selectionForeground: '#a6e3a1',
-        selectionBackground: '#a6e3a1'
-    }),
+    colors: opt<Colors>(defaultColors.dark),
     theme: {
         dark: {
             primary: {

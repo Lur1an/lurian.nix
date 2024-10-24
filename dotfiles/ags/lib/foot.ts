@@ -1,9 +1,42 @@
-import options from 'options';
+import options, { Colors } from 'options';
 
-const deps = ['foot'];
+const deps = ['colors'];
+
+function generateFootSkin(c: Colors) {
+    return {
+        alpha: '.85',
+        background: c.surface,
+        foreground: c.on_surface,
+
+        regular0: c.surface_container,
+        regular1: c.error,
+        regular2: c.primary,
+        regular3: c.secondary,
+        regular4: c.tertiary,
+        regular5: c.on_background,
+        regular6: c.primary_container,
+        regular7: c.on_primary,
+
+        bright0: c.surface_variant,
+        bright1: c.error_container,
+        bright2: c.on_primary_container,
+        bright3: c.on_secondary_container,
+        bright4: c.on_tertiary_container,
+        bright5: c.inverse_surface,
+        bright6: c.outline,
+        bright7: c.inverse_primary,
+        cursor: {
+            inverseFg: c.on_primary,
+            bg: c.primary
+        },
+        selectionForeground: c.on_primary,
+        selectionBackground: c.primary
+    };
+}
 
 async function setupFoot() {
-    const foot = options.foot.value;
+    const colors = options.colors.value;
+    const foot = generateFootSkin(colors);
     const footConfigFile = `
 [colors]
 alpha=${foot.alpha}
