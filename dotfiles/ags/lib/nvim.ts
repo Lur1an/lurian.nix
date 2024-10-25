@@ -1,4 +1,5 @@
 import options, { Colors } from 'options';
+import { sh } from './utils';
 
 const deps = ['colors'];
 
@@ -6,12 +7,15 @@ async function setupNvimTheme() {
     const colors = options.colors.value;
     const skin: string = generateNvimTheme(colors);
     try {
+        await sh(`mkdir -p /home/lurian/lurian.nix/dotfiles/nvim/lua/themes`);
+        await sh ("touch /home/lurian/lurian.nix/dotfiles/nvim/lua/themes/auto.lua");
         await Utils.writeFile(
             skin,
             '/home/lurian/lurian.nix/dotfiles/nvim/lua/themes/auto.lua'
         );
-        //const xdg_runtime_dir = "/run/user/1000";
-        //await sh(`ls ${xdg_runtime_dir}/nvim.* 1>/dev/null 2>&1 && for addr in ${xdg_runtime_dir}/nvim.*; do nvim --server $addr --remote-send ':lua require("nvchad.utils").reload("themes.auto") <cr>'; done`);
+        //for (const pid of pids) {
+        //    await sh(`nvim --server ${xdg_runtime_dir}/nvim.${pid}.0 --remote-send ':lua require("nvchad.utils").reload("themes.auto") <cr>'`);
+        //}
     } catch (error) {
         console.error(`Failed to serialize and write k9s skin: ${error}`);
     }
