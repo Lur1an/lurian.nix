@@ -151,7 +151,7 @@
   services.udev.packages = [pkgs.bazecor];
   environment.systemPackages = with pkgs; [
     nixd
-    vim
+    neovim
     wget
     killall
     curl

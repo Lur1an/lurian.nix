@@ -4,7 +4,7 @@
   writeShellScript,
   system,
   stdenv,
-  cage,
+  neovim,
   swww,
   esbuild,
   dart-sass,
@@ -33,6 +33,7 @@
     which
     dart-sass
     fd
+    neovim
     fzf
     brightnessctl
     swww

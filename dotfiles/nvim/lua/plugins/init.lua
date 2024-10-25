@@ -203,6 +203,9 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		opts = {
+      window = {
+        width = 150
+      },
 			plugins = {
 				tmux = { enabled = true },
 			},

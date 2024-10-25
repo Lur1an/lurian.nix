@@ -4,76 +4,79 @@ local M = {}
 local lighten = require("base46.colors").change_hex_lightness
 
 M.base_30 = {
-  white = '#dee3e6',
-  black = '#0f1416',
-  darker_black = lighten('#0f1416', -3),
-  black2 = lighten('#0f1416', 6),
-  one_bg = lighten('#0f1416', 10),
-  one_bg2 = lighten('#0f1416', 16),
-  one_bg3 = lighten('#0f1416', 22),
+  white = '#dde4e3',
+  black = '#0e1514',
+  darker_black = lighten('#0e1514', -3),
+  black2 = lighten('#0e1514', 6),
+  one_bg = lighten('#0e1514', 10),
+  one_bg2 = lighten('#0e1514', 16),
+  one_bg3 = lighten('#0e1514', 22),
 
-  grey = '#40484b',
-  grey_fg = lighten('#40484b', -10),
-  grey_fg2 = lighten('#40484b', -20),
-  light_grey = '#899296',
+  grey = '#3f4948',
+  grey_fg = lighten('#3f4948', -10),
+  grey_fg2 = lighten('#3f4948', -20),
+  light_grey = '#889392',
 
   red = '#ffb4ab',
   baby_pink = lighten('#ffb4ab', 10),
-  pink = '#c1c4eb',
+  pink = '#b2c8e8',
 
-  line = '#899296',
+  line = '#889392',
 
-  green = '#b3cad4',
-  vibrant_green = lighten('#b3cad4', 10),
+  green = '#b0cccb',
+  vibrant_green = lighten('#b0cccb', 10),
 
-  blue = '#86d1ea',
-  nord_blue = lighten('#86d1ea', 10),
+  blue = '#80d5d3',
+  nord_blue = lighten('#80d5d3', 10),
 
-  yellow = lighten('#c1c4eb', 10),
-  sun = lighten('#c1c4eb', 20),
+  yellow = lighten('#b2c8e8', 10),
+  sun = lighten('#b2c8e8', 20),
 
-  purple = '#c1c4eb',
-  dark_purple = lighten('#c1c4eb', -10),
+  purple = '#b2c8e8',
+  dark_purple = lighten('#b2c8e8', -10),
 
-  teal = '#344a52',
+  teal = '#324b4b',
   orange = '#ffb4ab',
-  cyan = '#b3cad4',
+  cyan = '#b0cccb',
 
-  statusline_bg = lighten('#0f1416', 6),
-  pmenu_bg = '#40484b',
-  folder_bg = '#004e5f',
+  statusline_bg = lighten('#0e1514', 6),
+  pmenu_bg = '#3f4948',
+  folder_bg = '#00504f',
 }
 
 M.base_16 = {
-  base00 = '#0f1416',                   -- Default Background
-  base01 = lighten('#0f1416', 5),       -- Lighter Background (status bars)
-  base02 = '#40484b',              -- Selection Background
-  base03 = '#899296',                      -- Comments, Invisibles, Line Highlighting
-  base04 = lighten('#dee3e6', -20),  -- Dark Foreground (status bars)
-  base05 = '#dee3e6',                -- Default Foreground, Caret, Delimiters, Operators
-  base06 = lighten('#dee3e6', 20),   -- Light Foreground (Not often used)
-  base07 = '#343a3c',               -- Light Background (Not often used)
-  base08 = '#ffb4ab',                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  base09 = '#b3cad4',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
-  base0A = '#c1c4eb',                     -- Classes, Markup Bold, Search Text Background
-  base0B = '#86d1ea',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
-  base0C = '#b3cad4',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
-  base0D = '#86d1ea',                      -- Functions, Methods, Attribute IDs, Headings
-  base0E = '#c1c4eb',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
-  base0F = '#ffb4ab',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+  base00 = '#0e1514',                   -- Default Background
+  base01 = lighten('#3f4948', 0),       -- Lighter Background (status bars)
+  base02 = '#324b4b',              -- Selection Background
+  base03 = lighten('#889392', 0),           -- Comments, Invisibles, Line Highlighting
+  base04 = lighten('#bec9c8', 0),  -- Dark Foreground (status bars)
+  base05 = '#dde4e3',                -- Default Foreground, Caret, Delimiters, Operators
+  base06 = lighten('#dde4e3', 0),   -- Light Foreground (Not often used)
+  base07 = '#0e1514',               -- Light Background (Not often used)
+  base08 = lighten('#ffb4ab', -10),                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  base09 = '#b2c8e8',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  base0A = '#80d5d3',                     -- Classes, Markup Bold, Search Text Background
+  base0B = '#d2e4ff',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
+  base0C = '#334863',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
+  base0D = lighten('#00504f', 15),                      -- Functions, Methods, Attribute IDs, Headings
+  base0E = '#9cf1ef',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+  base0F = '#dde4e3',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 }
 
 M.type = "dark"  -- or "light" depending on your theme
 
 M.polish_hl = {
-  Operator = {
-    fg = M.base_30.nord_blue,
+  defaults = {
+    Comment = {
+      italic = true,
+      fg = M.base_16.base03,
+    },
   },
-
-  ["@operator"] = {
-    fg = M.base_30.nord_blue,
-  },
+  treesitter = {
+    ["@comment"] = {
+      fg = M.base_16.base03,
+    },
+  }
 }
 
 return M
-    

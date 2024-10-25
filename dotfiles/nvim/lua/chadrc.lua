@@ -1,15 +1,15 @@
 local M = {}
 
-local transparent = true
+local transparent = false
 
 M.base46 = {
-	theme = "everblush",
+	theme = "auto",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
 
 M.ui = {
-	theme_toggle = { "everblush", "one_light" },
+	theme_toggle = { "auto", "one_light" },
 	term = {
 		size = 10,
 	},

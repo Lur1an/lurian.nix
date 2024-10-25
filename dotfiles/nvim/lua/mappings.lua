@@ -134,8 +134,11 @@ map("n", "<leader>zm", function()
 	zen.toggle()
 end, { desc = "zenmode toggle" })
 
--- source themes
+-- theme related stuff
 map("n", "<leader>ct", function()
-	dofile(vim.g.base46_cache .. "defaults")
-	dofile(vim.g.base46_cache .. "statusline")
+	require("nvchad.utils").reload("themes.auto")
 end, { desc = "source themes" })
+
+map("n", "<leader>tt", function()
+	require("base46").toggle_transparency()
+end, { desc = "toggle trasparency" })

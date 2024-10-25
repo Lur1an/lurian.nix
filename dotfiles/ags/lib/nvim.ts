@@ -1,7 +1,7 @@
 import options, { Colors } from 'options';
+import { sh } from './utils';
 
 const deps = ['colors'];
-
 
 async function setupNvimTheme() {
     const colors = options.colors.value;
@@ -11,7 +11,8 @@ async function setupNvimTheme() {
             skin,
             '/home/lurian/lurian.nix/dotfiles/nvim/lua/themes/auto.lua'
         );
-        console.info('Updated discord skin');
+        //const xdg_runtime_dir = "/run/user/1000";
+        //await sh(`ls ${xdg_runtime_dir}/nvim.* 1>/dev/null 2>&1 && for addr in ${xdg_runtime_dir}/nvim.*; do nvim --server $addr --remote-send ':lua require("nvchad.utils").reload("themes.auto") <cr>'; done`);
     } catch (error) {
         console.error(`Failed to serialize and write k9s skin: ${error}`);
     }
@@ -71,35 +72,38 @@ M.base_30 = {
 
 M.base_16 = {
   base00 = '${colors.background}',                   -- Default Background
-  base01 = lighten('${colors.background}', 5),       -- Lighter Background (status bars)
-  base02 = '${colors.surface_variant}',              -- Selection Background
-  base03 = '${colors.outline}',                      -- Comments, Invisibles, Line Highlighting
-  base04 = lighten('${colors.on_background}', -20),  -- Dark Foreground (status bars)
+  base01 = lighten('${colors.surface_variant}', 0),       -- Lighter Background (status bars)
+  base02 = '${colors.secondary_container}',              -- Selection Background
+  base03 = lighten('${colors.outline}', 0),           -- Comments, Invisibles, Line Highlighting
+  base04 = lighten('${colors.on_surface_variant}', 0),  -- Dark Foreground (status bars)
   base05 = '${colors.on_background}',                -- Default Foreground, Caret, Delimiters, Operators
-  base06 = lighten('${colors.on_background}', 20),   -- Light Foreground (Not often used)
-  base07 = '${colors.surface_bright}',               -- Light Background (Not often used)
-  base08 = '${colors.error}',                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  base09 = '${colors.secondary}',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
-  base0A = '${colors.tertiary}',                     -- Classes, Markup Bold, Search Text Background
-  base0B = '${colors.primary}',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
-  base0C = '${colors.secondary}',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
-  base0D = '${colors.primary}',                      -- Functions, Methods, Attribute IDs, Headings
-  base0E = '${colors.tertiary}',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
-  base0F = '${colors.error}',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+  base06 = lighten('${colors.on_surface}', 0),   -- Light Foreground (Not often used)
+  base07 = '${colors.surface}',               -- Light Background (Not often used)
+  base08 = lighten('${colors.error}', -10),                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  base09 = '${colors.tertiary}',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  base0A = '${colors.primary}',                     -- Classes, Markup Bold, Search Text Background
+  base0B = '${colors.tertiary_fixed}',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
+  base0C = '${colors.tertiary_container}',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
+  base0D = lighten('${colors.primary_container}', 15),                      -- Functions, Methods, Attribute IDs, Headings
+  base0E = '${colors.on_primary_container}',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+  base0F = '${colors.inverse_surface}',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 }
 
 M.type = "dark"  -- or "light" depending on your theme
 
 M.polish_hl = {
-  Operator = {
-    fg = M.base_30.nord_blue,
+  defaults = {
+    Comment = {
+      italic = true,
+      fg = M.base_16.base03,
+    },
   },
-
-  ["@operator"] = {
-    fg = M.base_30.nord_blue,
-  },
+  treesitter = {
+    ["@comment"] = {
+      fg = M.base_16.base03,
+    },
+  }
 }
 
-return M
-    `;
+return M`;
 }
