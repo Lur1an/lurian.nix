@@ -1,4 +1,4 @@
-import options, { Colors } from 'options';
+import options, { MaterialColors } from 'options';
 
 const deps = ['colors'];
 
@@ -22,7 +22,7 @@ export default function init() {
     setupDiscordCSS();
 }
 
-function generateDiscordCSS(colors: Colors): string {
+function generateDiscordCSS(colors: MaterialColors): string {
     return `
         @import url('https://refact0r.github.io/midnight-discord/midnight.css');
 

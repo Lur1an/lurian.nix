@@ -16,6 +16,8 @@
   wf-recorder,
   wl-clipboard,
   wayshot,
+  wallust,
+  pywal,
   swappy,
   hyprpicker,
   pavucontrol,
@@ -38,6 +40,8 @@
     brightnessctl
     swww
     inputs.matugen.packages.${system}.default
+    wallust
+    pywal
     slurp
     wf-recorder
     wl-clipboard

@@ -1,9 +1,9 @@
-import options, { Colors } from 'options';
+import options, { MaterialColors } from 'options';
 import { sh } from './utils';
 
 const deps = ['colors'];
 
-function generateKittyColors(colors: Colors): string {
+function generateKittyColors(colors: MaterialColors): string {
     return `
 cursor ${colors.on_surface}
 cursor_text_color ${colors.on_surface_variant}

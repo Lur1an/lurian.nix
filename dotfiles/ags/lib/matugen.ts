@@ -1,5 +1,5 @@
 import wallpaper from 'service/wallpaper';
-import options, { Colors, FootConfig, K9sSkin } from 'options';
+import options, { MaterialColors } from 'options';
 import { sh, dependencies } from './utils';
 
 export default function init() {
@@ -19,7 +19,7 @@ export async function matugen(
     if (!options.autotheme.value || !dependencies('matugen')) return;
 
     const colors = await sh(`matugen --dry-run -j hex ${type} ${arg}`);
-    const c = JSON.parse(colors).colors as { light: Colors; dark: Colors };
+    const c = JSON.parse(colors).colors as { light: MaterialColors; dark: MaterialColors };
     const { dark, light } = options.theme;
     animate(
         () => {

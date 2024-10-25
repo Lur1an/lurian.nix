@@ -1,4 +1,8 @@
-{pkgs, custom, ...}: let
+{
+  pkgs,
+  custom,
+  ...
+}: let
 in {
   home.packages = with pkgs; [
     kitty

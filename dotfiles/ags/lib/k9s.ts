@@ -1,9 +1,9 @@
-import options, { Colors } from 'options';
+import options, { MaterialColors } from 'options';
 import { dump } from 'js-yaml';
 
 const deps = ['colors'];
 
-function generateK9sSkin(c: Colors) {
+function generateK9sSkin(c: MaterialColors) {
     return {
         k9s: {
             body: {

@@ -15,6 +15,7 @@ in {
   imports = [
     ./rice
     ./shell
+    ./wal
     ./wallpapers.nix
     ./fonts.nix
     ./packages.nix
@@ -26,13 +27,15 @@ in {
 
   gtk.gtk3.bookmarks = let
     home = config.home.homeDirectory;
-  in [
-    "file://${home}/Documents"
-    "file://${home}/Downloads"
-    "file://${home}/Pictures"
-    "file://${home}/wallpapers"
-    "file://${home}/Videos"
-  ] ++ machineConfig.bookmarks;
+  in
+    [
+      "file://${home}/Documents"
+      "file://${home}/Downloads"
+      "file://${home}/Pictures"
+      "file://${home}/wallpapers"
+      "file://${home}/Videos"
+    ]
+    ++ machineConfig.bookmarks;
 
   nixpkgs = {
     overlays = [

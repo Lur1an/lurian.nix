@@ -1,4 +1,6 @@
 __pychache__
 *.aider*
 .supermaven
-dotfiles/nvim/lua/themes/auto.lua
+dotfiles/nvim/lua/themes/matugen.lua
+dotfiles/nvim/lua/themes/wal-dark.lua
+dotfiles/nvim/lua/themes/wal-light.lua

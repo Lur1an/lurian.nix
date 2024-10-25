@@ -4,7 +4,7 @@ import { icon, sh } from 'lib/utils';
 import wallpaper from 'service/wallpaper';
 import icons from 'lib/icons';
 
-export type Colors = {
+export type MaterialColors = {
     background: string;
     error: string;
     error_container: string;
@@ -57,7 +57,7 @@ export type Colors = {
 
 const defaultColors = JSON.parse(
     await sh(`matugen --dry-run -j hex image ${wallpaper.wallpaper}`)
-).colors as { light: Colors; dark: Colors };
+).colors as { light: MaterialColors; dark: MaterialColors };
 
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),
@@ -66,7 +66,7 @@ const options = mkOptions(OPTIONS, {
         resolution: opt<import('service/wallpaper').Resolution>(1920),
         market: opt<import('service/wallpaper').Market>('random')
     },
-    colors: opt<Colors>(defaultColors.dark),
+    colors: opt<MaterialColors>(defaultColors.dark),
     theme: {
         dark: {
             primary: {

@@ -81,6 +81,7 @@
 
       eval "$(direnv hook zsh)"
       eval "$(uv generate-shell-completion zsh)"
+      cat ~/.cache/wal/sequences
     '';
 
     oh-my-zsh = {

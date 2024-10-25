@@ -1,5 +1,5 @@
 import Gio from 'gi://Gio';
-import options, { Colors } from 'options';
+import options, { MaterialColors } from 'options';
 
 const settings = new Gio.Settings({
     schema: 'org.gnome.desktop.interface'
@@ -12,7 +12,7 @@ function gtk() {
 
 const deps = ['colors'];
 
-function generateGtkColorsCSS(c: Colors) {
+function generateGtkColorsCSS(c: MaterialColors) {
     return `
 @define-color accent_color ${c.primary_fixed_dim};
 @define-color accent_fg_color ${c.on_primary_fixed};

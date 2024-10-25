@@ -1,9 +1,9 @@
-import options, { Colors } from 'options';
+import options, { MaterialColors } from 'options';
 import { sh } from './utils';
 
 const deps = ['colors'];
 
-function generateFootSkin(c: Colors) {
+function generateFootSkin(c: MaterialColors) {
     return {
         alpha: '.85',
         background: c.background,

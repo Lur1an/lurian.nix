@@ -7,7 +7,7 @@ in
     "${mod}, M, exit"
     "${mod}, B, exec, firefox-beta"
     "${mod}, O, exec, obsidian"
-    "${mod}, T, exec, kitty"
+    "${mod}, T, exec, foot"
     "${mod}, F, exec, nautilus"
     "${mod} SHIFT, L, movewindow, r"
     "${mod} SHIFT, H, movewindow, l"
