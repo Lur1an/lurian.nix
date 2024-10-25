@@ -67,7 +67,7 @@ M.base_30 = {
 
   statusline_bg = lighten('${colors.background}', 6),
   pmenu_bg = '${colors.surface_variant}',
-  folder_bg = '${colors.primary_container}',
+  folder_bg = lighten('${colors.primary_fixed_dim}', 0),
 }
 
 M.base_16 = {
