@@ -1,5 +1,4 @@
 import options, { Colors } from 'options';
-import { sh } from './utils';
 
 const deps = ['colors'];
 
@@ -71,20 +70,20 @@ M.base_30 = {
 }
 
 M.base_16 = {
-  base00 = '${colors.background}',                   -- Default Background
+  base00 = '${colors.surface}',                   -- Default Background
   base01 = lighten('${colors.surface_variant}', 0),       -- Lighter Background (status bars)
-  base02 = '${colors.secondary_container}',              -- Selection Background
+  base02 = '${colors.secondary_fixed_dim}',              -- Selection Background
   base03 = lighten('${colors.outline}', 0),           -- Comments, Invisibles, Line Highlighting
   base04 = lighten('${colors.on_surface_variant}', 0),  -- Dark Foreground (status bars)
-  base05 = '${colors.on_background}',                -- Default Foreground, Caret, Delimiters, Operators
+  base05 = '${colors.on_surface}',                -- Default Foreground, Caret, Delimiters, Operators
   base06 = lighten('${colors.on_surface}', 0),   -- Light Foreground (Not often used)
   base07 = '${colors.surface}',               -- Light Background (Not often used)
   base08 = lighten('${colors.error}', -10),                        -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
   base09 = '${colors.tertiary}',                    -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
   base0A = '${colors.primary}',                     -- Classes, Markup Bold, Search Text Background
   base0B = '${colors.tertiary_fixed}',                      -- Strings, Inherited Class, Markup Code, Diff Inserted
-  base0C = '${colors.tertiary_container}',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
-  base0D = lighten('${colors.primary_container}', 15),                      -- Functions, Methods, Attribute IDs, Headings
+  base0C = '${colors.primary_fixed_dim}',                    -- Support, Regular Expressions, Escape Characters, Markup Quotes
+  base0D = lighten('${colors.primary_container}', 20),                      -- Functions, Methods, Attribute IDs, Headings
   base0E = '${colors.on_primary_container}',                     -- Keywords, Storage, Selector, Markup Italic, Diff Changed
   base0F = '${colors.inverse_surface}',                        -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 }
@@ -98,9 +97,17 @@ M.polish_hl = {
       fg = M.base_16.base03,
     },
   },
+  Syntax = {
+    String = {
+      fg = '${colors.on_tertiary_container}'
+    }
+  },
   treesitter = {
     ["@comment"] = {
       fg = M.base_16.base03,
+    },
+    ["@string"] = {
+      fg = '${colors.on_tertiary_container}'
     },
   }
 }

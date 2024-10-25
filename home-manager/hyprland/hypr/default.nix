@@ -116,7 +116,7 @@ in {
         blur = {
           enabled = true;
           size = 8;
-          passes = 3;
+          passes = 1;
           new_optimizations = false; # SET true if LAGGING
           noise = 0.01;
           contrast = 0.9;
