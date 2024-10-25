@@ -136,9 +136,7 @@ end, { desc = "zenmode toggle" })
 
 -- theme related stuff
 map("n", "<leader>ct", function()
-	require("nvchad.utils").reload("themes.matugen")
-	require("nvchad.utils").reload("themes.wal-dark")
-	require("nvchad.utils").reload("themes.wal-light")
+	require("nvchad.utils").reload("themes")
 end, { desc = "source themes" })
 
 map("n", "<leader>tt", function()

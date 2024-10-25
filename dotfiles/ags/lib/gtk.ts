@@ -38,9 +38,8 @@ async function gtkColors() {
     const colors = options.colors.value;
     const css = generateGtkColorsCSS(colors);
     try {
-        await Utils.writeFile(css, '/home/lurian/.config/gtk-4.0/colors.css');
-        await Utils.writeFile(css, '/home/lurian/.config/gtk-3.0/colors.css');
-        console.info('Updated gtk colors');
+        await Utils.writeFile(css, '/home/lurian/.config/gtk-4.0/matugen.css');
+        await Utils.writeFile(css, '/home/lurian/.config/gtk-3.0/matugen.css');
     } catch (error) {
         console.error(`Failed to serialize and write gtk colors: ${error}`);
     }

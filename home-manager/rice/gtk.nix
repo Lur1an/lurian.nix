@@ -9,10 +9,6 @@
       "Mononoki"
     ];
   };
-  theme = {
-    name = "Dracula";
-    package = pkgs.dracula-theme;
-  };
   font = {
     name = "Ubuntu Nerd Font";
     package = nerdfonts;
@@ -56,7 +52,7 @@ in {
     enable = true;
     gtk4 = {
       extraCss = ''
-        @import 'colors.css';
+        @import 'matugen.css';
         window.messagedialog .response-area > button,
         window.dialog.message .dialog-action-area > button,
         .background.csd{
@@ -66,7 +62,7 @@ in {
     };
     gtk3 = {
       extraCss = ''
-        @import 'colors.css';
+        @import 'matugen.css';
         headerbar, .titlebar,
         .csd:not(.popup):not(tooltip):not(messagedialog) decoration{
           border-radius: 0;

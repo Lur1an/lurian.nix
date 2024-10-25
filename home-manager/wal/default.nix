@@ -2,11 +2,9 @@
   pkgs,
   config,
   ...
-}: 
-let
+}: let
   linkWal = f: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/${f}";
-in
-{
+in {
   home.packages = with pkgs; [
     pywal
   ];

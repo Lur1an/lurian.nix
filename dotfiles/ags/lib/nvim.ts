@@ -5,7 +5,7 @@ const deps = ['colors'];
 
 async function setupNvimTheme() {
     const colors = options.colors.value;
-    const skin: string = generateNvimTheme(colors);
+    const skin: string = generateNvimMaterialTheme(colors);
     try {
         await sh(`mkdir -p /home/lurian/lurian.nix/dotfiles/nvim/lua/themes`);
         await sh ("touch /home/lurian/lurian.nix/dotfiles/nvim/lua/themes/matugen.lua");
@@ -23,7 +23,7 @@ export default function init() {
     setupNvimTheme();
 }
 
-function generateNvimTheme(colors: MaterialColors): string {
+function generateNvimMaterialTheme(colors: MaterialColors): string {
     return `
 local M = {}
 
