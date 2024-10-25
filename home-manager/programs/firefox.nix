@@ -14,22 +14,6 @@
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
-      userChrome = ''
-                :root {
-                  --tabpanel-background-color: transparent !important;
-                  background: transparent !important;
-                }
-
-        #navigator-toolbox, #nav-bar {
-                  background-color: transparent !important;
-                }
-
-                vbox#titlebar {
-                  * {
-                      background-color: transparent !important;
-                  }
-                }
-      '';
     };
     policies = {
       NoDefaultBookmarks = true;

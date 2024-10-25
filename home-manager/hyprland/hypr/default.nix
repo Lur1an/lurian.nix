@@ -165,7 +165,8 @@ in {
         "telegram-desktop"
         "firefox-beta"
         "exec systemctl start polkit-gnome-authentication-agent-1"
-        # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        "pywalfox install"
+        "pywalfox start"
       ];
     };
     extraConfig = ''

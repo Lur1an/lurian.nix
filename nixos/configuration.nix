@@ -160,6 +160,7 @@
     morewaita-icon-theme
     inputs.matugen.packages.${system}.default
     hyprlock
+    pywalfox-native
     bazecor
     sops
     sysstat
