@@ -5,7 +5,7 @@ in
   [
     "${mod}, Q, killactive"
     "${mod}, M, exit"
-    "${mod}, B, exec, firefox-beta"
+    "${mod}, B, exec, firefox-esr"
     "${mod}, O, exec, obsidian"
     "${mod}, T, exec, foot"
     "${mod}, F, exec, nautilus"

@@ -23,8 +23,18 @@
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     matugen = {
       url = "github:InioX/matugen";
+    };
+
+    rycee-nurpkgs = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ags.url = "github:lur1an/ags";
@@ -44,9 +54,6 @@
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
-      "i686-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
       "x86_64-linux"
     ];
     # This is a function that generates an attribute by calling a function you
@@ -66,9 +73,6 @@
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs outputs;};
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'

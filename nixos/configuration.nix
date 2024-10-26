@@ -12,20 +12,18 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hyprland.nix
+    ./nginx-darkreader.nix
     ./polkit.nix
   ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = import ./ld.nix {inherit pkgs;};
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       permittedInsecurePackages = [
         "nix-2.16.2"
@@ -67,7 +65,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   home-manager = {
+    backupFileExtension = ".backup";
     useUserPackages = true;
+    verbose = true;
     useGlobalPkgs = false;
     extraSpecialArgs = {inherit inputs outputs machineConfig;};
     users = {

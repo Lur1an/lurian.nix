@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./discord.nix
-    ./firefox.nix
+    ./firefox
     ./minecraft.nix
     ./obs.nix
     ./chrome.nix

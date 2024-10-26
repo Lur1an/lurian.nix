@@ -3,13 +3,13 @@ local M = {}
 local transparent = true
 
 M.base46 = {
-	theme = "catppuccin",
+	theme = "matugen",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
 
 M.ui = {
-	theme_toggle = { "catppuccin", "catppuccin" },
+	theme_toggle = { "matugen", "matugen" },
 	term = {
 		size = 10,
 	},

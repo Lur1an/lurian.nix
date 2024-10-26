@@ -15,8 +15,8 @@
         rust-rover = prev.jetbrains.rust-rover.overrideAttrs (oldAttrs: {
           version = "2024.1.3";
           src = prev.fetchurl {
-            url = "https://download-cdn.jetbrains.com/rustrover/RustRover-2024.1.3.tar.gz";
-            sha256 = "0hfhxrlprzhlgw7xhrfkl31janz85avfbn1ilbcwbpsvldpvpad3";
+            url = "https://download-cdn.jetbrains.com/rustrover/RustRover-2024.2.tar.gz";
+            sha256 = "U8B2gV4lfpF6Wj26U6WZDgeag7aRldV6LAxy+2Gudug=";
           };
         });
       };
