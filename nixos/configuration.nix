@@ -65,7 +65,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   home-manager = {
-    backupFileExtension = ".backup";
+    backupFileExtension = "hm-bak";
     useUserPackages = true;
     verbose = true;
     useGlobalPkgs = false;

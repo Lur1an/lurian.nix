@@ -1,7 +1,4 @@
 {{
-    "schemeVersion": 2,
-    "enabled": true,
-    "fetchNews": true,
     "theme": {{
         "mode": 1,
         "brightness": 100,
@@ -23,34 +20,5 @@
         "lightColorScheme": "Default",
         "darkColorScheme": "Default",
         "immediateModify": false
-    }},
-    "presets": [],
-    "customThemes": [],
-    "enabledByDefault": true,
-    "enabledFor": [],
-    "disabledFor": [],
-    "changeBrowserTheme": false,
-    "syncSettings": true,
-    "syncSitesFixes": true,
-    "automation": {{
-      "enabled": false,
-      "mode": "",
-      "behavior": "OnOff"
-    }},
-    "time": {{
-      "activation": "18:00",
-      "deactivation": "9:00"
-    }},
-    "location": {{
-      "latitude": null,
-      "longitude": null
-    }},
-    "previewNewDesign": true,
-    "enableForPDF": true,
-    "enableForProtectedPages": true,
-    "enableContextMenus": false,
-    "detectDarkTheme": false,
-    "displayedNews": [
-  "thanks-2023"
-    ]
+    }}
 }}

@@ -19,6 +19,7 @@ in {
     package = inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin;
     profiles.default = {
       search = {
+        default = "DuckDuckGo";
         engines = {
           "Nix Packages" = {
             urls = [
@@ -28,6 +29,10 @@ in {
                   {
                     name = "query";
                     value = "{searchTerms}";
+                  }
+                  {
+                    name = "channel";
+                    value = "unstable";
                   }
                 ];
               }
@@ -45,10 +50,29 @@ in {
                     name = "query";
                     value = "{searchTerms}";
                   }
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
                 ];
               }
             ];
           };
+          "NixOS Wiki" = {
+            urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
+            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = ["@nw"];
+          };
+          "YouTube" = {
+            urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
+            definedAliases = ["@yt"];
+          };
+          "Spotify" = {
+            urls = [{template = "https://open.spotify.com/search/{searchTerms}";}];
+            definedAliases = ["@sp"];
+          };
+          "Wikipedia (en)".metaData.alias = "@wiki";
         };
       };
       settings = {

@@ -15,6 +15,7 @@
     extraEnv = [];
     bookmarks = [
       "file:///mnt/Shared"
+      "file:///mnt/Shared/Videos/Vpapers"
       "file:///mnt/Backup"
     ];
   };
