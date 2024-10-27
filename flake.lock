@@ -199,6 +199,27 @@
         "type": "github"
       }
     },
+    "hypr-darkwindow": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nix-filter": "nix-filter"
+      },
+      "locked": {
+        "lastModified": 1729227619,
+        "narHash": "sha256-6l7rNESQY5LeS6BSMBTk7quSqDkgPSf7yFD4yiST3cw=",
+        "owner": "alexhulbert",
+        "repo": "Hyprchroma",
+        "rev": "a741598975d9a10bb1cbed44470ca8d68dfd9277",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexhulbert",
+        "repo": "Hyprchroma",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -611,6 +632,21 @@
         "type": "github"
       }
     },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1710156097,
+        "narHash": "sha256-1Wvk8UP7PXdf8bCCaEoMnOT1qe5/Duqgj+rL8sRQsSM=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "3342559a24e85fc164b295c3444e8a139924675b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
     "nix-ld": {
       "inputs": {
         "nixpkgs": [
@@ -755,6 +791,7 @@
         "ags": "ags",
         "firefox": "firefox",
         "home-manager": "home-manager",
+        "hypr-darkwindow": "hypr-darkwindow",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
         "hyprland-plugins": "hyprland-plugins",

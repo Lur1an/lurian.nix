@@ -18,6 +18,7 @@ in
     "${mod}, L, movefocus, r"
     "${mod}, K, movefocus, u"
     "${mod}, J, movefocus, d"
+    "${mod}, C, togglechromakey"
 
     "${mod}, R, submap, resize"
 

@@ -55,9 +55,10 @@
         sha256 = "05z8pkl1vmaiy7gwjd9ad2shmdlbfr8q25prdasyzf0bii34ric5";
       };
     };
+    # Custom darkreader
     "darkreader" = {
-      addonId = "addon@darkreader.org";
-      src = ./darkreader-firefox.xpi;
+      addonId = "darkreader@alexhulbert.com";
+      src = ./darkreader.xpi;
     };
   };
 in

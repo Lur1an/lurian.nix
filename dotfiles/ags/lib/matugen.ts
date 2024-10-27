@@ -21,6 +21,7 @@ export async function matugen(
     const colors = await sh(`matugen --dry-run -j hex ${type} ${arg}`);
     await sh (`rm -rf /home/lurian/.cache/wal`);
     await sh(`wal -i ${arg} -n`);
+    await sh(`pywalfox update`);
     const c = JSON.parse(colors).colors as { light: MaterialColors; dark: MaterialColors };
     const { dark, light } = options.theme;
     animate(

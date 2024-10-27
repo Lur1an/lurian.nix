@@ -10,14 +10,20 @@ in {
     sessionVariables.BROWSER = "firefox";
   };
 
-  programs.librewolf = {
-    enable = true;
-  };
+  imports = [
+    ./styling
+  ];
 
   programs.firefox = {
     enable = true;
-    package = inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin;
+    # package = inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin;
+    package = pkgs.firefox-esr;
     profiles.default = {
+      userChrome = ''
+        @import url('blurredfox/userChrome.css');
+        @import url('userContent.css');
+        @import url('layout.css');
+      '';
       search = {
         default = "DuckDuckGo";
         engines = {
@@ -79,9 +85,17 @@ in {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "xpinstall.signatures.required" = false;
         "extensions.langpacks.signatures.required" = false;
-        "sidebar.revamp" = true;
+        "sidebar.revamp" = false;
+        "sidebar.verticalTabs" = false;
         "browser.bookmarks.addedImportButton" = false;
-        "sidebar.verticalTabs" = true;
+        "layers.acceleration.force-enabled" = true;
+        "apz.gtk.kinetic_scroll.enabled" = false;
+        "gfx.webrender.all" = true;
+        "gfx.webrender.enabled" = true;
+        "layout.css.backdrop-filter.enabled" = true;
+        "svg.context-properties.content.enabled" = true;
+        "dom.w3c_touch_events.enabled" = 1;
+        "widget.use-xdg-desktop-portal" = true;
         "browser.aboutConfig.showWarning" = false;
       };
       extensions =

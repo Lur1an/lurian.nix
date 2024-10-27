@@ -38,8 +38,9 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+    plugins = with inputs; [
+      hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+      hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
     ];
     xwayland.enable = true;
     settings = {
@@ -121,6 +122,7 @@ in {
           noise = 0.01;
           contrast = 0.9;
           brightness = 0.8;
+          xray = true;
           popups = true;
         };
       };
@@ -165,7 +167,6 @@ in {
         "telegram-desktop"
         "firefox-beta"
         "exec systemctl start polkit-gnome-authentication-agent-1"
-        "pywalfox install"
         "pywalfox start"
       ];
     };

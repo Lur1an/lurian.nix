@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   writeShellScript,
+  pywalfox-native,
   system,
   stdenv,
   neovim,
@@ -40,6 +41,7 @@
     brightnessctl
     swww
     inputs.matugen.packages.${system}.default
+    pywalfox-native
     wallust
     pywal
     slurp

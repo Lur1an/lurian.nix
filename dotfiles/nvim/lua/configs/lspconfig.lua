@@ -50,6 +50,7 @@ else
 					enableTypeIgnoreComments = true,
 					diagnosticSeverityOverrides = {
 						reportAny = false,
+            reportUnknownMemberType = false,
 						reportMissingTypeStubs = false,
 						reportUntypedFunctionDecorator = false,
 						reportUnusedCallResult = false,

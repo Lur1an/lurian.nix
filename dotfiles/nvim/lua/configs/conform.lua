@@ -13,6 +13,7 @@ local options = {
 		typescript = { "prettier" },
 		svelte = { "prettier" },
 		html = { "prettier" },
+    css = { "prettier" },
 		yaml = { "prettier" },
 		json = { "prettier" },
 		javascript = { "prettier" },
