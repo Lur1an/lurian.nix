@@ -165,7 +165,7 @@ in {
         "hyprctl setcursor Qogir 24"
         "vesktop"
         "telegram-desktop"
-        "firefox-beta"
+        "firefox-esr"
         "exec systemctl start polkit-gnome-authentication-agent-1"
         "pywalfox start"
       ];

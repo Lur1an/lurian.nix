@@ -11,8 +11,8 @@ local servers = {
 	"dockerls",
 	"tailwindcss",
 	"svelte",
-	"html",
 	"cssls",
+  "graphql",
 	"ts_ls",
 	"ruff",
 	"nixd",
@@ -50,7 +50,7 @@ else
 					enableTypeIgnoreComments = true,
 					diagnosticSeverityOverrides = {
 						reportAny = false,
-            reportUnknownMemberType = false,
+						reportUnknownMemberType = false,
 						reportMissingTypeStubs = false,
 						reportUntypedFunctionDecorator = false,
 						reportUnusedCallResult = false,
@@ -60,3 +60,9 @@ else
 		},
 	})
 end
+
+-- lspconfig.graphql.setup({
+-- 	on_attach = on_attach,
+-- 	on_init = on_init,
+-- 	capabilities = capabilities,
+-- })

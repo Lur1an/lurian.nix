@@ -30,8 +30,8 @@ local M = {}
 local lighten = require("base46.colors").change_hex_lightness
 
 M.base_30 = {
-  white = '${colors.on_background}',
-  black = '${colors.background}',
+  white = '${colors.on_surface}',
+  black = '${colors.surface}',
   darker_black = lighten('${colors.background}', -3),
   black2 = lighten('${colors.background}', 6),
   one_bg = lighten('${colors.background}', 10),
