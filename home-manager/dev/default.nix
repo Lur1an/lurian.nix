@@ -26,7 +26,6 @@
     flatbuffers
 
     # CLI Tools
-    aider-chat
     cmake
     k3sup
     kubeseal

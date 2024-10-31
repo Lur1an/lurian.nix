@@ -79,6 +79,8 @@
         source ~/.fvm/env
       fi
 
+      export AIDER_AUTO_COMMITS=false
+
       eval "$(direnv hook zsh)"
       eval "$(uv generate-shell-completion zsh)"
       (cat ~/.cache/wal/sequences &)

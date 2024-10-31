@@ -74,6 +74,9 @@ map("i", "<C-c>", "<cmd> w <CR><ESC>", { desc = "general save and exit insert mo
 map("n", "q", function()
 	require("nvchad.tabufline").close_buffer()
 end, { desc = "general close buffer" })
+-- Center the screen after line jumps with 'j' and 'k'
+map("n", "j", 'v:count > 1 ? "jzz" : "j"', { expr = true, noremap = true, desc = "numbered jump with centering" })
+map("n", "k", 'v:count > 1 ? "kzz" : "k"', { expr = true, noremap = true, desc = "numbered jump with centering" })
 map("n", "n", "nzzzv", { desc = "general find next occurrence" })
 map("n", "N", "Nzzzv", { desc = "general find previous occurrence" })
 map("n", "<leader>j", ":lnext<CR>zz", { desc = "general location next" })

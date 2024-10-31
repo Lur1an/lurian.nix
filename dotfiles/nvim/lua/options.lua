@@ -7,6 +7,7 @@ local opt = vim.opt
 
 opt.incsearch = true
 opt.foldmethod = "expr"
+opt.laststatus = 3
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = true
 opt.foldlevelstart = 5

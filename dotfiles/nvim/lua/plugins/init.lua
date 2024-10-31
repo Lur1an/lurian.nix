@@ -6,6 +6,9 @@ return {
 		version = false, -- set this if you want to always pull the latest change
     build = "make",
 		opts = {
+      behaviour = {
+        auto_apply_diff_after_generation= true,
+      },
       windows = {
         position = "left"
       }
@@ -278,7 +281,7 @@ return {
 			conf.mapping["<S-Tab>"] = nil
 			conf.sources = {
 				{ name = "nvim_lsp" },
-				-- { name = "luasnip" },
+				{ name = "luasnip" },
 				{ name = "buffer" },
 				-- { name = "nvim_lua" },
 				{ name = "vim-dadbod-completion" },
