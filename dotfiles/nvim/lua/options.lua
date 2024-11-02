@@ -18,7 +18,8 @@ opt.relativenumber = true
 vim.filetype.add({
   pattern = {
     [".*/templates/.*%.yaml"] = "helm",
-    [".*/kube/config"] = "yaml",
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/.kube/config"] = "yaml",
     [".*/kubeconfig"] = "yaml",
   },
 })
