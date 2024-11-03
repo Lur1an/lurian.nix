@@ -21,6 +21,7 @@ in {
     profiles.default = {
       userChrome = ''
         @import url('blurredfox/userChrome.css');
+        @import url('blur.css');
         @import url('userContent.css');
         @import url('layout.css');
       '';
