@@ -30,7 +30,7 @@ in {
     modesetting.enable = true;
     open = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement = {
       enable = true;
       finegrained = true;
