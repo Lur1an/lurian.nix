@@ -28,7 +28,9 @@ end, { desc = "DBUIToggle toggle DBUI" })
 -- dap mappings
 local dap = require("dap")
 local dapui = require("dapui")
-
+map("n", "<Leader>dl", function()
+	dap.run_last()
+end, { desc = "dap run last test" })
 map("n", "<leader>cb", function()
 	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end)
