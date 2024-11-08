@@ -31,7 +31,7 @@ dap.adapters.python = function(cb, config)
 			command = "python",
 			args = { "-m", "debugpy.adapter" },
 			options = {
-        justMyCode = false,
+        justMyCode = true,
 				source_filetype = "python",
 			},
 		})

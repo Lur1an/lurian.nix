@@ -17,7 +17,6 @@ in [
   "opacity 0.9,^(vesktop)"
   "opacity 0.9,telegram*"
   "opacity 0.9,^(Slack)"
-  "opacity 0.92, ^(firefox)"
   "workspace 7 silent, ^(vesktop)"
   "workspace 7 silent, ^(Slack)"
   "workspace 7 silent, telegram*"

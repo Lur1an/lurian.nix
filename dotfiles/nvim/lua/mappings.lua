@@ -155,3 +155,7 @@ end, { desc = "source themes" })
 map("n", "<leader>tt", function()
 	require("base46").toggle_transparency()
 end, { desc = "toggle trasparency" })
+
+map("n", "<leader>ll", function()
+	vim.cmd("LspRestart")
+end, { desc = "restart lsp" })

@@ -69,6 +69,7 @@
 
 
       export CARGO_TERM_COLOR=always
+      export OLLAMA_API_BASE=http://127.0.0.1:11434
       export CLICOLOR_FORCE=true
 
       if [ -f ~/.secrets ]; then

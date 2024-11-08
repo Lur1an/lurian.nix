@@ -4,3 +4,5 @@ __pychache__
 dotfiles/nvim/lua/themes/matugen.lua
 dotfiles/nvim/lua/themes/wal-dark.lua
 dotfiles/nvim/lua/themes/wal-light.lua
+.aider*
+.env

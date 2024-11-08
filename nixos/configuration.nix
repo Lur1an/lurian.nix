@@ -156,6 +156,7 @@
     killall
     curl
     qogir-icon-theme
+    hwinfo
     papirus-icon-theme
     morewaita-icon-theme
     inputs.matugen.packages.${system}.default
