@@ -29,6 +29,7 @@
     cmake
     k3sup
     kubeseal
+    kubectl-cnpg
     rover
     drill
     curl-impersonate
