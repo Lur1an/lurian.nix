@@ -107,11 +107,11 @@ in {
           else []
         );
       decoration = {
-        drop_shadow = "yes";
-        shadow_range = 8;
-        shadow_render_power = 2;
-        "col.shadow" = "rgba(00000044)";
-
+        shadow = {
+          color = "rgba(00000044)";
+          range = 8;
+          render_power = 2;
+        };
         dim_inactive = false;
 
         blur = {

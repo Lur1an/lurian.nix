@@ -3,13 +3,13 @@ local M = {}
 local transparent = true
 
 M.base46 = {
-	theme = "chadracula-evondev",
+	theme = "chadracula",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
 
 M.ui = {
-	theme_toggle = { "chadracula-evondev", "chadracula-evondev" },
+	theme_toggle = { "chadracula", "chadracula" },
 	term = {
 		size = 10,
 	},
