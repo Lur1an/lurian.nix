@@ -12,7 +12,6 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hyprland.nix
-    ./nginx-darkreader.nix
     ./polkit.nix
   ];
   programs.nix-ld.enable = true;
