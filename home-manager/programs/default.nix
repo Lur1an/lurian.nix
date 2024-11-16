@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     slack
+    vdhcoapp
     remmina
     appflowy
     telegram-desktop
