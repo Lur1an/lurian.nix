@@ -139,7 +139,7 @@ in {
       };
       cursor = {
         no_hardware_cursors = true;
-        allow_dumb_copy = true;
+        use_cpu_buffer = true;
         inactive_timeout = 3;
       };
       animations = {
