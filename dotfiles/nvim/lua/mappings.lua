@@ -159,3 +159,11 @@ end, { desc = "toggle trasparency" })
 map("n", "<leader>ll", function()
 	vim.cmd("LspRestart")
 end, { desc = "restart lsp" })
+
+-- treesitter
+map("n", "<leader>it", function()
+  vim.cmd("InspectTree")
+end, { desc = "inspect tree" })
+map("n", "<leader>ic", function()
+  vim.cmd("Inspect")
+end, { desc = "inspect cursor" })

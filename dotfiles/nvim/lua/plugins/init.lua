@@ -1,17 +1,24 @@
 return {
+
+	{
+		"nvim-treesitter/playground",
+		cmd = {
+			"TSPlaygroundToggle",
+		},
+	},
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
-    build = "make",
+		build = "make",
 		opts = {
-      behaviour = {
-        auto_apply_diff_after_generation= true,
-      },
-      windows = {
-        position = "left"
-      }
+			behaviour = {
+				auto_apply_diff_after_generation = true,
+			},
+			windows = {
+				position = "left",
+			},
 			-- add any opts here
 		},
 		dependencies = {
@@ -207,7 +214,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
+			injections = {
+				enable = true,
+			},
 			ensure_installed = {
+				"graphql",
 				"vim",
 				"lua",
 				"html",
