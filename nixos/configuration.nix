@@ -161,6 +161,7 @@
     inputs.matugen.packages.${system}.default
     hyprlock
     pywalfox-native
+    ntfs3g
     bazecor
     sops
     sysstat
