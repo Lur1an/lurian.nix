@@ -2,11 +2,6 @@
   lib,
   pkgs,
 }: let
-  fetchExt = {
-    url,
-    sha256,
-  }:
-    builtins.fetchurl {inherit url sha256;};
   buildFirefoxExtension = {
     pname,
     addonId,

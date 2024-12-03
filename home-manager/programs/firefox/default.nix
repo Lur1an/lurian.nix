@@ -20,11 +20,15 @@ in {
     package = pkgs.firefox-esr;
     profiles.default = {
       userChrome = ''
-        @import url('blurredfox/userChrome.css');
-        @import url('blur.css');
         @import url('userContent.css');
         @import url('layout.css');
       '';
+      # userChrome = ''
+      #   @import url('blurredfox/userChrome.css');
+      #   @import url('blur.css');
+      #   @import url('userContent.css');
+      #   @import url('layout.css');
+      # '';
       search = {
         default = "DuckDuckGo";
         engines = {

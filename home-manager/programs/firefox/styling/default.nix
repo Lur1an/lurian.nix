@@ -6,19 +6,23 @@
   chrome = ".mozilla/firefox/default/chrome";
 in {
   home.file = {
+    # Blurredfox symlinks
     "${chrome}/blurredfox".source = pkgs.fetchFromGitHub {
       owner = "eromatiya";
       repo = "blurredfox";
       rev = "6976b5460f47bd28b4dc53bd093012780e6bfed3";
       sha256 = "0mj47pv27dv2bk4hsdjl3c81kw6bz9kk7gkdz30l4z88ckj31j0j";
     };
+    # Custom layout
     "${chrome}/layout.css".source = ./layout.css;
+    # Custom blur patch
     "${chrome}/blur.css".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/pavlukivan/dotfiles/6dfa74974cb25d9730a37bf4895a0f8421092b9e/firefox-transparency.css";
       sha256 = "0k1h14hpzm25sh7jrrxrgafrhld742gy0ybf74fz1n7s8w0fd1kn";
     };
     ".mozilla/extra/index.js".source = ../index.js;
     ".mozilla/extra/protocol.js".source = ../protocol.js;
+    # Native messaging hosts
     ".mozilla/native-messaging-hosts/darkreader.json".text =
       builtins.toJSON
       {

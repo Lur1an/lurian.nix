@@ -26,6 +26,7 @@
     flatbuffers
 
     # CLI Tools
+    appimage-run
     cmake
     k3sup
     kubeseal

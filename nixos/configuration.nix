@@ -167,6 +167,7 @@
     sysstat
     git
     gh
+    portaudio
     pciutils
     usbutils
     udev

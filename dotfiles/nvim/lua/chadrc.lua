@@ -3,13 +3,13 @@ local M = {}
 local transparent = true
 
 M.base46 = {
-	theme = "github_dark",
+	theme = "oxocarbon",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
 
 M.ui = {
-	theme_toggle = { "github_dark", "github_dark" },
+	theme_toggle = { "oxocarbon", "oxocarbon" },
 	term = {
 		size = 10,
 	},
