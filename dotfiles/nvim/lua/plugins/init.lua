@@ -69,6 +69,7 @@ return {
 		},
 		init = function()
 			-- Your DBUI configuration
+			vim.g.db_ui_env_variable_url = "DATABASE_URL"
 			vim.g.db_ui_use_nerd_fonts = 1
 		end,
 	},
@@ -134,10 +135,11 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
+		build = "cd app && npx --yes yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
 		end,
+		ft = { "markdown" },
 	},
 
 	{

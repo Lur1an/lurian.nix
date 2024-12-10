@@ -9,7 +9,6 @@
 
   home.packages = with pkgs; [
     slack
-    brave
     vdhcoapp
     remmina
     appflowy

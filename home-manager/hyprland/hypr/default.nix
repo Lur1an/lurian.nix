@@ -163,6 +163,7 @@ in {
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
+        "openrgb --startminimized"
         "vesktop"
         "telegram-desktop"
         "firefox-esr"

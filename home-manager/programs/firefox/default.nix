@@ -16,7 +16,6 @@ in {
 
   programs.firefox = {
     enable = true;
-    # package = inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin;
     package = pkgs.firefox-esr;
     profiles.default = {
       userChrome = ''

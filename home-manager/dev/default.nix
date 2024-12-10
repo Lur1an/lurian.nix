@@ -2,6 +2,7 @@
   imports = [
     ./k9s.nix
     ./python.nix
+    ./java.nix
     ./git.nix
     ./neovim.nix
     ./node.nix

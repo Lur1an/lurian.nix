@@ -11,6 +11,8 @@
       vpaper = "video_wallpaper";
       gcap = "git_commit_push_all";
       nvidia-offload = "nvidia_offload";
+      quick-vnc = "quick_vnc";
+      local-vnc = "remmina -c vnc://localhost:5900";
       rust-dev = "rust_dev";
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";
@@ -54,6 +56,10 @@
 
       function make_thumb() {
         ffmpeg -i $1 -vframes 1 $2
+      }
+
+      quick_vnc() {
+          remmina -c "vnc://$1"
       }
 
       function video_wallpaper() {
