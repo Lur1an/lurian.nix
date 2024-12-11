@@ -10,6 +10,7 @@
     '';
     plugins = with pkgs; [
       tmuxPlugins.weather
+      tmuxPlugins.catppuccin
     ];
   };
 }

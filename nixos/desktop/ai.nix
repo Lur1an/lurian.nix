@@ -14,6 +14,8 @@
           "TZ" = "Europe/Amsterdam";
           "OLLAMA_API_BASE_URL" = "http://127.0.0.1:11434/api";
           "OLLAMA_BASE_URL" = "http://127.0.0.1:11434";
+          "PORT" = "8087";
+          "WEBUI_AUTH" = "False";
         };
 
         volumes = [
@@ -21,7 +23,7 @@
         ];
 
         ports = [
-          "127.0.0.1:3000:8080"
+          "127.0.0.1:3000:8087"
         ];
 
         extraOptions = [
