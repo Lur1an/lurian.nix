@@ -6,8 +6,8 @@
   ...
 }: let
   monitors = {
-    primary = "DP-4";
-    secondary = "DP-3";
+    primary = "DP-3";
+    secondary = "DP-2";
   };
   machineConfig = {
     monitors = monitors;
@@ -24,6 +24,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb
+    ./ai.nix
     ../configuration.nix
   ];
   fileSystems = {
@@ -87,6 +88,7 @@ in {
   # Make sure ollama is installed
   environment.systemPackages = with pkgs; [
     ollama
+    open-webui
   ];
 
   # Define the systemd service
