@@ -2,7 +2,7 @@
   imports = [
     ./k9s.nix
     ./python.nix
-    ./java.nix
+    # ./java.nix begone bloat
     ./git.nix
     ./neovim.nix
     ./node.nix
@@ -13,9 +13,8 @@
 
     # Dev Apps
     ollama
-    jetbrains.pycharm-professional
     postman
-    jetbrains.rust-rover
+    # jetbrains.rust-rover
 
     # Deps
     openssl.dev

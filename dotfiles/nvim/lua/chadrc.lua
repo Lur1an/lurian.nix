@@ -22,7 +22,7 @@ M.ui = {
 }
 
 M.nvdash = {
-  load_on_startup = true,
+  load_on_startup = false,
 }
 
 return M
