@@ -10,6 +10,7 @@
     secondary = "DP-3";
   };
   machineConfig = {
+    name = "desktop";
     monitors = monitors;
     binds = [];
     extraEnv = [];

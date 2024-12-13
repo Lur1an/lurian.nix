@@ -7,6 +7,7 @@
 }: let
   machineConfig = {
     extraEnv = [];
+    name = "xps15";
     monitors = {
       primary = "DP-2";
     };

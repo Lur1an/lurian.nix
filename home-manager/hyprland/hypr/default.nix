@@ -118,7 +118,7 @@ in {
           enabled = true;
           size = 8;
           passes = 1;
-          new_optimizations = false; # SET true if LAGGING
+          new_optimizations = machineConfig.name == "xps15"; # SET true if LAGGING
           noise = 0.01;
           contrast = 0.9;
           brightness = 0.8;
