@@ -39,7 +39,7 @@ M.base_30.grey_fg2 = lighten(M.base_30.grey, 5)
 M.base_16 = {{
   base00 = "{color0}",
   base01 = "{color0}",
-  base02 = "{color2}",
+  base02 = "{color8}",
   base03 = "{color8}",
   base04 = "{color7}",
   base05 = "{color7}",
@@ -51,7 +51,7 @@ M.base_16 = {{
   base0B = "{color4}",
   base0C = "{color5}",
   base0D = "{color6}",
-  base0E = "{color11}",
+  base0E = "{color1}",
   base0F = "{color15}",
 }}
 

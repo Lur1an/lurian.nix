@@ -14,7 +14,7 @@
     # Dev Apps
     ollama
     postman
-    # jetbrains.rust-rover
+    jetbrains.rust-rover
 
     # Deps
     openssl.dev

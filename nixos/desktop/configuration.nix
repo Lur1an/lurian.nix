@@ -92,6 +92,11 @@ in {
     open-webui
   ];
 
+  services.openiscsi = {
+    enable = true;
+    name = "${config.networking.hostName}-initiatorhost";
+  };
+
   # Define the systemd service
   systemd.services.ollama = {
     description = "Ollama Service";

@@ -7,6 +7,13 @@ return {
 		},
 	},
 	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("configs.telescope")
+		end,
+	},
+	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		lazy = false,
@@ -19,7 +26,6 @@ return {
 			windows = {
 				position = "left",
 			},
-			-- add any opts here
 		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -59,7 +65,7 @@ return {
 		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {
 			{ "tpope/vim-dadbod", lazy = true },
-			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+			-- { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
 		},
 		cmd = {
 			"DBUI",
@@ -133,7 +139,7 @@ return {
 	},
 
 	{
-		"iamcco/markdown-preview.nvim",
+		"Carus11/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && npx --yes yarn install",
 		init = function()
@@ -153,7 +159,7 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		config = function()
-			require("configs.dap")
+			require(".configs.dap")
 		end,
 	},
 	{
@@ -276,12 +282,23 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-		cmd = "Trouble",
+		cmd = { "Trouble", "TodoTrouble" },
+		lazy = false,
+		dependencies = {
+			{
+				"folke/todo-comments.nvim",
+				opts = {
+          auto_jump = true,
+          modes = {
+            diagnostics = {
+              auto_jump = true,
+            }
+          }
+
+        },
+			},
+		},
 		opts = {},
-		config = function()
-			dofile(vim.g.base46_cache .. "trouble")
-			require("trouble").setup()
-		end,
 	},
 	{
 		"nvim-neotest/neotest-python",
@@ -296,8 +313,8 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
-				-- { name = "nvim_lua" },
-				{ name = "vim-dadbod-completion" },
+				{ name = "nvim_lua" },
+				-- { name = "vim-dadbod-completion" },
 				{ name = "path" },
 			}
 		end,

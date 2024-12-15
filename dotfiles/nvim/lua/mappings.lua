@@ -7,7 +7,10 @@ local unmap = vim.keymap.del
 unmap("n", "<leader>h")
 unmap("n", "<leader>v")
 
--- map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>rl", function()
+	vim.cmd("e!")
+end, { desc = "reload file" })
 map("n", "]d", function()
 	vim.diagnostic.goto_next({ float = { border = "rounded" } })
 end, { desc = "jump to next diagnostic" })
@@ -81,6 +84,7 @@ map("n", "j", 'v:count > 1 ? "jzz" : "j"', { expr = true, noremap = true, desc =
 map("n", "k", 'v:count > 1 ? "kzz" : "k"', { expr = true, noremap = true, desc = "numbered jump with centering" })
 map("n", "n", "nzzzv", { desc = "general find next occurrence" })
 map("n", "N", "Nzzzv", { desc = "general find previous occurrence" })
+map("n", "Q", ":only<CR>", { desc = "close other windows" })
 map("n", "<leader>j", ":lnext<CR>zz", { desc = "general location next" })
 map("n", "<leader>k", ":lprev<CR>zz", { desc = "general location previous" })
 map("n", "<leader>s", "<cmd> w <CR>", { desc = "general save file" })
@@ -156,14 +160,36 @@ map("n", "<leader>tt", function()
 	require("base46").toggle_transparency()
 end, { desc = "toggle trasparency" })
 
+-- lsp mappings
 map("n", "<leader>ll", function()
 	vim.cmd("LspRestart")
 end, { desc = "restart lsp" })
 
+map("n", "F", function()
+	vim.diagnostic.open_float()
+end, { desc = "restart lsp" })
+
 -- treesitter
 map("n", "<leader>it", function()
-  vim.cmd("InspectTree")
+	vim.cmd("InspectTree")
 end, { desc = "inspect tree" })
 map("n", "<leader>ic", function()
-  vim.cmd("Inspect")
+	vim.cmd("Inspect")
 end, { desc = "inspect cursor" })
+
+-- trouble
+map("n", "<leader>te", function()
+	vim.diagnostic.setqflist({ open = false, severity = vim.diagnostic.severity.ERROR })
+	if #vim.fn.getqflist() == 1 then
+		vim.cmd("cfirst")
+	end
+	vim.cmd("Trouble diagnostics toggle focus=false win.position=bottom filter.severity=vim.diagnostic.severity.ERROR")
+end, { desc = "trouble errors" })
+
+map("n", "<leader>td", function()
+	vim.cmd("Trouble diagnostics toggle focus=false win.position=bottom")
+end, { desc = "Trouble diagnostics" })
+
+map("n", "<leader>ts", function()
+	vim.cmd("Trouble symbols toggle focus=false")
+end, { desc = "trouble symbols" })

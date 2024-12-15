@@ -55,6 +55,7 @@ else
 						reportUntypedFunctionDecorator = false,
 						reportUnannotatedClassAttribute = false,
 						reportUnusedCallResult = false,
+            reportCallInDefaultInitializer = false,
 					},
 				},
 			},
