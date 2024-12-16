@@ -21,7 +21,7 @@ return {
 		build = "make",
 		opts = {
 			behaviour = {
-				auto_apply_diff_after_generation = true,
+				auto_apply_diff_after_generation = false,
 			},
 			windows = {
 				position = "left",
@@ -126,7 +126,7 @@ return {
 		config = {
 			main_image = "language",
 			show_time = true,
-			log_level = "debug",
+			log_level = "error",
 			workspace_text = function()
 				return "trying to exit vim"
 			end,
@@ -288,14 +288,13 @@ return {
 			{
 				"folke/todo-comments.nvim",
 				opts = {
-          auto_jump = true,
-          modes = {
-            diagnostics = {
-              auto_jump = true,
-            }
-          }
-
-        },
+					auto_jump = true,
+					modes = {
+						diagnostics = {
+							auto_jump = true,
+						},
+					},
+				},
 			},
 		},
 		opts = {},

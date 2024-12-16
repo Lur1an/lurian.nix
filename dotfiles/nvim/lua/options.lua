@@ -4,6 +4,11 @@ require "nvchad.options"
 --
 local opt = vim.opt
 
+local in_tmux = os.getenv("TMUX") ~= nil
+
+if in_tmux then
+  opt.laststatus = 0
+end
 
 opt.incsearch = true
 opt.foldmethod = "expr"

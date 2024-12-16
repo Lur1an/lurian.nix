@@ -9,7 +9,7 @@ M.base46 = {
 }
 
 M.ui = {
-	theme_toggle = { "catppuccin", "catppuccin" },
+  theme_toggle = { "catppuccin", "catppuccin" },
 	term = {
 		size = 10,
 	},
@@ -18,6 +18,7 @@ M.ui = {
 	},
 	tabufline = {
 		enabled = true,
+    order = { "treeOffset", "buffers" },
 	},
 }
 

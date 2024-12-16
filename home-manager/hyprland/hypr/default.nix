@@ -161,7 +161,7 @@ in {
       wsbind = [];
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "ags -b hypr"
+        "asztal -b hypr"
         "hyprctl setcursor Qogir 24"
         "vesktop"
         "openrgb"

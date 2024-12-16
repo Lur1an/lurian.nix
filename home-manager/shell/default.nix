@@ -4,10 +4,12 @@
     ./kitty.nix
     ./aider.nix
     ./foot.nix
-    ./tmux.nix
+    ./tmux
   ];
   home.packages = with pkgs; [
     direnv
+    warp-terminal
+    nushell
     neofetch
   ];
 }

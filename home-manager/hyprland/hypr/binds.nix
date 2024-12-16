@@ -1,13 +1,13 @@
 let
   mod = "SUPER";
-  e = "exec, ags -b hypr";
+  e = "exec, asztal -b hypr";
 in
   [
     "${mod}, Q, killactive"
     "${mod}, M, exit"
     "${mod}, B, exec, firefox-esr"
     "${mod}, O, exec, obsidian"
-    "${mod}, T, exec, foot"
+    "${mod}, T, exec, kitty"
     "${mod}, F, exec, nautilus"
     "${mod} SHIFT, L, movewindow, r"
     "${mod} SHIFT, H, movewindow, l"
@@ -46,7 +46,7 @@ in
     "${mod} SHIFT, 0, movetoworkspacesilent, 10"
   ]
   ++ [
-    "CTRL ${mod}, R,  ${e} quit; ags -b hypr"
+    "CTRL ${mod}, R,  ${e} quit; asztal -b hypr"
     "${mod}, S,       ${e} -t launcher"
     "${mod}, Tab,     ${e} -t overview"
   ]

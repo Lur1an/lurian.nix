@@ -13,15 +13,15 @@ import notifications from "./notifications"
 export default function init() {
     try {
         gtk()
-        tmux()
+        //tmux()
         matugen()
         lowBattery()
         notifications()
         hyprland()
         discord()
         nvim()
-        foot()
-        kitty()
+        //foot()
+        //kitty()
         k9s()
     } catch (error) {
         logError(error)
