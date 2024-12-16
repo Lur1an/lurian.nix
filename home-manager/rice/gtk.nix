@@ -1,17 +1,7 @@
 {pkgs, ...}: let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "Ubuntu"
-      "UbuntuMono"
-      "CascadiaCode"
-      "FantasqueSansMono"
-      "FiraCode"
-      "Mononoki"
-    ];
-  };
   font = {
     name = "Ubuntu Nerd Font";
-    package = nerdfonts;
+    package = pkgs.nerd-fonts.ubuntu-mono;
     size = 11;
   };
   cursorTheme = {
@@ -27,6 +17,10 @@ in {
   home = {
     packages = with pkgs; [
       cantarell-fonts
+      nerd-fonts.ubuntu
+      cascadia-code
+      nerd-fonts.fira-code
+      nerd-fonts.mononoki
       gtk-engine-murrine
       font-awesome
       font.package

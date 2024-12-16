@@ -2,6 +2,8 @@ local M = {}
 
 local transparent = true
 
+local in_tmux = os.getenv("TMUX") ~= nil
+
 M.base46 = {
 	theme = "catppuccin",
 	transparency = transparent,
@@ -13,6 +15,9 @@ M.ui = {
 	term = {
 		size = 10,
 	},
+  statusline = {
+    enabled = not in_tmux,
+  },
 	telescope = {
 		style = "bordered", -- borderless / bordered
 	},
