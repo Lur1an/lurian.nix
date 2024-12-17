@@ -10,25 +10,35 @@ M.base46 = {
 	integrations = { "dap", "trouble" },
 }
 
-M.ui = {
-  theme_toggle = { "catppuccin", "catppuccin" },
-	term = {
-		size = 10,
+M.term = {
+	sizes = {
+		sp = 0.2,
+		vsp = 0.3,
 	},
-  statusline = {
-    enabled = not in_tmux,
-  },
+	float = {
+		relative = "editor",
+		row = 0.25,
+		col = 0.2,
+		width = 0.6,
+		height = 0.5,
+		border = "single",
+	},
+}
+
+M.ui = {
+	theme_toggle = { "catppuccin", "catppuccin" },
 	telescope = {
 		style = "bordered", -- borderless / bordered
 	},
+	statusline = { enabled = not in_tmux },
 	tabufline = {
 		enabled = true,
-    order = { "treeOffset", "buffers" },
+		order = { "treeOffset", "buffers" },
 	},
 }
 
 M.nvdash = {
-  load_on_startup = false,
+	load_on_startup = false,
 }
 
 return M
