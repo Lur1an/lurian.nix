@@ -193,3 +193,7 @@ end, { desc = "Trouble diagnostics" })
 map("n", "<leader>ts", function()
 	vim.cmd("Trouble symbols toggle focus=false")
 end, { desc = "trouble symbols" })
+
+map("n", "<leader>mp", function()
+	vim.cd("MarkdownPreview")
+end, { desc = "MarkdownPreview" })

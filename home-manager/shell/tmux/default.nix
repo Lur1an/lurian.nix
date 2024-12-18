@@ -13,7 +13,7 @@
     accent = color "main_accent";
     window_name_cmd = "#(if [ \\\"#{pane_current_command}\\\" = \\\"nvim\\\" ]; then basename \\\"#{pane_current_path}\\\"; else echo \\\"#W\\\"; fi)";
     index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=blue,bg=magenta] ${window_name_cmd} ";
+    name = "#[fg=blue,bg=black] ${window_name_cmd} ";
   in "${index}${name}";
 
   window_status = let
@@ -71,7 +71,7 @@ in {
     baseIndex = 1;
     escapeTime = 0;
     keyMode = "vi";
-    mouse = true;
+    mouse = false;
     extraConfig = ''
       set-option -sa terminal-overrides ",xterm*:Tc"
 
