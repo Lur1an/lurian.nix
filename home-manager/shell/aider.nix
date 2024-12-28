@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    aider-chat
+    aider-chat.withPlaywright
   ];
 
   home.sessionVariables = {

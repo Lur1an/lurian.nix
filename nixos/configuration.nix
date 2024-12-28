@@ -167,6 +167,7 @@
     sysstat
     git
     gh
+    qemu
     portaudio
     pciutils
     usbutils

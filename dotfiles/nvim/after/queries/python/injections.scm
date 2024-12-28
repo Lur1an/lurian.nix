@@ -5,6 +5,7 @@
   (#match? @injection.content ".*(mutation|query)")
   (#set! injection.language "graphql"))
 
+
 ; based on https://github.com/nvim-treesitter/nvim-treesitter/blob/9d2acd49976e2a9da72949008df03436f781fd23/queries/ecma/injections.scm
 
 ; javascript("..."), typescript("""..."""), etc.

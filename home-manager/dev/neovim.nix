@@ -22,6 +22,7 @@
     black
     pyright
     marksman
+    sqlfluff
     nodePackages.graphql-language-service-cli
   ];
 in {
@@ -33,6 +34,7 @@ in {
     isort
     ruff
     tree-sitter
+    sqlfluff
   ];
   programs.neovim = {
     enable = true;
