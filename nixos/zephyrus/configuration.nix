@@ -19,6 +19,12 @@ in {
 
   boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
 
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 13;
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
@@ -61,4 +67,6 @@ in {
     brightnessctl
     asusctl
   ];
+
+  system.stateVersion = "24.11";
 }

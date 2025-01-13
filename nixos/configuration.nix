@@ -57,12 +57,6 @@
     };
   };
 
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 13;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
-
   home-manager = {
     backupFileExtension = "hm-bak";
     useUserPackages = true;
@@ -176,5 +170,4 @@
     mpv
     libglvnd
   ];
-  system.stateVersion = "23.11";
 }

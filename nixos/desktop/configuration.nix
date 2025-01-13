@@ -28,6 +28,14 @@ in {
     ./ai.nix
     ../configuration.nix
   ];
+
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 13;
+  };
+
+  boot.loader.efi.canTouchEfiVariables = true;
+
   fileSystems = {
     "/mnt/Shared" = {
       device = "/dev/disk/by-uuid/18F7DC4E717D1349";
@@ -91,10 +99,10 @@ in {
     ollama
     open-webui
   ];
-services.openiscsi = {
-  enable = true;
-  name = "${config.networking.hostName}-initiatorhost";
-};
+  services.openiscsi = {
+    enable = true;
+    name = "${config.networking.hostName}-initiatorhost";
+  };
 
   # Define the systemd service
   systemd.services.ollama = {
@@ -112,4 +120,6 @@ services.openiscsi = {
       RestartSec = 3;
     };
   };
+
+  system.stateVersion = "23.11";
 }
