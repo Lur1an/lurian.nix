@@ -15,6 +15,7 @@
     ollama
     postman
     jetbrains.rust-rover
+    beekeeper-studio
 
     # Deps
     openssl.dev
