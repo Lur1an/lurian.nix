@@ -21,7 +21,6 @@
       ]
       # No additional config needed on laptop
       else [
-        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
         ",preferred,auto, 1"
       ]
     )
