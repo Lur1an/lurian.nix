@@ -22,10 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    hypr-darkwindow = {
-      url = "github:alexhulbert/Hyprchroma";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     firefox = {
       url = "github:nix-community/flake-firefox-nightly";

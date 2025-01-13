@@ -39,7 +39,6 @@ in {
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     plugins = with inputs; [
       hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
-      hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
     ];
     xwayland.enable = true;
     settings = {
