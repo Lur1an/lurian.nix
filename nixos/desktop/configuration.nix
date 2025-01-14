@@ -5,15 +5,8 @@
   pkgs,
   ...
 }: let
-  monitors = {
-    primary = "DP-4";
-    secondary = "DP-3";
-  };
   machineConfig = {
     name = "desktop";
-    monitors = monitors;
-    binds = [];
-    extraEnv = [];
     bookmarks = [
       "file:///mnt/Shared"
       "file:///mnt/Shared/Videos/Vpapers"
@@ -57,18 +50,7 @@ in {
     token = "K10730cf4e30f81f7c38c2a0936d1bd5550cba0c33e5635f830fe59bad0530f327e::server:dab0ba8b99375e3aedb9f440acfb9b4e";
     serverAddr = "https://pi-master:6443";
   };
-  services.xserver.screenSection = ''
-    Option "metamodes" "${monitors.primary}: 3840x2160_144 +3840+0, ${monitors.secondary}: 3840x2160_144 +0+0"
-  '';
   networking.hostName = "lurian-desktop";
-
-  # bluetooth
-  services.blueman.enable = true;
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    settings.General.Experimental = true; # for gnome-bluetooth percentage
-  };
 
   # Nvidia
   services.xserver.videoDrivers = ["nvidia"];

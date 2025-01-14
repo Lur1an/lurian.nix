@@ -123,6 +123,14 @@
     extraPackages = [pkgs.mesa.drivers];
   };
 
+  # bluetooth
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    settings.General.Experimental = true; # for gnome-bluetooth percentage
+  };
+
   # sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

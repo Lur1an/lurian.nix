@@ -4,13 +4,8 @@
   ...
 }: let
   machineConfig = {
-    extraEnv = [];
     name = "zephyrus";
-    monitors = {
-      primary = "eDP-1";
-    };
     bookmarks = [];
-    binds = [];
   };
 in {
   _module.args = {inherit machineConfig;};
@@ -35,7 +30,7 @@ in {
   services.supergfxd = {
     enable = true;
   };
-  
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
@@ -51,13 +46,6 @@ in {
       nvidiaBusId = "PCI:1:0:0";
       intelBusId = "PCI:0:2:0";
     };
-  };
-  # bluetooth
-  services.blueman.enable = true;
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
 
   services.libinput = {

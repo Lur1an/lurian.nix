@@ -10,26 +10,25 @@
     "nofocus,class:^(xwaylandvideobridge)$"
     "noinitialfocus,class:^(xwaylandvideobridge)$"
   ];
-  specificBinds = machineConfig.binds;
-  monitors = machineConfig.monitors;
-  monitor_config =
-    (
-      if builtins.hasAttr "secondary" monitors
-      then [
-        "${monitors.primary}, 3840x2160@144, 0x0, 1.50"
-        "${monitors.secondary}, 3840x2160@144, 2560x0, 1.50"
-      ]
-      # No additional config needed on laptop
-      else [
-        ",preferred,auto, 1"
-      ]
-    )
-    ++ ["Unknown-1,disabled"];
 in {
   home.packages = with pkgs; [
     slurp
     grim
   ];
+  imports =
+    if machineConfig.name == "zephyrus"
+    then [
+      ./overrides/zephyrus.nix
+    ]
+    else if machineConfig.name == "xps15"
+    then [
+      ./overrides/xps15.nix
+    ]
+    else if machineConfig.name == "desktop"
+    then [
+      ./overrides/desktop.nix
+    ]
+    else [];
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -43,8 +42,7 @@ in {
           "WLR_DRM_NO_ATOMIC,1"
           "ELECTRON_OZONE_PLATFORM_HINT,wayland"
           "ELECTRON_ENABLE_WAYLAND,1"
-        ]
-        ++ machineConfig.extraEnv;
+        ];
       xwayland = {
         force_zero_scaling = true;
       };
@@ -80,26 +78,6 @@ in {
           "nofocus,class:^(xwaylandvideobridge)$"
           "noinitialfocus,class:^(xwaylandvideobridge)$"
         ];
-
-      workspace =
-        [
-          "1,monitor:${monitors.primary}"
-          "2,monitor:${monitors.primary}"
-          "3,monitor:${monitors.primary}"
-          "4,monitor:${monitors.primary}"
-          "5,monitor:${monitors.primary}"
-        ]
-        ++ (
-          if builtins.hasAttr "secondary" monitors
-          then [
-            "6,monitor:${monitors.secondary}"
-            "7,monitor:${monitors.secondary}"
-            "8,monitor:${monitors.secondary}"
-            "9,monitor:${monitors.secondary}"
-            "10,monitor:${monitors.secondary}"
-          ]
-          else []
-        );
       decoration = {
         shadow = {
           color = "rgba(00000044)";
@@ -112,7 +90,7 @@ in {
           enabled = true;
           size = 8;
           passes = 1;
-          new_optimizations = machineConfig.name == "xps15"; # SET true if LAGGING
+          new_optimizations = false; # SET true if LAGGING
           noise = 0.01;
           contrast = 0.9;
           brightness = 0.8;
@@ -147,11 +125,13 @@ in {
           "workspaces, 1, 6, default"
         ];
       };
-      monitor = monitor_config;
+      monitor = [
+        ",preferred,auto, 1"
+      ];
       bindm = ''
         ALT,mouse:272,movewindow
       '';
-      bind = import ./binds.nix ++ specificBinds;
+      bind = import ./binds.nix;
       wsbind = [];
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

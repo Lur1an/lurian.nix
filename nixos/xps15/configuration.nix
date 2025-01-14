@@ -6,16 +6,7 @@
   ...
 }: let
   machineConfig = {
-    extraEnv = [];
     name = "xps15";
-    monitors = {
-      primary = "DP-2";
-    };
-    bookmarks = [];
-    binds = [
-      ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-    ];
   };
 in {
   _module.args = {inherit machineConfig;};
@@ -49,13 +40,6 @@ in {
       nvidiaBusId = "PCI:1:0:0";
       intelBusId = "PCI:0:2:0";
     };
-  };
-  # bluetooth
-  services.blueman.enable = true;
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
 
   services.libinput = {
