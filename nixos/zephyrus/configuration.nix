@@ -1,4 +1,5 @@
-{ config,
+{
+  config,
   pkgs,
   ...
 }: let
@@ -31,6 +32,10 @@ in {
     enable = true;
     enableUserService = true;
   };
+  services.supergfxd = {
+    enable = true;
+  };
+  
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
