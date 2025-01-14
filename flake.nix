@@ -84,6 +84,12 @@
           ./nixos/desktop/configuration.nix
         ];
       };
+      zephyrus = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/zephyrus/configuration.nix
+        ];
+      };
     };
   };
 }
