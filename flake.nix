@@ -27,11 +27,6 @@
       url = "github:InioX/matugen";
     };
 
-    rycee-nurpkgs = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ags.url = "github:lur1an/ags";
 
     lf-icons = {

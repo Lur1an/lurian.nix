@@ -1,11 +1,7 @@
 {
   pkgs,
-  inputs,
-  lib,
   ...
-}: let
-  addons = inputs.rycee-nurpkgs.packages.${pkgs.system};
-in {
+}: {
   home = {
     sessionVariables.BROWSER = "firefox";
   };
@@ -102,7 +98,6 @@ in {
         "widget.use-xdg-desktop-portal" = true;
         "browser.aboutConfig.showWarning" = false;
       };
-      extensions = pkgs.callPackage ./extensions.nix {inherit lib pkgs;};
     };
     policies = {
       NoDefaultBookmarks = true;

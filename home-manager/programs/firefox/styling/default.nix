@@ -20,18 +20,6 @@ in {
       url = "https://raw.githubusercontent.com/pavlukivan/dotfiles/6dfa74974cb25d9730a37bf4895a0f8421092b9e/firefox-transparency.css";
       sha256 = "0k1h14hpzm25sh7jrrxrgafrhld742gy0ybf74fz1n7s8w0fd1kn";
     };
-    ".mozilla/extra/index.js".source = ../index.js;
-    ".mozilla/extra/protocol.js".source = ../protocol.js;
-    # Native messaging hosts
-    ".mozilla/native-messaging-hosts/darkreader.json".text =
-      builtins.toJSON
-      {
-        name = "darkreader";
-        description = "custom darkreader native host for syncing with pywal";
-        path = "${config.home.homeDirectory}/.mozilla/extra/index.js";
-        type = "stdio";
-        allowed_extensions = ["darkreader@alexhulbert.com"];
-      };
     ".mozilla/native-messaging-hosts/pywalfox.json".text =
       builtins.toJSON
       {
