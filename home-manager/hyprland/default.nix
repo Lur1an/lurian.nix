@@ -125,9 +125,6 @@ in {
           "workspaces, 1, 6, default"
         ];
       };
-      monitor = [
-        ",preferred,auto, 1"
-      ];
       bindm = ''
         ALT,mouse:272,movewindow
       '';
