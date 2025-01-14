@@ -6,7 +6,9 @@
   machineConfig = {
     extraEnv = [];
     name = "zephyrus";
-    monitors = {};
+    monitors = {
+      primary = "eDP-1";
+    };
     bookmarks = [];
     binds = [];
   };
