@@ -102,16 +102,7 @@ in {
         "widget.use-xdg-desktop-portal" = true;
         "browser.aboutConfig.showWarning" = false;
       };
-      extensions =
-        (with addons; [
-          vimium
-          pywalfox
-          ublock-origin
-          cookie-quick-manager
-          sponsorblock
-          clearcache
-        ])
-        ++ pkgs.callPackage ./extensions.nix {inherit lib pkgs;};
+      extensions = pkgs.callPackage ./extensions.nix {inherit lib pkgs;};
     };
     policies = {
       NoDefaultBookmarks = true;
