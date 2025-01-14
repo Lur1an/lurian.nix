@@ -1,5 +1,4 @@
-{
-  config,
+{ config,
   pkgs,
   ...
 }: let
@@ -19,30 +18,34 @@ in {
     ../configuration.nix
   ];
 
-  boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
+  boot.kernelParams = ["i915U"];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 13;
   };
   boot.loader.efi.canTouchEfiVariables = true;
-
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["modesetting" "nvidia"];
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false;
+    open = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     powerManagement = {
       enable = true;
       finegrained = true;
     };
-    # prime = {
-    #   offload.enable = true;
-    #   offload.enableOffloadCmd = true;
-    #   # Make sure to use the correct Bus ID values for your system!
-    #   nvidiaBusId = "PCI:1:0:0";
-    #   intelBusId = "PCI:0:2:0";
-    # };
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      # Make sure to use the correct Bus ID values for your system!
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
+    };
   };
   # bluetooth
   services.blueman.enable = true;
