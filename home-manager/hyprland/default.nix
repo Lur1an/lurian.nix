@@ -37,12 +37,11 @@ in {
     ];
     xwayland.enable = true;
     settings = {
-      env =
-        [
-          "WLR_DRM_NO_ATOMIC,1"
-          "ELECTRON_OZONE_PLATFORM_HINT,wayland"
-          "ELECTRON_ENABLE_WAYLAND,1"
-        ];
+      env = [
+        "WLR_DRM_NO_ATOMIC,1"
+        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        "ELECTRON_ENABLE_WAYLAND,1"
+      ];
       xwayland = {
         force_zero_scaling = true;
       };

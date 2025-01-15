@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   home.file = {
     ".mozilla/extra/index.js".source = ./index.js;
     ".mozilla/extra/protocol.js".source = ./protocol.js;
