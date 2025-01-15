@@ -14,10 +14,9 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb
-    ./ai.nix
+    ../ai.nix
     ../configuration.nix
     ../k3s.nix
-    ../ollama.nix
     ../github-runners.nix
   ];
 

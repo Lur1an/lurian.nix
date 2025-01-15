@@ -12,6 +12,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ../configuration.nix
+    # ../ai.nix
   ];
 
   boot.kernelParams = ["i915U"];
