@@ -44,6 +44,7 @@
     sc-im
     edgedb
     wireshark-cli
+    talosctl
     wireguard-tools
     termshark
     htop
