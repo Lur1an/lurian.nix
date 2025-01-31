@@ -195,5 +195,5 @@ map("n", "<leader>ts", function()
 end, { desc = "trouble symbols" })
 
 map("n", "<leader>mp", function()
-	vim.cd("MarkdownPreview")
+	vim.cmd("MarkdownPreview")
 end, { desc = "MarkdownPreview" })

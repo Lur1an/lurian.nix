@@ -15,12 +15,13 @@ in [
   (f "com.github.Aylur.ags")
   (f "pavucontrol")
   "opacity 0.9,^(vesktop)"
-  "opacity 0.9,telegram*"
+  "opacity 0.9,org.telegram*"
   "opacity 0.9,^(Slack)"
   "workspace 7 silent, ^(vesktop)"
   "workspace 7 silent, ^(Slack)"
   "workspace 7 silent, telegram*"
   "workspace 6 silent, ^(firefox)"
+  "workspace 8 silent, camoufox-default"
   "workspace 8 silent, ^(chromium)"
   "workspace 8 silent, ^(google-chrome)"
 ]
