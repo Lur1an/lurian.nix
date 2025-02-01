@@ -20,6 +20,15 @@ return {
 		version = false, -- set this if you want to always pull the latest change
 		build = "make",
 		opts = {
+			provider = "claude",
+			vendors = {
+				ollama = {
+					__inherited_from = "openai",
+					api_key_name = "",
+					endpoint = "http://localhost:11434/v1",
+					model = "deepseek-r1:32b",
+				},
+			},
 			behaviour = {
 				auto_apply_diff_after_generation = false,
 			},
@@ -34,7 +43,6 @@ return {
 			"MunifTanjim/nui.nvim",
 			--- The below dependencies are optional,
 			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"zbirenbaum/copilot.lua", -- for providers='copilot'
 			{
 				-- support for image pasting
 				"HakonHarnes/img-clip.nvim",
@@ -180,9 +188,9 @@ return {
 	{
 		"NvChad/ui",
 		lazy = false,
-    config = function()
-      require "nvchad"
-    end
+		config = function()
+			require("nvchad")
+		end,
 	},
 	-- {
 	-- 	"zbirenbaum/copilot.lua",
