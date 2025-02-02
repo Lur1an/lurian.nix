@@ -29,6 +29,7 @@
     # CLI Tools
     appimage-run
     cmake
+    git-crypt
     k3sup
     kubeseal
     kubectl-cnpg
