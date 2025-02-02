@@ -5,6 +5,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       vim = "nvim";
+      archaider = "aider --model deepseeklocal --architect";
       sgpt = "sgpt --model 'gpt-4'";
       update = "find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       pydev = "watchfiles python -m src.main --dev";
