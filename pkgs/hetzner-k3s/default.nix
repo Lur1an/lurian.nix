@@ -18,8 +18,8 @@ in
     name = pname;
 
     src = fetchurl {
-      url = "https://github.com/vitobotta/hetzner-k3s/releases/download/v2.0.8/hetzner-k3s-linux-amd64";
-      sha256 = "1i6vvdyr1xqxywkqcvxbr89ahzksabpr6xgjki6zs49047l9zl32";
+      url = "https://github.com/vitobotta/hetzner-k3s/releases/download/v2.2.4/hetzner-k3s-linux-amd64";
+      sha256 = "cLwGmFlguuCOnLONc/UwNdDTyXhatATXkgS2NMdDwu4=";
     };
 
     nativeBuildInputs = [

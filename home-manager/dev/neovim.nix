@@ -6,6 +6,7 @@
   languageServers = with pkgs; [
     lua-language-server
     helm-ls
+    ansible-language-server
     yaml-language-server
     tailwindcss-language-server
     yamlfix

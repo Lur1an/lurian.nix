@@ -12,6 +12,7 @@ local servers = {
 	"tailwindcss",
 	"svelte",
 	"cssls",
+  "ansiblels",
 	"graphql",
 	"ts_ls",
 	"ruff",
