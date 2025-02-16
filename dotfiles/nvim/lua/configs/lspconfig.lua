@@ -12,7 +12,7 @@ local servers = {
 	"tailwindcss",
 	"svelte",
 	"cssls",
-  "ansiblels",
+	"ansiblels",
 	"graphql",
 	"ts_ls",
 	"ruff",
@@ -45,18 +45,20 @@ else
 		settings = {
 			basedpyright = {
 				analysis = {
+					typeCheckingMode = "basic",
 					autoSearchPaths = true,
 					diagnosticMode = "openFilesOnly",
 					useLibraryCodeForTypes = true,
 					enableTypeIgnoreComments = true,
 					diagnosticSeverityOverrides = {
 						reportAny = false,
+						reportExplicitAny = false,
 						reportUnknownMemberType = false,
 						reportMissingTypeStubs = false,
 						reportUntypedFunctionDecorator = false,
 						reportUnannotatedClassAttribute = false,
 						reportUnusedCallResult = false,
-            reportCallInDefaultInitializer = false,
+						reportCallInDefaultInitializer = false,
 					},
 				},
 			},
