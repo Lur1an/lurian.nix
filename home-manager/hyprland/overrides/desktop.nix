@@ -1,6 +1,6 @@
 {...}: let
-  primary = "DP-3";
-  secondary = "DP-2";
+  primary = "DP-4";
+  secondary = "DP-3";
 in {
   wayland.windowManager.hyprland = {
     settings = {

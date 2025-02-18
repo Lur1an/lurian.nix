@@ -19,7 +19,7 @@ in [
   "opacity 0.9,^(Slack)"
   "workspace 7 silent, ^(vesktop)"
   "workspace 7 silent, ^(Slack)"
-  "workspace 7 silent, telegram*"
+  "workspace 7 silent, org.telegram*"
   "workspace 6 silent, ^(firefox)"
   "workspace 8 silent, camoufox-default"
   "workspace 8 silent, ^(chromium)"
