@@ -22,7 +22,7 @@
     marksman
     nodePackages.typescript-language-server
     nodePackages.svelte-language-server
-    nodePackages.graphql-language-service-cli
+    # nodePackages.graphql-language-service-cli
   ];
 in {
   home.packages = with pkgs;
