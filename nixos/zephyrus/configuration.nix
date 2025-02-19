@@ -16,7 +16,7 @@ in {
   ];
 
   boot.kernelParams = ["i915U"];
-  boot.kernelPackages = pkgs.linuxPackages_6_12_hardened;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.systemd-boot = {
     enable = true;
@@ -35,21 +35,7 @@ in {
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "565.77";
-      sha256_64bit = "";
-      sha256_aarch64 = "";
-      openSha256 = "";
-      settingsSha256 = "";
-      persistencedSha256 = "";
-
-      #version = "550.40.07";
-      #sha256_64bit = "sha256-KYk2xye37v7ZW7h+uNJM/u8fNf7KyGTZjiaU03dJpK0=";
-      #sha256_aarch64 = "sha256-AV7KgRXYaQGBFl7zuRcfnTGr8rS5n13nGUIe3mJTXb4=";
-      #openSha256 = "sha256-mRUTEWVsbjq+psVe+kAT6MjyZuLkG2yRDxCMvDJRL1I=";
-      #settingsSha256 = "sha256-c30AQa4g4a1EHmaEu1yc05oqY01y+IusbBuq+P6rMCs=";
-      #persistencedSha256 = "sha256-11tLSY8uUIl4X/roNnxf5yS2PQvHvoNjnd2CB67e870=";
-   };
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     powerManagement = {
       enable = true;
       finegrained = true;
