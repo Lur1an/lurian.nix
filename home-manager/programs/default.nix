@@ -11,7 +11,6 @@
     slack
     vdhcoapp
     remmina
-    brave
     appflowy
     telegram-desktop
     obsidian

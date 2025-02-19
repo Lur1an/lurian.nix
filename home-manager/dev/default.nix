@@ -28,6 +28,7 @@
 
     # CLI Tools
     appimage-run
+    oha
     cmake
     git-crypt
     k3sup

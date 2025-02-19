@@ -9,6 +9,16 @@
   # This one contains whatever you want to overlay
   modifications = final: prev: {
     ollama = prev.ollama.override {acceleration = "cuda";};
+    # basedpyright = prev.basedpyright.overrideAttrs (oldAttrs: {
+    #   version = "1.24.0";
+    #   src = prev.fetchFromGitHub {
+    #     owner = "detachhead";
+    #     repo = "basedpyright";
+    #     tag = "v1.24.0";
+    #     hash = "sha256-46Icd8zrblD3fSeY1izEOMrYwTv+a4YE1cmMYUJtewk=";
+    #   };
+    #   npmDepsHash = "";
+    # });
     # jetbrains =
     #   prev.jetbrains
     #   // {

@@ -17,36 +17,33 @@
     isort
     ruff
     mypy
-    nodePackages.typescript-language-server
     stylua
-    nodePackages.svelte-language-server
     black
-    pyright
     marksman
+    nodePackages.typescript-language-server
+    nodePackages.svelte-language-server
     nodePackages.graphql-language-service-cli
   ];
 in {
-  home.packages = with pkgs; [
-    gnumake
-    gcc
-    fd
-    nodejs
-    isort
-    ruff
-    tree-sitter
-  ];
+  home.packages = with pkgs;
+    [
+      gnumake
+      gcc
+      fd
+      nodejs
+      isort
+      ruff
+      tree-sitter
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          vadimcn.vscode-lldb
+          ms-python.vscode-pylance
+        ];
+      })
+    ]
+    ++ languageServers;
   programs.neovim = {
     enable = true;
-    extraPackages =
-      (with pkgs; [
-        (vscode-with-extensions.override {
-          vscodeExtensions = with vscode-extensions; [
-            vadimcn.vscode-lldb
-            ms-python.vscode-pylance
-          ];
-        })
-      ])
-      ++ languageServers;
   };
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/nvim";
   home.file.".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/.ideavimrc";
