@@ -16,7 +16,7 @@ in {
   ];
 
   boot.kernelParams = ["i915U"];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_12_hardened;
 
   boot.loader.systemd-boot = {
     enable = true;
@@ -35,7 +35,7 @@ in {
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement = {
       enable = true;
       finegrained = true;
@@ -64,6 +64,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     brightnessctl
+    redshift
     asusctl
   ];
 
