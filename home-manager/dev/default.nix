@@ -27,6 +27,7 @@
     flatbuffers
 
     # CLI Tools
+    eza
     appimage-run
     oha
     cmake
