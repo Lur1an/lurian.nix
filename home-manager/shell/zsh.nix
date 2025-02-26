@@ -7,7 +7,7 @@
       vim = "nvim";
       archaider = "aider --model deepseeklocal --architect";
       sgpt = "sgpt --model 'gpt-4'";
-      update = "find ~/.config -name '*hm-bak' -delete find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
+      update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       pydev = "watchfiles python -m src.main --dev";
       vpaper = "video_wallpaper";
       gcap = "git_commit_push_all";

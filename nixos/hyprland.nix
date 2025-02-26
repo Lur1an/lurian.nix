@@ -57,7 +57,7 @@
     wayland-protocols
     wayland-utils
     wl-clipboard
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
     wlroots
 
     totem

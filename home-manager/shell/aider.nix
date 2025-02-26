@@ -10,7 +10,9 @@
   home.file.".aider.conf.yml".text = ''
     auto-commits: false
     dark-mode: true
-    editor-model: claude-3-5-sonnet-20241022
+    model: claude-3-7-sonnet-20250219
+    editor-model: claude-3-7-sonnet-20250219
+    vim: true
     alias:
     - deepseeklocal:ollama/deepseek-r1:32b
   '';

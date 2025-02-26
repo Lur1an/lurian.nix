@@ -21,6 +21,9 @@ return {
 		build = "make",
 		opts = {
 			provider = "claude",
+      claude = {
+        model = "claude-3-7-sonnet-20250219"
+      },
 			vendors = {
 				ollama = {
 					__inherited_from = "openai",
