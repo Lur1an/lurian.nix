@@ -6,6 +6,8 @@ with pkgs; [
   zlib
   libz
   fuse3
+  clang
+  libclang
   icu
   zlib
   nss

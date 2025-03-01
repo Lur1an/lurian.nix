@@ -21,7 +21,6 @@
     openssl.dev
     jdk21
     devenv
-    pkg-config
     protobuf
     lldb
     flatbuffers
@@ -30,7 +29,6 @@
     eza
     appimage-run
     oha
-    cmake
     git-crypt
     k3sup
     kubeseal

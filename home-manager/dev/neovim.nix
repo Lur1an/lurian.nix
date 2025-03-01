@@ -28,7 +28,6 @@ in {
   home.packages = with pkgs;
     [
       gnumake
-      gcc
       fd
       nodejs
       isort

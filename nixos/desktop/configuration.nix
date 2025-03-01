@@ -17,7 +17,6 @@ in {
     ../ai.nix
     ../configuration.nix
     ../k3s.nix
-    ../github-runners.nix
   ];
 
   boot.loader.systemd-boot = {

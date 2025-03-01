@@ -8,5 +8,8 @@
     cargo-watch
     sea-orm-cli
     sqlx-cli
+    clang
+    pkg-config
+    cmake
   ];
 }

@@ -139,7 +139,7 @@ return {
 			show_time = true,
 			log_level = "error",
 			workspace_text = function()
-				return "trying to exit vim"
+				return "I'd rather play games but idk how to exit this"
 			end,
 		},
 	},
