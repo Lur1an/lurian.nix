@@ -40,6 +40,8 @@ in {
   };
 
   fonts.fontconfig.enable = true;
+  catppuccin.flavor = "mocha";
+  catppuccin.gtk.enable = true;
 
   gtk = {
     inherit font cursorTheme iconTheme;

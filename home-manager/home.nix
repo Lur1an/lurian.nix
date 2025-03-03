@@ -2,6 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   outputs,
+  inputs,
   config,
   machineConfig,
   ...
@@ -13,6 +14,7 @@
 in {
   _module.args = {inherit custom;};
   imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
     ./rice
     ./shell
     ./wal
