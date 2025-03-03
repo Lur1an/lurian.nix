@@ -21,6 +21,25 @@ in {
         "${secondary}, 3840x2160@144, 2560x0, 1.50"
         "Unknown-1,disabled"
       ];
+      bind =
+        import ../binds.nix
+        ++ [
+          # Desktop specific binds can be added here
+        ];
+      windowrule =
+        import ../windowrule.nix
+        ++ [
+          "opacity 0.9,^(vesktop)"
+          "opacity 0.9, ^(org.telegram.desktop)"
+          "opacity 0.9,^(Slack)"
+          "workspace 7 silent, ^(vesktop)"
+          "workspace 7 silent, ^(Slack)"
+          "workspace 7 silent, ^(org.telegram.desktop)"
+          "workspace 6 silent, ^(firefox)"
+          "workspace 8 silent, camoufox-default"
+          "workspace 8 silent, ^(chromium)"
+          "workspace 8 silent, ^(google-chrome)"
+        ];
     };
   };
 }

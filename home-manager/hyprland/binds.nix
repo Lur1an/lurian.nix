@@ -45,6 +45,4 @@ in [
   "CTRL ${mod}, R,  ${e} quit; asztal -b hypr"
   "${mod}, S,       ${e} -t launcher"
   "${mod}, Tab,     ${e} -t overview"
-  ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-  ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 ]

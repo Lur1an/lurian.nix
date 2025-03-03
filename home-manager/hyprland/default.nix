@@ -20,13 +20,13 @@ in {
     then [
       ./overrides/zephyrus.nix
     ]
-    else if machineConfig.name == "xps15"
-    then [
-      ./overrides/xps15.nix
-    ]
     else if machineConfig.name == "desktop"
     then [
       ./overrides/desktop.nix
+    ]
+    else if machineConfig.name == "xps15"
+    then [
+      ./overrides/xps15.nix
     ]
     else [];
   wayland.windowManager.hyprland = {
@@ -56,7 +56,6 @@ in {
           class = "mpv";
         };
       };
-      windowrule = import ./windowrule.nix;
       gestures = {
         workspace_swipe = true;
         workspace_swipe_use_r = true;
@@ -127,7 +126,6 @@ in {
       bindm = ''
         ALT,mouse:272,movewindow
       '';
-      bind = import ./binds.nix;
       wsbind = [];
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
