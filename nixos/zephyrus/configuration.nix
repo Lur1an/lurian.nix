@@ -15,7 +15,7 @@ in {
     # ../ai.nix
   ];
 
-  boot.kernelParams = ["i915U"];
+  boot.kernelParams = ["i915U" "i915.enable_dpcd_backlight=3"];
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   boot.loader.systemd-boot = {
