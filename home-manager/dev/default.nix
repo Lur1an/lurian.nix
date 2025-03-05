@@ -27,6 +27,7 @@
 
     # CLI Tools
     eza
+    git-repo
     appimage-run
     oha
     git-crypt
