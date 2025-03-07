@@ -61,7 +61,7 @@ class Wallpaper extends Service {
             } catch (err) {}
             this.#wallpaper();
             await sh(
-                `nohup mpv --no-audio --no-panscan --loop "${path}" > /dev/null 2>&1 &`
+                `nohup mpv --no-audio --panscan=1.0 --loop "${path}" > /dev/null 2>&1 &`
             );
         } else {
             await sh(`cp ${path} ${WP}`);
