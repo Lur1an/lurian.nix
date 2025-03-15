@@ -44,7 +44,7 @@
     gh-markdown-preview
     zip
     sc-im
-    edgedb
+    gel
     wireshark-cli
     talosctl
     wireguard-tools
