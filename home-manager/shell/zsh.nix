@@ -10,6 +10,7 @@
       update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       pydev = "watchfiles python -m src.main --dev";
       vpaper = "video_wallpaper";
+      gfw = "gh workflow view";
       gcap = "git_commit_push_all";
       nvidia-offload = "nvidia_offload";
       quick-vnc = "quick_vnc";
