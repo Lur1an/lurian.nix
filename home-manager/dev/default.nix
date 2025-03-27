@@ -18,17 +18,22 @@
     beekeeper-studio
 
     # Deps
+    openssl
     openssl.dev
     jdk21
+    git-lfs
     devenv
     protobuf
     lldb
     flatbuffers
 
     # CLI Tools
+    nxpmicro-mfgtools
     eza
+    minio-client
     git-repo
     appimage-run
+    xca
     oha
     git-crypt
     k3sup

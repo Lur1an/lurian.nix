@@ -29,16 +29,13 @@ in {
       windowrule =
         import ../windowrule.nix
         ++ [
-          "opacity 0.9,^(vesktop)"
-          "opacity 0.9, ^(org.telegram.desktop)"
-          "opacity 0.9,^(Slack)"
-          "workspace 7 silent, ^(vesktop)"
-          "workspace 7 silent, ^(Slack)"
-          "workspace 7 silent, ^(org.telegram.desktop)"
-          "workspace 6 silent, ^(firefox)"
-          "workspace 8 silent, camoufox-default"
-          "workspace 8 silent, ^(chromium)"
-          "workspace 8 silent, ^(google-chrome)"
+          "workspace 7 silent, class:^(vesktop)"
+          "workspace 7 silent, class:^(Slack)"
+          "workspace 7 silent, class:^(org.telegram.desktop)"
+          "workspace 6 silent, class:^(firefox)"
+          "workspace 8 silent, class:camoufox-default"
+          "workspace 8 silent, class:^(chromium)"
+          "workspace 8 silent, class:^(google-chrome)"
         ];
     };
   };

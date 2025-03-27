@@ -14,16 +14,13 @@
       windowrule =
         import ../windowrule.nix
         ++ [
-          "opacity 0.9,^(vesktop)"
-          "opacity 0.9, ^(org.telegram.desktop)"
-          "opacity 0.9,^(Slack)"
-          "workspace 3 silent, ^(vesktop)"
-          "workspace 3 silent, ^(Slack)"
-          "workspace 3 silent, ^(org.telegram.desktop)"
-          "workspace 2 silent, ^(firefox)"
-          "workspace 8 silent, camoufox-default"
-          "workspace 8 silent, ^(chromium)"
-          "workspace 8 silent, ^(google-chrome)"
+          "workspace 3 silent, class:^(vesktop)"
+          "workspace 3 silent, class:^(Slack)"
+          "workspace 3 silent, class:^(org.telegram.desktop)"
+          "workspace 2 silent, class:^(firefox)"
+          "workspace 8 silent, class:camoufox-default"
+          "workspace 8 silent, class:^(chromium)"
+          "workspace 8 silent, class:^(google-chrome)"
         ];
     };
   };

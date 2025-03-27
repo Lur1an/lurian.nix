@@ -22,7 +22,7 @@
       #   @import url('layout.css');
       # '';
       search = {
-        default = "DuckDuckGo";
+        default = "ddg";
         engines = {
           "Nix Packages" = {
             urls = [
@@ -63,11 +63,11 @@
           };
           "NixOS Wiki" = {
             urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            icon = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@nw"];
           };
-          "YouTube" = {
+          "youtube" = {
             urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
             definedAliases = ["@yt"];
           };
@@ -75,7 +75,7 @@
             urls = [{template = "https://open.spotify.com/search/{searchTerms}";}];
             definedAliases = ["@sp"];
           };
-          "Wikipedia (en)".metaData.alias = "@wiki";
+          "wikipedia".metaData.alias = "@wiki";
         };
       };
       settings = {

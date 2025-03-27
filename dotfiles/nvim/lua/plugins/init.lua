@@ -237,6 +237,8 @@ return {
 				enable = true,
 			},
 			ensure_installed = {
+        "scheme",
+        "query",
 				"graphql",
 				"vim",
 				"lua",

@@ -1,5 +1,5 @@
 let
-  f = regex: "float, ^(${regex})$";
+  f = regex: "float, class:^(${regex})$";
 in [
   (f "org.gnome.Calculator")
   (f "org.gnome.Nautilus")
