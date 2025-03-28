@@ -14,6 +14,7 @@
     basedpyright
     docker-compose-language-service
     dockerfile-language-server-nodejs
+    sqruff
     isort
     ruff
     mypy
