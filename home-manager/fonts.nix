@@ -15,7 +15,7 @@ in {
     noto-fonts
     dejavu_fonts
     font-awesome
-    maple-mono-NF
+    maple-mono.NF
     liberation_ttf
     powerline-fonts
     cantarell-fonts
