@@ -131,7 +131,7 @@ in {
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "asztal -b hypr"
         "hyprctl setcursor Qogir 24"
-        "vesktop"
+        "discord"
         "openrgb"
         "telegram-desktop"
         "firefox-esr"

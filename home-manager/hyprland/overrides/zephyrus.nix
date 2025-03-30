@@ -14,7 +14,7 @@
       windowrule =
         import ../windowrule.nix
         ++ [
-          "workspace 3 silent, class:^(vesktop)"
+          "workspace 3 silent, class:^(discord)"
           "workspace 3 silent, class:^(Slack)"
           "workspace 3 silent, class:^(org.telegram.desktop)"
           "workspace 2 silent, class:^(firefox)"

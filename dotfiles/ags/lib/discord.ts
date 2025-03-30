@@ -5,16 +5,16 @@ const deps = ['colors'];
 
 async function setupDiscordCSS() {
     const colors = options.colors.value;
-    const skin: string = generateDiscordCSS(colors);
-    try {
-        await Utils.writeFile(
-            skin,
-            '/home/lurian/.config/vesktop/settings/quickCss.css'
-        );
-        console.info('Updated discord skin');
-    } catch (error) {
-        console.error(`Failed to serialize and write k9s skin: ${error}`);
-    }
+    // const skin: string = generateDiscordCSS(colors);
+    // try {
+    //     await Utils.writeFile(
+    //         skin,
+    //         '/home/lurian/.config/vesktop/settings/quickCss.css'
+    //     );
+    //     console.info('Updated discord skin');
+    // } catch (error) {
+    //     console.error(`Failed to serialize and write k9s skin: ${error}`);
+    // }
 }
 
 export default function init() {
