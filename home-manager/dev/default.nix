@@ -2,7 +2,6 @@
   imports = [
     ./k9s.nix
     ./python.nix
-    # ./java.nix begone bloat
     ./git.nix
     ./neovim.nix
     ./node.nix
@@ -25,7 +24,7 @@
     devenv
     protobuf
     lldb
-    flatbuffers
+    buf
 
     # CLI Tools
     nxpmicro-mfgtools

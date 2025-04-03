@@ -10,8 +10,8 @@
   home.file.".aider.conf.yml".text = ''
     auto-commits: false
     dark-mode: true
-    model: claude-3-7-sonnet-20250219
-    editor-model: claude-3-7-sonnet-20250219
+    model: openrouter/anthropic/claude-3.7-sonnet
+    editor-model: openrouter/anthropic/claude-3.7-sonnet
     vim: true
     alias:
     - deepseeklocal:ollama/deepseek-r1:32b

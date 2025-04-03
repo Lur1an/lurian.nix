@@ -50,3 +50,25 @@
  (#eq? @_name "query_as")
  (#eq? @_path "sqlx"))
  (#set! injection.language "sql"))
+
+; sqlx::query_scalar! raw string
+((macro_invocation
+  (scoped_identifier
+    path: (identifier) @_path
+    name: (identifier) @_name)
+  (token_tree
+    . (raw_string_literal (string_content) @injection.content))
+ (#eq? @_name "query_scalar")
+ (#eq? @_path "sqlx"))
+ (#set! injection.language "sql"))
+
+; sqlx::query_scalar! normal string
+((macro_invocation
+  (scoped_identifier
+    path: (identifier) @_path
+    name: (identifier) @_name)
+  (token_tree
+    . (string_literal (string_content) @injection.content))
+ (#eq? @_name "query_scalar")
+ (#eq? @_path "sqlx"))
+ (#set! injection.language "sql"))

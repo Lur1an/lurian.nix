@@ -26,6 +26,7 @@ opt.relativenumber = true
 
 vim.filetype.add({
 	pattern = {
+    [".*gel"] = "edgeql",
 		[".*/templates/.*%.yaml"] = "helm",
 		[".*/templates/.*%.tpl"] = "helm",
 		[".*/.kube/config"] = "yaml",

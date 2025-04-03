@@ -145,7 +145,7 @@ return {
 	},
 
 	{
-		"edgedb/edgedb-vim",
+		"geldata/edgedb-vim",
 		lazy = false,
 	},
 
@@ -326,7 +326,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
-        -- { name = "vim-dadbod-completion" },
+        { name = "vim-dadbod-completion" },
 				{ name = "path" },
 			}
 		end,
