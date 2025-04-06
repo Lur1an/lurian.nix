@@ -3,18 +3,16 @@
     sessionVariables.BROWSER = "firefox";
   };
 
-  imports = [
-    ./styling
-  ];
+  imports = [];
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-esr;
+    package = pkgs.firefox;
     profiles.default = {
-      userChrome = ''
-        @import url('userContent.css');
-        @import url('layout.css');
-      '';
+      # userChrome = ''
+      #   @import url('userContent.css');
+      #   @import url('layout.css');
+      # '';
       # userChrome = ''
       #   @import url('blurredfox/userChrome.css');
       #   @import url('blur.css');
@@ -61,6 +59,20 @@
               }
             ];
           };
+          "My NixOs" = {
+            definedAliases = ["@mn"];
+            urls = [
+              {
+                template = "https://mynixos.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+          };
           "NixOS Wiki" = {
             urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
             icon = "https://nixos.wiki/favicon.png";
@@ -82,8 +94,8 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "xpinstall.signatures.required" = false;
         "extensions.langpacks.signatures.required" = false;
-        "sidebar.revamp" = false;
-        "sidebar.verticalTabs" = false;
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
         "browser.bookmarks.addedImportButton" = false;
         "layers.acceleration.force-enabled" = true;
         "apz.gtk.kinetic_scroll.enabled" = false;

@@ -4,10 +4,11 @@ let
 in [
   "${mod}, Q, killactive"
   "${mod}, M, exit"
-  "${mod}, B, exec, firefox-esr"
+  "${mod}, B, exec, firefox"
   "${mod}, O, exec, obsidian"
   "${mod}, T, exec, kitty"
   "${mod}, F, exec, nautilus"
+  "${mod}, G, exec, ghostty"
   "${mod} SHIFT, L, movewindow, r"
   "${mod} SHIFT, H, movewindow, l"
   "${mod} SHIFT, K, movetoworkspace, -1"

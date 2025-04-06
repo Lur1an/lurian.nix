@@ -5,6 +5,7 @@
     ./aider.nix
     ./foot.nix
     ./tmux
+    ./ghostty.nix
   ];
   home.packages = with pkgs; [
     direnv
