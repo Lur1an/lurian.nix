@@ -197,3 +197,9 @@ end, { desc = "trouble symbols" })
 map("n", "<leader>mp", function()
 	vim.cmd("MarkdownPreview")
 end, { desc = "MarkdownPreview" })
+
+-- Git
+map("n", "<leader>gs", function()
+	vim.cmd("Gitsigns stage_hunk")
+end, { desc = "Gitsigns stage hunk" })
+
