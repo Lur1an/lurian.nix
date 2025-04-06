@@ -21,9 +21,9 @@ return {
 		build = "make",
 		opts = {
 			provider = "openrouter",
-      ollama = {
-        model = "deepseek/deepseek-r1:32b",
-      },
+			ollama = {
+				model = "deepseek/deepseek-r1:32b",
+			},
 			vendors = {
 				openrouter = {
 					__inherited_from = "openai",
@@ -345,10 +345,19 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
+			routes = {
+				{
+					filter = {
+						event = "notify",
+						find = "No information available",
+					},
+					opts = { skip = true },
+				},
+			},
 			lsp = {
-        signature = {
-          enabled = false,
-        },
+				signature = {
+					enabled = false,
+				},
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,

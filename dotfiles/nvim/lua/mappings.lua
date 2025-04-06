@@ -208,6 +208,10 @@ map("n", "<leader>gb", function()
 	vim.cmd("Gitsigns blame_line")
 end, { desc = "Gitsigns blame_line" })
 
+map("n", "<leader>gd", function()
+	vim.cmd("Gitsigns diffthis")
+end, { desc = "Gitsigns diffthis" })
+
 map("n", "<C-g>", ":Git ")
 
 -- Telescope
