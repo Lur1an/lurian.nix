@@ -29,6 +29,7 @@
 
     # CLI Tools
     nxpmicro-mfgtools
+    cloudflared
     eza
     minio-client
     git-repo
