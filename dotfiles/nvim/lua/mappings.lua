@@ -187,6 +187,10 @@ map("n", "<leader>te", function()
 end, { desc = "trouble errors" })
 
 map("n", "<leader>td", function()
+  vim.diagnostic.setqflist({ open = false, severity = vim.diagnostic.severity.WARN })
+	if #vim.fn.getqflist() == 1 then
+		vim.cmd("cfirst")
+	end
 	vim.cmd("Trouble diagnostics toggle focus=false win.position=bottom")
 end, { desc = "Trouble diagnostics" })
 
@@ -194,12 +198,20 @@ map("n", "<leader>ts", function()
 	vim.cmd("Trouble symbols toggle focus=false")
 end, { desc = "trouble symbols" })
 
+-- Stuff
 map("n", "<leader>mp", function()
 	vim.cmd("MarkdownPreview")
 end, { desc = "MarkdownPreview" })
 
 -- Git
-map("n", "<leader>gs", function()
-	vim.cmd("Gitsigns stage_hunk")
-end, { desc = "Gitsigns stage hunk" })
+map("n", "<leader>gb", function()
+	vim.cmd("Gitsigns blame_line")
+end, { desc = "Gitsigns blame_line" })
+
+map("n", "<C-g>", ":Git ")
+
+-- Telescope
+map("n", "<leader>fn", function()
+  vim.cmd("Telescope notify")
+end, { desc = "Telescope find notifications" })
 

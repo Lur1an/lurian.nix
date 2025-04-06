@@ -20,16 +20,17 @@ return {
 		version = false, -- set this if you want to always pull the latest change
 		build = "make",
 		opts = {
-			provider = "claude",
-      claude = {
-        model = "claude-3-7-sonnet-20250219"
+			provider = "openrouter",
+      ollama = {
+        model = "deepseek/deepseek-r1:32b",
       },
 			vendors = {
-				ollama = {
+				openrouter = {
 					__inherited_from = "openai",
-					api_key_name = "",
-					endpoint = "http://localhost:11434/v1",
-					model = "deepseek-r1:32b",
+					endpoint = "https://openrouter.ai/api/v1",
+					api_key_name = "OPENROUTER_API_KEY",
+					model = "anthropic/claude-3.7-sonnet",
+					max_tokens = 8192,
 				},
 			},
 			behaviour = {
@@ -237,8 +238,8 @@ return {
 				enable = true,
 			},
 			ensure_installed = {
-        "scheme",
-        "query",
+				"scheme",
+				"query",
 				"graphql",
 				"vim",
 				"lua",
@@ -326,7 +327,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
-        { name = "vim-dadbod-completion" },
+				{ name = "vim-dadbod-completion" },
 				{ name = "path" },
 			}
 		end,
@@ -339,5 +340,44 @@ return {
 		build = function()
 			require("base46").load_all_highlights()
 		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			lsp = {
+        signature = {
+          enabled = false,
+        },
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false, -- add a border to hover docs and signature help
+			},
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	},
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			background_colour = "#000000",
+		},
 	},
 }
