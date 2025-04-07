@@ -220,3 +220,13 @@ map("n", "<C-g>", ":Git ")
 map("n", "<leader>fn", function()
 	vim.cmd("Telescope notify")
 end, { desc = "Telescope find notifications" })
+
+-- Aider term
+map({ "n", "t" }, "<M-a>", function()
+	require("nvchad.term").toggle({
+		size = 1,
+		pos = "float",
+		id = "aider",
+		cmd = "aider",
+	})
+end, { desc = "Aider terminal" })

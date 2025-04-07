@@ -17,5 +17,6 @@
     - deepseeklocal:ollama/deepseek-r1:32b
     - gemini2.5:openrouter/google/gemini-2.5-pro-preview-03-25
     - claude3.7:openrouter/anthropic/claude-3.7-sonnet
+    show-model-warnings: false
   '';
 }
