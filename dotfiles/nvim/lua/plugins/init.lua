@@ -353,6 +353,30 @@ return {
 					},
 					opts = { skip = true },
 				},
+				{
+					filter = {
+						find = "lines yanked",
+					},
+					opts = { skip = true },
+				},
+				{
+					filter = {
+						find = "more lines",
+					},
+					opts = { skip = true },
+				},
+				{
+					filter = {
+						find = "No errors",
+					},
+					opts = { skip = true },
+				},
+				{
+					filter = {
+						find = "No more items",
+					},
+					opts = { skip = true },
+				},
 			},
 			lsp = {
 				signature = {

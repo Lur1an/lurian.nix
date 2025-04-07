@@ -187,7 +187,7 @@ map("n", "<leader>te", function()
 end, { desc = "trouble errors" })
 
 map("n", "<leader>td", function()
-  vim.diagnostic.setqflist({ open = false, severity = vim.diagnostic.severity.WARN })
+	vim.diagnostic.setqflist({ open = false, severity = vim.diagnostic.severity.WARN })
 	if #vim.fn.getqflist() == 1 then
 		vim.cmd("cfirst")
 	end
@@ -208,14 +208,15 @@ map("n", "<leader>gb", function()
 	vim.cmd("Gitsigns blame_line")
 end, { desc = "Gitsigns blame_line" })
 
-map("n", "<leader>gd", function()
-	vim.cmd("Gitsigns diffthis")
-end, { desc = "Gitsigns diffthis" })
+map("n", "<leader>gd", ":Gitsigns diffthis", { desc = "Gitsigns diffthis" })
+map("n", "<leader>gs", ":Gitsigns show", { desc = "Gitsigns diffthis" })
+map("n", "<leader>gn", function()
+	vim.cmd("Gitsigns setqflist")
+end, { desc = "Gitsigns navigate changes" })
 
 map("n", "<C-g>", ":Git ")
 
 -- Telescope
 map("n", "<leader>fn", function()
-  vim.cmd("Telescope notify")
+	vim.cmd("Telescope notify")
 end, { desc = "Telescope find notifications" })
-
