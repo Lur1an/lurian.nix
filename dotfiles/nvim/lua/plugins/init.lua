@@ -349,6 +349,13 @@ return {
 				{
 					filter = {
 						event = "notify",
+						find = "neocord",
+					},
+					opts = { skip = true },
+				},
+				{
+					filter = {
+						event = "notify",
 						find = "No information available",
 					},
 					opts = { skip = true },
