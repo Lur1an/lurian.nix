@@ -18,6 +18,7 @@
     lens
 
     # Deps
+    code-cursor
     openssl
     openssl.dev
     jdk21

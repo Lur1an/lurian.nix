@@ -32,9 +32,17 @@ return {
 					model = "anthropic/claude-3.7-sonnet",
 					max_tokens = 8192,
 				},
+				groq = { -- define groq provider
+					__inherited_from = "openai",
+					api_key_name = "GROQ_API_KEY",
+					endpoint = "https://api.groq.com/openai/v1/",
+					model = "llama-3.3-70b-versatile",
+					max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
+				},
 			},
 			behaviour = {
-				auto_apply_diff_after_generation = false,
+				auto_apply_diff_after_generation = true,
+				enable_cursor_planning_mode = true,
 			},
 			windows = {
 				position = "left",

@@ -20,6 +20,7 @@
       docker-debug = "docker_debug";
       seal = "kubeseal_encrypt";
       make-thumb = "make_thumb";
+      openhands = "openhands_cli";
       vpn-on = "sudo wg-quick up ~/wg0.conf";
       vpn-off = "sudo wg-quick down ~/wg0.conf";
     };
@@ -73,6 +74,25 @@
         git add -A
         git commit -m $1
         git push
+      }
+
+      function openhands_cli() {
+        export WORKSPACE_BASE=$(pwd)/workspace
+        model=''${1:-anthropic/claude-3.7-sonnet}
+        docker run -it \
+            --pull=always \
+            -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.32-nikolaik \
+            -e SANDBOX_USER_ID=$(id -u) \
+            -e WORKSPACE_MOUNT_PATH=$WORKSPACE_BASE \
+            -e LLM_API_KEY=$OPENROUTER_API_KEY \
+            -e LLM_MODEL=$model \
+            -v $WORKSPACE_BASE:/opt/workspace_base \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v ~/.openhands-state:/.openhands-state \
+            --add-host host.docker.internal:host-gateway \
+            --name openhands-app-$(date +%Y%m%d%H%M%S) \
+            docker.all-hands.dev/all-hands-ai/openhands:0.32 \
+            python -m openhands.core.cli
       }
 
 
