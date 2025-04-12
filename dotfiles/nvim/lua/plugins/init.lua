@@ -27,7 +27,6 @@ return {
 				provider = "ollama", -- The provider to use for RAG service (e.g. openai or ollama)
 				llm_model = "llama3", -- The LLM model to use for RAG service
 				embed_model = "", -- The embedding model to use for RAG service
-				endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
 			},
 			ollama = {
 				model = "deepseek/deepseek-r1:32b",
