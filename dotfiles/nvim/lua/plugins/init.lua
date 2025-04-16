@@ -364,6 +364,12 @@ return {
 				{
 					filter = {
 						event = "notify",
+						find = "different client offset_encodings",
+					},
+				},
+				{
+					filter = {
+						event = "notify",
 						find = "neocord",
 					},
 					opts = { skip = true },

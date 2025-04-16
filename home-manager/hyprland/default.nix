@@ -134,7 +134,7 @@ in {
         "discord"
         "openrgb"
         "telegram-desktop"
-        "firefox-esr"
+        "firefox"
         "exec systemctl start polkit-gnome-authentication-agent-1"
         "pywalfox start"
       ];
