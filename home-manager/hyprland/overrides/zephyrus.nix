@@ -19,7 +19,7 @@
           "workspace 3 silent, class:^(org.telegram.desktop)"
           "workspace 2 silent, class:^(firefox)"
           "workspace 8 silent, class:camoufox-default"
-          "workspace 8 silent, class:^(chromium)"
+          "workspace 8 silent, class:^(chromium-browser)"
           "workspace 8 silent, class:^(google-chrome)"
         ];
     };
