@@ -165,6 +165,10 @@ map("n", "<leader>ll", function()
 	vim.cmd("LspRestart")
 end, { desc = "restart lsp" })
 
+map("n", "<leader>ca", function()
+	vim.lsp.buf.code_action()
+end, { desc = "code action" })
+
 map("n", "S", function()
 	vim.diagnostic.open_float()
 end, { desc = "restart lsp" })

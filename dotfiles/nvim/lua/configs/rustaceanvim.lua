@@ -11,9 +11,9 @@ vim.g.rustaceanvim = {
     capabilities = require("nvchad.configs.lspconfig").capabilities,
     on_attach = function(client, bufnr)
       local map = vim.keymap.set
-      map("n", "<leader>ca", function()
-        vim.cmd.RustLsp("codeAction")
-      end)
+      -- map("n", "<leader>ca", function()
+      --   vim.cmd.RustLsp("codeAction")
+      -- end)
       map("n", "K", function()
         vim.lsp.buf.hover()
       end)
