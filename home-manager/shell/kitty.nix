@@ -5,7 +5,7 @@ in {
     font.name = custom.code_font;
     settings = {
       font_size = 12;
-      background_opacity = 1;
+      background_opacity = 0.85;
       confirm_os_window_close = 0;
       window_padding_width = 10;
       input_delay = 0;

@@ -44,24 +44,7 @@ else
 		settings = {
 			basedpyright = {
 				analysis = {
-          extraPaths = {
-            "./.devenv/state/venv/lib/python3.12/site-packages"
-          },
 					typeCheckingMode = "basic",
-					-- autoSearchPaths = true,
-					-- diagnosticMode = "openFilesOnly",
-					-- useLibraryCodeForTypes = true,
-					-- enableTypeIgnoreComments = true,
-					-- diagnosticSeverityOverrides = {
-					-- 	reportAny = false,
-					-- 	reportExplicitAny = false,
-					-- 	reportUnknownMemberType = false,
-					-- 	reportMissingTypeStubs = false,
-					-- 	reportUntypedFunctionDecorator = false,
-					-- 	reportUnannotatedClassAttribute = false,
-					-- 	reportUnusedCallResult = false,
-					-- 	reportCallInDefaultInitializer = false,
-					-- },
 				},
 			},
 		},
