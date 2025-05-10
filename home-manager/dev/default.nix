@@ -11,7 +11,6 @@
     libnvidia-container
 
     # Dev Apps
-    ollama
     postman
     jetbrains.rust-rover
     beekeeper-studio
@@ -29,6 +28,7 @@
     buf
 
     # CLI Tools
+    dioxus-cli
     nxpmicro-mfgtools
     cloudflared
     eza
