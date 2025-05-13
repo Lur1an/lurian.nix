@@ -31,7 +31,7 @@
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];
-    initExtra = ''
+    initContent = ''
       function rust_dev() {
           local log_level=''${2:-info}
           RUST_LOG=$log_level cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"

@@ -161,7 +161,7 @@
     hwinfo
     papirus-icon-theme
     morewaita-icon-theme
-    inputs.matugen.packages.${system}.default
+    matugen
     hyprlock
     pywalfox-native
     ntfs3g

@@ -23,17 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-
-    matugen = {
-      url = "github:InioX/matugen";
-    };
-
     ags.url = "github:lur1an/ags";
-
-    lf-icons = {
-      url = "github:gokcehan/lf";
-      flake = false;
-    };
   };
 
   outputs = {

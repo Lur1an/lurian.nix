@@ -13,7 +13,6 @@
     # Dev Apps
     postman
     jetbrains.rust-rover
-    beekeeper-studio
     lens
 
     # Deps

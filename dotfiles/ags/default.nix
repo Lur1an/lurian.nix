@@ -17,6 +17,7 @@
   wf-recorder,
   wl-clipboard,
   wayshot,
+  matugen,
   wallust,
   pywal,
   swappy,
@@ -40,7 +41,7 @@
     fzf
     brightnessctl
     swww
-    inputs.matugen.packages.${system}.default
+    matugen
     pywalfox-native
     wallust
     pywal

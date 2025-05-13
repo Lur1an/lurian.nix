@@ -14,7 +14,7 @@
 in {
   _module.args = {inherit custom;};
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
     ./rice
     ./shell
     ./wal
