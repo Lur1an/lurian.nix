@@ -13,7 +13,6 @@
     # Dev Apps
     postman
     jetbrains.rust-rover
-    lens
 
     # Deps
     code-cursor
@@ -39,7 +38,6 @@
     git-crypt
     k3sup
     kubeseal
-    kubectl-cnpg
     rover
     drill
     curl-impersonate
