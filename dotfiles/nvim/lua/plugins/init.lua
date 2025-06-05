@@ -21,6 +21,7 @@ return {
 		build = "make",
 		opts = {
 			provider = "openrouter",
+      cursor_applying_provider = 'groq',
 			rag_service = {
 				enabled = false,
 				host_mount = os.getenv("HOME"), -- Host mount path for the rag service
@@ -28,15 +29,15 @@ return {
 				llm_model = "llama3", -- The LLM model to use for RAG service
 				embed_model = "", -- The embedding model to use for RAG service
 			},
-			ollama = {
-				model = "deepseek/deepseek-r1:32b",
-			},
-			vendors = {
+			providers = {
+        ollama = {
+          model = "devstral:latest",
+        },
 				openrouter = {
 					__inherited_from = "openai",
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
-					model = "google/gemini-2.5-pro-preview-03-25",
+					model = "google/gemini-2.5-pro-preview",
 					max_tokens = 20480,
 				},
 				groq = { -- define groq provider
@@ -44,7 +45,9 @@ return {
 					api_key_name = "GROQ_API_KEY",
 					endpoint = "https://api.groq.com/openai/v1/",
 					model = "llama-3.3-70b-versatile",
-					max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
+          extra_request_body = {
+            max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
+          }
 				},
 			},
 			behaviour = {
