@@ -13,11 +13,13 @@
     model: gemini2.5
     editor-model: gemini2.5
     vim: true
+    show-model-warnings: false
     alias:
     - deepseeklocal:ollama/deepseek-r1:32b
     - gemini2.5:openrouter/google/gemini-2.5-pro-preview
-    - claude3.7:openrouter/anthropic/claude-3.7-sonnet
-    show-model-warnings: false
+    - sonnet:openrouter/anthropic/claude-sonnet-4
+    - opus:openrouter/anthropic/claude-opus-4
+    - o4-mini:openrouter/openai/o4-mini-high
   '';
 
   home.file.".aider.model.settings.yml".text = ''

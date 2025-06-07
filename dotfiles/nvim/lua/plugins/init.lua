@@ -20,7 +20,7 @@ return {
 		version = false, -- set this if you want to always pull the latest change
 		build = "make",
 		opts = {
-			provider = "openrouter",
+			provider = "openrouter-sonnet",
       cursor_applying_provider = 'groq',
 			rag_service = {
 				enabled = false,
@@ -33,18 +33,32 @@ return {
         ollama = {
           model = "devstral:latest",
         },
-				openrouter = {
+				["openrouter-gemini"] = {
 					__inherited_from = "openai",
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
 					model = "google/gemini-2.5-pro-preview",
 					max_tokens = 20480,
 				},
+        ["openrouter-sonnet"] = {
+					__inherited_from = "openai",
+					endpoint = "https://openrouter.ai/api/v1",
+					api_key_name = "OPENROUTER_API_KEY",
+          model = "anthropic/claude-sonnet-4",
+					max_tokens = 20480,
+        },
+        ["openrouter-opus"] = {
+					__inherited_from = "openai",
+					endpoint = "https://openrouter.ai/api/v1",
+					api_key_name = "OPENROUTER_API_KEY",
+          model = "anthropic/claude-opus-4",
+					max_tokens = 20480,
+        },
 				groq = { -- define groq provider
 					__inherited_from = "openai",
 					api_key_name = "GROQ_API_KEY",
 					endpoint = "https://api.groq.com/openai/v1/",
-					model = "llama-3.3-70b-versatile",
+					model = "anthropic/claude-sonnet-4",
           extra_request_body = {
             max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
           }

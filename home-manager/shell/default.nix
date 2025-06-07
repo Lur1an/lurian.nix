@@ -6,6 +6,7 @@
     ./foot.nix
     ./tmux
     ./ghostty.nix
+    ./opencode.nix
   ];
   home.packages = with pkgs; [
     direnv
