@@ -191,15 +191,6 @@ return {
 		end,
 		ft = { "markdown" },
 	},
-
-	{
-		"rust-lang/rust.vim",
-		ft = "rust",
-		init = function()
-			-- vim.g.rustfmt_autosave = 1
-		end,
-	},
-
 	{
 		"mfussenegger/nvim-dap",
 		config = function()
@@ -297,7 +288,7 @@ return {
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^4", -- Recommended
+		version = "^6", -- Recommended
 		ft = { "rust" },
 		config = function()
 			require("configs.rustaceanvim")

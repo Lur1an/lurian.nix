@@ -10,8 +10,8 @@
   home.file.".aider.conf.yml".text = ''
     auto-commits: false
     dark-mode: true
-    model: gemini2.5
-    editor-model: gemini2.5
+    model: sonnet
+    editor-model: sonnet
     vim: true
     show-model-warnings: false
     alias:
