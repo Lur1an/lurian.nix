@@ -1,1 +1,1 @@
-vim.cmd [[autocmd BufWritePre * lua require("conform").format()]]
+vim.cmd([[autocmd BufWritePre * lua require("conform").format()]])

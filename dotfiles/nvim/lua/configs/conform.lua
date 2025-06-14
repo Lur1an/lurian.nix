@@ -4,6 +4,7 @@ local options = {
 		env = {
 			YAMLFIX_SEQUENCE_STYLE = "block_style",
 			YAMLFIX_EXPLICIT_START = "false",
+			YAMLFIX_WHITELINES = "1",
 		},
 	},
 	formatters_by_ft = {

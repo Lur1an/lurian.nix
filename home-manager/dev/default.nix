@@ -26,6 +26,7 @@
     buf
 
     # CLI Tools
+    tree
     dioxus-cli
     nxpmicro-mfgtools
     cloudflared

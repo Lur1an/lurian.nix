@@ -25,8 +25,5 @@
   home.file.".aider.model.settings.yml".text = ''
     - name: openrouter/google/gemini-2.5-pro-preview
       edit_format: diff-fenced
-      extra_params:
-        reasoning_effort: 0.0
-        thinking_tokens: 0
   '';
 }

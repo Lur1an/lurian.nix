@@ -1,4 +1,5 @@
 require("nvchad.options")
+require("custom")
 
 -- add yours here!
 --
