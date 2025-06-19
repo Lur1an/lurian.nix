@@ -26,6 +26,7 @@
     buf
 
     # CLI Tools
+    claude-code
     tree
     dioxus-cli
     nxpmicro-mfgtools

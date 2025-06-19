@@ -16,14 +16,14 @@
     show-model-warnings: false
     alias:
     - deepseeklocal:ollama/deepseek-r1:32b
-    - gemini2.5:openrouter/google/gemini-2.5-pro-preview
+    - gemini2.5:openrouter/google/gemini-2.5-pro
     - sonnet:openrouter/anthropic/claude-sonnet-4
     - opus:openrouter/anthropic/claude-opus-4
     - o4-mini:openrouter/openai/o4-mini-high
   '';
 
-  home.file.".aider.model.settings.yml".text = ''
-    - name: openrouter/google/gemini-2.5-pro-preview
-      edit_format: diff-fenced
-  '';
+  # home.file.".aider.model.settings.yml".text = ''
+  #   - name: openrouter/google/gemini-2.5-pro-preview
+  #     edit_format: diff-fenced
+  # '';
 }

@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland = {
     settings = {
       monitor = [
-        ",preferred,auto, 1.25"
+        ",preferred,auto-right, 1.25"
       ];
       bind =
         import ../binds.nix

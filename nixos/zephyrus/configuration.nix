@@ -18,6 +18,12 @@ in {
   boot.kernelParams = ["i915U" "i915.enable_dpcd_backlight=3"];
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+    }
+  ];
+
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 13;
@@ -35,7 +41,7 @@ in {
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement = {
       enable = true;
       finegrained = true;
