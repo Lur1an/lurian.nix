@@ -26,6 +26,7 @@
     buf
 
     # CLI Tools
+    terraform
     claude-code
     tree
     dioxus-cli
@@ -37,6 +38,7 @@
     appimage-run
     xca
     oha
+    hcloud
     git-crypt
     k3sup
     kubeseal

@@ -11,6 +11,7 @@ local servers = {
 	"dockerls",
 	"tailwindcss",
 	"svelte",
+  "terraformls",
 	"ansiblels",
 	"graphql",
 	"ts_ls",

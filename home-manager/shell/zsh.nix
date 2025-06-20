@@ -108,6 +108,7 @@
         source ~/.fvm/env
       fi
 
+      PATH="$HOME/.npm-global/bin:$PATH"
       eval "$(direnv hook zsh)"
       eval "$(uv generate-shell-completion zsh)"
     '';

@@ -5,6 +5,7 @@
 }: let
   languageServers = with pkgs; [
     lua-language-server
+    terraform-ls
     helm-ls
     yamlfix
     ansible-language-server

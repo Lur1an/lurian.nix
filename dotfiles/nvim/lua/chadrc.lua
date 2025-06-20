@@ -5,7 +5,7 @@ local transparent = true
 local in_tmux = os.getenv("TMUX") ~= nil
 
 M.base46 = {
-	theme = "gruvbox_light",
+	theme = "chadracula-evondev",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
@@ -26,7 +26,7 @@ M.term = {
 }
 
 M.ui = {
-	theme_toggle = { "gruvbox_light", "gruvbox_light" },
+	theme_toggle = { "chadracula-evondev", "chadracula-evondev" },
 	telescope = {
 		style = "bordered", -- borderless / bordered
 	},
