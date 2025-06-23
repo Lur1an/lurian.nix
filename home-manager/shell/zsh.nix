@@ -19,6 +19,7 @@
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";
       seal = "kubeseal_encrypt";
+      kubedel = "nuke_kubeconfig";
       make-thumb = "make_thumb";
       openhands = "openhands_cli";
       vpn-on = "sudo wg-quick up ~/wg0.conf";
@@ -47,6 +48,12 @@
 
       function kubeseal_encrypt() {
         kubeseal --format yaml --scope $1 < $2 > $3
+      }
+
+      function nuke_kubeconfig() {
+        kubectl config delete-cluster $1
+        kubectl config delete-context $1
+        kubectl config delete-user $1
       }
 
       function boot_windows() {

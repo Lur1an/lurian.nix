@@ -5,6 +5,9 @@
 
   home.sessionVariables = {
     AIDER_AUTO_COMMITS = "false";
+    OCO_AI_PROVIDER = "openai";
+    OCO_API_URL = "https://openrouter/api/v1";
+    OCO_MODEL = "google/gemini-2.5-pro";
   };
 
   home.file.".aider.conf.yml".text = ''

@@ -26,7 +26,9 @@
     buf
 
     # CLI Tools
+    opencommit
     terraform
+    packer
     claude-code
     tree
     dioxus-cli
