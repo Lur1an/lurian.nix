@@ -15,7 +15,6 @@
     jetbrains.rust-rover
 
     # Deps
-    code-cursor
     openssl
     openssl.dev
     jdk21

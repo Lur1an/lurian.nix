@@ -6,7 +6,7 @@
   home.sessionVariables = {
     AIDER_AUTO_COMMITS = "false";
     OCO_AI_PROVIDER = "openai";
-    OCO_API_URL = "https://openrouter/api/v1";
+    OCO_API_URL = "https://openrouter.ai/api/v1";
     OCO_MODEL = "google/gemini-2.5-pro";
   };
 

@@ -15,13 +15,14 @@
       nvidia-offload = "nvidia_offload";
       quick-vnc = "quick_vnc";
       local-vnc = "remmina -c vnc://localhost:5900";
+      kubecurl = "_kubecurl";
+      kube-nuke = "kube_nuke";
       rust-dev = "rust_dev";
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";
       seal = "kubeseal_encrypt";
       kubedel = "nuke_kubeconfig";
       make-thumb = "make_thumb";
-      openhands = "openhands_cli";
       vpn-on = "sudo wg-quick up ~/wg0.conf";
       vpn-off = "sudo wg-quick down ~/wg0.conf";
     };
@@ -36,6 +37,10 @@
       function rust_dev() {
           local log_level=''${2:-info}
           RUST_LOG=$log_level cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
+      }
+
+      function _kubecurl() {
+        kubectl run -n $1 curl-debug --image=curlimages/curl:latest --rm -it -- sh
       }
 
       function nvidia_offload() {
@@ -83,23 +88,49 @@
         git push
       }
 
-      function openhands_cli() {
-        export WORKSPACE_BASE=$(pwd)/workspace
-        model=''${1:-anthropic/claude-3.7-sonnet}
-        docker run -it \
-            --pull=always \
-            -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.32-nikolaik \
-            -e SANDBOX_USER_ID=$(id -u) \
-            -e WORKSPACE_MOUNT_PATH=$WORKSPACE_BASE \
-            -e LLM_API_KEY=$OPENROUTER_API_KEY \
-            -e LLM_MODEL=$model \
-            -v $WORKSPACE_BASE:/opt/workspace_base \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            -v ~/.openhands-state:/.openhands-state \
-            --add-host host.docker.internal:host-gateway \
-            --name openhands-app-$(date +%Y%m%d%H%M%S) \
-            docker.all-hands.dev/all-hands-ai/openhands:0.32 \
-            python -m openhands.core.cli
+      # -----------------------------------------------------------------------------
+      # FUNCTION: kube_nuke
+      # PURPOSE:  Forcefully removes all finalizers from every resource in a
+      #           given Kubernetes namespace.
+      # USAGE:    kube_nuke <namespace>
+      # WARNING:  This is a destructive operation. It should only be used to clean
+      #           up resources stuck in a 'Terminating' state.
+      # -----------------------------------------------------------------------------
+      function kube_nuke() {
+        # Check if a namespace argument was provided
+        if [ -z "$1" ]; then
+          echo "ERROR: Namespace argument is required." >&2
+          echo "Usage: kube_nuke <namespace>" >&2
+          return 1
+        fi
+
+        local NS="$1"
+
+        # --- FIX IS HERE ---
+        # Confirmation prompt, written in a portable way for bash, zsh, etc.
+        echo "WARNING: You are about to forcefully remove ALL finalizers from ALL resources in the '$NS' namespace."
+        printf "This can lead to orphaned resources. Are you absolutely sure you want to proceed? Type 'yes' to continue: "
+        read -r REPLY
+        # --- END FIX ---
+
+        # Using a more explicit check for the word "yes" for safety.
+        if [[ "$REPLY" != "yes" ]]; then
+          echo "Operation cancelled."
+          return 1
+        fi
+
+        echo "Proceeding to patch all resources in namespace '$NS'..."
+
+        # Find all namespaced resource types that can be listed and patched.
+        # For each type, get all resource instances in the namespace and patch them.
+        # Using a while read loop is often safer than xargs with complex commands.
+        kubectl api-resources --verbs=list,patch --namespaced -o name | while read -r TYPE; do
+          echo "INFO: Checking for resources of type '$TYPE'..."
+          kubectl get "$TYPE" -n "$NS" -o name --ignore-not-found | \
+            xargs -r -I {} kubectl patch {} -n "$NS" --type=merge -p '{"metadata":{"finalizers":[]}}'
+        done
+
+        echo "✅ Operation complete. All finalizers should have been removed from resources in '$NS'."
       }
 
 
