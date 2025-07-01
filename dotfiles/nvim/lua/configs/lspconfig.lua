@@ -45,6 +45,7 @@ else
 		settings = {
 			basedpyright = {
 				analysis = {
+          diagnosticMode = "workspace",
 					extraPaths = {
 						"./.devenv/state/venv/lib/python3.12/site-packages",
 					},
