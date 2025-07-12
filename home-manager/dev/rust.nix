@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     rustup
     cargo-make
+    cargo-hack
     cargo-flamegraph
     cargo-nextest
     cargo-udeps
