@@ -5,15 +5,15 @@ return {
 			"TSPlaygroundToggle",
 		},
 	},
- {
-  "dariuscorvus/tree-sitter-surrealdb.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
-  lazy = false,
-  config = function()
-    -- setup step
-    require("tree-sitter-surrealdb").setup()
-  end,
-},
+	{
+		"dariuscorvus/tree-sitter-surrealdb.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		lazy = false,
+		config = function()
+			-- setup step
+			require("tree-sitter-surrealdb").setup()
+		end,
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },

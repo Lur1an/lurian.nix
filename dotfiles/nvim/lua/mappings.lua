@@ -202,6 +202,10 @@ map("n", "<leader>te", function()
 	vim.cmd("Trouble diagnostics toggle focus=false win.position=bottom filter.severity=vim.diagnostic.severity.ERROR")
 end, { desc = "trouble errors" })
 
+map("n", "<leader>tw", function()
+  vim.cmd("Trouble todo")
+end, { desc = "trouble TODOs" })
+
 map("n", "<leader>td", function()
 	vim.diagnostic.setqflist({ open = false, severity = vim.diagnostic.severity.WARN })
 	if #vim.fn.getqflist() == 1 then

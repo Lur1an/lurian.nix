@@ -5,7 +5,6 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       vim = "nvim";
-      archaider = "aider --model deepseeklocal --architect";
       sgpt = "sgpt --model 'gpt-4'";
       update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       pydev = "watchfiles python -m src.main --dev";
@@ -146,7 +145,6 @@
         source ~/.fvm/env
       fi
 
-      PATH="$HOME/.npm-global/bin:$PATH"
       eval "$(direnv hook zsh)"
       eval "$(uv generate-shell-completion zsh)"
     '';

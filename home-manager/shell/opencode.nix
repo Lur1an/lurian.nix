@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    opencode
   ];
   home.file. ".config/opencode/config.json".text =
     builtins.toJSON
