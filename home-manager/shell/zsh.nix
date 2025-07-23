@@ -5,7 +5,6 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       vim = "nvim";
-      sgpt = "sgpt --model 'gpt-4'";
       update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       pydev = "watchfiles python -m src.main --dev";
       vpaper = "video_wallpaper";
@@ -16,6 +15,8 @@
       local-vnc = "remmina -c vnc://localhost:5900";
       kubecurl = "_kubecurl";
       kube-nuke = "kube_nuke";
+      dcd = "docker compose down";
+      dcu = "docker compose up -d";
       rust-dev = "rust_dev";
       boot-windows = "boot_windows";
       docker-debug = "docker_debug";

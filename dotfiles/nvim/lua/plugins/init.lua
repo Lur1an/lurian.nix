@@ -28,7 +28,7 @@ return {
 		version = false, -- set this if you want to always pull the latest change
 		build = "make",
 		opts = {
-			provider = "openrouter-gemini-flash",
+			provider = "openrouter-grok",
 			cursor_applying_provider = "groq",
 			rag_service = {
 				enabled = false,
@@ -41,11 +41,11 @@ return {
 				ollama = {
 					model = "devstral:latest",
 				},
-				["openrouter-gemini"] = {
+				["openrouter-grok"] = {
 					__inherited_from = "openai",
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
-					model = "google/gemini-2.5-pro-preview",
+					model = "x-ai/grok-4",
 				},
 				["openrouter-gemini-flash"] = {
 					__inherited_from = "openai",
