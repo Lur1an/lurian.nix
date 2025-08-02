@@ -7,6 +7,8 @@ local unmap = vim.keymap.del
 unmap("n", "<leader>h")
 unmap("n", "<leader>v")
 
+map("n", "$", "g_", { desc = "general move to end of line" })
+map("v", "$", "g_", { desc = "general move to end of line" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>rl", function()
 	vim.cmd("e!")

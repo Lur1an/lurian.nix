@@ -18,9 +18,9 @@ end
 
 opt.incsearch = true
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = true
-opt.foldlevelstart = 5
+opt.foldlevelstart = 99
 opt.expandtab = true
 opt.smartindent = true
 opt.relativenumber = true

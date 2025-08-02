@@ -16,7 +16,7 @@
   home.file.".aider.conf.yml".text = ''
     auto-commits: false
     dark-mode: true
-    model: grok
+    model: flash
     editor-model: sonnet
     thinking-tokens: 32000
     vim: true
@@ -28,6 +28,7 @@
     - opus:openrouter/anthropic/claude-opus-4
     - o4-mini:openrouter/openai/o4-mini-high
     - grok:openrouter/x-ai/grok-4
+    - flash:openrouter/google/gemini-2.5-flash
   '';
 
   home.file.".aider.model.settings.yml".text = ''

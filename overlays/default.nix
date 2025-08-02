@@ -9,6 +9,17 @@
   # This one contains whatever you want to overlay
   modifications = final: prev: {
     ollama = prev.ollama.override {acceleration = "cuda";};
+    
+    opencode = prev.opencode.overrideAttrs (oldAttrs: rec {
+      version = "0.3.112"; # Update this to the latest version
+      src = prev.fetchFromGitHub {
+        owner = "sst";
+        repo = "opencode";
+        tag = "v${version}";
+        sha256 = "BeUgZUzuphQ1gqPnDnKP2HMy5nyoD5au4AekGT2deIc=";
+      };
+    });
+    
     # basedpyright = prev.basedpyright.overrideAttrs (oldAttrs: {
     #   version = "1.24.0";
     #   src = prev.fetchFromGitHub {
