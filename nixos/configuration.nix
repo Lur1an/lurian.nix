@@ -11,7 +11,6 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.catppuccin.nixosModules.catppuccin
     ./hyprland.nix
     ./polkit.nix
   ];
