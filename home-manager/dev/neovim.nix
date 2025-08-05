@@ -23,16 +23,14 @@
     stylua
     black
     marksman
-    nodePackages.typescript-language-server
-    nodePackages.svelte-language-server
-    # nodePackages.graphql-language-service-cli
+    nodePackages_latest.typescript-language-server
+    nodePackages_latest.svelte-language-server
   ];
 in {
   home.packages = with pkgs;
     [
       gnumake
       fd
-      nodejs
       isort
       ruff
       tree-sitter

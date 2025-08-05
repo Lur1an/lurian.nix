@@ -9,7 +9,6 @@
   ];
 
   home.packages = with pkgs; [
-    bun
     dart-sass
     fd
     brightnessctl
@@ -27,7 +26,7 @@
     enable = true;
     extraPackages = with pkgs; [
       accountsservice
-      nodePackages.js-yaml
+      # nodePackages.js-yaml
     ];
   };
 }
