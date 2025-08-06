@@ -243,12 +243,12 @@ map("n", "<leader>fn", function()
 	vim.cmd("Telescope notify")
 end, { desc = "Telescope find notifications" })
 
--- Aider term
-map({ "n", "t" }, "<M-a>", function()
-	require("nvchad.term").toggle({
-		size = 1,
-		pos = "float",
-		id = "aider",
-		cmd = "aider",
-	})
-end, { desc = "Aider terminal" })
+-- Aider term (commented out - using aider.nvim plugin instead)
+-- map({ "n", "t" }, "<M-a>", function()
+-- 	require("nvchad.term").toggle({
+-- 		size = 1,
+-- 		pos = "float",
+-- 		id = "aider",
+-- 		cmd = "aider",
+-- 	})
+-- end, { desc = "Aider terminal" })

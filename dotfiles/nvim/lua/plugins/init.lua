@@ -28,7 +28,7 @@ return {
 		version = false, -- set this if you want to always pull the latest change
 		build = "make",
 		opts = {
-			provider = "openrouter-grok",
+			provider = "openrouter-gemini-flash",
 			cursor_applying_provider = "groq",
 			rag_service = {
 				enabled = false,
@@ -51,7 +51,7 @@ return {
 					__inherited_from = "openai",
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
-					model = "google/gemini-2.5-flash-lite-preview-06-17",
+					model = "google/gemini-2.5-flash",
 				},
 				["openrouter-sonnet"] = {
 					__inherited_from = "openai",
@@ -488,6 +488,29 @@ return {
 		"rcarriga/nvim-notify",
 		opts = {
 			background_colour = "#000000",
+		},
+	},
+	{
+		"joshuavial/aider.nvim",
+		lazy = false,
+		opts = {
+			auto_manage_context = true,  -- automatically manage buffer context
+			default_bindings = false,    -- disable default <leader>A keybindings
+			debug = false,               -- disable debug logging
+			vim = true,                  -- enable vim mode
+		},
+		keys = {
+			{ "<M-a>", function()
+				-- Check if we're in an Aider buffer/window
+				local bufname = vim.fn.bufname()
+				if string.match(bufname, "term://.*aider") then
+					-- Close the window if we're in Aider
+					vim.cmd("close")
+				else
+					-- Open Aider if we're not
+					vim.cmd("AiderOpen")
+				end
+			end, desc = "Toggle Aider", mode = { "n", "t" } },
 		},
 	},
 }
