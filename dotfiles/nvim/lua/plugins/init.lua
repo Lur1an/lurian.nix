@@ -265,7 +265,27 @@ return {
 			require("configs.opencode")
 		end,
 		keys = {
-			{ "<M-o>", function() require("opencode").toggle() end, desc = "Toggle opencode", mode = { "n", "t" } },
+			{ "<M-o>", function() 
+				require("opencode").toggle()
+				-- Focus the opencode terminal window after toggling
+				vim.schedule(function()
+					local wins = vim.api.nvim_list_wins()
+					for _, win in ipairs(wins) do
+						local buf = vim.api.nvim_win_get_buf(win)
+						local buf_name = vim.api.nvim_buf_get_name(buf)
+						-- Check if this is the opencode terminal
+						if vim.bo[buf].buftype == "terminal" and 
+						   (buf_name:match("opencode") or buf_name:match("term://.*opencode")) then
+							vim.api.nvim_set_current_win(win)
+							-- Enter insert mode if we're in normal mode
+							if vim.fn.mode() == "n" then
+								vim.cmd("startinsert")
+							end
+							break
+						end
+					end
+				end)
+			end, desc = "Toggle opencode", mode = { "n", "t" } },
 			{ "<leader>oa", function() require("opencode").ask() end, desc = "Ask opencode", mode = "n" },
 			{ "<leader>oa", function() require("opencode").ask("@selection: ") end, desc = "Ask opencode about selection", mode = "v" },
 			{ "<leader>op", function() require("opencode").select_prompt() end, desc = "Select opencode prompt", mode = { "n", "v" } },
