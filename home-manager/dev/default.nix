@@ -27,6 +27,7 @@
     # CLI Tools
     opencommit
     terraform
+    busybox
     packer
     claude-code
     tree
