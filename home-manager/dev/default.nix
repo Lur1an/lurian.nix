@@ -43,6 +43,7 @@
     hcloud
     git-crypt
     k3sup
+    kubectl-cnpg
     kubeseal
     rover
     drill
