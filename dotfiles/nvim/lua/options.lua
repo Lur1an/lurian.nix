@@ -24,8 +24,12 @@ opt.foldlevelstart = 99
 opt.expandtab = true
 opt.smartindent = true
 opt.relativenumber = true
+vim.treesitter.language.register('markdown', 'mdx')
 
 vim.filetype.add({
+  extension = {
+    mdx = "mdx"
+  },
 	pattern = {
     [".*gel"] = "edgeql",
 		[".*/templates/.*%.yaml"] = "helm",

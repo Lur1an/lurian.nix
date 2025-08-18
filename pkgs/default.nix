@@ -4,6 +4,5 @@
   pkgs ? import <nixpkgs> {},
   inputs ? {},
 }: {
-  hetzner-k3s = pkgs.callPackage ./hetzner-k3s {};
   asztal = pkgs.callPackage ../dotfiles/ags {inherit inputs;};
 }

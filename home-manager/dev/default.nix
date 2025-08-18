@@ -17,27 +17,21 @@
     # Deps
     openssl
     openssl.dev
-    jdk21
     git-lfs
     devenv
     protobuf
-    lldb
-    buf
 
     # CLI Tools
     opencommit
+    difftastic
     terraform
-    busybox
     packer
     claude-code
     tree
-    dioxus-cli
     nxpmicro-mfgtools
     cloudflared
     eza
-    minio-client
     git-repo
-    appimage-run
     xca
     oha
     hcloud
@@ -46,24 +40,16 @@
     kubectl-cnpg
     kubeseal
     rover
-    drill
     curl-impersonate
     lazydocker
     minicom
-    actionlint
     unzip
-    gh-markdown-preview
     zip
     sc-im
     gel
-    wireshark-cli
-    talosctl
     wireguard-tools
-    termshark
     htop
     argocd
-    spicedb-zed
-    hetzner-k3s
     sqlite
     postgresql
     ripgrep # recursively searches directories for a regex pattern
@@ -75,9 +61,6 @@
     kustomize
     kubectl
     kubernetes-helm
-    helmfile
     minikube
-
-    glab
   ];
 }
