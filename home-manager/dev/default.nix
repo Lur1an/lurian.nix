@@ -24,6 +24,7 @@
     # CLI Tools
     opencommit
     difftastic
+    lazysql
     terraform
     packer
     claude-code

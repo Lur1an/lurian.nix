@@ -11,6 +11,7 @@
     slack
     vdhcoapp
     remmina
+    zoom-us
     spotify
     appflowy
     telegram-desktop

@@ -72,3 +72,49 @@
  (#eq? @_name "query_scalar")
  (#eq? @_path "sqlx"))
  (#set! injection.language "sql"))
+
+; Statement::from_sql_and_values with raw string (second argument after Postgres/etc)
+((call_expression
+  function: (scoped_identifier
+    path: (identifier) @_struct
+    name: (identifier) @_method)
+  arguments: (arguments
+    (_)
+    (raw_string_literal (string_content) @injection.content))
+  (#eq? @_struct "Statement")
+  (#eq? @_method "from_sql_and_values"))
+  (#set! injection.language "sql"))
+
+; Statement::from_sql_and_values with normal string
+((call_expression
+  function: (scoped_identifier
+    path: (identifier) @_struct
+    name: (identifier) @_method)
+  arguments: (arguments
+    (_)
+    (string_literal (string_content) @injection.content))
+  (#eq? @_struct "Statement")
+  (#eq? @_method "from_sql_and_values"))
+  (#set! injection.language "sql"))
+
+; Statement::from_string with raw string
+((call_expression
+  function: (scoped_identifier
+    path: (identifier) @_struct
+    name: (identifier) @_method)
+  arguments: (arguments
+    (raw_string_literal (string_content) @injection.content))
+  (#eq? @_struct "Statement")
+  (#eq? @_method "from_string"))
+  (#set! injection.language "sql"))
+
+; Statement::from_string with normal string
+((call_expression
+  function: (scoped_identifier
+    path: (identifier) @_struct
+    name: (identifier) @_method)
+  arguments: (arguments
+    (string_literal (string_content) @injection.content))
+  (#eq? @_struct "Statement")
+  (#eq? @_method "from_string"))
+  (#set! injection.language "sql"))
