@@ -10,8 +10,6 @@
   ];
   home.packages = with pkgs; [
     direnv
-    warp-terminal
-    nushell
     neofetch
   ];
 }

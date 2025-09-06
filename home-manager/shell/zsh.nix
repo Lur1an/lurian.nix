@@ -149,12 +149,6 @@
       eval "$(direnv hook zsh)"
       eval "$(uv generate-shell-completion zsh)"
     '';
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = ["git" "poetry"];
-      theme = "robbyrussell";
-    };
   };
 
   programs.starship = {

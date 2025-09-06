@@ -4,10 +4,10 @@
     ./firefox
     ./minecraft.nix
     ./obs.nix
-    ./chrome.nix
   ];
 
   home.packages = with pkgs; [
+    google-chrome
     protonvpn-gui
     slack
     vdhcoapp
