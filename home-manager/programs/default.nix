@@ -8,20 +8,16 @@
   ];
 
   home.packages = with pkgs; [
+    protonvpn-gui
     slack
     vdhcoapp
     remmina
     zoom-us
     spotify
-    appflowy
     telegram-desktop
     obsidian
     wallust
-    spacedrive
     evince
-    kdePackages.kolourpaint
     nautilus
-    monero-gui
-    monero-cli
   ];
 }
