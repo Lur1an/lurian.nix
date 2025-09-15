@@ -15,6 +15,7 @@ local servers = {
 	"ansiblels",
 	"graphql",
 	"ts_ls",
+  "just",
 	"ruff",
 	"nixd",
 	"helm_ls",

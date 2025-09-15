@@ -5,7 +5,7 @@ local transparent = true
 local in_tmux = os.getenv("TMUX") ~= nil
 
 M.base46 = {
-	theme = "catppuccin",
+	theme = "github_light",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
@@ -26,7 +26,7 @@ M.term = {
 }
 
 M.ui = {
-	theme_toggle = { "catppuccin", "catppuccin" },
+	theme_toggle = { "github_light", "github_light" },
 	telescope = {
 		style = "bordered", -- borderless / bordered
 	},
