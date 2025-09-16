@@ -56,10 +56,6 @@ in {
           class = "mpv";
         };
       };
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_use_r = true;
-      };
       input = {
         kb_options = "caps:escape";
         touchpad = {
