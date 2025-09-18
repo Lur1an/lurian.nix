@@ -1,6 +1,6 @@
 local M = {}
 
-require("opencode").setup({
+vim.g.opencode_opts = {
 	prompts = {
 		explain = {
 			key = "<leader>oe",
@@ -45,7 +45,7 @@ require("opencode").setup({
 		enabled = true,
 		level = vim.log.levels.INFO,
 	},
-})
+}
 
 -- Auto-focus opencode terminal when it's created
 vim.api.nvim_create_autocmd("TermOpen", {
