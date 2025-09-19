@@ -1,7 +1,4 @@
-{
-  custom,
-  ...
-}: {
+{custom, ...}: {
   programs.ghostty = {
     enable = true;
     installVimSyntax = true;

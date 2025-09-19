@@ -2,7 +2,6 @@
   imports = [
     ./k9s.nix
     ./python.nix
-    ./git.nix
     ./neovim.nix
     ./node.nix
     ./rust.nix
@@ -23,6 +22,7 @@
 
     # CLI Tools
     opencommit
+    lazygit
     difftastic
     lazysql
     terraform

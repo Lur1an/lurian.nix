@@ -1,5 +1,3 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
   outputs,
@@ -156,10 +154,7 @@
     wget
     killall
     curl
-    qogir-icon-theme
     hwinfo
-    papirus-icon-theme
-    morewaita-icon-theme
     matugen
     hyprlock
     pywalfox-native
@@ -174,7 +169,6 @@
     pciutils
     usbutils
     udev
-    gtk3
     mpv
     libglvnd
   ];

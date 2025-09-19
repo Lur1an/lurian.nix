@@ -24,10 +24,6 @@ in {
     then [
       ./overrides/desktop.nix
     ]
-    else if machineConfig.name == "xps15"
-    then [
-      ./overrides/xps15.nix
-    ]
     else [];
   wayland.windowManager.hyprland = {
     enable = true;

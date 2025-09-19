@@ -15,7 +15,7 @@
     pyright
     basedpyright
     docker-compose-language-service
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     sqruff
     isort
     ruff

@@ -16,7 +16,6 @@ in {
     ./openrgb
     ../ai.nix
     ../configuration.nix
-    # ../k3s.nix don't need desktop in cluster rn
   ];
 
   boot.loader.systemd-boot = {
