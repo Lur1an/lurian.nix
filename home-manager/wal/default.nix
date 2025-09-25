@@ -6,7 +6,6 @@
   linkWal = f: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/${f}";
 in {
   home.packages = with pkgs; [
-    # pywal
     pywal16
     imagemagick
   ];

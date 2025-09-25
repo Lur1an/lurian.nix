@@ -16,6 +16,7 @@
     spotify
     telegram-desktop
     obsidian
+    loupe
     wallust
     evince
     nautilus
