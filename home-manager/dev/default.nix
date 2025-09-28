@@ -11,7 +11,6 @@
 
     # Dev Apps
     postman
-    jetbrains.rust-rover
 
     # Deps
     openssl
@@ -23,20 +22,14 @@
     # CLI Tools
     opencommit
     lazygit
-    difftastic
-    lazysql
     terraform
     packer
-    claude-code
     tree
-    nxpmicro-mfgtools
     cloudflared
     eza
     git-repo
     xca
     oha
-    hcloud
-    git-crypt
     k3sup
     kubectl-cnpg
     kubeseal
@@ -47,12 +40,9 @@
     unzip
     zip
     sc-im
-    gel
     wireguard-tools
     htop
     argocd
-    sqlite
-    postgresql
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq

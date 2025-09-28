@@ -8,7 +8,6 @@
 
   home.packages = with pkgs; [
     google-chrome
-    protonvpn-gui
     slack
     vdhcoapp
     remmina
