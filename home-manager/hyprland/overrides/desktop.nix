@@ -30,6 +30,7 @@ in {
         import ../windowrule.nix
         ++ [
           "workspace 7 silent, class:^(vesktop)"
+          "workspace 7 silent, class:^(discord)"
           "workspace 7 silent, class:^(Slack)"
           "workspace 7 silent, class:^(org.telegram.desktop)"
           "workspace 6 silent, class:^(firefox)"
