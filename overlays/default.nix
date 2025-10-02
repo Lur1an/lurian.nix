@@ -11,10 +11,10 @@
     ollama = prev.ollama.override {acceleration = "cuda";};
     
     opencode = prev.opencode.overrideAttrs (oldAttrs: rec {
-      version = "0.10.3";
+      version = "0.13.5";
       src = oldAttrs.src.override {
         tag = "v${version}";
-        hash = "sha256-NE24parzEawK66AFhqQbKCM3Y4uSxAjHIOpnnAcL6ec=";
+        hash = "sha256-GiByJg4NpllA4N4QGSyWsBNqKqKIdxicIjQpc7mHgEs=";
       };
       tui = oldAttrs.tui.overrideAttrs (old: {
         vendorHash = "sha256-H+TybeyyHTbhvTye0PCDcsWkcN8M34EJ2ddxyXEJkZI=";
@@ -30,7 +30,7 @@
             --no-progress
           runHook postBuild
         '';
-        outputHash = "sha256-fGf2VldMlxbr9pb3B6zVL+fW1S8bRjefJW+jliTO73A=";
+        outputHash = "sha256-YOTuzwo0ZjqVswW3bUu3pFJcmfl0X0Se8Z5jKg8/rQs=";
       });
     });
   };

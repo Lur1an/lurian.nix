@@ -25,6 +25,7 @@
     terraform
     packer
     tree
+    postgresql
     cloudflared
     eza
     git-repo
