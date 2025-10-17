@@ -36,7 +36,6 @@ in {
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           vadimcn.vscode-lldb
-          ms-python.vscode-pylance
         ];
       })
     ]

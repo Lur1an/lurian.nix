@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./discord.nix
     ./firefox
     ./minecraft.nix
     ./obs.nix
@@ -10,6 +9,9 @@
     google-chrome
     slack
     vdhcoapp
+    discord
+    betterdiscordctl
+    signal-desktop
     remmina
     zoom-us
     spotify
