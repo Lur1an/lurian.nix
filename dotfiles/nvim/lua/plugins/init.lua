@@ -22,101 +22,6 @@ return {
 		end,
 	},
 	{
-		"yetone/avante.nvim",
-		event = "VeryLazy",
-		lazy = false,
-		version = false, -- set this if you want to always pull the latest change
-		build = "make",
-		opts = {
-			provider = "openrouter-gemini-flash",
-			cursor_applying_provider = "groq",
-			rag_service = {
-				enabled = false,
-				host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-				provider = "ollama", -- The provider to use for RAG service (e.g. openai or ollama)
-				llm_model = "llama3", -- The LLM model to use for RAG service
-				embed_model = "", -- The embedding model to use for RAG service
-			},
-			providers = {
-				ollama = {
-					model = "devstral:latest",
-				},
-				["openrouter-grok"] = {
-					__inherited_from = "openai",
-					endpoint = "https://openrouter.ai/api/v1",
-					api_key_name = "OPENROUTER_API_KEY",
-					model = "x-ai/grok-4",
-				},
-				["openrouter-gemini-flash"] = {
-					__inherited_from = "openai",
-					endpoint = "https://openrouter.ai/api/v1",
-					api_key_name = "OPENROUTER_API_KEY",
-					model = "google/gemini-2.5-flash",
-				},
-				["openrouter-sonnet"] = {
-					__inherited_from = "openai",
-					endpoint = "https://openrouter.ai/api/v1",
-					api_key_name = "OPENROUTER_API_KEY",
-					model = "anthropic/claude-sonnet-4",
-				},
-				["openrouter-opus"] = {
-					__inherited_from = "openai",
-					endpoint = "https://openrouter.ai/api/v1",
-					api_key_name = "OPENROUTER_API_KEY",
-					model = "anthropic/claude-opus-4",
-				},
-				groq = { -- define groq provider
-					__inherited_from = "openai",
-					api_key_name = "GROQ_API_KEY",
-					endpoint = "https://api.groq.com/openai/v1/",
-					model = "anthropic/claude-sonnet-4",
-					extra_request_body = {
-						max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
-					},
-				},
-			},
-			behaviour = {
-				auto_apply_diff_after_generation = true,
-				enable_cursor_planning_mode = true,
-			},
-			windows = {
-				position = "left",
-			},
-		},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below dependencies are optional,
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			{
-				-- support for image pasting
-				"HakonHarnes/img-clip.nvim",
-				event = "VeryLazy",
-				opts = {
-					-- recommended settings
-					default = {
-						embed_image_as_base64 = false,
-						prompt_for_file_name = false,
-						drag_and_drop = {
-							insert_mode = true,
-						},
-						-- required for Windows users
-						use_absolute_path = true,
-					},
-				},
-			},
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
-		},
-	},
-	{
 		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {
 			{ "tpope/vim-dadbod", lazy = true },
@@ -147,7 +52,6 @@ return {
 			require("configs.conform")
 		end,
 	},
-
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
@@ -159,7 +63,6 @@ return {
 			},
 		},
 	},
-
 	{
 		"windwp/nvim-ts-autotag",
 		ft = { "html", "svelte", "markdown" },
@@ -174,7 +77,6 @@ return {
 			})
 		end,
 	},
-	--
 	{
 		"IogaMaster/neocord",
 		event = "VeryLazy",
@@ -187,12 +89,10 @@ return {
 			end,
 		},
 	},
-
 	{
 		"geldata/edgedb-vim",
 		lazy = false,
 	},
-
 	{
 		"Carus11/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -230,13 +130,6 @@ return {
 			require("nvchad")
 		end,
 	},
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	event = "InsertEnter",
-	-- 	lazy = false,
-	-- 	cmd = "Copilot",
-	-- 	opts = require("configs.copilot"),
-	-- },
 	{
 		"supermaven-inc/supermaven-nvim",
 		-- commit = "df3ecf7",
@@ -265,32 +158,72 @@ return {
 			require("configs.opencode")
 		end,
 		keys = {
-			{ "<M-o>", function() 
-				require("opencode").toggle()
-				-- Focus the opencode terminal window after toggling
-				vim.schedule(function()
-					local wins = vim.api.nvim_list_wins()
-					for _, win in ipairs(wins) do
-						local buf = vim.api.nvim_win_get_buf(win)
-						local buf_name = vim.api.nvim_buf_get_name(buf)
-						-- Check if this is the opencode terminal
-						if vim.bo[buf].buftype == "terminal" and 
-						   (buf_name:match("opencode") or buf_name:match("term://.*opencode")) then
-							vim.api.nvim_set_current_win(win)
-							-- Enter insert mode if we're in normal mode
-							if vim.fn.mode() == "n" then
-								vim.cmd("startinsert")
+			{
+				"<M-o>",
+				function()
+					require("opencode").toggle()
+					-- Focus the opencode terminal window after toggling
+					vim.schedule(function()
+						local wins = vim.api.nvim_list_wins()
+						for _, win in ipairs(wins) do
+							local buf = vim.api.nvim_win_get_buf(win)
+							local buf_name = vim.api.nvim_buf_get_name(buf)
+							-- Check if this is the opencode terminal
+							if
+								vim.bo[buf].buftype == "terminal"
+								and (buf_name:match("opencode") or buf_name:match("term://.*opencode"))
+							then
+								vim.api.nvim_set_current_win(win)
+								-- Enter insert mode if we're in normal mode
+								if vim.fn.mode() == "n" then
+									vim.cmd("startinsert")
+								end
+								break
 							end
-							break
 						end
-					end
-				end)
-			end, desc = "Toggle opencode", mode = { "n", "t" } },
-			{ "<leader>oa", function() require("opencode").ask() end, desc = "Ask opencode", mode = "n" },
-			{ "<leader>oa", function() require("opencode").ask("@selection: ") end, desc = "Ask opencode about selection", mode = "v" },
-			{ "<leader>op", function() require("opencode").select_prompt() end, desc = "Select opencode prompt", mode = { "n", "v" } },
-			{ "<leader>on", function() require("opencode").command("session_new") end, desc = "New opencode session" },
-			{ "<leader>oy", function() require("opencode").command("messages_copy") end, desc = "Copy last opencode message" },
+					end)
+				end,
+				desc = "Toggle opencode",
+				mode = { "n", "t" },
+			},
+			{
+				"<leader>oa",
+				function()
+					require("opencode").ask()
+				end,
+				desc = "Ask opencode",
+				mode = "n",
+			},
+			{
+				"<leader>oa",
+				function()
+					require("opencode").ask("@selection: ")
+				end,
+				desc = "Ask opencode about selection",
+				mode = "v",
+			},
+			{
+				"<leader>op",
+				function()
+					require("opencode").select_prompt()
+				end,
+				desc = "Select opencode prompt",
+				mode = { "n", "v" },
+			},
+			{
+				"<leader>on",
+				function()
+					require("opencode").command("session_new")
+				end,
+				desc = "New opencode session",
+			},
+			{
+				"<leader>oy",
+				function()
+					require("opencode").command("messages_copy")
+				end,
+				desc = "Copy last opencode message",
+			},
 		},
 	},
 
@@ -514,23 +447,28 @@ return {
 		"joshuavial/aider.nvim",
 		lazy = false,
 		opts = {
-			auto_manage_context = true,  -- automatically manage buffer context
-			default_bindings = false,    -- disable default <leader>A keybindings
-			debug = false,               -- disable debug logging
-			vim = true,                  -- enable vim mode
+			auto_manage_context = true, -- automatically manage buffer context
+			default_bindings = false, -- disable default <leader>A keybindings
+			debug = false, -- disable debug logging
+			vim = true, -- enable vim mode
 		},
 		keys = {
-			{ "<M-a>", function()
-				-- Check if we're in an Aider buffer/window
-				local bufname = vim.fn.bufname()
-				if string.match(bufname, "term://.*aider") then
-					-- Close the window if we're in Aider
-					vim.cmd("close")
-				else
-					-- Open Aider if we're not
-					vim.cmd("AiderOpen")
-				end
-			end, desc = "Toggle Aider", mode = { "n", "t" } },
+			{
+				"<M-a>",
+				function()
+					-- Check if we're in an Aider buffer/window
+					local bufname = vim.fn.bufname()
+					if string.match(bufname, "term://.*aider") then
+						-- Close the window if we're in Aider
+						vim.cmd("close")
+					else
+						-- Open Aider if we're not
+						vim.cmd("AiderOpen")
+					end
+				end,
+				desc = "Toggle Aider",
+				mode = { "n", "t" },
+			},
 		},
 	},
 }

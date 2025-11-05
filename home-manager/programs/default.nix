@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./firefox
+    ./firefox.nix
     ./minecraft.nix
     ./obs.nix
   ];

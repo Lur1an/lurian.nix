@@ -9,16 +9,6 @@
     enable = true;
     package = pkgs.firefox;
     profiles.default = {
-      # userChrome = ''
-      #   @import url('userContent.css');
-      #   @import url('layout.css');
-      # '';
-      # userChrome = ''
-      #   @import url('blurredfox/userChrome.css');
-      #   @import url('blur.css');
-      #   @import url('userContent.css');
-      #   @import url('layout.css');
-      # '';
       search = {
         default = "ddg";
         engines = {
