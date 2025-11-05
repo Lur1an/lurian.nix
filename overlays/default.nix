@@ -11,7 +11,7 @@
     ollama = prev.ollama.override {acceleration = "cuda";};
     
     opencode = prev.opencode.overrideAttrs (oldAttrs: rec {
-      version = "0.15.7";
+      version = "1.0.25";
       src = oldAttrs.src.override {
         tag = "v${version}";
         hash = "sha256-GiByJg4NpllA4N4QGSyWsBNqKqKIdxicIjQpc7mHgEs=";
