@@ -12,8 +12,28 @@
     ./hyprland.nix
     ./polkit.nix
   ];
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = import ./ld.nix {inherit pkgs;};
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      glib
+      glibc
+      zlib
+      libz
+      fuse3
+      clang
+      libclang
+      icu
+      zlib
+      nss
+      openssl
+      udev
+      curl
+      expat
+      nspr
+      xorg.libxcb
+    ];
+  };
   nixpkgs = {
     overlays = [
       outputs.overlays.additions
@@ -28,9 +48,11 @@
     };
   };
 
-  networking.firewall.enable = false;
-  networking.enableIPv6 = false;
-  networking.networkmanager.enable = true;
+  networking = {
+    firewall.enable = false;
+    enableIPv6 = false;
+    networkmanager.enable = true;
+  };
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -112,8 +134,10 @@
 
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.liveRestore = false;
+  virtualisation.docker = {
+    enable = true;
+    liveRestore = false;
+  };
 
   hardware.graphics = {
     enable = true;
@@ -155,7 +179,6 @@
     matugen
     ntfs3g
     bazecor
-    sops
     sysstat
     git
     portaudio
