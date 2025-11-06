@@ -4,9 +4,21 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Flake parts
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # nix-ld
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nix-darwin
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Wayland/Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -23,50 +35,53 @@
     ags.url = "github:lur1an/ags";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    # Your custom packages
-    # Acessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system:
-      import ./pkgs {
-        pkgs = nixpkgs.legacyPackages.${system};
-        inputs = inputs;
-      });
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
-    # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs outputs;};
+      perSystem = {
+        pkgs,
+        ...
+      }: {
+        packages = import ./pkgs {
+          pkgs = pkgs;
+          inputs = inputs;
+        };
 
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./nixos/desktop/configuration.nix
-        ];
+        formatter = pkgs.alejandra;
       };
-      zephyrus = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./nixos/zephyrus/configuration.nix
-        ];
+
+      flake = {
+        overlays = import ./overlays {
+          inherit inputs;
+          outputs = inputs.self;
+        };
+
+        nixosConfigurations = {
+          desktop = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              outputs = inputs.self;
+            };
+            modules = [
+              ./nixos/desktop/configuration.nix
+            ];
+          };
+          zephyrus = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              outputs = inputs.self;
+            };
+            modules = [
+              ./nixos/zephyrus/configuration.nix
+            ];
+          };
+        };
+
+        darwinConfigurations = {};
       };
     };
-  };
 }

@@ -18,6 +18,7 @@
     dockerfile-language-server
     sqruff
     isort
+    just-lsp
     ruff
     mypy
     stylua

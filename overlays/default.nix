@@ -9,7 +9,7 @@
   # This one contains whatever you want to overlay
   modifications = final: prev: {
     ollama = prev.ollama.override {acceleration = "cuda";};
-    
+
     opencode = prev.opencode.overrideAttrs (oldAttrs: rec {
       version = "1.0.25";
       src = oldAttrs.src.override {

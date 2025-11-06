@@ -12,7 +12,6 @@ local servers = {
 	"svelte",
 	"terraformls",
 	"ansiblels",
-	"graphql",
 	"ts_ls",
 	"just",
 	"ruff",
