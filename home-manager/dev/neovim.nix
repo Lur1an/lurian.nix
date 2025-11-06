@@ -8,7 +8,6 @@
     terraform-ls
     helm-ls
     yamlfix
-    ansible-language-server
     yaml-language-server
     tailwindcss-language-server
     # yamlfix
@@ -18,6 +17,7 @@
     dockerfile-language-server
     sqruff
     isort
+    nixd
     just-lsp
     ruff
     mypy

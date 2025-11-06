@@ -8,10 +8,6 @@
     # Flake parts
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # nix-ld
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
-
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

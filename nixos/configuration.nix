@@ -149,27 +149,21 @@
   services.resolved.enable = true;
   services.udev.packages = [pkgs.bazecor];
   environment.systemPackages = with pkgs; [
-    nixd
-    neovim
-    wget
     killall
     curl
     hwinfo
     matugen
-    hyprlock
-    pywalfox-native
     ntfs3g
     bazecor
     sops
     sysstat
     git
-    gh
-    qemu
     portaudio
     pciutils
     usbutils
     udev
     mpv
     libglvnd
+    gh
   ];
 }

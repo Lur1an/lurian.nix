@@ -3,14 +3,7 @@
   machineConfig,
   pkgs,
   ...
-}: let
-  xwaylandbridge_patch = [
-    "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-    "noanim,class:^(xwaylandvideobridge)$"
-    "nofocus,class:^(xwaylandvideobridge)$"
-    "noinitialfocus,class:^(xwaylandvideobridge)$"
-  ];
-in {
+}: {
   home.packages = with pkgs; [
     slurp
     grim
@@ -60,14 +53,6 @@ in {
           drag_lock = true;
         };
       };
-      windowrulev2 =
-        xwaylandbridge_patch
-        ++ [
-          "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-          "noanim,class:^(xwaylandvideobridge)$"
-          "nofocus,class:^(xwaylandvideobridge)$"
-          "noinitialfocus,class:^(xwaylandvideobridge)$"
-        ];
       decoration = {
         shadow = {
           color = "rgba(00000044)";

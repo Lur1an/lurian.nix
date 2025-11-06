@@ -11,7 +11,6 @@ local servers = {
 	"tailwindcss",
 	"svelte",
 	"terraformls",
-	"ansiblels",
 	"ts_ls",
 	"just",
 	"ruff",
@@ -20,42 +19,32 @@ local servers = {
 	"marksman",
 }
 
+vim.lsp.enable(servers)
+
 -- Configure all servers with default settings
-for _, lsp in ipairs(servers) do
-	vim.lsp.config(lsp, {
-		on_init = on_init,
-		on_attach = on_attach,
-		capabilities = capabilities,
-	})
-	vim.lsp.enable(lsp)
-end
-
--- Python LSP configuration with environment variable support
-local python_lsp = os.getenv("PYTHON_LSP") or "basedpyright"
-
-if python_lsp == "pyright" then
-	vim.lsp.config("pyright", {
-		on_init = on_init,
-		on_attach = on_attach,
-		capabilities = capabilities,
-	})
-	vim.lsp.enable("pyright")
-else
-	vim.lsp.config("basedpyright", {
-		on_init = on_init,
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = {
-			basedpyright = {
-				analysis = {
-					diagnosticMode = "workspace",
-					extraPaths = {
-						"./.devenv/state/venv/lib/python3.12/site-packages",
-					},
-					typeCheckingMode = "basic",
-				},
-			},
-		},
-	})
-	vim.lsp.enable("basedpyright")
-end
+-- for _, lsp in ipairs(servers) do
+-- 	vim.lsp.config(lsp, {
+-- 		on_init = on_init,
+-- 		on_attach = on_attach,
+-- 		capabilities = capabilities,
+-- 	})
+-- 	vim.lsp.enable(lsp)
+-- end
+--
+vim.lsp.config("basedpyright", {
+  on_init = on_init,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        diagnosticMode = "workspace",
+        extraPaths = {
+          "./.devenv/state/venv/lib/python3.12/site-packages",
+        },
+        typeCheckingMode = "basic",
+      },
+    },
+  },
+})
+vim.lsp.enable("basedpyright")

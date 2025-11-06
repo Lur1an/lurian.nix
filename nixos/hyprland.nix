@@ -50,6 +50,7 @@
     libnotify
     swww
     inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+    hyprlock
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
     xwayland
@@ -57,20 +58,30 @@
     wayland-protocols
     wayland-utils
     wl-clipboard
-    kdePackages.xwaylandvideobridge
     wlroots
-
+    pywalfox-native
     totem
     gthumb
-    gnome-desktop
     ffmpegthumbnailer
-    gnome-text-editor
-    gnome-calendar
-    gnome-boxes
-    gnome-system-monitor
-    gnome-control-center
-    gnome-weather
-    gnome-calculator
-    gnome-clocks
+
+    (pkgs.writeShellScriptBin "vpaper" ''
+      if [ $# -lt 1 ]; then
+        echo "Usage: vpaper <video-path> [matugen-type]"
+        exit 1
+      fi
+
+      VIDEO_PATH="$1"
+      MATUGEN_TYPE="''${2:-image}"
+      WP="/tmp/wallpaper-frame.png"
+
+      ${pkgs.ffmpeg}/bin/ffmpeg -i "$VIDEO_PATH" -vframes 1 -f image2 -y "$WP"
+
+      ${pkgs.matugen}/bin/matugen --dry-run -j hex "$MATUGEN_TYPE" "$WP"
+      rm -rf /home/lurian/.cache/wal
+      ${pkgs.pywal}/bin/wal -i "$WP" -n
+      pywalfox update
+
+      nohup ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "$VIDEO_PATH" > /dev/null 2>&1 &
+    '')
   ];
 }
