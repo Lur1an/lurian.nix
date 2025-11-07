@@ -123,7 +123,6 @@
         args:
           - -c
           - "kubectl cnpg status $NAME -n $NAMESPACE --context \"$CONTEXT\" --verbose |& less -R"
-
   '';
   programs.k9s = {
     enable = true;

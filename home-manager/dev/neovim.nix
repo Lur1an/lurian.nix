@@ -19,8 +19,6 @@
     isort
     nixd
     just-lsp
-    ruff
-    mypy
     stylua
     black
     marksman
