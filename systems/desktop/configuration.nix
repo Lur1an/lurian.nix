@@ -14,8 +14,8 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb
-    ../ai.nix
-    ../configuration.nix
+    ../../modules/ai.nix
+    ../../modules/configuration.nix
   ];
 
   boot.loader.systemd-boot = {

@@ -38,10 +38,7 @@
         "aarch64-darwin"
       ];
 
-      perSystem = {
-        pkgs,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         packages = import ./pkgs {
           pkgs = pkgs;
           inputs = inputs;
@@ -63,7 +60,7 @@
               outputs = inputs.self;
             };
             modules = [
-              ./nixos/desktop/configuration.nix
+              ./systems/desktop/configuration.nix
             ];
           };
           zephyrus = inputs.nixpkgs.lib.nixosSystem {
@@ -72,7 +69,7 @@
               outputs = inputs.self;
             };
             modules = [
-              ./nixos/zephyrus/configuration.nix
+              ./systems/zephyrus/configuration.nix
             ];
           };
         };
