@@ -10,6 +10,7 @@ local servers = {
 	"dockerls",
 	"tailwindcss",
 	"svelte",
+  "lua_ls",
 	"terraformls",
 	"ts_ls",
 	"just",
@@ -18,19 +19,9 @@ local servers = {
 	"helm_ls",
 	"marksman",
 }
-
+vim.diagnostic.config({ virtual_text = true })
 vim.lsp.enable(servers)
 
--- Configure all servers with default settings
--- for _, lsp in ipairs(servers) do
--- 	vim.lsp.config(lsp, {
--- 		on_init = on_init,
--- 		on_attach = on_attach,
--- 		capabilities = capabilities,
--- 	})
--- 	vim.lsp.enable(lsp)
--- end
---
 vim.lsp.config("basedpyright", {
   on_init = on_init,
   on_attach = on_attach,

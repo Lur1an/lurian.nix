@@ -146,6 +146,8 @@ return {
 			-- Basic snacks configuration
 			notifier = { enabled = true },
 			terminal = { enabled = true },
+			input = { enabled = true },
+      picker = { enabled = true },
 		},
 	},
 
