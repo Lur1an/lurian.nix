@@ -1,6 +1,5 @@
 {
   pkgs,
-  outputs,
   ...
 }: {
   home.packages = with pkgs; [

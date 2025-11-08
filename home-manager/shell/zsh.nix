@@ -7,13 +7,8 @@
       vim = "nvim";
       update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       gfw = "gh workflow view";
-      gcap = "git_commit_push_all";
-      nvidia-offload = "nvidia_offload";
       dcd = "docker compose down";
       dcu = "docker compose up -d";
-      rust-dev = "rust_dev";
-      boot-windows = "boot_windows";
-      docker-debug = "docker_debug";
       vpn-on = "sudo wg-quick up ~/wg0.conf";
       vpn-off = "sudo wg-quick down ~/wg0.conf";
     };
@@ -25,7 +20,7 @@
       }
     ];
     initContent = ''
-      function rust_dev() {
+      function rust-dev() {
           local log_level=''${2:-info}
           RUST_LOG=$log_level cargo watch -x check -x "nextest run --workspace --no-capture -E 'test($1)'"
       }
@@ -34,7 +29,7 @@
         kubectl run -n $1 curl-debug --image=curlimages/curl:latest --rm -it -- sh
       }
 
-      function nvidia_offload() {
+      function nvidia-offload() {
         export __NV_PRIME_RENDER_OFFLOAD=1
         export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
         export __GLX_VENDOR_LIBRARY_NAME=nvidia
@@ -42,23 +37,23 @@
         exec "$@"
       }
 
-      function boot_windows() {
+      function boot-windows() {
           systemctl reboot --boot-loader-entry=auto-windows
       }
 
-      function docker_debug() {
+      function docker-debug() {
           docker exec -it $1 /bin/bash
       }
 
-      function make_thumb() {
+      function make-thumb() {
         ffmpeg -i $1 -vframes 1 $2
       }
 
-      quick_vnc() {
+      quick-vnc() {
           remmina -c "vnc://$1"
       }
 
-      function git_commit_push_all() {
+      function gcap() {
         git add -A
         git commit -m $1
         git push
