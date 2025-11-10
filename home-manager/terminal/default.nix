@@ -5,6 +5,8 @@
     ./kitty.nix
     ./zsh.nix
     ./tmux.nix
+    ./aider.nix
+    ./opencommit.nix
     ./opencode.nix
   ];
 
@@ -17,6 +19,18 @@
     opencode.enable = lib.mkOption {
       type = lib.types.bool;
       description = "Enable opencode";
+      default = false;
+    };
+
+    aider.enable = lib.mkOption {
+      type = lib.types.bool;
+      description = "Enable aider";
+      default = false;
+    };
+
+    opencommit.enable = lib.mkOption {
+      type = lib.types.bool;
+      description = "Enable opencommit";
       default = false;
     };
 

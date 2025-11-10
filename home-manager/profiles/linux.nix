@@ -1,29 +1,33 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   outputs,
+  pkgs,
   config,
   machineConfig,
   ...
 }: {
   imports = [
     ../rice
-    ../shell
     ../wal
     ../wallpapers.nix
     ../fonts.nix
     ../terminal
-    ../packages.nix
     ../hyprland
     ../mimeapps.nix
-    ../dev
-    ../programs
+    ../k9s.nix
+    ../python.nix
+    ../node.nix
+    ../rust.nix
+    ../obs.nix
+    ../firefox.nix
+    ../neovim.nix
+    ../minecraft.nix
   ];
 
   terminal = {
     code_font = "ComicCodeLigatures Nerd Font";
     flavours = ["foot" "ghostty" "kitty"];
     opencode.enable = true;
+    opencommit.enable = true;
   };
 
   gtk.gtk3.bookmarks = let
@@ -49,6 +53,86 @@
       allowUnfreePredicate = _: true;
     };
   };
+
+  home.packages = with pkgs; [
+    # Dev Apps
+    postman
+    # Deps
+    git-lfs
+    devenv
+    # CLI Tools
+    direnv
+    fd
+    neofetch
+    lazygit
+    tree
+    postgresql
+    cloudflared
+    eza
+    xca
+    kubeseal
+    lazydocker
+    minicom
+    unzip
+    zip
+    wireguard-tools
+    htop
+    argocd
+    ripgrep
+    jq
+    yq-go
+    fzf
+    # Infra
+    kustomize
+    kubectl
+    kubectl-cnpg
+    kubernetes-helm
+    minikube
+    terraform
+    packer
+    # Misc
+    google-chrome
+    slack
+    vdhcoapp
+    discord
+    betterdiscordctl
+    signal-desktop
+    remmina
+    zoom-us
+    spotify
+    telegram-desktop
+    obsidian
+    loupe
+    wallust
+    evince
+    nautilus
+    # Gnome
+    libreoffice-qt
+    networkmanagerapplet
+    lsof
+    gnome-disk-utility
+    gnome-bluetooth
+    ffmpeg
+    nix-index
+    pavucontrol
+    # LanguageServers
+    lua-language-server
+    terraform-ls
+    helm-ls
+    yamlfix
+    yaml-language-server
+    tailwindcss-language-server
+    basedpyright
+    docker-compose-language-service
+    dockerfile-language-server
+    isort
+    nixd
+    just-lsp
+    stylua
+    marksman
+    nodePackages_latest.typescript-language-server
+    nodePackages_latest.svelte-language-server
+  ];
 
   home.username = "lurian";
   home.homeDirectory = "/home/lurian";

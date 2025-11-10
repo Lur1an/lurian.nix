@@ -6,7 +6,7 @@ in [
   "${mod}, M, exit"
   "${mod}, B, exec, firefox"
   "${mod}, O, exec, obsidian"
-  "${mod}, T, exec, kitty"
+  "${mod}, T, exec, foot"
   "${mod}, F, exec, nautilus"
   "${mod}, G, exec, ghostty"
   "${mod} SHIFT, L, movewindow, r"
