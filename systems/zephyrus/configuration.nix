@@ -11,8 +11,7 @@ in {
   _module.args = {inherit machineConfig;};
   imports = [
     ./hardware-configuration.nix
-    ../../modules/configuration.nix
-    # ../../modules/ai.nix
+    ../../modules/lurian.nix
   ];
 
   boot.kernelParams = ["i915U" "i915.enable_dpcd_backlight=3"];

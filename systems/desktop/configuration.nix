@@ -13,9 +13,9 @@ in {
   _module.args = {inherit machineConfig;};
   imports = [
     ./hardware-configuration.nix
-    ./openrgb
+    ./openrgb.nix
     ../../modules/ai.nix
-    ../../modules/configuration.nix
+    ../../modules/lurian.nix
   ];
 
   boot.loader.systemd-boot = {
