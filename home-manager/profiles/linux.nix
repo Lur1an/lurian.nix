@@ -30,6 +30,11 @@
     opencommit.enable = true;
   };
 
+  rust = {
+    debugger.enable = true;
+    slim = false;
+  };
+
   gtk.gtk3.bookmarks = let
     home = config.home.homeDirectory;
   in
