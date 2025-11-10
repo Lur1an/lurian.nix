@@ -83,9 +83,6 @@
     verbose = true;
     useGlobalPkgs = false;
     extraSpecialArgs = {inherit inputs outputs machineConfig;};
-    users = {
-      lurian = import ../home-manager/profiles/linux.nix;
-    };
   };
 
   users.users = {

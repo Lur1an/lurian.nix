@@ -22,6 +22,7 @@ in {
     enable = true;
     configurationLimit = 13;
   };
+  home-manager.users.lurian = import ../../home-manager/profiles/desktop.nix;
 
   boot.loader.efi.canTouchEfiVariables = true;
 

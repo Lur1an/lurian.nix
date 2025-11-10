@@ -1,7 +1,6 @@
 {pkgs, ...}: let
   color = c: "#{@${c}}";
 
-  bg = color "black";
   fg = color "white";
 
   indicator = let

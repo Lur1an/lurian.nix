@@ -74,4 +74,6 @@ in {
   ];
 
   system.stateVersion = "24.11";
+
+  home-manager.users.lurian = import ../../home-manager/profiles/zephyrus.nix;
 }

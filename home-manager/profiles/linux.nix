@@ -5,25 +5,26 @@
   config,
   machineConfig,
   ...
-}: let
-  custom = {
-    code_font = "ComicCodeLigatures Nerd Font";
-    font = "ComicCodeLigatures Nerd Font";
-  };
-in {
-  _module.args = {inherit custom;};
+}: {
   imports = [
-    ./rice
-    ./shell
-    ./wal
-    ./wallpapers.nix
-    ./fonts.nix
-    ./packages.nix
-    ./hyprland
-    ./mimeapps.nix
-    ./dev
-    ./programs
+    ../rice
+    ../shell
+    ../wal
+    ../wallpapers.nix
+    ../fonts.nix
+    ../terminal
+    ../packages.nix
+    ../hyprland
+    ../mimeapps.nix
+    ../dev
+    ../programs
   ];
+
+  terminal = {
+    code_font = "ComicCodeLigatures Nerd Font";
+    flavours = ["foot" "ghostty" "kitty"];
+    opencode.enable = true;
+  };
 
   gtk.gtk3.bookmarks = let
     home = config.home.homeDirectory;
