@@ -21,5 +21,9 @@ in {
     [templates.rofi-colors]
     input_path = '${configDir}/templates/rofi-colors.rasi'
     output_path = '${config.home.homeDirectory}/.cache/matugen/rofi-colors.rasi'
+
+    [templates.hyprland-colors]
+    input_path = '${configDir}/templates/hyprland-colors.conf'
+    output_path = '${config.home.homeDirectory}/.cache/matugen/hyprland-colors.conf'
   '';
 }
