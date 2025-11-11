@@ -7,6 +7,7 @@
 in {
   home.packages = with pkgs; [
     pywal16
+    imagemagick
   ];
   xdg.configFile."wal/templates".source = ./templates;
   home.file."lurian.nix/dotfiles/nvim/lua/themes/wal-dark.lua".source = linkWal "wal-dark.lua";

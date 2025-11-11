@@ -173,7 +173,6 @@
     killall
     curl
     hwinfo
-    matugen
     ntfs3g
     bazecor
     sysstat

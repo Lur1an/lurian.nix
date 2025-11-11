@@ -8,6 +8,7 @@
   imports = [
     ../rice
     ../wal
+    ../matugen
     ../wallpapers.nix
     ../fonts.nix
     ../terminal
@@ -66,7 +67,6 @@
     git-lfs
     devenv
     # CLI Tools
-    direnv
     fd
     neofetch
     lazygit

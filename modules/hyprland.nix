@@ -76,7 +76,7 @@
 
       ${pkgs.ffmpeg}/bin/ffmpeg -i "$VIDEO_PATH" -vframes 1 -f image2 -y "$WP"
 
-      ${pkgs.matugen}/bin/matugen --dry-run -j hex "$MATUGEN_TYPE" "$WP"
+      ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WP"
       rm -rf /home/lurian/.cache/wal
       ${pkgs.pywal}/bin/wal -i "$WP" -n
       pywalfox update

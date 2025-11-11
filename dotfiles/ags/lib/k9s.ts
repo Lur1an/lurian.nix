@@ -125,10 +125,10 @@ async function setupK9s() {
     const colors = options.colors.value;
     const skin = generateK9sSkin(colors);
     try {
-        await Utils.writeFile(
-            dump(skin),
-            '/home/lurian/.config/k9s/skins/matugen.yaml'
-        );
+        // await Utils.writeFile(
+        //     dump(skin),
+        //     '/home/lurian/.config/k9s/skins/matugen.yaml'
+        // );
         console.info('Updated k9s skin');
     } catch (error) {
         console.error(`Failed to serialize and write k9s skin: ${error}`);

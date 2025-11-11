@@ -13,12 +13,6 @@ in {
 
     home.sessionVariables = {
       AIDER_AUTO_COMMITS = "false";
-      OCO_AI_PROVIDER = "openai";
-      OCO_API_URL = "https://openrouter.ai/api/v1";
-      OCO_MODEL = "google/gemini-2.5-flash-lite-preview-06-17";
-      OCO_DESCRIPTION = "false";
-      OCO_EMOJI = "true";
-      OCO_PROMPT_MODULE = "conventional-commit";
     };
 
     home.file.".aider.conf.yml".text = ''

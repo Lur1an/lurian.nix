@@ -63,12 +63,12 @@
       export OLLAMA_API_BASE=http://127.0.0.1:11434
       export CLICOLOR_FORCE=true
 
-      if [ -f ~/.secrets ]; then
-          source ~/.secrets
+      if [ -f ~/.impure_zsh ]; then
+          source ~/.impure_zsh
       fi
 
       eval "$(direnv hook zsh)"
-      eval "$(uv generate-shell-completion zsh)"
+      command -v uv &> /dev/null && eval "$(uv generate-shell-completion zsh)"
     '';
   };
 
