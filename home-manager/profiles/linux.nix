@@ -67,6 +67,7 @@
     # Deps
     git-lfs
     devenv
+    accountsservice
     # CLI Tools
     fd
     wget
