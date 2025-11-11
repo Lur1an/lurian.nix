@@ -17,5 +17,9 @@ in {
     [templates.k9s]
     input_path = '${configDir}/templates/k9s.yaml'
     output_path = '${config.xdg.configHome}/k9s/skins/matugen.yaml'
+
+    [templates.rofi-colors]
+    input_path = '${configDir}/templates/rofi-colors.rasi'
+    output_path = '${config.home.homeDirectory}/.cache/matugen/rofi-colors.rasi'
   '';
 }

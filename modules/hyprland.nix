@@ -72,7 +72,7 @@
 
       VIDEO_PATH="$1"
       MATUGEN_TYPE="''${2:-image}"
-      WP="/tmp/wallpaper-frame.png"
+      WP="$HOME/.config/wallpaper.png"
 
       ${pkgs.ffmpeg}/bin/ffmpeg -i "$VIDEO_PATH" -vframes 1 -f image2 -y "$WP"
 
@@ -80,6 +80,8 @@
       rm -rf /home/lurian/.cache/wal
       ${pkgs.pywal}/bin/wal -i "$WP" -n
       pywalfox update
+
+      ${pkgs.swww}/bin/swww img "$WP"
 
       nohup ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "$VIDEO_PATH" > /dev/null 2>&1 &
     '')

@@ -28,7 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    ags.url = "github:lur1an/ags";
   };
 
   outputs = inputs @ {flake-parts, ...}:

@@ -13,5 +13,4 @@ in
     "xdg-desktop-portal"
     "xdg-desktop-portal-gnome"
     "de.haeckerfelix.Fragments"
-    "com.github.Aylur.ags"
   ]

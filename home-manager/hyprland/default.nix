@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     slurp
     grim
+    mpv
   ];
   imports =
     if machineConfig.name == "zephyrus"

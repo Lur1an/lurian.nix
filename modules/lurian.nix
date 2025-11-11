@@ -181,8 +181,6 @@
     pciutils
     usbutils
     udev
-    mpv
     libglvnd
-    gh
   ];
 }

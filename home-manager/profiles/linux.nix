@@ -14,6 +14,7 @@
     ../terminal
     ../hyprland
     ../mimeapps.nix
+    ../rofi
     ../k9s.nix
     ../python.nix
     ../node.nix
@@ -26,7 +27,7 @@
 
   terminal = {
     code_font = "ComicCodeLigatures Nerd Font";
-    flavours = ["foot" "ghostty" "kitty"];
+    flavours = ["ghostty"];
     opencode.enable = true;
     opencommit.enable = true;
   };
@@ -68,6 +69,8 @@
     devenv
     # CLI Tools
     fd
+    wget
+    git-repo
     neofetch
     lazygit
     tree
@@ -120,6 +123,7 @@
     ffmpeg
     nix-index
     pavucontrol
+    gh
     # LanguageServers
     lua-language-server
     terraform-ls
