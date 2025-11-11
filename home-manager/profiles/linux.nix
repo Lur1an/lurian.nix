@@ -124,7 +124,6 @@
     ffmpeg
     nix-index
     pavucontrol
-    gh
     # LanguageServers
     lua-language-server
     terraform-ls

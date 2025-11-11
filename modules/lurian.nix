@@ -182,5 +182,6 @@
     usbutils
     udev
     libglvnd
+    gh
   ];
 }
