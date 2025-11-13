@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ../terminal.nix
+    ../terminal
     ../fonts.nix
     ../wal
     ../matugen
@@ -15,4 +15,6 @@
     code_font = "ComicCodeLigatures Nerd Font";
     flavours = ["ghostty"];
   };
+
+  home.stateVersion = "25.05";
 }
