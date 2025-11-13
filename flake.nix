@@ -73,7 +73,37 @@
           };
         };
 
-        darwinConfigurations = {};
+        darwinConfigurations = {
+          macbook = inputs.nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs;
+              outputs = inputs.self;
+            };
+            modules = [
+              inputs.home-manager.darwinModules.home-manager
+              {
+                nixpkgs.overlays = builtins.attrValues inputs.self.overlays;
+                
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.lurian = import ./home-manager/profiles/macos.nix;
+                  extraSpecialArgs = {
+                    inherit inputs;
+                    outputs = inputs.self;
+                  };
+                };
+              }
+              {
+                services.karabiner-elements.enable = true;
+                
+                system.stateVersion = 5;
+                nixpkgs.hostPlatform = "aarch64-darwin";
+              }
+            ];
+          };
+        };
       };
     };
 }

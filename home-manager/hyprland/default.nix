@@ -90,6 +90,7 @@ in {
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "hyprctl setcursor Qogir 24"
+          "swww-daemon &"
           "discord"
           "openrgb"
           "telegram-desktop"
