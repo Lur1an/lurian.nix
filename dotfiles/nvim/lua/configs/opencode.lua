@@ -60,21 +60,5 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
--- Also handle BufEnter for when switching to opencode buffer
--- vim.api.nvim_create_autocmd("BufEnter", {
--- 	callback = function(ev)
--- 		local buf_name = vim.api.nvim_buf_get_name(ev.buf)
--- 		if vim.bo[ev.buf].buftype == "terminal" and 
--- 		   (buf_name:match("opencode") or buf_name:match("term://.*opencode")) then
--- 			-- Automatically enter insert mode in opencode terminal
--- 			vim.defer_fn(function()
--- 				if vim.api.nvim_get_current_buf() == ev.buf then
--- 					vim.cmd("startinsert")
--- 				end
--- 			end, 10)
--- 		end
--- 	end,
--- })
-
 return M
 

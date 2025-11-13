@@ -1,9 +1,7 @@
 {pkgs, ...}: {
-  imports = [
-    ./gtk.nix
-  ];
-
   home.packages = with pkgs; [
-    loupe
+    uv
+    ruff
+    mypy
   ];
 }

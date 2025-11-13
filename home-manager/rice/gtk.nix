@@ -16,17 +16,10 @@
 in {
   home = {
     packages = with pkgs; [
-      cantarell-fonts
       nerd-fonts.ubuntu
-      cascadia-code
-      nerd-fonts.fira-code
-      nerd-fonts.mononoki
-      gtk-engine-murrine
-      font-awesome
       font.package
       cursorTheme.package
       iconTheme.package
-      adwaita-icon-theme
     ];
     sessionVariables = {
       XCURSOR_THEME = cursorTheme.name;
@@ -44,25 +37,6 @@ in {
   gtk = {
     inherit font cursorTheme iconTheme;
     enable = true;
-    gtk4 = {
-      extraCss = ''
-        @import 'matugen.css';
-        window.messagedialog .response-area > button,
-        window.dialog.message .dialog-action-area > button,
-        .background.csd{
-          border-radius: 0;
-        }
-      '';
-    };
-    gtk3 = {
-      extraCss = ''
-        @import 'matugen.css';
-        headerbar, .titlebar,
-        .csd:not(.popup):not(tooltip):not(messagedialog) decoration{
-          border-radius: 0;
-        }
-      '';
-    };
   };
 
   qt = {

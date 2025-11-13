@@ -8,10 +8,6 @@
     # Flake parts
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # nix-ld
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
-
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    ags.url = "github:lur1an/ags";
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -42,10 +37,7 @@
         "aarch64-darwin"
       ];
 
-      perSystem = {
-        pkgs,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         packages = import ./pkgs {
           pkgs = pkgs;
           inputs = inputs;
@@ -67,7 +59,7 @@
               outputs = inputs.self;
             };
             modules = [
-              ./nixos/desktop/configuration.nix
+              ./systems/desktop/configuration.nix
             ];
           };
           zephyrus = inputs.nixpkgs.lib.nixosSystem {
@@ -76,12 +68,42 @@
               outputs = inputs.self;
             };
             modules = [
-              ./nixos/zephyrus/configuration.nix
+              ./systems/zephyrus/configuration.nix
             ];
           };
         };
 
-        darwinConfigurations = {};
+        darwinConfigurations = {
+          macbook = inputs.nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs;
+              outputs = inputs.self;
+            };
+            modules = [
+              inputs.home-manager.darwinModules.home-manager
+              {
+                nixpkgs.overlays = builtins.attrValues inputs.self.overlays;
+                
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.lurian = import ./home-manager/profiles/macos.nix;
+                  extraSpecialArgs = {
+                    inherit inputs;
+                    outputs = inputs.self;
+                  };
+                };
+              }
+              {
+                services.karabiner-elements.enable = true;
+                
+                system.stateVersion = 5;
+                nixpkgs.hostPlatform = "aarch64-darwin";
+              }
+            ];
+          };
+        };
       };
     };
 }
