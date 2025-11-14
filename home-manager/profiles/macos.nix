@@ -7,7 +7,7 @@
     ../rust.nix
     ../wallpapers.nix
     ../neovim.nix
-    ../aerospace.nix
+    ../aerospace
   ];
 
   terminal = {
