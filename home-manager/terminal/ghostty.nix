@@ -1,17 +1,9 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.terminal;
-  alphabet = lib.stringToCharacters "abcdefghijklmnopqrstuvwxyz";
-
-  basicBindings = map (letter: "cmd+${letter}=ctrl+${letter}") alphabet;
-  shiftBindings = map (letter: "cmd+shift+${letter}=ctrl+shift+${letter}") alphabet;
-
-  # Generate Command to Control keybind remappings for macOS
-  generateCmdToCtrlBindings = basicBindings ++ shiftBindings;
 in {
   config = lib.mkIf cfg.ghostty.enable {
     programs.ghostty = {
@@ -29,8 +21,6 @@ in {
         window-padding-y = 5;
         window-padding-balance = true;
         macos-option-as-alt = true;
-        # Remap Command to Control for all keys on macOS
-        keybind = lib.mkIf pkgs.stdenv.isDarwin generateCmdToCtrlBindings [];
       };
     };
   };
