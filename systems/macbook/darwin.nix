@@ -17,13 +17,15 @@
 
   homebrew = {
     enable = true;
-    brews = [
+    casks = [ 
+      "karabiner-elements" 
+      "aerospace"
       "ghostty"
     ];
   };
-
-  services.karabiner-elements.enable = true;
-
+  nix.enable = false;
+  security.pam.services.sudo_local.enable = false;
+  security.pki.installCACerts = false;
   system.stateVersion = 5;
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
