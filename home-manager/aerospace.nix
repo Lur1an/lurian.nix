@@ -1,5 +1,5 @@
 {...}: let
-  mod = "shift-alt";
+  mod = "alt-cmd";
   mod-move = "shift-alt-cmd";
 in {
   programs.aerospace = {
@@ -29,7 +29,6 @@ in {
         
         "${mod}-f" = "exec-and-forget open -a Finder";
         "${mod}-t" = "exec-and-forget open -a Ghostty";
-        "${mod}-s" = "exec-and-forget open -a Raycast";
 
         "${mod}-h" = "focus left";
         "${mod}-l" = "focus right";
