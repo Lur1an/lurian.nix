@@ -1,5 +1,6 @@
 {...}: let
-  mod = "alt";
+  mod = "shift-alt";
+  mod-move = "shift-alt-cmd";
 in {
   programs.aerospace = {
     enable = true;
@@ -24,7 +25,6 @@ in {
       };
 
       mode.main.binding = {
-        "${mod}-q" = "close";
         "${mod}-m" = "quit";
         
         "${mod}-f" = "exec-and-forget open -a Finder";
@@ -36,10 +36,10 @@ in {
         "${mod}-k" = "focus up";
         "${mod}-j" = "focus down";
 
-        "${mod}-shift-h" = "move left";
-        "${mod}-shift-l" = "move right";
-        "${mod}-shift-k" = "move up";
-        "${mod}-shift-j" = "move down";
+        "${mod-move}-h" = "move left";
+        "${mod-move}-l" = "move right";
+        "${mod-move}-k" = "move up";
+        "${mod-move}-j" = "move down";
 
         "${mod}-1" = "workspace 1";
         "${mod}-2" = "workspace 2";
@@ -52,16 +52,16 @@ in {
         "${mod}-9" = "workspace 9";
         "${mod}-0" = "workspace 10";
 
-        "${mod}-shift-1" = "move-node-to-workspace 1";
-        "${mod}-shift-2" = "move-node-to-workspace 2";
-        "${mod}-shift-3" = "move-node-to-workspace 3";
-        "${mod}-shift-4" = "move-node-to-workspace 4";
-        "${mod}-shift-5" = "move-node-to-workspace 5";
-        "${mod}-shift-6" = "move-node-to-workspace 6";
-        "${mod}-shift-7" = "move-node-to-workspace 7";
-        "${mod}-shift-8" = "move-node-to-workspace 8";
-        "${mod}-shift-9" = "move-node-to-workspace 9";
-        "${mod}-shift-0" = "move-node-to-workspace 10";
+        "${mod-move}-1" = "move-node-to-workspace 1";
+        "${mod-move}-2" = "move-node-to-workspace 2";
+        "${mod-move}-3" = "move-node-to-workspace 3";
+        "${mod-move}-4" = "move-node-to-workspace 4";
+        "${mod-move}-5" = "move-node-to-workspace 5";
+        "${mod-move}-6" = "move-node-to-workspace 6";
+        "${mod-move}-7" = "move-node-to-workspace 7";
+        "${mod-move}-8" = "move-node-to-workspace 8";
+        "${mod-move}-9" = "move-node-to-workspace 9";
+        "${mod-move}-0" = "move-node-to-workspace 10";
 
         "${mod}-i" = "layout floating tiling";
 
@@ -74,7 +74,7 @@ in {
         "k" = "resize height -50";
         "j" = "resize height +50";
         
-        "escape" = "mode main";
+        "esc" = "mode main";
         "${mod}-r" = "mode main";
       };
 
