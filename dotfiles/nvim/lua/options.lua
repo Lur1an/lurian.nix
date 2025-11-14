@@ -42,3 +42,6 @@ vim.filetype.add({
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.softtabstop = 4
+
+-- Use system clipboard
+opt.clipboard = "unnamedplus"

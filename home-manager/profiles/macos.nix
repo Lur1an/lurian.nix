@@ -8,7 +8,6 @@
     ../wallpapers.nix
     ../neovim.nix
     ../aerospace.nix
-    ../karabiner.nix
   ];
 
   terminal = {
