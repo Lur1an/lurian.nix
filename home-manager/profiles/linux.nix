@@ -87,7 +87,6 @@
     wireguard-tools
     htop
     argocd
-    ripgrep
     jq
     yq-go
     fzf

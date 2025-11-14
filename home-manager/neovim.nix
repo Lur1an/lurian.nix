@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     ruff
+    ripgrep
     tree-sitter
   ];
   programs.neovim = {
