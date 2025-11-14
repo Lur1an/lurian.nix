@@ -5,9 +5,10 @@
 }: let
   cfg = config.terminal;
 in {
-  config = lib.mkIf (builtins.elem "foot" cfg.flavours) {
+  config = lib.mkIf cfg.foot.enable {
     programs.foot = {
       enable = true;
+      package = cfg.foot.package;
       server.enable = true;
       settings = {
         colors = {

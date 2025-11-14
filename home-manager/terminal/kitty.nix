@@ -5,9 +5,10 @@
 }: let
   cfg = config.terminal;
 in {
-  config = lib.mkIf (builtins.elem "kitty" cfg.flavours) {
+  config = lib.mkIf cfg.kitty.enable {
     programs.kitty = {
       enable = true;
+      package = cfg.kitty.package;
       font.name = cfg.code_font;
       settings = {
         font_size = 12;

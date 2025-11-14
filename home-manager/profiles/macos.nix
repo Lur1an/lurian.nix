@@ -13,7 +13,10 @@
 
   terminal = {
     code_font = "ComicCodeLigatures Nerd Font";
-    flavours = ["ghostty"];
+    ghostty = {
+      enable = true;
+      package = null;
+    };
   };
 
   home.stateVersion = "25.05";

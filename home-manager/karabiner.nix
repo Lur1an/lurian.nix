@@ -22,8 +22,6 @@ in {
         manipulators = [
           (swap "left_command" "left_control")
           (swap "left_control" "left_command")
-          (swap "right_command" "right_control")
-          (swap "right_control" "right_command")
         ];
       }
     ];

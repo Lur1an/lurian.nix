@@ -27,7 +27,7 @@
 
   terminal = {
     code_font = "ComicCodeLigatures Nerd Font";
-    flavours = ["ghostty"];
+    ghostty.enable = true;
     opencode.enable = true;
     opencommit.enable = true;
   };

@@ -44,10 +44,43 @@
       default = false;
     };
 
-    flavours = lib.mkOption {
-      type = lib.types.listOf (lib.types.enum ["foot" "ghostty" "kitty"]);
-      default = [];
-      description = "List of terminal emulators to enable";
+    foot = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable foot terminal";
+      };
+      package = lib.mkOption {
+        type = lib.types.nullOr lib.types.package;
+        default = pkgs.foot;
+        description = "Foot package to use";
+      };
+    };
+
+    ghostty = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable ghostty terminal";
+      };
+      package = lib.mkOption {
+        type = lib.types.nullOr lib.types.package;
+        default = pkgs.ghostty;
+        description = "Ghostty package to use";
+      };
+    };
+
+    kitty = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable kitty terminal";
+      };
+      package = lib.mkOption {
+        type = lib.types.nullOr lib.types.package;
+        default = pkgs.kitty;
+        description = "Kitty package to use";
+      };
     };
   };
 }

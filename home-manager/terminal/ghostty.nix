@@ -5,10 +5,11 @@
 }: let
   cfg = config.terminal;
 in {
-  config = lib.mkIf (builtins.elem "ghostty" cfg.flavours) {
+  config = lib.mkIf cfg.ghostty.enable {
     programs.ghostty = {
       enable = true;
-      installVimSyntax = true;
+      package = cfg.ghostty.package;
+      installVimSyntax = cfg.ghostty.package != null;
       settings = {
         font-size = 12;
         font-family = cfg.code_font;
