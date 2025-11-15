@@ -49,6 +49,17 @@ in {
         "${mod}-9" = "workspace 9";
         "${mod}-0" = "workspace 10";
 
+        "${mod}-shift-1" = "move-node-to-workspace 1";
+        "${mod}-shift-2" = "move-node-to-workspace 2";
+        "${mod}-shift-3" = "move-node-to-workspace 3";
+        "${mod}-shift-4" = "move-node-to-workspace 4";
+        "${mod}-shift-5" = "move-node-to-workspace 5";
+        "${mod}-shift-6" = "move-node-to-workspace 6";
+        "${mod}-shift-7" = "move-node-to-workspace 7";
+        "${mod}-shift-8" = "move-node-to-workspace 8";
+        "${mod}-shift-9" = "move-node-to-workspace 9";
+        "${mod}-shift-0" = "move-node-to-workspace 10";
+
       };
 
       on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
