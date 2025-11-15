@@ -19,7 +19,6 @@
     enable = true;
     casks = [ 
       "karabiner-elements" 
-      "aerospace"
       "ghostty"
     ];
   };
