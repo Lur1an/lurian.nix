@@ -28,17 +28,13 @@ M.term = {
 M.ui = {
 	theme_toggle = { "chadracula-evondev", "chadracula-evondev" },
 	telescope = {
-		style = "bordered", -- borderless / bordered
+		style = "bordered",
 	},
 	statusline = { enabled = not in_tmux },
 	tabufline = {
 		enabled = true,
 		order = { "treeOffset", "buffers" },
 	},
-}
-
-M.nvdash = {
-	load_on_startup = false,
 }
 
 return M

@@ -265,6 +265,7 @@ return {
 				"typescript",
 				"tsx",
 				"c",
+        "helm",
 				"nix",
 				"markdown",
 				"markdown_inline",

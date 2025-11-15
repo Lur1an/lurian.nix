@@ -14,6 +14,7 @@ local servers = {
 	"terraformls",
 	"ts_ls",
 	"just",
+  "basedpyright",
 	"ruff",
 	"nixd",
 	"helm_ls",
@@ -38,4 +39,3 @@ vim.lsp.config("basedpyright", {
     },
   },
 })
-vim.lsp.enable("basedpyright")
