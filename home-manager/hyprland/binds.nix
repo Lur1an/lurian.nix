@@ -6,6 +6,7 @@ in {
     [
       "${mod}, Q, killactive"
       "${mod}, M, exit"
+      "${mod}, Y, exec, hyprlock"
       "${mod}, B, exec, firefox"
       "${mod}, O, exec, obsidian"
       "${mod}, F, exec, nautilus"
