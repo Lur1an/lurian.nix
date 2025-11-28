@@ -1,8 +1,8 @@
 {config, ...}: let
-  floatingWindow = regex: "float, class:^(${regex})$";
+  floatingWindow = regex: "float on, match:class ^${regex}$";
   cfg = config.hyprdesktop;
 in {
-  wayland.windowManager.hyprland.settings.windowrulev2 =
+  wayland.windowManager.hyprland.settings.windowrule =
     (map floatingWindow ([
         "org.gnome.Calculator"
         "org.gnome.Nautilus"
@@ -16,5 +16,5 @@ in {
         "xdg-desktop-portal-gnome"
       ]
       ++ cfg.floatingWindows))
-    ++ cfg.windowRules;
+    ++ cfg.customWindowRules;
 }

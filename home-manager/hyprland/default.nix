@@ -25,9 +25,9 @@ in {
       description = "List of floating windows";
       default = [];
     };
-    windowRules = lib.mkOption {
+    customWindowRules = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      description = "List of window rules";
+      description = "Custom window rules to apply";
       default = [];
     };
   };
@@ -59,12 +59,7 @@ in {
         xwayland = {
           force_zero_scaling = true;
         };
-        layerrule = [
-          "blur, waybar"
-          "blur, wofi"
-          "ignorezero, wofi"
-        ];
-
+        layerrule = [];
         plugin = {
           hyprwinwrap = {
             class = "mpv";

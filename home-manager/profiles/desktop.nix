@@ -11,15 +11,15 @@ in {
       "${secondary}, 3840x2160@144, 2560x0, 1.50"
       "Unknown-1,disabled"
     ];
-    windowRules = [
-      "workspace 7 silent, class:^(vesktop)"
-      "workspace 7 silent, class:^(discord)"
-      "workspace 7 silent, class:^(Slack)"
-      "workspace 7 silent, class:^(org.telegram.desktop)"
-      "workspace 6 silent, class:^(firefox)"
-      "workspace 8 silent, class:camoufox-default"
-      "workspace 8 silent, class:^(chromium)"
-      "workspace 8 silent, class:^(google-chrome)"
+    customWindowRules = [
+      "workspace 7 silent, match:class ^(vesktop)$"
+      "workspace 7 silent, match:class ^(discord)$"
+      "workspace 7 silent, match:class ^(Slack)$"
+      "workspace 7 silent, match:class ^(org.telegram.desktop)$"
+      "workspace 6 silent, match:class ^(firefox)$"
+      "workspace 8 silent, match:class ^camoufox-default$"
+      "workspace 8 silent, match:class ^(chromium)$"
+      "workspace 8 silent, match:class ^(google-chrome)$"
     ];
   };
   wayland.windowManager.hyprland = {
