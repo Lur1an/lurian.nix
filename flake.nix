@@ -24,6 +24,10 @@
       inputs.hyprland.follows = "hyprland";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+
+    # OpenCode
+    opencode.url = "github:sst/opencode";
+    opencode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {flake-parts, ...}:

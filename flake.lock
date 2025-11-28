@@ -604,6 +604,26 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764311625,
+        "narHash": "sha256-jF74hPVxPlbHXh92SHPLMXJo47z7ToJHyOzwz9Rj0gM=",
+        "owner": "sst",
+        "repo": "opencode",
+        "rev": "7112a706b8c9bb557d0e7e583bddaa63cbb2b522",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -635,6 +655,7 @@
         "hyprland-plugins": "hyprland-plugins",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "opencode": "opencode",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
       }
     },
