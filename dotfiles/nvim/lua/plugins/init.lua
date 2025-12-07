@@ -147,7 +147,7 @@ return {
 			notifier = { enabled = true },
 			terminal = { enabled = true },
 			input = { enabled = true },
-      picker = { enabled = true },
+			picker = { enabled = true },
 		},
 	},
 
@@ -265,7 +265,7 @@ return {
 				"typescript",
 				"tsx",
 				"c",
-        "helm",
+				"helm",
 				"nix",
 				"markdown",
 				"markdown_inline",
@@ -382,6 +382,12 @@ return {
 					filter = {
 						event = "notify",
 						find = "No information available",
+					},
+					opts = { skip = true },
+				},
+				{
+					filter = {
+						find = "Failed to subscribe to SSE: No `opencode` processes",
 					},
 					opts = { skip = true },
 				},

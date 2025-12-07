@@ -14,7 +14,6 @@ local servers = {
 	"terraformls",
 	"ts_ls",
 	"just",
-  "basedpyright",
 	"ruff",
 	"nixd",
 	"helm_ls",
@@ -35,7 +34,9 @@ vim.lsp.config("basedpyright", {
           "./.devenv/state/venv/lib/python3.12/site-packages",
         },
         typeCheckingMode = "basic",
+        reportMissingTypeStubs = false,
       },
     },
   },
 })
+vim.lsp.enable("basedpyright")
