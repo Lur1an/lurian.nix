@@ -4,7 +4,10 @@
     "deepwiki": {
       "type": "remote",
       "url": "https://mcp.deepwiki.com/sse"
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["mcp-server-playwright"]
     }
   }
 }
-
