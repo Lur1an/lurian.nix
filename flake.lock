@@ -611,11 +611,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764740230,
-        "narHash": "sha256-8TCOa/d6zjTsekVbzYXo/aB8tpNvIjDmxsOv1Ap1ywk=",
+        "lastModified": 1765691115,
+        "narHash": "sha256-KdhSbjLb9uKDGj34Ez94ueYQJogEsZIikq/XKdsaTnA=",
         "owner": "sst",
         "repo": "opencode",
-        "rev": "b457923970ea7034d550e3371b92daae4c1b37b9",
+        "rev": "f8bca50f00b62d723478f6b16fd115aa82f527fe",
         "type": "github"
       },
       "original": {
