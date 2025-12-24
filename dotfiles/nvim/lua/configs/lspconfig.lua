@@ -15,7 +15,7 @@ local servers = {
 	"ts_ls",
 	"just",
 	"ruff",
-	"nixd",
+	-- "nixd",
 	"helm_ls",
 	"marksman",
 }

@@ -7,6 +7,10 @@ vim.g.rustaceanvim = {
 	tools = {},
 	-- LSP configuration
 	server = {
+		flags = {
+			exit_timeout = 0,
+			debounce_text_changes = 450,
+		},
 		on_init = require("nvchad.configs.lspconfig").on_init,
 		capabilities = require("nvchad.configs.lspconfig").capabilities,
 		on_attach = function(client, bufnr)
