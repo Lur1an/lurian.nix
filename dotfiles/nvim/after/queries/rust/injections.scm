@@ -118,3 +118,17 @@
   (#eq? @_struct "Statement")
   (#eq? @_method "from_string"))
   (#set! injection.language "sql"))
+
+; insta::assert_yaml_snapshot! with inline raw string snapshot
+; Note: This injection is limited by YAML's whitespace sensitivity
+; Heavily indented YAML content may only partially highlight due to parser errors
+((macro_invocation
+  macro: (scoped_identifier
+    path: (identifier) @_path
+    name: (identifier) @_name)
+  (token_tree
+    (raw_string_literal
+      (string_content) @injection.content)))
+  (#eq? @_path "insta")
+  (#eq? @_name "assert_yaml_snapshot")
+  (#set! injection.language "yaml"))
