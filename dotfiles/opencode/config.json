@@ -24,6 +24,10 @@
         "--header",
         "Authorization: Bearer ${V0_API_KEY}"
       ]
+    },
+    "nixos": {
+      "type": "local",
+      "command": ["uvx", "mcp-nixos"]
     }
   }
 }

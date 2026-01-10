@@ -11,6 +11,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./hyprland.nix
     ./polkit.nix
+    ./greetd.nix
   ];
   programs.nix-ld = {
     enable = true;
