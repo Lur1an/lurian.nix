@@ -13,7 +13,6 @@
     ../fonts.nix
     ../terminal
     ../hyprland
-    ../quickshell
     ../mimeapps.nix
     ../rofi
     ../k9s.nix
@@ -31,13 +30,6 @@
     ghostty.enable = true;
     opencode.enable = true;
     opencommit.enable = true;
-  };
-
-  # AI Widget sidebar
-  quickshell = {
-    enable = true;
-    aiWidget.enable = true;
-    autoStart = true;
   };
 
   rust = {
