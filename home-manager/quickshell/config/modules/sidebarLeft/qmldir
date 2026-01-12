@@ -1,0 +1,4 @@
+module sidebarLeft
+SidebarLeft 1.0 SidebarLeft.qml
+AiChat 1.0 AiChat.qml
+AiMessage 1.0 AiMessage.qml
