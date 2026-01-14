@@ -7,6 +7,7 @@
       vim = "nvim";
       update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
       gfw = "gh workflow view";
+      gwt = "git worktree";
       dcd = "docker compose down";
       dcu = "docker compose up -d";
       vpn-on = "sudo wg-quick up ~/wg0.conf";
@@ -57,6 +58,49 @@
         git add -A
         git commit -m $1
         git push
+      }
+
+      function ot() {
+          local branch="$1"
+
+          if [ -z "$branch" ]; then
+              echo "Usage: ot <branch-name>"
+              return 1
+          fi
+
+          # 1. Prune dangling worktrees first
+          git worktree prune
+
+          # Get repo name to ensure unique path in /tmp (e.g., /tmp/my-project/feature-x)
+          local repo_root
+          repo_root=$(git rev-parse --show-toplevel)
+          local repo_name
+          repo_name=$(basename "$repo_root")
+          local target_dir="/tmp/''${repo_name}/''${branch}"
+
+          # Safety: If the folder exists in /tmp but isn't a valid worktree (prune didn't catch it),
+          # remove it to allow the new worktree to be created.
+          if [ -d "$target_dir" ]; then
+              rm -rf "$target_dir"
+          fi
+
+          echo "Setting up worktree in: $target_dir"
+
+          # 2. Create the worktree
+          # Attempt 1: Try to checkout an existing local or remote branch
+          if ! git worktree add "$target_dir" "$branch" 2>/dev/null; then
+              echo "Branch '$branch' does not exist. Creating it..."
+              # Attempt 2: Create a new branch (-b) based on current HEAD
+              git worktree add -b "$branch" "$target_dir"
+          fi
+
+          # 3. Go into directory
+          cd "$target_dir"
+
+          direnv allow || true
+
+          # 4. Open Opencode
+          opencode .
       }
 
       export CARGO_TERM_COLOR=always

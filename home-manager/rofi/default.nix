@@ -4,23 +4,29 @@
   ...
 }: {
   home.packages = with pkgs; [
-    dracula-icon-theme
+    papirus-icon-theme
   ];
   programs.rofi = {
     enable = true;
-    font = "JetBrainsMono Nerd Font 10";
+    package = pkgs.rofi;
+    font = "JetBrainsMono Nerd Font 11";
     terminal = "ghostty";
 
     extraConfig = {
-      modi = "drun,filebrowser,window,run";
+      modi = "drun,run,window";
       show-icons = true;
-      display-drun = " ";
-      display-run = " ";
-      display-filebrowser = " ";
-      display-window = " ";
+      display-drun = "";
+      display-run = "";
+      display-window = "";
       drun-display-format = "{name}";
-      window-format = "{w}{t}";
-      icon-theme = "Dracula";
+      window-format = "{w} {t}";
+      icon-theme = "Papirus-Dark";
+      matching = "fuzzy";
+      sort = true;
+      sorting-method = "fzf";
+      scroll-method = 0;
+      disable-history = false;
+      click-to-exit = true;
     };
 
     theme = let
@@ -28,100 +34,104 @@
     in {
       "@theme" = "~/.cache/matugen/rofi-colors.rasi";
 
+      # Color definitions from matugen
       "*" = {
-        main-bg = mkLiteral "@surface-container";
-        main-fg = mkLiteral "@on-surface";
-        main-br = mkLiteral "@outline";
-        select-bg = mkLiteral "@primary-container";
-        select-fg = mkLiteral "@on-primary-container";
+        bg = mkLiteral "@surface";
+        bg-alt = mkLiteral "@surface-container";
+        bg-selected = mkLiteral "@primary";
+        fg = mkLiteral "@on-surface";
+        fg-alt = mkLiteral "@on-surface-variant";
+        fg-selected = mkLiteral "@on-primary";
+        border = mkLiteral "@outline-variant";
+        accent = mkLiteral "@primary";
       };
 
       window = {
-        height = mkLiteral "30em";
-        width = mkLiteral "57em";
+        width = mkLiteral "600px";
         transparency = "real";
-        fullscreen = false;
-        enabled = true;
-        cursor = mkLiteral "default";
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
-        border-color = mkLiteral "@main-br";
-        background-color = mkLiteral "@main-bg";
+        background-color = mkLiteral "@bg";
+        border = mkLiteral "2px";
+        border-color = mkLiteral "@border";
+        border-radius = mkLiteral "12px";
+        padding = mkLiteral "0";
       };
 
       mainbox = {
-        enabled = true;
-        spacing = mkLiteral "1em";
-        padding = mkLiteral "1em";
-        orientation = mkLiteral "horizontal";
-        children = map mkLiteral ["inputbar" "listbox"];
         background-color = mkLiteral "transparent";
+        children = map mkLiteral ["inputbar" "message" "listview"];
       };
 
+      # Search bar section
       inputbar = {
-        enabled = true;
-        width = mkLiteral "27em";
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
-        children = map mkLiteral ["entry"];
+        background-color = mkLiteral "@bg-alt";
+        border-radius = mkLiteral "12px 12px 0 0";
+        padding = mkLiteral "14px 16px";
+        spacing = mkLiteral "12px";
+        children = map mkLiteral ["prompt" "entry"];
+      };
+
+      prompt = {
         background-color = mkLiteral "transparent";
-        background-image = mkLiteral "url(\"~/.config/wallpaper.png\", height)";
-        border-radius = mkLiteral "1em";
+        text-color = mkLiteral "@accent";
+        font = "JetBrainsMono Nerd Font 13";
       };
 
       entry = {
-        enabled = false;
-      };
-
-      listbox = {
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "0em";
-        children = map mkLiteral ["dummy" "listview" "dummy"];
         background-color = mkLiteral "transparent";
+        text-color = mkLiteral "@fg";
+        placeholder = "Search...";
+        placeholder-color = mkLiteral "@fg-alt";
+        cursor = mkLiteral "text";
       };
 
+      # Results list
       listview = {
-        enabled = true;
-        spacing = mkLiteral "0em";
-        padding = mkLiteral "1em";
+        background-color = mkLiteral "transparent";
         columns = 1;
-        lines = 7;
-        cycle = true;
-        dynamic = true;
-        scrollbar = false;
-        layout = mkLiteral "vertical";
-        reverse = false;
-        expand = false;
+        lines = 8;
         fixed-height = true;
-        fixed-columns = true;
-        cursor = mkLiteral "default";
-        background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@main-fg";
-      };
-
-      dummy = {
-        background-color = mkLiteral "transparent";
+        padding = mkLiteral "8px 0";
+        scrollbar = false;
       };
 
       element = {
-        enabled = true;
-        spacing = mkLiteral "1em";
-        padding = mkLiteral "0.5em 0.5em 0.5em 1.5em";
-        cursor = mkLiteral "pointer";
         background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@main-fg";
+        text-color = mkLiteral "@fg";
+        padding = mkLiteral "10px 16px";
+        spacing = mkLiteral "12px";
+        cursor = mkLiteral "pointer";
+      };
+
+      "element normal.normal" = {
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "@fg";
+      };
+
+      "element normal.active" = {
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "@accent";
       };
 
       "element selected.normal" = {
-        background-color = mkLiteral "@select-bg";
-        text-color = mkLiteral "@select-fg";
+        background-color = mkLiteral "@bg-selected";
+        text-color = mkLiteral "@fg-selected";
+        border-radius = mkLiteral "0";
+      };
+
+      "element selected.active" = {
+        background-color = mkLiteral "@bg-selected";
+        text-color = mkLiteral "@fg-selected";
+      };
+
+      "element alternate.normal" = {
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "@fg";
       };
 
       element-icon = {
-        size = mkLiteral "2.7em";
+        size = mkLiteral "24px";
         cursor = mkLiteral "inherit";
         background-color = mkLiteral "transparent";
-        text-color = mkLiteral "inherit";
       };
 
       element-text = {
@@ -132,18 +142,22 @@
         text-color = mkLiteral "inherit";
       };
 
-      error-message = {
-        text-color = mkLiteral "@main-fg";
-        background-color = mkLiteral "@main-bg";
-        text-transform = mkLiteral "capitalize";
-        children = map mkLiteral ["textbox"];
+      # Message/error styling
+      message = {
+        background-color = mkLiteral "transparent";
+        border = mkLiteral "0";
       };
 
       textbox = {
-        text-color = mkLiteral "inherit";
-        background-color = mkLiteral "inherit";
-        vertical-align = mkLiteral "0.5";
-        horizontal-align = mkLiteral "0.5";
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "@fg-alt";
+        padding = mkLiteral "8px 16px";
+      };
+
+      error-message = {
+        background-color = mkLiteral "@bg";
+        text-color = mkLiteral "@error";
+        padding = mkLiteral "16px";
       };
     };
   };
