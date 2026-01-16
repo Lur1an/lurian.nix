@@ -33,5 +33,9 @@ in {
     [templates.gtk4]
     input_path = '${configDir}/templates/gtk4.css'
     output_path = '${config.home.homeDirectory}/.config/gtk-4.0/gtk.css'
+
+    [templates.waybar-colors]
+    input_path = '${configDir}/templates/waybar-colors.css'
+    output_path = '${config.home.homeDirectory}/.cache/matugen/waybar-colors.css'
   '';
 }

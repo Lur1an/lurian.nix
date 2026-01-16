@@ -15,6 +15,7 @@
     ../hyprland
     ../mimeapps.nix
     ../rofi
+    ../waybar
     ../k9s.nix
     ../python.nix
     ../node.nix
