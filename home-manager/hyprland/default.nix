@@ -66,7 +66,7 @@ in {
           };
         };
         input = {
-          kb_options = "caps:escape";
+          kb_options = "caps:escape,compose:ralt";
           touchpad = {
             natural_scroll = "yes";
             disable_while_typing = true;

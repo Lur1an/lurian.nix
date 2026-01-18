@@ -127,7 +127,7 @@
 
   services.xserver = {
     enable = true;
-    xkb.options = "caps:escape";
+    xkb.options = "caps:escape,compose:ralt";
   };
 
   services.gnome.gnome-keyring.enable = true;
