@@ -75,6 +75,7 @@
     postman
     # Deps
     git-lfs
+    protobuf
     devenv
     accountsservice
     # CLI Tools
