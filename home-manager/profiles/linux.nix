@@ -108,6 +108,7 @@
     minikube
     terraform
     packer
+    ansible
     # Misc
     google-chrome
     slack

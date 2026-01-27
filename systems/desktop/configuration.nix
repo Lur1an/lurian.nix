@@ -7,6 +7,7 @@
       "file:///mnt/Shared"
       "file:///mnt/Shared/Videos/Vpapers"
       "file:///mnt/Backup"
+      "file:///mnt/lurian-nfs"
     ];
   };
 in {
@@ -14,6 +15,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb.nix
+    ./k3s.nix
     ../../modules/ai.nix
     ../../modules/lurian.nix
   ];
@@ -45,6 +47,11 @@ in {
     "/mnt/Data" = {
       device = "/dev/disk/by-uuid/36EE2E315B2824D1";
       fsType = "ntfs";
+    };
+    "/mnt/lurian-nfs" = {
+      device = "lurian-nas.local:/volume1/main";
+      fsType = "nfs";
+      options = ["nfsvers=3" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600"];
     };
   };
 
