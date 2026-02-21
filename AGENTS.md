@@ -1,6 +1,6 @@
 # AGENTS.md - AI Coding Agent Guidelines
 
-This is a NixOS/nix-darwin configuration repository ("dotfiles") using Nix flakes.
+This is a NixOS configuration repository ("dotfiles") using Nix flakes.
 It manages multiple systems, home-manager configs, custom packages, and dotfiles.
 
 ## MCP Tools
@@ -12,12 +12,11 @@ It manages multiple systems, home-manager configs, custom packages, and dotfiles
 | Directory | Purpose |
 |-----------|---------|
 | `flake.nix` | Main entry point - flake inputs, outputs, system configs |
-| `systems/` | Per-machine NixOS/Darwin configurations |
+| `systems/` | Per-machine NixOS configurations |
 | `systems/desktop/` | Desktop PC (Nvidia, Steam, multi-monitor) |
 | `systems/zephyrus/` | ASUS Zephyrus laptop (Nvidia Optimus) |
-| `systems/macbook/` | macOS nix-darwin configuration |
 | `home-manager/` | Home-manager modules (user-level config) |
-| `home-manager/profiles/` | Per-machine home profiles (linux.nix, macos.nix, etc.) |
+| `home-manager/profiles/` | Per-machine home profiles (linux.nix, etc.) |
 | `home-manager/hyprland/` | Hyprland window manager config |
 | `home-manager/terminal/` | Terminal tools (zsh, tmux, ghostty, etc.) |
 | `modules/` | Shared NixOS modules |
@@ -39,11 +38,6 @@ sudo nixos-rebuild switch --flake .#zephyrus
 
 # Shell alias (also cleans backups):
 update .#desktop
-```
-
-### Apply macOS Configuration
-```bash
-darwin-rebuild switch --flake .#macbook
 ```
 
 ### Build a Specific Package

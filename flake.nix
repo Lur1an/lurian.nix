@@ -12,10 +12,6 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nix-darwin
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     # Wayland/Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +30,6 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
-        "aarch64-darwin"
       ];
 
       perSystem = {pkgs, ...}: {
@@ -73,19 +68,6 @@
           };
         };
 
-        darwinConfigurations = {
-          macbook = inputs.nix-darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-            specialArgs = {
-              inherit inputs;
-              outputs = inputs.self;
-            };
-            modules = [
-              inputs.home-manager.darwinModules.home-manager
-              ./systems/macbook/darwin.nix
-            ];
-          };
-        };
       };
     };
 }

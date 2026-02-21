@@ -79,6 +79,7 @@
     devenv
     accountsservice
     # CLI Tools
+    net-tools
     fd
     wget
     git-repo

@@ -4,7 +4,7 @@
   "mcp": {
     "deepwiki": {
       "type": "remote",
-      "url": "https://mcp.deepwiki.com/sse"
+      "url": "https://mcp.deepwiki.com/mcp"
     },
     "playwright": {
       "type": "local",
@@ -28,6 +28,10 @@
     "nixos": {
       "type": "local",
       "command": ["uvx", "mcp-nixos"]
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp"
     }
   }
 }

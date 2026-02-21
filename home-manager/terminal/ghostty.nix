@@ -12,7 +12,6 @@ in {
       installVimSyntax = cfg.ghostty.package != null;
       settings = {
         font-size = 12;
-        macos-titlebar-style = "hidden";
         font-family = cfg.code_font;
         theme = "${config.home.homeDirectory}/.cache/wal/ghostty.conf";
         clipboard-paste-protection = false;
@@ -21,7 +20,6 @@ in {
         window-padding-x = 10;
         window-padding-y = 5;
         window-padding-balance = true;
-        macos-option-as-alt = true;
       };
     };
   };
