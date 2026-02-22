@@ -113,7 +113,6 @@
     # Misc
     google-chrome
     slack
-    vdhcoapp
     discord
     betterdiscordctl
     signal-desktop

@@ -236,6 +236,16 @@ map("n", "<leader>gn", function()
 	vim.cmd("Gitsigns setqflist")
 end, { desc = "Gitsigns navigate changes" })
 
+map("n", "<leader>rc", function()
+	local lib = require("diffview.lib")
+	local view = lib.get_current_view()
+	if view then
+		vim.cmd("DiffviewClose")
+	else
+		vim.api.nvim_feedkeys(":DiffviewOpen ", "n", false)
+	end
+end, { desc = "review changes (diffview toggle)" })
+
 map("n", "<C-g>", ":Git ")
 
 -- Telescope

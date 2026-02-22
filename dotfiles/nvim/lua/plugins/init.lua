@@ -460,6 +460,12 @@ return {
 		},
 	},
 	{
+		"dlyongemallo/diffview.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFileHistory" },
+	},
+
+	{
 		"joshuavial/aider.nvim",
 		lazy = false,
 		opts = {

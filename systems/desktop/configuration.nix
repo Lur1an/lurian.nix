@@ -55,6 +55,13 @@ in {
     };
   };
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024; # 16 GB
+    }
+  ];
+
   networking.hostName = "lurian-desktop";
 
   # Nvidia
