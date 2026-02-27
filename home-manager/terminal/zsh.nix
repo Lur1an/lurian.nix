@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  fzf = pkgs.fzf;
+in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -113,7 +115,27 @@
 
       eval "$(direnv hook zsh)"
       command -v uv &> /dev/null && eval "$(uv generate-shell-completion zsh)"
+
+      # Enable system clipboard for zsh-vi-mode (uses wl-copy/wl-paste on Wayland)
+      function zvm_config() {
+        ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+      }
+
+      # Re-source fzf keybindings after zsh-vi-mode init (zvm clobbers them)
+      function zvm_after_init() {
+        source ${fzf}/share/fzf/completion.zsh
+        source ${fzf}/share/fzf/key-bindings.zsh
+      }
     '';
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    tmux = {
+      enableShellIntegration = true;
+      shellIntegrationOptions = ["-p 80%,60%"];
+    };
   };
 
   programs.starship = {

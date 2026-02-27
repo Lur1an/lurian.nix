@@ -100,7 +100,6 @@
     argocd
     jq
     yq-go
-    fzf
     # Infra
     kustomize
     kubectl
