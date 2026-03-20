@@ -10,4 +10,6 @@
       cp -r $src/* $out/share/fonts
     '';
   };
+
+  balena-etcher = pkgs.callPackage ./balena-etcher.nix {};
 }

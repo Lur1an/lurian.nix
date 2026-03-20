@@ -75,5 +75,8 @@ in {
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
   system.stateVersion = "23.11";
-  environment.systemPackages = [pkgs.android-tools];
+  environment.systemPackages = with pkgs; [
+    android-tools
+    balena-etcher
+  ];
 }

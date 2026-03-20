@@ -83,7 +83,7 @@
     fd
     wget
     git-repo
-    neofetch
+    fastfetch
     lazygit
     tree
     postgresql
