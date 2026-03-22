@@ -20,6 +20,7 @@ in {
     ./hardware-configuration.nix
     ./openrgb.nix
     ./k3s.nix
+    ./qemu.nix
     ../../modules/ai.nix
     ../../modules/lurian.nix
   ];
