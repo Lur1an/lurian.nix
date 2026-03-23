@@ -22,7 +22,7 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
     # OpenCode
-    opencode.url = "github:sst/opencode";
+    opencode.url = "github:lur1an/opencode?ref=fix/opencode-nix-flake-bun-version";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
   };
 

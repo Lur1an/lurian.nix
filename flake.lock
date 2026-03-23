@@ -621,15 +621,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1771643468,
-        "narHash": "sha256-HfK6cQoCiIg9HWRpFxIqBBz4K46BmdU4P4CgSTtwYJg=",
-        "owner": "sst",
+        "lastModified": 1774300521,
+        "narHash": "sha256-u1aKhiyWvqL8ZSNZmAYHd6yBBXNdNvb0KgnFLwfggr4=",
+        "owner": "lur1an",
         "repo": "opencode",
-        "rev": "206d81e02c5953f6652fdadfc69f5826943da08c",
+        "rev": "63fa1fe2c001e2467266c27385280f3780b4ce90",
         "type": "github"
       },
       "original": {
-        "owner": "sst",
+        "owner": "lur1an",
+        "ref": "fix/opencode-nix-flake-bun-version",
         "repo": "opencode",
         "type": "github"
       }
