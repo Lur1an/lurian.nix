@@ -1,6 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-anthropic-auth"],
   "mcp": {
     "deepwiki": {
       "type": "remote",
@@ -23,15 +22,18 @@
         "https://mcp.v0.dev",
         "--header",
         "Authorization: Bearer ${V0_API_KEY}"
-      ]
-    },
-    "nixos": {
-      "type": "local",
-      "command": ["uvx", "mcp-nixos"]
+      ],
+      "enabled": false
     },
     "linear": {
       "type": "remote",
-      "url": "https://mcp.linear.app/mcp"
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": false
+    },
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": false
     }
   }
 }

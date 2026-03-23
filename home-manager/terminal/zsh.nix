@@ -108,6 +108,7 @@ in {
       export CARGO_TERM_COLOR=always
       export OLLAMA_API_BASE=http://127.0.0.1:11434
       export CLICOLOR_FORCE=true
+      export OPENCODE_CONFIG=../opencode.json
 
       if [ -f ~/.impure_zsh ]; then
           source ~/.impure_zsh
