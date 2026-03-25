@@ -24,6 +24,8 @@
     # OpenCode
     opencode.url = "github:lur1an/opencode?ref=fix/opencode-nix-flake-bun-version";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
+
+    claude-api.url = "git+file:./ai-api";
   };
 
   outputs = inputs @ {flake-parts, ...}:
