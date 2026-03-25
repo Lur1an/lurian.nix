@@ -1,0 +1,3 @@
+[submodule "dotfiles/opencode/plugins"]
+	path = dotfiles/opencode/plugins
+	url = https://github.com/lur1an/opencode-plugins
