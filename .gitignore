@@ -6,3 +6,4 @@ dotfiles/nvim/lua/themes/wal-dark.lua
 dotfiles/nvim/lua/themes/wal-light.lua
 .aider*
 .env
+.opencode
