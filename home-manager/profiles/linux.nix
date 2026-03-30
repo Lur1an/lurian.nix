@@ -80,8 +80,6 @@
     devenv
     accountsservice
     # CLI Tools
-    inputs.claude-api.packages.${pkgs.system}.default
-    claude-code
     net-tools
     fd
     wget
