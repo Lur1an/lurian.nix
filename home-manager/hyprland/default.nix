@@ -46,7 +46,8 @@ in {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       plugins = with inputs; [
-        hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+        # TODO: reactivate once upstream catches up
+        # hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
       xwayland.enable = true;
       settings = {
@@ -85,7 +86,7 @@ in {
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "hyprctl setcursor Qogir 24"
-          "swww-daemon &"
+          "awww-daemon &"
           "discord"
           "openrgb"
           "telegram-desktop"

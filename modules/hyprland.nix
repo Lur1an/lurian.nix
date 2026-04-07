@@ -48,7 +48,7 @@
 
   environment.systemPackages = with pkgs; [
     libnotify
-    swww
+    awww
     inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     hyprlock
     xdg-desktop-portal-gtk
@@ -81,7 +81,7 @@
       ${pkgs.pywal}/bin/wal -i "$WP" -n
       pywalfox update
 
-      ${pkgs.swww}/bin/swww img "$WP"
+      ${pkgs.awww}/bin/awww img "$WP"
 
       nohup ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "$VIDEO_PATH" > /dev/null 2>&1 &
     '')

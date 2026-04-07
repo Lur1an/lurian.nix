@@ -1,10 +1,11 @@
-{...}: let
+{inputs, ...}: let
   primary = "DP-4";
   secondary = "DP-3";
 in {
   imports = [
     ./linux.nix
   ];
+
   hyprdesktop = {
     monitor = [
       "${primary}, 3840x2160@144, 0x0, 1.50"

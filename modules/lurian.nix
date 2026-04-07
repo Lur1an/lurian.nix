@@ -45,6 +45,7 @@
       allowUnfree = true;
       permittedInsecurePackages = [
         "nix-2.16.2"
+        "openclaw-2026.4.2"
       ];
     };
   };
@@ -82,7 +83,7 @@
     backupFileExtension = "hm-bak";
     useUserPackages = true;
     verbose = true;
-    useGlobalPkgs = false;
+    useGlobalPkgs = true;
     extraSpecialArgs = {inherit inputs outputs machineConfig;};
   };
 

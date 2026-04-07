@@ -59,18 +59,6 @@
     ]
     ++ machineConfig.bookmarks;
 
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-    ];
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
   home.packages = with pkgs; [
     # Dev Apps
     postman
@@ -149,8 +137,8 @@
     just-lsp
     stylua
     marksman
-    nodePackages_latest.typescript-language-server
-    nodePackages_latest.svelte-language-server
+    typescript-language-server
+    svelte-language-server
   ];
 
   home.username = "lurian";

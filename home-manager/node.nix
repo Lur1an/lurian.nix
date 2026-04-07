@@ -4,8 +4,8 @@
     nodejs
     tailwindcss
     typescript
-    nodePackages_latest.pnpm
-    nodePackages_latest.eslint_d
-    nodePackages_latest.prettier
+    pnpm
+    eslint_d
+    prettier
   ];
 }
