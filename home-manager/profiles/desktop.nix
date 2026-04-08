@@ -21,6 +21,7 @@ in {
       "workspace 8 silent, match:class ^camoufox-default$"
       "workspace 8 silent, match:class ^(chromium)$"
       "workspace 8 silent, match:class ^(google-chrome)$"
+      "workspace 9 silent, match:class ^(brave-browser)$"
     ];
   };
   wayland.windowManager.hyprland = {
