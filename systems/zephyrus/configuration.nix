@@ -31,7 +31,6 @@ in {
   services.xserver.videoDrivers = ["modesetting" "nvidia"];
   services.asusd = {
     enable = true;
-    enableUserService = true;
   };
   services.supergfxd = {
     enable = true;
