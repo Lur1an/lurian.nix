@@ -38,11 +38,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1774881344,
-        "narHash": "sha256-zN7H7DwXB+2gHzbdbM3079EZgMvhwiomib+zd47/ds4=",
+        "lastModified": 1775724661,
+        "narHash": "sha256-LAfsa7bItDTundNfkUEdI3vwhLWtHOoFG9xWS0L/afY=",
         "ref": "refs/heads/main",
-        "rev": "4dcecdda42a0fab7800afb0f239574db893d93f1",
-        "revCount": 12,
+        "rev": "690c47761d46f3fdb820dd16d41aec41445c471c",
+        "revCount": 17,
         "type": "git",
         "url": "file:./ai-api"
       },
@@ -585,6 +585,22 @@
         "type": "github"
       }
     },
+    "neovim-pin": {
+      "locked": {
+        "lastModified": 1774610258,
+        "narHash": "sha256-HaThtroVD9wRdx7KQk0B75JmFcXlMUoEdDFNOMOlsOs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "832efc09b4caf6b4569fbf9dc01bec3082a00611",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "832efc09b4caf6b4569fbf9dc01bec3082a00611",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1775423009,
@@ -699,6 +715,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
+        "neovim-pin": "neovim-pin",
         "nixpkgs": "nixpkgs_2",
         "opencode": "opencode",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
