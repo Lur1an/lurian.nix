@@ -18,7 +18,6 @@
         margin-left = 8;
         margin-right = 8;
         reload_style_on_change = true;
-        output = ["DP-4"];
 
         modules-left = [
           "hyprland/workspaces"

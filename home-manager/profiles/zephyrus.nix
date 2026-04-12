@@ -1,4 +1,6 @@
 {...}: {
+  programs.waybar.settings.mainBar.output = ["eDP-1"];
+
   imports = [
     ./linux.nix
   ];

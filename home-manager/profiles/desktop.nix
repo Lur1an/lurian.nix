@@ -6,6 +6,8 @@ in {
     ./linux.nix
   ];
 
+  programs.waybar.settings.mainBar.output = ["${primary}"];
+
   hyprdesktop = {
     monitor = [
       "${primary}, 3840x2160@144, 0x0, 1.50"
