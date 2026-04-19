@@ -45,9 +45,9 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      plugins = with inputs; [
+      plugins = with pkgs; [
         # TODO: reactivate once upstream catches up
-        # hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+        # hyprlandPlugins.hyprwinwrap
       ];
       xwayland.enable = true;
       settings = {
