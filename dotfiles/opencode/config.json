@@ -12,6 +12,11 @@
     }
   },
   "mcp": {
+    "grafana": {
+      "type": "local",
+      "command": ["mcp-grafana"],
+      "enabled": false
+    },
     "deepwiki": {
       "type": "remote",
       "url": "https://mcp.deepwiki.com/mcp"

@@ -111,6 +111,7 @@
     obsidian
     loupe
     wallust
+    mcp-grafana
     evince
     nautilus
     # Gnome
