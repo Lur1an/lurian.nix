@@ -119,6 +119,32 @@
   (#eq? @_method "from_string"))
   (#set! injection.language "sql"))
 
+; QueryBuilder::<...>::new with raw string
+((call_expression
+  function: (scoped_identifier
+    path: (generic_type
+      (type_identifier) @_type)
+    name: (identifier) @_method)
+  arguments: (arguments
+    (raw_string_literal (string_content) @injection.content))
+  )
+  (#eq? @_type "QueryBuilder")
+  (#eq? @_method "new")
+  (#set! injection.language "sql"))
+
+; QueryBuilder::<...>::new with normal string
+((call_expression
+  function: (scoped_identifier
+    path: (generic_type
+      (type_identifier) @_type)
+    name: (identifier) @_method)
+  arguments: (arguments
+    (string_literal (string_content) @injection.content))
+  )
+  (#eq? @_type "QueryBuilder")
+  (#eq? @_method "new")
+  (#set! injection.language "sql"))
+
 ; insta::assert_yaml_snapshot! with inline raw string snapshot
 ; Note: This injection is limited by YAML's whitespace sensitivity
 ; Heavily indented YAML content may only partially highlight due to parser errors

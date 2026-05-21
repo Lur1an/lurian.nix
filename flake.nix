@@ -21,10 +21,6 @@
     # };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
-    # OpenCode
-    opencode.url = "github:lur1an/opencode?ref=fix/opencode-nix-flake-bun-version";
-    opencode.inputs.nixpkgs.follows = "nixpkgs";
-
     claude-api.url = "git+file:./ai-api";
 
     # Pin Neovim to 0.11.6 (0.12 breaks nvim-treesitter query_predicates)

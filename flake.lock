@@ -634,27 +634,6 @@
         "type": "github"
       }
     },
-    "opencode": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774300521,
-        "narHash": "sha256-u1aKhiyWvqL8ZSNZmAYHd6yBBXNdNvb0KgnFLwfggr4=",
-        "owner": "lur1an",
-        "repo": "opencode",
-        "rev": "63fa1fe2c001e2467266c27385280f3780b4ce90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lur1an",
-        "ref": "fix/opencode-nix-flake-bun-version",
-        "repo": "opencode",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -686,7 +665,6 @@
         "hyprland": "hyprland",
         "neovim-pin": "neovim-pin",
         "nixpkgs": "nixpkgs_2",
-        "opencode": "opencode",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
       }
     },
