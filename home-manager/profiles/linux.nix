@@ -100,6 +100,7 @@
     ansible
     # Misc
     google-chrome
+    surrealist
     slack
     discord
     betterdiscordctl
