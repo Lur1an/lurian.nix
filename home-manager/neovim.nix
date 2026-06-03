@@ -4,12 +4,10 @@
   ...
 }: {
   home.packages = with pkgs; [
+    neovim
     ruff
     ripgrep
     tree-sitter
   ];
-  programs.neovim = {
-    enable = true;
-  };
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/dotfiles/nvim";
 }
