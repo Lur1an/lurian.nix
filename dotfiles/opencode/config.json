@@ -30,7 +30,7 @@
     "playwright": {
       "type": "local",
       "command": [
-        "mcp-server-playwright",
+        "playwright-mcp",
         "--isolated",
         "--browser=firefox",
         "--headless"
