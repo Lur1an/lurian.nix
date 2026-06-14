@@ -11,7 +11,7 @@ if in_tmux then
 	vim.opt.laststatus = 0
 	vim.api.nvim_set_hl(0, "StatusLine", { link = "Normal" })
 	vim.api.nvim_set_hl(0, "StatusLineNC", { link = "Normal" })
-  vim.cmd "set statusline=%{repeat('─',winwidth('.'))}"
+	vim.cmd("set statusline=%{repeat('─',winwidth('.'))}")
 else
 	vim.o.laststatus = 3
 end
@@ -24,14 +24,16 @@ opt.foldlevelstart = 99
 opt.expandtab = true
 opt.smartindent = true
 opt.relativenumber = true
-vim.treesitter.language.register('markdown', 'mdx')
+vim.treesitter.language.register("markdown", "mdx")
 
 vim.filetype.add({
-  extension = {
-    mdx = "mdx"
-  },
+	extension = {
+		mdx = "mdx",
+		surql = "surrealql",
+		surrealql = "surrealql",
+	},
 	pattern = {
-    [".*gel"] = "edgeql",
+		[".*gel"] = "edgeql",
 		[".*/templates/.*%.yaml"] = "helm",
 		[".*/templates/.*%.tpl"] = "helm",
 		[".*/.kube/config"] = "yaml",

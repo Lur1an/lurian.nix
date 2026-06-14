@@ -240,11 +240,24 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		init = function()
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+			parser_config.surrealql = {
+				install_info = {
+					url = "https://github.com/surrealdb/surrealql-tree-sitter",
+					branch = "tree-sitter-parity",
+					files = { "src/parser.c", "src/scanner.c" },
+				},
+				filetype = "surrealql",
+			}
+		end,
 		opts = {
 			injections = {
 				enable = true,
 			},
 			ensure_installed = {
+				"surrealql",
 				"scheme",
 				"query",
 				"graphql",
