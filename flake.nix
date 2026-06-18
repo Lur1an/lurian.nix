@@ -20,6 +20,7 @@
     #   inputs.hyprland.follows = "hyprland";
     # };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    xdg-portal-hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     claude-api.url = "git+file:./ai-api";
 

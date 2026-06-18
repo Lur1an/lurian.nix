@@ -45,7 +45,6 @@
       allowUnfree = true;
       permittedInsecurePackages = [
         "nix-2.16.2"
-        "openclaw-2026.5.12"
       ];
     };
   };

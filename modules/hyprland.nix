@@ -21,8 +21,26 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     xwayland = {
       enable = true;
+    };
+  };
+
+  # programs.hyprland registers xdg-desktop-portal-hyprland. Add GTK for
+  # non-Hyprland portal APIs and force screen capture to the Hyprland backend.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config = {
+      common.default = ["hyprland" "gtk"];
+      hyprland = {
+        default = ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+        "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
+      };
     };
   };
 
@@ -49,10 +67,7 @@
   environment.systemPackages = with pkgs; [
     libnotify
     awww
-    inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     hyprlock
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
     xwayland
     meson
     wayland-protocols

@@ -21,7 +21,6 @@ in {
     ./hardware-configuration.nix
     ./openrgb.nix
     ./qemu.nix
-    ./openclaw.nix
     inputs.claude-api.nixosModules.default
     ../../modules/ai.nix
     ../../modules/lurian.nix
