@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }: let
@@ -11,8 +12,20 @@ in {
   _module.args = {inherit machineConfig;};
   imports = [
     ./hardware-configuration.nix
+    inputs.claude-api.nixosModules.default
     ../../modules/lurian.nix
   ];
+
+  services.claude-api = {
+    user = "lurian";
+    enable = true;
+    environment = {
+      CLAUDE_CONFIG_DIR = "/home/lurian/.claude";
+      HOME = "/home/lurian";
+      XDG_CACHE_HOME = "/home/lurian/.cache";
+      UV_CACHE_DIR = "/home/lurian/.cache/uv";
+    };
+  };
 
   boot.kernelParams = ["i915U" "i915.enable_dpcd_backlight=3"];
   boot.kernelPackages = pkgs.linuxPackages_zen;
