@@ -110,7 +110,6 @@
     spotify
     telegram-desktop
     obsidian
-    chatgpt
     loupe
     wallust
     mcp-grafana
