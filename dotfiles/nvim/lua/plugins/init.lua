@@ -257,7 +257,6 @@ return {
 				enable = true,
 			},
 			ensure_installed = {
-				"surrealql",
 				"scheme",
 				"query",
 				"graphql",

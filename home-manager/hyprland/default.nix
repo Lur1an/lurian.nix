@@ -46,8 +46,9 @@ in {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       plugins = with pkgs; [
-        # TODO: reactivate once upstream catches up
-        # hyprlandPlugins.hyprwinwrap
+        # Vendored in pkgs/hyprwinwrap (upstream dropped it from the plugins
+        # flake in hyprwm/hyprland-plugins commit 3aa21f2).
+        hyprwinwrap
       ];
       xwayland.enable = true;
       settings = {
