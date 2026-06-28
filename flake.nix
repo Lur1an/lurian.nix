@@ -23,9 +23,6 @@
     xdg-portal-hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     claude-api.url = "git+file:./ai-api";
-
-    # Pin Neovim to 0.11.6 (0.12 breaks nvim-treesitter query_predicates)
-    neovim-pin.url = "github:nixos/nixpkgs/832efc09b4caf6b4569fbf9dc01bec3082a00611";
   };
 
   outputs = inputs @ {flake-parts, ...}:

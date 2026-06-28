@@ -1,11 +1,5 @@
 return {
 	{
-		"nvim-treesitter/playground",
-		cmd = {
-			"TSPlaygroundToggle",
-		},
-	},
-	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
@@ -153,27 +147,7 @@ return {
 			{
 				"<M-o>",
 				function()
-					require("opencode").toggle()
-					-- Focus the opencode terminal window after toggling
-					vim.schedule(function()
-						local wins = vim.api.nvim_list_wins()
-						for _, win in ipairs(wins) do
-							local buf = vim.api.nvim_win_get_buf(win)
-							local buf_name = vim.api.nvim_buf_get_name(buf)
-							-- Check if this is the opencode terminal
-							if
-								vim.bo[buf].buftype == "terminal"
-								and (buf_name:match("opencode") or buf_name:match("term://.*opencode"))
-							then
-								vim.api.nvim_set_current_win(win)
-								-- Enter insert mode if we're in normal mode
-								if vim.fn.mode() == "n" then
-									vim.cmd("startinsert")
-								end
-								break
-							end
-						end
-					end)
+					require("configs.opencode").toggle()
 				end,
 				desc = "Toggle opencode",
 				mode = { "n", "t" },
@@ -181,41 +155,11 @@ return {
 			{
 				"<leader>oa",
 				function()
-					require("opencode").ask()
+					require("opencode").ask("@this: ")
 				end,
 				desc = "Ask opencode",
-				mode = "n",
-			},
-			{
-				"<leader>oa",
-				function()
-					require("opencode").ask("@selection: ")
-				end,
-				desc = "Ask opencode about selection",
-				mode = "v",
-			},
-			{
-				"<leader>op",
-				function()
-					require("opencode").select_prompt()
-				end,
-				desc = "Select opencode prompt",
-				mode = { "n", "v" },
-			},
-			{
-				"<leader>on",
-				function()
-					require("opencode").command("session_new")
-				end,
-				desc = "New opencode session",
-			},
-			{
-				"<leader>oy",
-				function()
-					require("opencode").command("messages_copy")
-				end,
-				desc = "Copy last opencode message",
-			},
+				mode = { "n", "x" },
+			}
 		},
 	},
 
@@ -238,24 +182,17 @@ return {
 		cmd = "Git",
 	},
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		init = function()
-			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+	-- nvim-treesitter is deprecated; replaced by tree-sitter-manager.nvim below.
+	-- Disable NvChad's default nvim-treesitter spec (imported via nvchad.plugins).
+	{ "nvim-treesitter/nvim-treesitter", enabled = false },
 
-			parser_config.surrealql = {
-				install_info = {
-					url = "https://github.com/surrealdb/surrealql-tree-sitter",
-					branch = "tree-sitter-parity",
-					files = { "src/parser.c", "src/scanner.c" },
-				},
-				filetype = "surrealql",
-			}
-		end,
+	{
+		"romus204/tree-sitter-manager.nvim",
+		lazy = false,
+		cmd = { "TSManager", "TSInstall", "TSUninstall" },
 		opts = {
-			injections = {
-				enable = true,
-			},
+			auto_install = true,
+			highlight = true,
 			ensure_installed = {
 				"scheme",
 				"query",
@@ -277,9 +214,16 @@ return {
 				"proto",
 				"yaml",
 				"sql",
+				"surrealql",
 			},
-			indent = {
-				enable = true,
+			languages = {
+				surrealql = {
+					install_info = {
+						url = "https://github.com/surrealdb/surrealql-tree-sitter",
+						branch = "tree-sitter-parity",
+						use_repo_queries = true,
+					},
+				},
 			},
 		},
 	},
@@ -297,7 +241,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-neotest/nvim-nio",
 			"antoinemadec/FixCursorHold.nvim",
-			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
 			require(".configs.neotest")
@@ -467,33 +410,18 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFileHistory" },
 	},
-
 	{
-		"joshuavial/aider.nvim",
+		"NvChad/WallSync",
 		lazy = false,
+		main = "wallsync",
 		opts = {
-			auto_manage_context = true, -- automatically manage buffer context
-			default_bindings = false, -- disable default <leader>A keybindings
-			debug = false, -- disable debug logging
-			vim = true, -- enable vim mode
-		},
-		keys = {
-			{
-				"<M-a>",
-				function()
-					-- Check if we're in an Aider buffer/window
-					local bufname = vim.fn.bufname()
-					if string.match(bufname, "term://.*aider") then
-						-- Close the window if we're in Aider
-						vim.cmd("close")
-					else
-						-- Open Aider if we're not
-						vim.cmd("AiderOpen")
-					end
-				end,
-				desc = "Toggle Aider",
-				mode = { "n", "t" },
-			},
+			auto_start = true,
+			-- Templates are managed declaratively via Nix (home-manager/wal/templates),
+			-- and ~/.config/wal/templates is a read-only store symlink, so let WallSync
+			-- skip its own (failing) template install.
+			auto_install_templates = false,
+			notify = true,
+			debounce_ms = 500,
 		},
 	},
 }
