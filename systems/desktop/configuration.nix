@@ -91,5 +91,6 @@ in {
   environment.systemPackages = with pkgs; [
     android-tools
     balena-etcher
+    qmd
   ];
 }

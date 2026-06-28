@@ -23,6 +23,13 @@
     xdg-portal-hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     claude-api.url = "git+file:./ai-api";
+
+    qmd = {
+      # Fork adds an overridable `acceleration` arg + fixes node-llama-cpp
+      # prebuilt loading (libstdc++ / CUDA runtime libs on LD_LIBRARY_PATH).
+      url = "github:Lur1an/qmd/fix/nix-gpu-acceleration";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:

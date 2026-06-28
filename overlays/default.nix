@@ -9,6 +9,12 @@
   # This one contains whatever you want to overlay
   modifications = final: prev: {
     ollama = prev.ollama.override {acceleration = "cuda";};
+
+    # Build qmd against this machine's GPU. The fork exposes an overridable
+    # `acceleration` arg (null | "cuda" | "vulkan"), mirroring `ollama` above.
+    qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default.override {
+      acceleration = "cuda";
+    };
   };
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
