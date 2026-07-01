@@ -20,6 +20,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb.nix
+    ./opencode.nix
     ./qemu.nix
     inputs.claude-api.nixosModules.default
     ../../modules/ai.nix

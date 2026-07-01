@@ -32,6 +32,52 @@ in {
         kubectl run -n $1 curl-debug --image=curlimages/curl:latest --rm -it -- sh
       }
 
+      # Merge one kubeconfig into another with yq.
+      # Entries in clusters/users/contexts are matched by their `name` field:
+      # a matching name is merged & replaced, anything else is appended.
+      # Usage: kubemerge <source> [dest]   (dest defaults to $KUBECONFIG or ~/.kube/config)
+      function kubemerge() {
+        local new="$1"
+        local dest="''${2:-''${KUBECONFIG%%:*}}"
+        dest="''${dest:-$HOME/.kube/config}"
+
+        if [ -z "$new" ] || [ ! -f "$new" ]; then
+          echo "Usage: kubemerge <source-kubeconfig> [dest-kubeconfig]"
+          echo "Merges <source> into <dest> (default: \$KUBECONFIG or ~/.kube/config),"
+          echo "matching clusters/users/contexts by name (merge & replace, else append)."
+          return 1
+        fi
+
+        mkdir -p "$(dirname "$dest")"
+
+        # Nothing to merge into yet: just seed the destination.
+        if [ ! -f "$dest" ]; then
+          cp "$new" "$dest"
+          echo "Created $dest from $new"
+          return 0
+        fi
+
+        cp "$dest" "$dest.bak"
+        local tmp
+        tmp="$(mktemp)"
+
+        if yq eval-all '
+          select(fileIndex == 0) as $dst | select(fileIndex == 1) as $new
+          | ($dst * $new)
+          | .current-context = ((($dst."current-context" // "") | select(. != "")) // $new."current-context")
+          | .clusters = ((($dst.clusters // []) + ($new.clusters // [])) | (.[] | {.name: .}) as $i ireduce ({}; . * $i) | [.[]])
+          | .users    = ((($dst.users // [])    + ($new.users // []))    | (.[] | {.name: .}) as $i ireduce ({}; . * $i) | [.[]])
+          | .contexts = ((($dst.contexts // []) + ($new.contexts // [])) | (.[] | {.name: .}) as $i ireduce ({}; . * $i) | [.[]])
+        ' "$dest.bak" "$new" > "$tmp"; then
+          mv "$tmp" "$dest"
+          echo "Merged $new into $dest (backup at $dest.bak)"
+        else
+          rm -f "$tmp"
+          echo "kubemerge failed; $dest left unchanged (backup at $dest.bak)"
+          return 1
+        fi
+      }
+
       function nvidia-offload() {
         export __NV_PRIME_RENDER_OFFLOAD=1
         export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0

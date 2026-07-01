@@ -65,6 +65,7 @@
   ];
   hyprdesktop.customWindowRules = [
     "workspace 3 silent, match:class ^(discord)$"
+    "workspace 3 silent, match:class ^(vesktop)$"
     "workspace 3 silent, match:class ^(Slack)$"
     "workspace 3 silent, match:class ^(org.telegram.desktop)$"
     "workspace 2 silent, match:class ^(firefox)$"

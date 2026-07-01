@@ -104,7 +104,7 @@
     surrealist
     slack
     discord
-    betterdiscordctl
+    vesktop
     signal-desktop
     remmina
     zoom-us
