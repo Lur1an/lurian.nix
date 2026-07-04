@@ -32,7 +32,7 @@
       curl
       expat
       nspr
-      xorg.libxcb
+      libxcb
     ];
   };
   nixpkgs = {

@@ -44,7 +44,8 @@ in {
     xdg.configFile."hypr/hyprland-extra.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/home-manager/hyprland/hyprland-extra.conf";
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      configType = "hyprlang";
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       plugins = with pkgs; [
         # Vendored in pkgs/hyprwinwrap (upstream dropped it from the plugins
         # flake in hyprwm/hyprland-plugins commit 3aa21f2).

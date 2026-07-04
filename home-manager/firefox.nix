@@ -8,6 +8,9 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
+    # Keep the legacy profile path; the default moved to $XDG_CONFIG_HOME for
+    # stateVersion >= 26.05 and we don't want to migrate ~/.mozilla/firefox.
+    configPath = ".mozilla/firefox";
     profiles.default = {
       search = {
         default = "ddg";

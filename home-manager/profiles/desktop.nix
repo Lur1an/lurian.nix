@@ -1,12 +1,13 @@
 {inputs, ...}: let
-  primary = "DP-3";
-  secondary = "DP-2";
+  primary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009629";
+  secondary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009657";
+  primaryWaybar = "GIGA-BYTE TECHNOLOGY CO., LTD. M28U 22110B009629";
 in {
   imports = [
     ./linux.nix
   ];
 
-  programs.waybar.settings.mainBar.output = ["${primary}"];
+  programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
 
   hyprdesktop = {
     monitor = [
