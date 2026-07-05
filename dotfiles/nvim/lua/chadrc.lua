@@ -5,7 +5,7 @@ local transparent = true
 local in_tmux = os.getenv("TMUX") ~= nil
 
 M.base46 = {
-	theme = "dark_horizon",
+	theme = "chadwal",
 	transparency = transparent,
 	integrations = { "dap", "trouble" },
 }
@@ -26,7 +26,7 @@ M.term = {
 }
 
 M.ui = {
-	theme_toggle = { "dark_horizon", "dark_horizon" },
+	theme_toggle = { "chadwal", "chadwal" },
 	telescope = {
 		style = "bordered",
 	},
