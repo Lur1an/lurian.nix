@@ -12,4 +12,5 @@ in {
   xdg.configFile."wal/templates".source = ./templates;
   home.file."lurian.nix/dotfiles/nvim/lua/themes/wal-dark.lua".source = linkWal "wal-dark.lua";
   home.file."lurian.nix/dotfiles/nvim/lua/themes/wal-light.lua".source = linkWal "wal-light.lua";
+  home.file."lurian.nix/dotfiles/opencode/themes/wal.json".source = linkWal "opencode-wal.json";
 }

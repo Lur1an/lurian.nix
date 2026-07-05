@@ -4,6 +4,7 @@ __pychache__
 dotfiles/nvim/lua/themes/matugen.lua
 dotfiles/nvim/lua/themes/wal-dark.lua
 dotfiles/nvim/lua/themes/wal-light.lua
+dotfiles/opencode/themes/wal.json
 .aider*
 .env
 .opencode

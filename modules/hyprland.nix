@@ -93,7 +93,7 @@
 
       ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WP"
       rm -rf /home/lurian/.cache/wal
-      ${pkgs.pywal}/bin/wal -i "$WP" -n
+      ${pkgs.pywal16}/bin/wal -i "$WP" -n --cols16 lighten
       pywalfox update
 
       ${pkgs.awww}/bin/awww img "$WP"
