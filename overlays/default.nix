@@ -8,10 +8,8 @@
     };
   # This one contains whatever you want to overlay
   modifications = final: prev: {
-    ollama = prev.ollama.override {acceleration = "cuda";};
-
     # Build qmd against this machine's GPU. The fork exposes an overridable
-    # `acceleration` arg (null | "cuda" | "vulkan"), mirroring `ollama` above.
+    # `acceleration` arg (null | "cuda" | "vulkan").
     qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default.override {
       acceleration = "cuda";
     };
