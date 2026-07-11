@@ -247,6 +247,20 @@ return {
 		end,
 	},
 	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		init = function()
+			-- Mappings are defined in mappings.lua so they win over NvChad defaults
+			vim.g.tmux_navigator_no_mappings = 1
+		end,
+	},
+	{
 		"folke/zen-mode.nvim",
 		opts = {
 			window = {

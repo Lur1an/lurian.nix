@@ -13,12 +13,6 @@
     ./opencommit.nix
     ./opencode.nix
   ];
-  config = {
-    home.packages = with pkgs; [
-      direnv
-      nix-direnv
-    ];
-  };
 
   options.terminal = {
     code_font = lib.mkOption {

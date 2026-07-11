@@ -257,6 +257,12 @@ end, { desc = "review changes (diffview toggle)" })
 
 map("n", "<C-g>", ":Git ")
 
+-- vim-tmux-navigator (overrides NvChad's <C-h/j/k/l> window nav)
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "tmux navigate left" })
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "tmux navigate down" })
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "tmux navigate up" })
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "tmux navigate right" })
+
 -- Telescope
 map("n", "<leader>fn", function()
 	vim.cmd("Telescope notify")

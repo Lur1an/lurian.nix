@@ -96,6 +96,13 @@
       ${pkgs.pywal16}/bin/wal -i "$WP" -n --cols16 lighten
       pywalfox update
 
+      # wal's OSC 11 makes tmux paint opaque pane backgrounds; reset just tmux panes
+      if ${pkgs.tmux}/bin/tmux ls &>/dev/null; then
+        for tty in $(${pkgs.tmux}/bin/tmux list-panes -a -F '#{pane_tty}'); do
+          [ -w "$tty" ] && printf '\033]111\033\\' > "$tty" &
+        done
+      fi
+
       ${pkgs.awww}/bin/awww img "$WP"
 
       nohup ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "$VIDEO_PATH" > /dev/null 2>&1 &

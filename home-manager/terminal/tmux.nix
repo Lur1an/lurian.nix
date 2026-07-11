@@ -1,99 +1,155 @@
-{pkgs, ...}: let
-  color = c: "#{@${c}}";
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.tmuxConfig;
 
+  color = c: "#{@${c}}";
   fg = color "white";
+
+  # Show the project dir name instead of "nvim" when nvim is running,
+  # using pure tmux formats (no shell forks).
+  window_name = "#{?#{==:#{pane_current_command},nvim},#{b:pane_current_path},#W}";
 
   indicator = let
     accent = color "indicator_color";
-    content = "  ";
+    content = "  ";
   in "#[reverse,fg=${accent}]#{?client_prefix,${content},}";
 
   current_window = let
     accent = color "main_accent";
-    window_name_cmd = "#(if [ \\\"#{pane_current_command}\\\" = \\\"nvim\\\" ]; then basename \\\"#{pane_current_path}\\\"; else echo \\\"#W\\\"; fi)";
     index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=blue,bg=black] ${window_name_cmd} ";
+    name = "#[fg=blue,bg=black] ${window_name} ";
   in "${index}${name}";
 
   window_status = let
     accent = color "window_color";
-    window_name_cmd = "#(if [ \\\"#{pane_current_command}\\\" = \\\"nvim\\\" ]; then basename \\\"#{pane_current_path}\\\"; else echo \\\"#W\\\"; fi)";
     index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=red,bg=black] ${window_name_cmd}";
+    name = "#[fg=red,bg=black] ${window_name}";
   in "${index}${name}";
 
   time = let
     accent = color "main_accent";
     format = "%H:%M";
-    icon = pkgs.writeShellScript "icon" ''
-      hour=$(date +%H)
-      if   [ "$hour" == "00" ] || [ "$hour" == "12" ]; then printf "󱑖"
-      elif [ "$hour" == "01" ] || [ "$hour" == "13" ]; then printf "󱑋"
-      elif [ "$hour" == "02" ] || [ "$hour" == "14" ]; then printf "󱑌"
-      elif [ "$hour" == "03" ] || [ "$hour" == "15" ]; then printf "󱑍"
-      elif [ "$hour" == "04" ] || [ "$hour" == "16" ]; then printf "󱑎"
-      elif [ "$hour" == "05" ] || [ "$hour" == "17" ]; then printf "󱑏"
-      elif [ "$hour" == "06" ] || [ "$hour" == "18" ]; then printf "󱑐"
-      elif [ "$hour" == "07" ] || [ "$hour" == "19" ]; then printf "󱑑"
-      elif [ "$hour" == "08" ] || [ "$hour" == "20" ]; then printf "󱑒"
-      elif [ "$hour" == "09" ] || [ "$hour" == "21" ]; then printf "󱑓"
-      elif [ "$hour" == "10" ] || [ "$hour" == "22" ]; then printf "󱑔"
-      elif [ "$hour" == "11" ] || [ "$hour" == "23" ]; then printf "󱑕"
-      fi
+    icon = pkgs.writeShellScript "clock-icon" ''
+      icons=(󱑖 󱑋 󱑌 󱑍 󱑎 󱑏 󱑐 󱑑 󱑒 󱑓 󱑔 󱑕)
+      printf '%s' "''${icons[$((10#$(date +%H) % 12))]}"
     '';
   in "#[fg=${accent}] ${format} #(${icon}) ";
 
   pwd = let
     accent = color "main_accent";
-    icon = "#[fg=${accent}] ";
+    icon = "#[fg=${accent}] ";
     format = "#[fg=${fg}]#{b:pane_current_path}";
   in "${icon}${format}";
 
   git = let
-    icon = pkgs.writeShellScript "branch" ''
-      git -C "$1" branch && echo " "
+    branch = pkgs.writeShellScript "git-branch" ''
+      branch=$(git -C "$1" rev-parse --abbrev-ref HEAD 2>/dev/null) || exit 0
+      printf ' %s' "$branch"
     '';
-    branch = pkgs.writeShellScript "branch" ''
-      git -C "$1" rev-parse --abbrev-ref HEAD
-    '';
-  in "#[fg=magenta]#(${icon} #{pane_current_path})#(${branch} #{pane_current_path})";
+  in "#[fg=magenta]#(${branch} '#{pane_current_path}')";
 
   separator = "#[fg=${fg}]|";
+
+  sessionizer = pkgs.writeShellScriptBin "tmux-sessionizer" ''
+    if [[ $# -eq 1 ]]; then
+      selected=$1
+    else
+      selected=$(find ${lib.concatStringsSep " " cfg.projectDirs} -mindepth 1 -maxdepth 1 -type d 2>/dev/null | ${pkgs.fzf}/bin/fzf)
+    fi
+
+    [[ -z $selected ]] && exit 0
+
+    name=$(basename "$selected" | tr '. ' '__')
+
+    if ! ${pkgs.tmux}/bin/tmux has-session -t="$name" 2>/dev/null; then
+      ${pkgs.tmux}/bin/tmux new-session -ds "$name" -c "$selected"
+    fi
+
+    if [[ -z $TMUX ]]; then
+      ${pkgs.tmux}/bin/tmux attach-session -t "$name"
+    else
+      ${pkgs.tmux}/bin/tmux switch-client -t "$name"
+    fi
+  '';
 in {
-  programs.tmux = {
-    enable = true;
-    plugins = with pkgs.tmuxPlugins; [
-      yank
-    ];
-    terminal = "screen-256color";
-    prefix = "C-Space";
-    baseIndex = 1;
-    escapeTime = 0;
-    keyMode = "vi";
-    mouse = false;
-    extraConfig = ''
-      set-option -sa terminal-overrides ",xterm*:Tc"
+  options.tmuxConfig = {
+    projectDirs = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = ["~/Projects"];
+      description = "Directories searched (one level deep) by the tmux sessionizer";
+    };
+  };
 
-      bind v copy-mode
-      bind-key -T copy-mode-vi v send-keys -X begin-selection
-      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      # bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-      bind-key b set-option status
-      bind-key x kill-pane
+  config = {
+    home.packages = [sessionizer];
 
-      set-option -g @indicator_color "yellow"
-      set-option -g @window_color "magenta"
-      set-option -g @main_accent "blue"
+    programs.tmux = {
+      enable = true;
+      plugins = with pkgs.tmuxPlugins; [
+        vim-tmux-navigator
+        yank
+        resurrect
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+            set -g @continuum-save-interval '15'
+          '';
+        }
+      ];
+      terminal = "tmux-256color";
+      prefix = "C-Space";
+      baseIndex = 1;
+      escapeTime = 0;
+      keyMode = "vi";
+      mouse = false;
+      historyLimit = 50000;
+      extraConfig = ''
+        set -as terminal-features ",*:RGB"
+        set -g focus-events on
+        set -g set-clipboard on
+        set -g renumber-windows on
+        set -g detach-on-destroy off
+        set -g status-interval 5
 
-      set-option -g status-right-length 100
-      set-option -g pane-active-border fg=black
-      set-option -g pane-border-style fg=black
-      set-option -g status-style bg=black
-      set-option -g status-left "${indicator}"
-      set-option -g status-right "${git} ${pwd} ${separator} ${time}"
-      set-option -g window-status-current-format "${current_window}"
-      set-option -g window-status-format "${window_status}"
-      set-option -g window-status-separator ""
-    '';
+        # Splits and new windows inherit the current path
+        bind '"' split-window -c "#{pane_current_path}"
+        bind % split-window -h -c "#{pane_current_path}"
+        bind c new-window -c "#{pane_current_path}"
+
+        bind v copy-mode
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+        bind-key b set-option status
+        bind-key x kill-pane
+
+        # Sessionizer: fuzzy-pick a project, get a session
+        bind f display-popup -E -w 80% -h 60% "${sessionizer}/bin/tmux-sessionizer"
+
+        # Scratch popup terminal (toggle with prefix+g)
+        bind g if-shell -F '#{==:#{session_name},scratch}' \
+          'detach-client' \
+          'display-popup -E -w 80% -h 75% "tmux new-session -A -s scratch"'
+
+        set-option -g @indicator_color "yellow"
+        set-option -g @window_color "magenta"
+        set-option -g @main_accent "blue"
+
+        set-option -g status-right-length 100
+        set-option -g pane-active-border fg=black
+        set-option -g pane-border-style fg=black
+        set-option -g status-style bg=black
+        set-option -g status-left "${indicator}"
+        set-option -g status-right "${git} ${pwd} ${separator} ${time}"
+        set-option -g window-status-current-format "${current_window}"
+        set-option -g window-status-format "${window_status}"
+        set-option -g window-status-separator ""
+      '';
+    };
   };
 }
