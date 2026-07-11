@@ -78,6 +78,12 @@ return {
 		lazy = false,
 	},
 	{
+		"OXY2DEV/markview.nvim",
+		lazy = false, -- author explicitly recommends NOT lazy-loading
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {},
+	},
+	{
 		"Carus11/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && npx --yes yarn install",

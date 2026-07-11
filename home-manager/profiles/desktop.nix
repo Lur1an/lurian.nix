@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
   primary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009629";
   secondary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009657";
   primaryWaybar = "GIGA-BYTE TECHNOLOGY CO., LTD. M28U 22110B009629";
@@ -8,6 +12,15 @@ in {
   ];
 
   programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
+
+  # Big local model also available in aichat (`aichat -m ollama:qwen3.6:27b`)
+  terminal.zshAi.extraModels = ["qwen3.6:27b"];
+
+  # With `"*" = 5`, waybar generates 5 persistent workspaces per monitor id.
+  # The disabled Unknown-1 output still gets monitor id 2, spawning ghost
+  # workspaces 11-15. Pin the exact list instead.
+  programs.waybar.settings.mainBar."hyprland/workspaces".persistent-workspaces =
+    lib.mkForce {"*" = [1 2 3 4 5 6 7 8 9 10];};
 
   hyprdesktop = {
     monitor = [

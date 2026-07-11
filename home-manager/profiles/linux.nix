@@ -33,6 +33,7 @@
     ghostty.enable = true;
     opencode.enable = true;
     opencommit.enable = true;
+    zshAi.enable = true;
   };
 
   # AI Widget sidebar
@@ -73,7 +74,6 @@
     wget
     git-repo
     fastfetch
-    lazygit
     tree
     postgresql
     cloudflared

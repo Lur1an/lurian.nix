@@ -9,9 +9,16 @@
   color = c: "#{@${c}}";
   fg = color "white";
 
-  # Show the project dir name instead of "nvim" when nvim is running,
-  # using pure tmux formats (no shell forks).
-  window_name = "#{?#{==:#{pane_current_command},nvim},#{b:pane_current_path},#W}";
+  # Window name, using pure tmux formats (no shell forks):
+  #   opencode   -> its session title (from the pane title, "OC | " stripped)
+  #   nvim / zsh -> project dir basename
+  #   anything else -> #W
+  window_name = let
+    opencode_title = "#{=30:#{s/OC \\| //:pane_title}}";
+    dir_name = "#{b:pane_current_path}";
+    is_opencode = "#{==:#{pane_current_command},opencode}";
+    is_shell_or_nvim = "#{m/r:^(nvim|zsh)$,#{pane_current_command}}";
+  in "#{?${is_opencode},${opencode_title},#{?${is_shell_or_nvim},${dir_name},#W}}";
 
   indicator = let
     accent = color "indicator_color";
@@ -120,6 +127,12 @@ in {
         bind '"' split-window -c "#{pane_current_path}"
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
+
+        # Repeatable pane resizing (prefix, then tap H/J/K/L)
+        bind -r H resize-pane -L 5
+        bind -r J resize-pane -D 5
+        bind -r K resize-pane -U 5
+        bind -r L resize-pane -R 5
 
         bind v copy-mode
         bind-key -T copy-mode-vi v send-keys -X begin-selection

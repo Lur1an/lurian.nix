@@ -5,6 +5,7 @@
 }: {
   programs.zsh = {
     enable = true;
+    autocd = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -62,6 +63,9 @@
       function zvm_after_init() {
         source ${config.programs.fzf.package}/share/fzf/completion.zsh
         source ${config.programs.fzf.package}/share/fzf/key-bindings.zsh
+
+        # Accept autosuggestion with Shift+Tab
+        bindkey '^[[Z' autosuggest-accept
       }
     '';
   };

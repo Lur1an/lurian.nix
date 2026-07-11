@@ -9,9 +9,11 @@
     ./kitty.nix
     ./zsh.nix
     ./tmux.nix
+    ./lazygit.nix
     ./pi-coding-agent.nix
     ./opencommit.nix
     ./opencode.nix
+    ./zsh-ai.nix
   ];
 
   options.terminal = {

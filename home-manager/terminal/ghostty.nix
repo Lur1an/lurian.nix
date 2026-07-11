@@ -15,8 +15,9 @@ in {
         font-family = cfg.code_font;
         theme = "${config.home.homeDirectory}/.cache/wal/ghostty.conf";
         clipboard-paste-protection = false;
+        confirm-close-surface = false;
         background-opacity = 0.88;
-        window-inherit-working-directory = true;
+        window-inherit-working-directory = false;
         window-padding-x = 10;
         window-padding-y = 5;
         window-padding-balance = true;
