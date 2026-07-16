@@ -102,6 +102,7 @@
     google-chrome
     brave
     surrealist
+    element-desktop
     slack
     discord
     vesktop
