@@ -70,6 +70,8 @@
     accountsservice
     # CLI Tools
     net-tools
+    proton-pass-cli
+    proton-pass
     fd
     wget
     git-repo

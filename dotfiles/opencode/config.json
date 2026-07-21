@@ -56,13 +56,13 @@
       "type": "remote",
       "url": "https://mcp.notion.com/mcp",
       "enabled": false
-    },
-    "firecrawl": {
-      "type": "local",
-      "command": ["npx", "-y", "firecrawl-mcp"],
-      "environment": {
-        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
-      }
     }
+    // "firecrawl": {
+    //   "type": "local",
+    //   "command": ["npx", "-y", "firecrawl-mcp"],
+    //   "environment": {
+    //     "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+    //   }
+    // }
   }
 }
