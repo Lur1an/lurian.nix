@@ -86,7 +86,7 @@ in {
   options.tmuxConfig = {
     projectDirs = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = ["~/Projects"];
+      default = ["~/"];
       description = "Directories searched (one level deep) by the tmux sessionizer";
     };
   };

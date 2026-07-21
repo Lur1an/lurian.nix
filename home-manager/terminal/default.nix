@@ -9,6 +9,7 @@
     ./kitty.nix
     ./zsh.nix
     ./tmux.nix
+    ./treehouse.nix
     ./lazygit.nix
     ./pi-coding-agent.nix
     ./opencommit.nix

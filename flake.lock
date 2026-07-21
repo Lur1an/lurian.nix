@@ -673,6 +673,7 @@
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
         "qmd": "qmd",
+        "treehouse": "treehouse",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
       }
     },
@@ -718,6 +719,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "treehouse": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784576200,
+        "narHash": "sha256-QtjDNcGOHaOBGefwdQ2huW+uf1A6EizhgyJLC2YxkjY=",
+        "owner": "kunchenguid",
+        "repo": "treehouse",
+        "rev": "c0b7f685d4511eec765ab4cbb47583178424eb45",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kunchenguid",
+        "repo": "treehouse",
         "type": "github"
       }
     },

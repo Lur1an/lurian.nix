@@ -30,6 +30,11 @@
       url = "github:Lur1an/qmd/fix/nix-gpu-acceleration";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    treehouse = {
+      url = "github:kunchenguid/treehouse";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:

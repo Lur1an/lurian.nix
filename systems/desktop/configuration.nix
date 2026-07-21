@@ -22,6 +22,7 @@ in {
     ./openrgb.nix
     ./opencode.nix
     ./qemu.nix
+    ./treehouse.nix
     inputs.claude-api.nixosModules.default
     ../../modules/ai.nix
     ../../modules/lurian.nix
@@ -65,6 +66,7 @@ in {
     "/mnt/Data" = {
       device = "/dev/disk/by-uuid/36EE2E315B2824D1";
       fsType = "ntfs";
+      options = ["uid=1000" "gid=100"];
     };
     "/mnt/lurian-nfs" = {
       device = "lurian-nas.local:/volume1/main";

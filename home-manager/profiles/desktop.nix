@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   primary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009629";
   secondary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009657";
   primaryWaybar = "GIGA-BYTE TECHNOLOGY CO., LTD. M28U 22110B009629";
@@ -15,6 +11,18 @@ in {
 
   # Big local model also available in aichat (`aichat -m ollama:qwen3.6:27b`)
   terminal.zshAi.extraModels = ["qwen3.6:27b"];
+
+  tmuxConfig = {
+    projectDirs = [
+      "~/Projects"
+      "/mnt/Data"
+    ];
+  };
+
+  treehouseConfig = {
+    enable = true;
+    root = "/mnt/Data";
+  };
 
   # With `"*" = 5`, waybar generates 5 persistent workspaces per monitor id.
   # The disabled Unknown-1 output still gets monitor id 2, spawning ghost

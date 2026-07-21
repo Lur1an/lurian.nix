@@ -1,8 +1,6 @@
 {
-  outputs,
   pkgs,
   config,
-  inputs,
   machineConfig,
   ...
 }: {
@@ -16,6 +14,7 @@
     ../hyprland
     ../quickshell
     ../mimeapps.nix
+    ../git.nix
     ../rofi
     ../waybar
     ../k9s.nix
@@ -64,7 +63,6 @@
     # Dev Apps
     postman
     # Deps
-    git-lfs
     protobuf
     devenv
     accountsservice

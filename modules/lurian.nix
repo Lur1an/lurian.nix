@@ -89,6 +89,7 @@
 
   users.users = {
     lurian = {
+      uid = 1000;
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "Lurian";

@@ -48,6 +48,8 @@
     initContent = ''
       ${builtins.readFile ./zsh-functions.sh}
 
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
       if [ -f ~/.impure_zsh ]; then
           source ~/.impure_zsh
       fi
