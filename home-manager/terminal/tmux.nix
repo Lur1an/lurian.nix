@@ -5,7 +5,24 @@
   ...
 }: let
   cfg = config.tmuxConfig;
+  tmuxBin = "${pkgs.tmux}/bin/tmux";
 
+  mkTmuxScript = name: body:
+    pkgs.writeShellScript name ''
+      tmux() {
+        ${tmuxBin} "$@"
+      }
+      ${body}
+    '';
+  mkTmuxScriptBin = name: body:
+    pkgs.writeShellScriptBin name ''
+      tmux() {
+        ${tmuxBin} "$@"
+      }
+      ${body}
+    '';
+
+  # Status formats
   color = c: "#{@${c}}";
   fg = color "white";
 
@@ -13,31 +30,31 @@
   #   opencode   -> its session title (from the pane title, "OC | " stripped)
   #   nvim / zsh -> project dir basename
   #   anything else -> #W
-  window_name = let
-    opencode_title = "#{=30:#{s/OC \\| //:pane_title}}";
-    dir_name = "#{b:pane_current_path}";
-    is_opencode = "#{==:#{pane_current_command},opencode}";
-    is_shell_or_nvim = "#{m/r:^(nvim|zsh)$,#{pane_current_command}}";
-  in "#{?${is_opencode},${opencode_title},#{?${is_shell_or_nvim},${dir_name},#W}}";
+  windowName = let
+    opencodeTitle = "#{=30:#{s/OC \\| //:pane_title}}";
+    dirName = "#{b:pane_current_path}";
+    isOpencode = "#{==:#{pane_current_command},opencode}";
+    isShellOrNvim = "#{m/r:^(nvim|zsh)$,#{pane_current_command}}";
+  in "#{?${isOpencode},${opencodeTitle},#{?${isShellOrNvim},${dirName},#W}}";
 
   indicator = let
     accent = color "indicator_color";
     content = "  ";
   in "#[reverse,fg=${accent}]#{?client_prefix,${content},}";
 
-  current_window = let
+  currentWindow = let
     accent = color "main_accent";
     index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=blue,bg=black] ${window_name} ";
+    name = "#[fg=blue,bg=black] ${windowName} ";
   in "${index}${name}";
 
-  window_status = let
+  windowStatus = let
     accent = color "window_color";
     index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=red,bg=black] ${window_name}";
+    name = "#[fg=red,bg=black] ${windowName}";
   in "${index}${name}";
 
-  time = let
+  statusTime = let
     accent = color "main_accent";
     format = "%H:%M";
     icon = pkgs.writeShellScript "clock-icon" ''
@@ -46,13 +63,13 @@
     '';
   in "#[fg=${accent}] ${format} #(${icon}) ";
 
-  pwd = let
+  statusPath = let
     accent = color "main_accent";
     icon = "#[fg=${accent}] ";
     format = "#[fg=${fg}]#{b:pane_current_path}";
   in "${icon}${format}";
 
-  git = let
+  statusGit = let
     branch = pkgs.writeShellScript "git-branch" ''
       branch=$(git -C "$1" rev-parse --abbrev-ref HEAD 2>/dev/null) || exit 0
       printf ' %s' "$branch"
@@ -61,33 +78,120 @@
 
   separator = "#[fg=${fg}]|";
 
-  sessionizer = pkgs.writeShellScriptBin "tmux-sessionizer" ''
+  # tmux actions
+  sessionizer = mkTmuxScriptBin "tmux-sessionizer" ''
     if [[ $# -eq 1 ]]; then
       selected=$1
     else
-      selected=$(find ${lib.concatStringsSep " " cfg.projectDirs} -mindepth 1 -maxdepth 1 -type d 2>/dev/null | ${pkgs.fzf}/bin/fzf)
+      selected=$(
+        for root in ${lib.concatStringsSep " " (cfg.projectDirs ++ ["~/lurian.nix"])}; do
+          if [[ -e "$root/.git" ]]; then
+            printf '%s\n' "$root"
+          else
+            find "$root" -mindepth 1 -maxdepth 3 -type d \
+              \( -exec ${pkgs.coreutils}/bin/test -e '{}/.git' \; -print -prune -o -print \)
+          fi
+        done 2>/dev/null | ${pkgs.fzf}/bin/fzf
+      )
     fi
 
     [[ -z $selected ]] && exit 0
 
     name=$(basename "$selected" | tr '. ' '__')
 
-    if ! ${pkgs.tmux}/bin/tmux has-session -t="$name" 2>/dev/null; then
-      ${pkgs.tmux}/bin/tmux new-session -ds "$name" -c "$selected"
+    if ! tmux has-session -t="$name" 2>/dev/null; then
+      tmux new-session -ds "$name" -c "$selected"
     fi
 
     if [[ -z $TMUX ]]; then
-      ${pkgs.tmux}/bin/tmux attach-session -t "$name"
+      tmux attach-session -t "$name"
     else
-      ${pkgs.tmux}/bin/tmux switch-client -t "$name"
+      tmux switch-client -t "$name"
     fi
+  '';
+
+  joinWindow = mkTmuxScript "tmux-join-window" ''
+    target_pane=$1
+    source_index=$2
+    target_window=$(tmux display-message -p -t "$target_pane" '#{window_index}')
+    target_session=$(tmux display-message -p -t "$target_pane" '#{session_name}')
+
+    [[ -z $source_index ]] && exit 0
+    if ! [[ $source_index =~ ^[0-9]+$ ]]; then
+      tmux display-message "Enter a window number"
+      exit 1
+    fi
+    if [[ $source_index == "$target_window" ]]; then
+      tmux display-message "Cannot join a window to itself"
+      exit 1
+    fi
+
+    source_target="$target_session:$source_index"
+    source_panes=$(tmux display-message -p -t "$source_target" '#{window_panes}' 2>/dev/null) || {
+      tmux display-message "Window $source_index does not exist"
+      exit 1
+    }
+    if [[ $source_panes != 1 ]]; then
+      tmux display-message "Window $source_index has $source_panes panes"
+      exit 1
+    fi
+
+    source_pane=$(tmux list-panes -t "$source_target" -F '#{pane_id}')
+
+    tmux set-option -p -t "$source_pane" @split_origin_index "$source_index"
+    tmux join-pane -h -s "$source_pane" -t "$target_pane"
+  '';
+
+  restoreWindow = mkTmuxScript "tmux-restore-window" ''
+    pane=$1
+    origin_index=$(tmux show-options -p -v -t "$pane" @split_origin_index 2>/dev/null) || true
+    session=$(tmux display-message -p -t "$pane" '#{session_name}')
+    indexes=($(tmux list-windows -t "$session:" -F '#{window_index}'))
+    highest_index=0
+
+    for index in "''${indexes[@]}"; do
+      (( index > highest_index )) && highest_index=$index
+    done
+
+    if [[ -z $origin_index ]]; then
+      tmux break-pane -d -s "$pane" -t "$session:$((highest_index + 1))"
+      exit 0
+    fi
+
+    occupied=false
+    for index in "''${indexes[@]}"; do
+      [[ $index == "$origin_index" ]] && occupied=true
+    done
+
+    if $occupied; then
+      tmux set-option -t "$session" renumber-windows off
+
+      for ((index = highest_index; index >= origin_index; index--)); do
+        if ! tmux move-window -d -s "$session:$index" -t "$session:$((index + 1))"; then
+          tmux set-option -tu -t "$session" renumber-windows
+          tmux display-message "Could not restore window $origin_index"
+          exit 1
+        fi
+      done
+
+      if ! tmux break-pane -d -s "$pane" -t "$session:$origin_index"; then
+        tmux set-option -tu -t "$session" renumber-windows
+        tmux display-message "Could not restore window $origin_index"
+        exit 1
+      fi
+      tmux set-option -tu -t "$session" renumber-windows
+    else
+      tmux break-pane -d -s "$pane" -t "$session:$origin_index"
+    fi
+
+    tmux set-option -up -t "$pane" @split_origin_index
   '';
 in {
   options.tmuxConfig = {
     projectDirs = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = ["~/"];
-      description = "Directories searched (one level deep) by the tmux sessionizer";
+      description = "Directories searched up to three levels deep by the tmux sessionizer, stopping at Git repositories";
     };
   };
 
@@ -144,6 +248,10 @@ in {
         # Sessionizer: fuzzy-pick a project, get a session
         bind f display-popup -E -w 80% -h 60% "${sessionizer}/bin/tmux-sessionizer"
 
+        # Join a single-pane window beside this pane, or restore it at its original index.
+        bind j command-prompt -p "Join window index:" "run-shell '${joinWindow} #{pane_id} %1'"
+        bind u run-shell "${restoreWindow} '#{pane_id}'"
+
         # Scratch popup terminal (toggle with prefix+g)
         bind g if-shell -F '#{==:#{session_name},scratch}' \
           'detach-client' \
@@ -158,9 +266,9 @@ in {
         set-option -g pane-border-style fg=black
         set-option -g status-style bg=black
         set-option -g status-left "${indicator}"
-        set-option -g status-right "${git} ${pwd} ${separator} ${time}"
-        set-option -g window-status-current-format "${current_window}"
-        set-option -g window-status-format "${window_status}"
+        set-option -g status-right "${statusGit} ${statusPath} ${separator} ${statusTime}"
+        set-option -g window-status-current-format "${currentWindow}"
+        set-option -g window-status-format "${windowStatus}"
         set-option -g window-status-separator ""
       '';
     };
