@@ -196,6 +196,9 @@ return {
 		"romus204/tree-sitter-manager.nvim",
 		lazy = false,
 		cmd = { "TSManager", "TSInstall", "TSUninstall" },
+		init = function()
+			require("configs.verus-treesitter").setup()
+		end,
 		opts = {
 			auto_install = true,
 			highlight = true,
@@ -217,12 +220,19 @@ return {
 				"markdown_inline",
 				"python",
 				"rust",
+				"verus",
 				"proto",
 				"yaml",
 				"sql",
 				"surrealql",
 			},
 			languages = {
+				verus = {
+					install_info = {
+						url = "https://github.com/secure-foundations/tree-sitter-verus",
+						use_repo_queries = true,
+					},
+				},
 				surrealql = {
 					install_info = {
 						url = "https://github.com/surrealdb/surrealql-tree-sitter",
