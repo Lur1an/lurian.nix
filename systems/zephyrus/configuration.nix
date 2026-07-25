@@ -16,6 +16,8 @@ in {
     ../../modules/lurian.nix
   ];
 
+  lurian.gaming.enable = true;
+
   services.claude-api = {
     user = "lurian";
     enable = true;

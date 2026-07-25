@@ -9,6 +9,7 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ./gaming.nix
     ./hyprland.nix
     ./polkit.nix
     ./greetd.nix

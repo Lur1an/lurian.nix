@@ -50,6 +50,7 @@ in {
   };
   wayland.windowManager.hyprland = {
     settings = {
+      misc.vrr = 3;
       workspace = [
         "1,monitor:${primary}"
         "2,monitor:${primary}"
