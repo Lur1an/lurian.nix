@@ -54,6 +54,8 @@ in {
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
+  hardware.xpadneo.enable = true;
+
   fileSystems = {
     "/mnt/Shared" = {
       device = "/dev/disk/by-uuid/18F7DC4E717D1349";

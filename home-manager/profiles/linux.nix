@@ -143,6 +143,7 @@
     marksman
     typescript-language-server
     svelte-language-server
+    graphql-language-service-cli
   ];
 
   home.username = "lurian";
