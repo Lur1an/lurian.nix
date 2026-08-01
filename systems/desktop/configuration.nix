@@ -49,6 +49,8 @@ in {
 
   boot.loader.efi.canTouchEfiVariables = true;
 
+  services.tailscale.enable = true;
+
   fileSystems = {
     "/mnt/Shared" = {
       device = "/dev/disk/by-uuid/18F7DC4E717D1349";
