@@ -55,6 +55,7 @@ in {
     "/mnt/Shared" = {
       device = "/dev/disk/by-uuid/18F7DC4E717D1349";
       fsType = "ntfs";
+      options = ["uid=1000" "gid=100"];
     };
     "/mnt/Backup" = {
       device = "/dev/disk/by-uuid/14D66766762D4230";
