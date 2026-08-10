@@ -66,7 +66,6 @@
 
   environment.systemPackages = with pkgs; [
     libnotify
-    awww
     hyprlock
     xwayland
     meson
@@ -78,34 +77,5 @@
     totem
     gthumb
     ffmpegthumbnailer
-
-    (pkgs.writeShellScriptBin "vpaper" ''
-      if [ $# -lt 1 ]; then
-        echo "Usage: vpaper <video-path> [matugen-type]"
-        exit 1
-      fi
-
-      VIDEO_PATH="$1"
-      MATUGEN_TYPE="''${2:-image}"
-      WP="$HOME/.config/wallpaper.png"
-
-      ${pkgs.ffmpeg}/bin/ffmpeg -i "$VIDEO_PATH" -vframes 1 -f image2 -y "$WP"
-
-      ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WP"
-      rm -rf /home/lurian/.cache/wal
-      ${pkgs.pywal16}/bin/wal -i "$WP" -n --cols16 lighten
-      pywalfox update
-
-      # wal's OSC 11 makes tmux paint opaque pane backgrounds; reset just tmux panes
-      if ${pkgs.tmux}/bin/tmux ls &>/dev/null; then
-        for tty in $(${pkgs.tmux}/bin/tmux list-panes -a -F '#{pane_tty}'); do
-          [ -w "$tty" ] && printf '\033]111\033\\' > "$tty" &
-        done
-      fi
-
-      ${pkgs.awww}/bin/awww img "$WP"
-
-      nohup ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "$VIDEO_PATH" > /dev/null 2>&1 &
-    '')
   ];
 }
