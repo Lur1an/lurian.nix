@@ -124,7 +124,6 @@
   xdg.portal.enable = true;
 
   services.dbus.enable = true;
-  services.flatpak.enable = true;
 
   programs.zsh.enable = true;
 

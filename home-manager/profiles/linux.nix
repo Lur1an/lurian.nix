@@ -12,7 +12,6 @@
     ../fonts.nix
     ../terminal
     ../hyprland
-    ../quickshell
     ../mimeapps.nix
     ../git.nix
     ../rofi
@@ -33,13 +32,6 @@
     opencode.enable = true;
     opencommit.enable = true;
     zshAi.enable = true;
-  };
-
-  # AI Widget sidebar
-  quickshell = {
-    enable = true;
-    aiWidget.enable = true;
-    autoStart = true;
   };
 
   rust = {
