@@ -23,8 +23,8 @@ in {
     output_path = '${config.home.homeDirectory}/.cache/matugen/rofi-colors.rasi'
 
     [templates.hyprland-colors]
-    input_path = '${configDir}/templates/hyprland-colors.conf'
-    output_path = '${config.home.homeDirectory}/.cache/matugen/hyprland-colors.conf'
+    input_path = '${configDir}/templates/hyprland-colors.lua'
+    output_path = '${config.home.homeDirectory}/.cache/matugen/hyprland-colors.lua'
 
     [templates.gtk3]
     input_path = '${configDir}/templates/gtk3.css'

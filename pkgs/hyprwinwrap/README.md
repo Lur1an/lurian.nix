@@ -3,22 +3,21 @@
 Clone of xwinwrap for hyprland.
 
 Example config:
-```ini
-plugin {
-    hyprwinwrap {
-        # class is an EXACT match and NOT a regex!
-        class = kitty-bg
-        # you can also use title
-        title = kitty-bg
-        # you can add the position of the window in a percentage
-        pos_x = 25
-        pos_y = 30
-        # you can add the size of the window in a percentage
-        size_x = 40
-        size_y = 70
-    }
-}
-
+```lua
+hl.config({
+    plugin = {
+        hyprwinwrap = {
+            -- Class and title are exact matches, not regular expressions.
+            class = "kitty-bg",
+            title = "kitty-bg",
+            -- Position and size are percentages.
+            pos_x = "25",
+            pos_y = "30",
+            size_x = "40",
+            size_y = "70",
+        },
+    },
+})
 ```
 
 Launch `kitty -c "~/.config/hypr/kittyconfigbg.conf" --class="kitty-bg" "/home/vaxry/.config/hypr/cava.sh"`

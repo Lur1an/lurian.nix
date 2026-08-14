@@ -60,17 +60,47 @@
     ./linux.nix
   ];
   hyprdesktop.extraBinds = [
-    ",XF86MonBrightnessUp, exec, brightnessctl -d intel_backlight set 10%+"
-    ",XF86MonBrightnessDown, exec, brightnessctl -d intel_backlight set 10%-"
+    {
+      keys = "XF86MonBrightnessUp";
+      command = "brightnessctl -d intel_backlight set 10%+";
+    }
+    {
+      keys = "XF86MonBrightnessDown";
+      command = "brightnessctl -d intel_backlight set 10%-";
+    }
   ];
   hyprdesktop.customWindowRules = [
-    "workspace 3 silent, match:class ^(discord)$"
-    "workspace 3 silent, match:class ^(vesktop)$"
-    "workspace 3 silent, match:class ^(Slack)$"
-    "workspace 3 silent, match:class ^(org.telegram.desktop)$"
-    "workspace 2 silent, match:class ^(firefox)$"
-    "workspace 8 silent, match:class ^camoufox-default$"
-    "workspace 8 silent, match:class ^(chromium-browser)$"
-    "workspace 8 silent, match:class ^(google-chrome)$"
+    {
+      class = "^(discord)$";
+      workspace = "3";
+    }
+    {
+      class = "^(vesktop)$";
+      workspace = "3";
+    }
+    {
+      class = "^(Slack)$";
+      workspace = "3";
+    }
+    {
+      class = "^(org.telegram.desktop)$";
+      workspace = "3";
+    }
+    {
+      class = "^(firefox)$";
+      workspace = "2";
+    }
+    {
+      class = "^camoufox-default$";
+      workspace = "8";
+    }
+    {
+      class = "^(chromium-browser)$";
+      workspace = "8";
+    }
+    {
+      class = "^(google-chrome)$";
+      workspace = "8";
+    }
   ];
 }

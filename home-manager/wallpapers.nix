@@ -114,7 +114,11 @@
         ;;
     esac
 
-    if ! ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WALLPAPER"; then
+    if ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WALLPAPER"; then
+      if ! ${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl reload; then
+        echo "vpaper: warning: Hyprland reload failed" >&2
+      fi
+    else
       echo "vpaper: warning: matugen update failed" >&2
     fi
     ${pkgs.coreutils}/bin/rm -rf -- "$HOME/.cache/wal"
