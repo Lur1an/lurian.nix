@@ -124,8 +124,6 @@ void                      onNewWindow(PHLWINDOW pWindow) {
     pWindow->layoutTarget()->space()->setTargetGeom(b, pWindow->layoutTarget());
     pWindow->m_realSize->setValueAndWarp(newSize);
     pWindow->m_realPosition->setValueAndWarp(newPos);
-    pWindow->m_size     = newSize;
-    pWindow->m_position = newPos;
     pWindow->m_pinned   = true;
     pWindow->sendWindowSize(true);
 

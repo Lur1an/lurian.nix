@@ -8,6 +8,14 @@
     };
   # This one contains whatever you want to overlay
   modifications = final: prev: {
+    minikube = prev.minikube.overrideAttrs (old: {
+      postInstall =
+        (old.postInstall or "")
+        + ''
+          rm $out/bin/kubectl
+        '';
+    });
+
     # Build qmd against this machine's GPU. The fork exposes an overridable
     # `acceleration` arg (null | "cuda" | "vulkan").
     qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default.override {
