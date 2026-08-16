@@ -13,11 +13,6 @@ return function(machine)
 		xwayland = {
 			force_zero_scaling = true,
 		},
-		plugin = {
-			hyprwinwrap = {
-				class = "mpv",
-			},
-		},
 		input = {
 			kb_options = "caps:escape,compose:ralt",
 			touchpad = {
@@ -71,6 +66,16 @@ return function(machine)
 			force_default_wallpaper = 1,
 		},
 	})
+
+	if machine.plugin then
+		hl.config({
+			plugin = {
+				hyprwinwrap = {
+					class = "mpv",
+				},
+			},
+		})
+	end
 
 	if next(machine.configOverrides) ~= nil then
 		hl.config(machine.configOverrides)

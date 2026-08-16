@@ -1,6 +1,8 @@
 local machine = require("machine")
 
-hl.plugin.load(machine.plugin)
+if machine.plugin then
+	hl.plugin.load(machine.plugin)
+end
 
 require("config")(machine)
 require("binds")(machine)

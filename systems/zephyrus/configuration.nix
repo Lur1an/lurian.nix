@@ -18,6 +18,8 @@ in {
 
   lurian.gaming.enable = true;
 
+  services.tailscale.enable = true;
+
   services.claude-api = {
     user = "lurian";
     enable = true;
