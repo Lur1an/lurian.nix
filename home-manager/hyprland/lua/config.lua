@@ -67,13 +67,9 @@ return function(machine)
 		},
 	})
 
-	if machine.plugin then
-		hl.config({
-			plugin = {
-				hyprwinwrap = {
-					class = "mpv",
-				},
-			},
+	if hl.plugin.hyprwinwrap then
+		hl.plugin.hyprwinwrap.window({
+			class = "mpv",
 		})
 	end
 

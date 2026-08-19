@@ -522,6 +522,23 @@
         "type": "github"
       }
     },
+    "hyprwinwrap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785045205,
+        "narHash": "sha256-MTA0DvsUnwTkErmc8zHRmL+dOT+yqMv+0kWxmGxm+hk=",
+        "owner": "gen3vra",
+        "repo": "hyprwinwrap",
+        "rev": "0f23c7a1a8ef82d65ba5981cd5f4ab251da73f44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gen3vra",
+        "repo": "hyprwinwrap",
+        "rev": "0f23c7a1a8ef82d65ba5981cd5f4ab251da73f44",
+        "type": "github"
+      }
+    },
     "hyprwire": {
       "inputs": {
         "hyprutils": [
@@ -648,6 +665,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprwinwrap": "hyprwinwrap",
         "nixpkgs": "nixpkgs_2",
         "qmd": "qmd",
         "treehouse": "treehouse",

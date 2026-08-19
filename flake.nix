@@ -15,6 +15,10 @@
     # Wayland/Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    hyprwinwrap = {
+      url = "github:gen3vra/hyprwinwrap/0f23c7a1a8ef82d65ba5981cd5f4ab251da73f44";
+      flake = false;
+    };
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";

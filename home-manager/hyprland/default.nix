@@ -28,6 +28,7 @@
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/home-manager/hyprland/lua/${file}";
     });
   machineConfig = {
+    plugin = "${pkgs.hyprwinwrap}/lib/libhyprwinwrap.so";
     monitors = cfg.monitor;
     extraBinds = cfg.extraBinds;
     floatingWindows = cfg.floatingWindows;
