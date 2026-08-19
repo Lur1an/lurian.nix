@@ -2,6 +2,7 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   config,
+  inputs,
   pkgs,
   ...
 }: let
@@ -19,11 +20,26 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb.nix
-    ./k3s.nix
+    ./opencode.nix
     ./qemu.nix
+    ./treehouse.nix
+    inputs.claude-api.nixosModules.default
     ../../modules/ai.nix
     ../../modules/lurian.nix
   ];
+
+  lurian.gaming.enable = true;
+
+  services.claude-api = {
+    user = "lurian";
+    enable = true;
+    environment = {
+      CLAUDE_CONFIG_DIR = "/home/lurian/.claude";
+      HOME = "/home/lurian";
+      XDG_CACHE_HOME = "/home/lurian/.cache";
+      UV_CACHE_DIR = "/home/lurian/.cache/uv";
+    };
+  };
 
   boot.loader.systemd-boot = {
     enable = true;
@@ -33,17 +49,13 @@ in {
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
+  services.tailscale.enable = true;
 
   fileSystems = {
     "/mnt/Shared" = {
       device = "/dev/disk/by-uuid/18F7DC4E717D1349";
       fsType = "ntfs";
+      options = ["uid=1000" "gid=100"];
     };
     "/mnt/Backup" = {
       device = "/dev/disk/by-uuid/14D66766762D4230";
@@ -52,6 +64,7 @@ in {
     "/mnt/Data" = {
       device = "/dev/disk/by-uuid/36EE2E315B2824D1";
       fsType = "ntfs";
+      options = ["uid=1000" "gid=100"];
     };
     "/mnt/lurian-nfs" = {
       device = "lurian-nas.local:/volume1/main";
@@ -63,7 +76,7 @@ in {
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 32 * 1024; # 16 GB
+      size = 32 * 1024;
     }
   ];
 
@@ -79,5 +92,6 @@ in {
   environment.systemPackages = with pkgs; [
     android-tools
     balena-etcher
+    qmd
   ];
 }

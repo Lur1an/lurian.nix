@@ -9,6 +9,7 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ./gaming.nix
     ./hyprland.nix
     ./polkit.nix
     ./greetd.nix
@@ -32,7 +33,7 @@
       curl
       expat
       nspr
-      xorg.libxcb
+      libxcb
     ];
   };
   nixpkgs = {
@@ -64,6 +65,7 @@
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     settings = {
+      stalled-download-timeout = 99999999;
       warn-dirty = false;
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
@@ -82,12 +84,13 @@
     backupFileExtension = "hm-bak";
     useUserPackages = true;
     verbose = true;
-    useGlobalPkgs = false;
+    useGlobalPkgs = true;
     extraSpecialArgs = {inherit inputs outputs machineConfig;};
   };
 
   users.users = {
     lurian = {
+      uid = 1000;
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "Lurian";
@@ -121,7 +124,6 @@
   xdg.portal.enable = true;
 
   services.dbus.enable = true;
-  services.flatpak.enable = true;
 
   programs.zsh.enable = true;
 

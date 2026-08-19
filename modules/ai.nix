@@ -1,54 +1,32 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+# Local AI stack: ollama (GPU) + Open WebUI, running as native NixOS services
 {pkgs, ...}: {
-  # Make sure ollama is installed
-  environment.systemPackages = with pkgs; [
-    ollama
-  ];
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers = {
-      open-webui = {
-        image = "ghcr.io/open-webui/open-webui:main";
-        environment = {
-          "TZ" = "Europe/Amsterdam";
-          "OLLAMA_API_BASE_URL" = "http://127.0.0.1:11434/api";
-          "OLLAMA_BASE_URL" = "http://127.0.0.1:11434";
-          "PORT" = "8087";
-          "WEBUI_AUTH" = "False";
-        };
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda; # Nvidia GPU acceleration
+    models = "/mnt/Data/ollama/models"; # model weights on the HDD
+    # Small non-thinking model for instant shell command generation (terminal.zshAi)
+    loadModels = ["qwen3:4b-instruct-2507-q4_K_M"];
+  };
 
-        volumes = [
-          "/home/lurian/.open-webui/data:/app/backend/data"
-        ];
+  # Ensure the NTFS data drive is mounted before ollama starts
+  systemd.services.ollama.unitConfig.RequiresMountsFor = ["/mnt/Data"];
 
-        ports = [
-          "127.0.0.1:3000:8087"
-        ];
+  services.open-webui = {
+    enable = true;
+    port = 8087; # same URL as the old docker setup
+    environment = {
+      TZ = "Europe/Amsterdam";
+      OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+      WEBUI_AUTH = "False";
 
-        extraOptions = [
-          "--name=open-webui"
-          "--hostname=open-webui"
-          "--network=host"
-          "--add-host=host.containers.internal:host-gateway"
-        ];
-      };
+      # Keep connection settings driven by these env vars instead of the WebUI DB
+      ENABLE_PERSISTENT_CONFIG = "False";
     };
   };
-  # Define the systemd service
-  systemd.services.ollama = {
-    description = "Ollama Service";
-    wantedBy = ["multi-user.target"];
-    after = ["network-online.target"];
-    wants = ["network-online.target"]; # Add dependency
-    requires = ["network-online.target"]; # Add strict dependency
 
-    serviceConfig = {
-      Type = "simple";
-      User = "lurian"; # Replace with your username
-      ExecStart = "${pkgs.ollama}/bin/ollama serve";
-      Restart = "always";
-      RestartSec = 3;
-    };
+  # Start Open WebUI after its local backends
+  systemd.services.open-webui = {
+    after = ["ollama.service" "claude-api.service"];
+    wants = ["ollama.service" "claude-api.service"];
   };
 }

@@ -20,9 +20,27 @@
 
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     xwayland = {
       enable = true;
+    };
+  };
+
+  # programs.hyprland registers xdg-desktop-portal-hyprland. Add GTK for
+  # non-Hyprland portal APIs and force screen capture to the Hyprland backend.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config = {
+      common.default = ["hyprland" "gtk"];
+      hyprland = {
+        default = ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+        "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
+      };
     };
   };
 
@@ -48,11 +66,7 @@
 
   environment.systemPackages = with pkgs; [
     libnotify
-    swww
-    inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     hyprlock
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
     xwayland
     meson
     wayland-protocols
@@ -63,27 +77,5 @@
     totem
     gthumb
     ffmpegthumbnailer
-
-    (pkgs.writeShellScriptBin "vpaper" ''
-      if [ $# -lt 1 ]; then
-        echo "Usage: vpaper <video-path> [matugen-type]"
-        exit 1
-      fi
-
-      VIDEO_PATH="$1"
-      MATUGEN_TYPE="''${2:-image}"
-      WP="$HOME/.config/wallpaper.png"
-
-      ${pkgs.ffmpeg}/bin/ffmpeg -i "$VIDEO_PATH" -vframes 1 -f image2 -y "$WP"
-
-      ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WP"
-      rm -rf /home/lurian/.cache/wal
-      ${pkgs.pywal}/bin/wal -i "$WP" -n
-      pywalfox update
-
-      ${pkgs.swww}/bin/swww img "$WP"
-
-      nohup ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "$VIDEO_PATH" > /dev/null 2>&1 &
-    '')
   ];
 }

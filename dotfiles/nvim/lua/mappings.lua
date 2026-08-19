@@ -92,6 +92,15 @@ map("n", "<leader>k", ":lprev<CR>zz", { desc = "general location previous" })
 map("n", "<leader>s", "<cmd> w <CR>", { desc = "general save file" })
 map("n", "<M-j>", ":cn<CR>zz", { desc = "general quickfix next" })
 map("n", "<M-k>", ":cp<CR>zz", { desc = "general quickfix previous" })
+
+map({ "n", "t" }, "<M-u>", function()
+	Snacks.terminal.toggle("k9s", {
+		win = {
+			position = "right",
+			width = 0.4,
+		},
+	})
+end, { desc = "toggle k9s" })
 map("n", "<C-u>", "<C-u>zz", { desc = "general scroll up" })
 map("n", "<C-d>", "<C-d>zz", { desc = "general scroll down" })
 map("n", "<leader>d", '"_d', { desc = "general delete into void" })
@@ -247,6 +256,12 @@ map("n", "<leader>rc", function()
 end, { desc = "review changes (diffview toggle)" })
 
 map("n", "<C-g>", ":Git ")
+
+-- vim-tmux-navigator (overrides NvChad's <C-h/j/k/l> window nav)
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "tmux navigate left" })
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "tmux navigate down" })
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "tmux navigate up" })
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "tmux navigate right" })
 
 -- Telescope
 map("n", "<leader>fn", function()

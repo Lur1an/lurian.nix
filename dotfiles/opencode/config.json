@@ -1,6 +1,28 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "theme": "wal",
+  "permission": {
+    "external_directory": {
+      "~/.cargo/registry/**": "allow"
+    }
+  },
+  "provider": {
+    "anthropic": {
+      "options": {
+        "baseURL": "http://127.0.0.1:8787/v1",
+        "apiKey": "dummy",
+        "timeout": 600000,
+        "chunkTimeout": 30000,
+        "setCacheKey": true
+      }
+    }
+  },
   "mcp": {
+    "grafana": {
+      "type": "local",
+      "command": ["mcp-grafana"],
+      "enabled": false
+    },
     "deepwiki": {
       "type": "remote",
       "url": "https://mcp.deepwiki.com/mcp"
@@ -8,7 +30,7 @@
     "playwright": {
       "type": "local",
       "command": [
-        "mcp-server-playwright",
+        "playwright-mcp",
         "--isolated",
         "--browser=firefox",
         "--headless"
@@ -35,5 +57,12 @@
       "url": "https://mcp.notion.com/mcp",
       "enabled": false
     }
+    // "firecrawl": {
+    //   "type": "local",
+    //   "command": ["npx", "-y", "firecrawl-mcp"],
+    //   "environment": {
+    //     "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+    //   }
+    // }
   }
 }

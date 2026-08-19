@@ -8,13 +8,25 @@
     };
   # This one contains whatever you want to overlay
   modifications = final: prev: {
-    ollama = prev.ollama.override {acceleration = "cuda";};
+    minikube = prev.minikube.overrideAttrs (old: {
+      postInstall =
+        (old.postInstall or "")
+        + ''
+          rm $out/bin/kubectl
+        '';
+    });
+
+    # Build qmd against this machine's GPU. The fork exposes an overridable
+    # `acceleration` arg (null | "cuda" | "vulkan").
+    qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default.override {
+      acceleration = "cuda";
+    };
   };
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
   unstable-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
-      system = final.system;
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
   };

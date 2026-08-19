@@ -1,5 +1,4 @@
 {
-  outputs,
   pkgs,
   config,
   machineConfig,
@@ -13,8 +12,8 @@
     ../fonts.nix
     ../terminal
     ../hyprland
-    ../quickshell
     ../mimeapps.nix
+    ../git.nix
     ../rofi
     ../waybar
     ../k9s.nix
@@ -32,13 +31,7 @@
     ghostty.enable = true;
     opencode.enable = true;
     opencommit.enable = true;
-  };
-
-  # AI Widget sidebar
-  quickshell = {
-    enable = true;
-    aiWidget.enable = true;
-    autoStart = true;
+    zshAi.enable = true;
   };
 
   rust = {
@@ -58,33 +51,21 @@
     ]
     ++ machineConfig.bookmarks;
 
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-    ];
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
   home.packages = with pkgs; [
     # Dev Apps
     postman
     # Deps
-    git-lfs
     protobuf
     devenv
     accountsservice
     # CLI Tools
     net-tools
+    proton-pass-cli
+    proton-pass
     fd
     wget
     git-repo
     fastfetch
-    lazygit
     tree
     postgresql
     cloudflared
@@ -111,9 +92,12 @@
     ansible
     # Misc
     google-chrome
+    brave
+    surrealist
+    element-desktop
     slack
     discord
-    betterdiscordctl
+    vesktop
     signal-desktop
     remmina
     zoom-us
@@ -122,6 +106,7 @@
     obsidian
     loupe
     wallust
+    mcp-grafana
     evince
     nautilus
     # Gnome
@@ -148,8 +133,9 @@
     just-lsp
     stylua
     marksman
-    nodePackages_latest.typescript-language-server
-    nodePackages_latest.svelte-language-server
+    typescript-language-server
+    svelte-language-server
+    graphql-language-service-cli
   ];
 
   home.username = "lurian";

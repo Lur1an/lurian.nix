@@ -4,6 +4,10 @@
   lib,
   ...
 }: {
+  # Media control for the waybar cava module (play-pause / next / previous)
+  services.playerctld.enable = true;
+  home.packages = [pkgs.playerctl];
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -18,14 +22,13 @@
         margin-left = 8;
         margin-right = 8;
         reload_style_on_change = true;
-        output = ["DP-4"];
 
         modules-left = [
           "hyprland/workspaces"
         ];
 
         modules-center = [
-          "clock"
+          "cava"
         ];
 
         modules-right = [
@@ -34,6 +37,7 @@
           "network"
           "cpu"
           "memory"
+          "clock"
         ];
 
         "hyprland/workspaces" = {
@@ -42,6 +46,26 @@
           persistent-workspaces = {
             "*" = 5;
           };
+        };
+
+        cava = {
+          method = "pipewire";
+          source = "auto";
+          framerate = 30;
+          bars = 14;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          autosens = 1;
+          noise_reduction = 0.77;
+          input_delay = 2;
+          sleep_timer = 5;
+          hide_on_silence = false;
+          format_silent = "󰝛";
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+          bar_delimiter = 0;
+          on-click = "playerctl play-pause";
+          on-scroll-up = "playerctl next";
+          on-scroll-down = "playerctl previous";
         };
 
         clock = {
@@ -136,6 +160,11 @@
         padding: 0 12px;
         color: @on-surface;
         font-weight: bold;
+      }
+
+      #cava {
+        padding: 0 12px;
+        color: @primary;
       }
 
       #tray {

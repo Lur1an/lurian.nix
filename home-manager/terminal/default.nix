@@ -9,16 +9,13 @@
     ./kitty.nix
     ./zsh.nix
     ./tmux.nix
-    ./aider.nix
+    ./treehouse.nix
+    ./lazygit.nix
+    ./pi-coding-agent.nix
     ./opencommit.nix
     ./opencode.nix
+    ./zsh-ai.nix
   ];
-  config = {
-    home.packages = with pkgs; [
-      direnv
-      nix-direnv
-    ];
-  };
 
   options.terminal = {
     code_font = lib.mkOption {
@@ -29,12 +26,6 @@
     opencode.enable = lib.mkOption {
       type = lib.types.bool;
       description = "Enable opencode";
-      default = false;
-    };
-
-    aider.enable = lib.mkOption {
-      type = lib.types.bool;
-      description = "Enable aider";
       default = false;
     };
 

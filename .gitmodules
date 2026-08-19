@@ -1,0 +1,3 @@
+[submodule "ai-api"]
+	path = ai-api
+	url = https://github.com/beppe2880/claude-api

@@ -28,6 +28,7 @@ in {
           cargo-make
           cargo-hack
           cargo-flamegraph
+          cargo-insta
           cargo-nextest
           cargo-udeps
           cargo-watch
