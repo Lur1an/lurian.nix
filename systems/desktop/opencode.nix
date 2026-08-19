@@ -2,7 +2,7 @@
   systemd.services.opencode-web = {
     description = "OpenCode web server (LAN-accessible)";
     wantedBy = ["multi-user.target"];
-    after = ["network-online.target" "claude-api.service"];
+    after = ["network-online.target"];
     wants = ["network-online.target"];
 
     path = with pkgs; [

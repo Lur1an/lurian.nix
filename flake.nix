@@ -26,8 +26,6 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     xdg-portal-hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    claude-api.url = "git+file:./ai-api";
-
     qmd = {
       # Fork adds an overridable `acceleration` arg + fixes node-llama-cpp
       # prebuilt loading (libstdc++ / CUDA runtime libs on LD_LIBRARY_PATH).

@@ -2,7 +2,6 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   config,
-  inputs,
   pkgs,
   ...
 }: let
@@ -23,23 +22,11 @@ in {
     ./opencode.nix
     ./qemu.nix
     ./treehouse.nix
-    inputs.claude-api.nixosModules.default
     ../../modules/ai.nix
     ../../modules/lurian.nix
   ];
 
   lurian.gaming.enable = true;
-
-  services.claude-api = {
-    user = "lurian";
-    enable = true;
-    environment = {
-      CLAUDE_CONFIG_DIR = "/home/lurian/.claude";
-      HOME = "/home/lurian";
-      XDG_CACHE_HOME = "/home/lurian/.cache";
-      UV_CACHE_DIR = "/home/lurian/.cache/uv";
-    };
-  };
 
   boot.loader.systemd-boot = {
     enable = true;

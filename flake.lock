@@ -33,24 +33,6 @@
         "type": "github"
       }
     },
-    "claude-api": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1783160500,
-        "narHash": "sha256-M+dT6s0rRs9ieTtS+9iNQKyge95OLBtL+HKxJG4Hvxg=",
-        "ref": "refs/heads/main",
-        "rev": "64a3bc979fd48a24d18341b4a39c968006fbb2b9",
-        "revCount": 23,
-        "type": "git",
-        "url": "file:./ai-api"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:./ai-api"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -599,22 +581,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1786384358,
-        "narHash": "sha256-RzPPiWeUtuvymnpuEWsdtzli5w4kjZs49FqEs3/1u+I=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2fcb964de67fcf60b43471c55d5d99e61a9ccb5a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -661,12 +627,11 @@
     },
     "root": {
       "inputs": {
-        "claude-api": "claude-api",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprwinwrap": "hyprwinwrap",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "qmd": "qmd",
         "treehouse": "treehouse",
         "xdg-portal-hyprland": "xdg-portal-hyprland"

@@ -6,17 +6,6 @@
       "~/.cargo/registry/**": "allow"
     }
   },
-  "provider": {
-    "anthropic": {
-      "options": {
-        "baseURL": "http://127.0.0.1:8787/v1",
-        "apiKey": "dummy",
-        "timeout": 600000,
-        "chunkTimeout": 30000,
-        "setCacheKey": true
-      }
-    }
-  },
   "mcp": {
     "grafana": {
       "type": "local",

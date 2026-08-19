@@ -24,9 +24,9 @@
     };
   };
 
-  # Start Open WebUI after its local backends
+  # Start Open WebUI after its local backend
   systemd.services.open-webui = {
-    after = ["ollama.service" "claude-api.service"];
-    wants = ["ollama.service" "claude-api.service"];
+    after = ["ollama.service"];
+    wants = ["ollama.service"];
   };
 }
