@@ -12,20 +12,6 @@ in {
       package = pkgs.opencode;
       enableMcpIntegration = true;
 
-      extraPackages = with pkgs; [
-        bash
-        coreutils
-        findutils
-        git
-        gnugrep
-        gnused
-        mcp-grafana
-        nodejs
-        playwright-mcp
-        ripgrep
-        uv
-      ];
-
       settings = {
         permission.external_directory."~/.cargo/registry/**" = "allow";
       };

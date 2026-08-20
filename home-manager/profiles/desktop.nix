@@ -20,7 +20,7 @@ in {
   programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
 
   # Big local model also available in aichat (`aichat -m ollama:qwen3.6:27b`)
-  terminal.zshAi.extraModels = ["qwen3.6:27b"];
+  terminal.zshAi.extraModels = ["qwen3.8:27b"];
 
   tmuxConfig = {
     projectDirs = [
