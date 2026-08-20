@@ -36,14 +36,13 @@ in {
     vulpineosKey
   ];
 
-  programs.mcp.servers.vulpineos = {
-    command = lib.getExe vulpineosMcp;
-    enabled = true;
-  };
-
   programs.mcp = {
     enable = true;
     servers = {
+      vulpineos = {
+        command = lib.getExe vulpineosMcp;
+        enabled = true;
+      };
       grafana = {
         command = lib.getExe pkgs.mcp-grafana;
         enabled = false;

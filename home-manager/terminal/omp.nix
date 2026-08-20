@@ -44,6 +44,10 @@ in {
         slow = "openai-codex/gpt-5.6-sol:max";
         tiny = "openai-codex/gpt-5.6-luna";
       };
+      disabledProviders = [
+        "lm-studio"
+        "llama.cpp"
+      ];
       symbolPreset = "nerd";
       theme = {
         dark = "titanium";

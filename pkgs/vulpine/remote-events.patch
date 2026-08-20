@@ -1,0 +1,50 @@
+diff --git a/internal/remote/server.go b/internal/remote/server.go
+index 8c7df15..2b1910e 100644
+--- a/internal/remote/server.go
++++ b/internal/remote/server.go
+@@ -29,6 +29,7 @@ type Server struct {
+ 	pairingMu       sync.RWMutex
+ 	pairingCode     string
+ 	pairingExchange func(label string) (string, error)
++	eventCancels    []func()
+ 
+ 	writeTimeout time.Duration
+ }
+@@ -130,6 +131,26 @@ func NewServer(addr string, apiKey string, jugglerClient *juggler.Client) *Serve
+ 		writeTimeout: 2 * time.Second,
+ 	}
+ 
++	// Remote clients issue Juggler calls through this server, so they also need
++	// the browser events used to associate new targets with page sessions and
++	// track frame/execution-context changes across navigation.
++	if jugglerClient != nil {
++		for _, event := range []string{
++			"Browser.attachedToTarget",
++			"Browser.detachedFromTarget",
++			"Page.frameAttached",
++			"Runtime.executionContextCreated",
++			"Runtime.executionContextDestroyed",
++			"Runtime.executionContextsCleared",
++		} {
++			event := event
++			cancel := jugglerClient.SubscribeWithCancel(event, func(sessionID string, params json.RawMessage) {
++				s.BroadcastEvent(event, sessionID, params)
++			})
++			s.eventCancels = append(s.eventCancels, cancel)
++		}
++	}
++
+ 	mux := http.NewServeMux()
+ 	mux.HandleFunc("/ws", s.handleWS)
+ 	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+@@ -208,6 +228,10 @@ func (s *Server) Stop(ctx context.Context) error {
+ 		_ = c.close(websocket.StatusGoingAway, "server shutting down")
+ 	}
+ 	s.removeClients(clients)
++	for _, cancel := range s.eventCancels {
++		cancel()
++	}
++	s.eventCancels = nil
+ 	return s.server.Shutdown(ctx)
+ }
+ 

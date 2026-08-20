@@ -1,8 +1,9 @@
 {
   lib,
   stdenv,
-  stdenvNoCC,
+  buildGoModule,
   symlinkJoin,
+  fetchFromGitHub,
   fetchurl,
   autoPatchelfHook,
   patchelfUnstable,
@@ -31,21 +32,29 @@
 }: let
   version = "0.1.8-dev.5";
   releaseUrl = "https://github.com/VulpineOS/VulpineOS/releases/download/v${version}";
-  cli = fetchurl {
-    url = "${releaseUrl}/vulpineos-linux-amd64";
-    sha256 = "ccb2ab16b28a07a467c24bf5521a88fea0896bd0bc6bb283f9aa9a47732cd53c";
-  };
   browser = fetchurl {
     url = "${releaseUrl}/camoufox-150.0.2-beta.25-lin.x86_64.zip";
     sha256 = "dbd5dcffb2aead79f55ed305adb8e67e923094fc6f4181781bf55330f75d2a48";
   };
-  cliPackage = stdenvNoCC.mkDerivation {
+  cliPackage = buildGoModule {
     pname = "vulpineos-cli";
     inherit version;
-    dontUnpack = true;
-    installPhase = ''
-      install -Dm755 ${cli} $out/bin/vulpineos
-    '';
+
+    src = fetchFromGitHub {
+      owner = "VulpineOS";
+      repo = "VulpineOS";
+      rev = "v${version}";
+      sha256 = "02ygbczg9kx2wbm20nl8i6ryi4ijgs70yjqr2b6j0nba35b1s1b9";
+    };
+
+    patches = [./remote-events.patch];
+    vendorHash = "sha256-Cnq27yvsd1aQo9+AFhNfGy9ProWT5zMOmr8PiB+6r9o=";
+    subPackages = ["cmd/vulpineos"];
+    ldflags = [
+      "-s"
+      "-w"
+      "-X main.Version=${version}"
+    ];
   };
 
   browserPackage = stdenv.mkDerivation {

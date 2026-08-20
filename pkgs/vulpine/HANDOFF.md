@@ -87,7 +87,7 @@ Treat this as an immature upstream. Keep the version and browser artifact couple
 
 ### 1. VulpineOS Package
 
-Add `pkgs/vulpineos.nix`.
+Add `pkgs/vulpine/default.nix`.
 
 It should:
 
@@ -138,7 +138,7 @@ xvfb
 
 ### 2. OCI Image
 
-Add `pkgs/vulpineos-image.nix` and export it from `pkgs/default.nix`.
+Add `pkgs/vulpine/image.nix` and export it from `pkgs/default.nix`.
 
 Prefer `pkgs.dockerTools.streamLayeredImage` because the browser is large. `imageFile` is valid, but storing a complete image tar in addition to Docker's extracted layers creates unnecessary disk churn.
 

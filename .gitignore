@@ -9,3 +9,4 @@ dotfiles/opencode/themes/wal.json
 .env
 .opencode
 **/*.hm-bak
+result
