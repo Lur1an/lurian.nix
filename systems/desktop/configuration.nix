@@ -19,7 +19,6 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./openrgb.nix
-    ./opencode.nix
     ./qemu.nix
     ./treehouse.nix
     ../../modules/ai.nix

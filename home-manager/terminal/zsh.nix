@@ -95,10 +95,14 @@
     enable = true;
     enableZshIntegration = true;
     defaultCommand = "fd --type f --hidden --exclude .git";
-    fileWidgetCommand = "fd --type f --hidden --exclude .git";
-    fileWidgetOptions = ["--preview 'bat -n --color=always {}'"];
-    changeDirWidgetCommand = "fd --type d --hidden --exclude .git";
-    changeDirWidgetOptions = ["--preview 'eza --tree --level=2 --color=always {}'"];
+    fileWidget = {
+      command = "fd --type f --hidden --exclude .git";
+      options = ["--preview 'bat -n --color=always {}'"];
+    };
+    changeDirWidget = {
+      command = "fd --type d --hidden --exclude .git";
+      options = ["--preview 'eza --tree --level=2 --color=always {}'"];
+    };
     tmux = {
       enableShellIntegration = true;
       shellIntegrationOptions = ["-p 80%,60%"];

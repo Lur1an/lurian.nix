@@ -1,7 +1,17 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   primary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009629";
   secondary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009657";
   primaryWaybar = "GIGA-BYTE TECHNOLOGY CO., LTD. M28U 22110B009629";
+  noOpen = pkgs.writeShellScriptBin "xdg-open" "exit 0";
+  opencodeWeb = pkgs.writeShellScript "opencode-web" ''
+    export PATH=${lib.makeBinPath ([noOpen config.programs.opencode.package] ++ config.programs.opencode.extraPackages)}
+    exec opencode web --port 4098 --hostname 0.0.0.0
+  '';
 in {
   imports = [
     ./linux.nix
@@ -22,6 +32,23 @@ in {
   treehouseConfig = {
     enable = true;
     root = "/mnt/Data";
+  };
+
+  systemd.user.services.opencode-web = {
+    Unit = {
+      Description = "OpenCode Web Service";
+      After = ["network-online.target"];
+      Wants = ["network-online.target"];
+    };
+
+    Service = {
+      ExecStart = opencodeWeb;
+      WorkingDirectory = config.home.homeDirectory;
+      Restart = "always";
+      RestartSec = 5;
+    };
+
+    Install.WantedBy = ["default.target"];
   };
 
   # With `"*" = 5`, waybar generates 5 persistent workspaces per monitor id.

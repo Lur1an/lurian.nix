@@ -3,7 +3,7 @@
   services.ollama = {
     enable = true;
     package = pkgs.ollama-cuda; # Nvidia GPU acceleration
-    models = "/mnt/Data/ollama/models"; # model weights on the HDD
+    modelsDir = "/mnt/Data/ollama/models"; # model weights on the HDD
     # Small non-thinking model for instant shell command generation (terminal.zshAi)
     loadModels = ["qwen3:4b-instruct-2507-q4_K_M"];
   };

@@ -15,11 +15,5 @@
         "timeout": 600000
       }
     }
-  },
-  "mcp": {
-    "nixos": {
-      "type": "local",
-      "command": ["uvx", "mcp-nixos"]
-    }
   }
 }

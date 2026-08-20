@@ -8,3 +8,4 @@ dotfiles/opencode/themes/wal.json
 .aider*
 .env
 .opencode
+**/*.hm-bak

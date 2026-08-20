@@ -11,7 +11,8 @@
     ./tmux.nix
     ./treehouse.nix
     ./lazygit.nix
-    ./pi-coding-agent.nix
+    ./mcp.nix
+    ./omp.nix
     ./opencommit.nix
     ./opencode.nix
     ./zsh-ai.nix

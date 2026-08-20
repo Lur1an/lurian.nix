@@ -28,6 +28,7 @@ in {
     pointerCursor =
       cursorTheme
       // {
+        enable = true;
         gtk.enable = true;
       };
   };
