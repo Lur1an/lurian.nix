@@ -2,7 +2,45 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  vulpineosMcp = pkgs.writeShellApplication {
+    name = "vulpineos-mcp";
+    runtimeInputs = [
+      pkgs.coreutils
+      pkgs.docker
+    ];
+    text = ''
+      for _ in $(seq 1 30); do
+        if docker exec vulpineos /bin/curl -fsS http://127.0.0.1:8443/health >/dev/null 2>&1; then
+          exec docker exec -i vulpineos /bin/bash -lc \
+            'exec /bin/vulpineos mcp --connect http://127.0.0.1:8443 --api-key "$VULPINE_API_KEY"'
+        fi
+        sleep 1
+      done
+
+      echo "VulpineOS did not become ready within 30 seconds" >&2
+      exit 1
+    '';
+  };
+  vulpineosKey = pkgs.writeShellApplication {
+    name = "vulpineos-key";
+    runtimeInputs = [pkgs.docker];
+    text = ''
+      exec docker exec vulpineos /bin/bash -lc \
+        'printf "%s\n" "$VULPINE_API_KEY"'
+    '';
+  };
+in {
+  home.packages = [
+    vulpineosMcp
+    vulpineosKey
+  ];
+
+  programs.mcp.servers.vulpineos = {
+    command = lib.getExe vulpineosMcp;
+    enabled = true;
+  };
+
   programs.mcp = {
     enable = true;
     servers = {

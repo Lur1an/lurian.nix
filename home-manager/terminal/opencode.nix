@@ -29,10 +29,8 @@ in {
           sound = false;
         };
       };
-
-      agents = ../../dotfiles/opencode/agent;
-      commands = ../../dotfiles/opencode/commands;
-      skills = ../../dotfiles/opencode/skills;
     };
+
+    xdg.configFile."opencode/AGENTS.md".source = ../../dotfiles/clankers/RULES.md;
   };
 }

@@ -7,6 +7,7 @@
 }: let
   hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   hyprlandPlugins = pkgs.hyprlandPlugins.override {inherit hyprland;};
+  vulpineos = pkgs.callPackage ./vulpineos.nix {};
 in {
   lurianFonts = pkgs.stdenv.mkDerivation {
     name = "lurianFonts";
@@ -20,6 +21,8 @@ in {
 
   balena-etcher = pkgs.callPackage ./balena-etcher.nix {};
   opencode = pkgs.callPackage ./opencode.nix {};
+  inherit vulpineos;
+  vulpineos-image = pkgs.callPackage ./vulpineos-image.nix {inherit vulpineos;};
 
   hyprwinwrap = pkgs.callPackage "${inputs.hyprwinwrap}/default.nix" {
     inherit hyprland hyprlandPlugins;

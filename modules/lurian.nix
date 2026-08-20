@@ -13,7 +13,9 @@
     ./hyprland.nix
     ./polkit.nix
     ./greetd.nix
+    ./vulpineos.nix
   ];
+  lurian.vulpineos.enable = true;
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
