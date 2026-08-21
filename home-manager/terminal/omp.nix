@@ -39,10 +39,11 @@ in {
         "public"
       ];
       modelRoles = {
-        default = "openai-codex/gpt-5.6-sol";
-        smol = "openai-codex/gpt-5.6-terra";
+        default = "openai-codex/gpt-5.6-sol:low";
+        smol = "openai-codex/gpt-5.6-terra:medium";
         slow = "openai-codex/gpt-5.6-sol:max";
         tiny = "openai-codex/gpt-5.6-luna";
+        cheap = "opencode-go/ox-alpha-free";
       };
       disabledProviders = [
         "lm-studio"
@@ -50,7 +51,7 @@ in {
       ];
       symbolPreset = "nerd";
       theme = {
-        dark = "titanium";
+        dark = "wal";
         light = "light";
       };
       setupVersion = 1;
@@ -60,13 +61,16 @@ in {
         "smol"
         "slow"
         "tiny"
+        "cheap"
       ];
       task.agentModelOverrides.sonic = "openai-codex/gpt-5.6-luna";
       startup = {
         quiet = true;
         setupWizard = false;
+        checkUpdate = false;
       };
       tier.openai = "priority";
+      browser.headless = true;
     };
   };
 
@@ -88,4 +92,9 @@ in {
 
   home.file.".omp/agent/mcp.json".source = config.xdg.configFile."mcp/mcp.json".source;
   home.file.".omp/agent/RULES.md".source = ../../dotfiles/clankers/RULES.md;
+
+  # Ambient OMP extension: /undo and /redo session navigation.
+  # https://github.com/Baylar55/omp-undo-redo
+  home.file.".omp/agent/extensions/omp-undo-redo".source =
+    pkgs.omp-undo-redo + "/lib/omp-undo-redo";
 }

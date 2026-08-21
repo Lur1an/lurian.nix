@@ -19,7 +19,7 @@ in {
     '';
   };
 
-  balena-etcher = pkgs.callPackage ./balena-etcher.nix {};
+  omp-undo-redo = pkgs.callPackage ./omp-undo-redo.nix {};
   opencode = pkgs.callPackage ./opencode.nix {};
   inherit vulpineos;
   vulpineos-image = pkgs.callPackage ./vulpine/image.nix {inherit vulpineos;};
