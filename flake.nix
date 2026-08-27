@@ -12,6 +12,10 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Neovim
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
     omp = {
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,11 +50,15 @@
         "x86_64-linux"
       ];
 
-      perSystem = {pkgs, ...}: {
-        packages = import ./pkgs {
-          pkgs = pkgs;
-          inputs = inputs;
+      perSystem = {pkgs, ...}: let
+        localPackages = import ./pkgs {
+          inherit pkgs inputs;
         };
+        nixvimFlakePackages =
+          builtins.removeAttrs localPackages.nixvimPackages
+          ["recurseForDerivations" "supermaven-agent"];
+      in {
+        packages = builtins.removeAttrs localPackages ["nixvimPackages"] // nixvimFlakePackages;
 
         formatter = pkgs.alejandra;
       };

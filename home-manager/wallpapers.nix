@@ -125,6 +125,15 @@
     if ! ${pkgs.pywal16}/bin/wal -i "$WALLPAPER" -n --cols16 lighten; then
       echo "vpaper: warning: pywal update failed" >&2
     fi
+    if [ -n "''${XDG_RUNTIME_DIR:-}" ]; then
+      for server in "$XDG_RUNTIME_DIR"/nvim.*.0; do
+        [ -S "$server" ] || continue
+        ${config.programs.nixvim.build.package}/bin/nvim \
+          --server "$server" \
+          --remote-send '<Cmd>lua require("nixvim.theme").reload()<CR>' \
+          >/dev/null 2>&1 || true
+      done
+    fi
     if ! ${pkgs.pywalfox-native}/bin/pywalfox update; then
       echo "vpaper: warning: pywalfox update failed" >&2
     fi

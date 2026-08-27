@@ -22,7 +22,7 @@
     ../rust.nix
     ../obs.nix
     ../firefox.nix
-    ../neovim.nix
+    ../neovim
     ../minecraft.nix
   ];
 

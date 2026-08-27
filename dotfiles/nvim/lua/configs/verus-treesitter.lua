@@ -15,12 +15,6 @@ function M.setup()
 			return
 		end
 
-		local manager_ok, installer = pcall(require, "tree-sitter-manager.installer")
-		if manager_ok and next(installer.installing) then
-			schedule_parser(bufnr, 100)
-			return
-		end
-
 		local parser_ok, parser = pcall(vim.treesitter.get_parser, bufnr, "rust")
 		if not parser_ok then
 			return
