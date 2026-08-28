@@ -4,7 +4,15 @@
   pkgs,
   ...
 }: let
-  package = inputs.omp.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  package = pkgs.symlinkJoin {
+    name = "omp";
+    paths = [inputs.omp.packages.${pkgs.stdenv.hostPlatform.system}.default];
+    nativeBuildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/omp \
+        --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [pkgs.stdenv.cc.cc.lib]}
+    '';
+  };
   yamlFormat = pkgs.formats.yaml {};
 in {
   imports = [inputs.omp.homeManagerModules.default];
@@ -71,6 +79,10 @@ in {
       };
       tier.openai = "priority";
       browser.headless = true;
+      stt = {
+        enabled = true;
+        submitTrigger = "never";
+      };
     };
   };
 
@@ -88,6 +100,7 @@ in {
     "app.model.cycleForward" = "Alt+P";
     "app.model.selectTemporary" = [];
     "app.display.reset" = "Alt+Shift+L";
+    "app.stt.toggle" = "Alt+S";
   };
 
   home.file.".omp/agent/mcp.json".source = config.xdg.configFile."mcp/mcp.json".source;
