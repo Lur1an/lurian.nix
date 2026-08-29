@@ -1,6 +1,8 @@
 {
   inputs,
   pkgs,
+  config,
+  lib,
   ...
 }: {
   imports = [
@@ -64,18 +66,21 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    libnotify
-    hyprlock
-    xwayland
-    meson
-    wayland-protocols
-    wayland-utils
-    wl-clipboard
-    wlroots
-    pywalfox-native
-    totem
-    gthumb
-    ffmpegthumbnailer
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      libnotify
+      hyprlock
+      xwayland
+      meson
+      wayland-protocols
+      wayland-utils
+      wl-clipboard
+      wlroots
+      totem
+      gthumb
+      ffmpegthumbnailer
+    ]
+    ++ lib.optionals config.home-manager.users.lurian.lurian.terminal.wal.enable [
+      pywalfox-native
+    ];
 }

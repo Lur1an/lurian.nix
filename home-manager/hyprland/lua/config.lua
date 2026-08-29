@@ -1,6 +1,7 @@
-local colors = require("colors")
+local load_colors = require("colors")
 
 return function(machine)
+	local colors = load_colors(machine.matugenEnabled)
 	hl.env("WLR_DRM_NO_ATOMIC", "1")
 	hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
 	hl.env("ELECTRON_ENABLE_WAYLAND", "1")
@@ -103,7 +104,7 @@ return function(machine)
 		hl.exec_cmd("hyprctl setcursor Qogir 24")
 		hl.exec_cmd("telegram-desktop")
 		hl.exec_cmd("firefox")
-		hl.exec_cmd("pywalfox start")
+		if machine.walEnabled then hl.exec_cmd("pywalfox start") end
 
 		for _, command in ipairs(machine.startupCommands) do
 			hl.exec_cmd(command)

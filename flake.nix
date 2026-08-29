@@ -12,13 +12,11 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Neovim
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
-    omp = {
-      url = "github:can1357/oh-my-pi";
+    terminal = {
+      url = "path:./flakes/terminal";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.home-manager.follows = "home-manager";
     };
 
     # Wayland/Hyprland
@@ -37,11 +35,6 @@
       url = "github:Lur1an/qmd/fix/nix-gpu-acceleration";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    treehouse = {
-      url = "github:kunchenguid/treehouse";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -54,11 +47,10 @@
         localPackages = import ./pkgs {
           inherit pkgs inputs;
         };
-        nixvimFlakePackages =
-          builtins.removeAttrs localPackages.nixvimPackages
-          ["recurseForDerivations" "supermaven-agent"];
       in {
-        packages = builtins.removeAttrs localPackages ["nixvimPackages"] // nixvimFlakePackages;
+        packages =
+          localPackages
+          // inputs.terminal.packages.${pkgs.stdenv.hostPlatform.system};
 
         formatter = pkgs.alejandra;
       };

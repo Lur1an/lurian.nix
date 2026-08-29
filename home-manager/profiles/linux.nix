@@ -2,12 +2,12 @@
   pkgs,
   config,
   machineConfig,
+  inputs,
   ...
 }: {
   imports = [
     ../rice
-    ../wal
-    ../matugen
+    inputs.terminal.homeModules.default
     ../wallpapers.nix
     ../fonts.nix
     ../terminal
@@ -16,23 +16,31 @@
     ../git.nix
     ../rofi
     ../waybar
-    ../k9s.nix
+    ../k9s
     ../python.nix
     ../node.nix
     ../rust.nix
     ../obs.nix
-    ../firefox.nix
-    ../neovim
+    ../firefox
     ../minecraft.nix
   ];
 
-  terminal = {
-    code_font = "ComicCodeLigatures Nerd Font";
+  lurian.terminal = {
+    codeFont = "ComicCodeLigatures Nerd Font";
+    neovim.enable = true;
+    wal.enable = true;
+    matugen.enable = true;
     ghostty.enable = true;
+    tmux.enable = true;
     opencode.enable = true;
+    zsh.enable = true;
+    omp.enable = true;
+    lazygit.enable = true;
     opencommit.enable = true;
     zshAi.enable = true;
   };
+
+  programs.zsh.shellAliases.update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
 
   rust = {
     debugger.enable = true;

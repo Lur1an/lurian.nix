@@ -110,7 +110,7 @@
       };
     };
 
-    style = ''
+    style = lib.optionalString config.lurian.terminal.matugen.enable ''
       @import "${config.home.homeDirectory}/.cache/matugen/waybar-colors.css";
 
       * {
@@ -198,5 +198,13 @@
         padding: 4px 8px;
       }
     '';
+  };
+  xdg.configFile."matugen/templates/waybar-colors.css".source =
+    lib.mkIf config.lurian.terminal.matugen.enable ./matugen-colors.css;
+  lurian.terminal.matugen.templates = lib.mkIf config.lurian.terminal.matugen.enable {
+    waybar-colors = {
+      input_path = "${config.xdg.configHome}/matugen/templates/waybar-colors.css";
+      output_path = "${config.home.homeDirectory}/.cache/matugen/waybar-colors.css";
+    };
   };
 }

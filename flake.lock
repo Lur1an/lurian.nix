@@ -35,12 +35,13 @@
     },
     "bun2nix": {
       "inputs": {
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_2",
         "nixpkgs": [
+          "terminal",
           "omp",
           "nixpkgs"
         ],
-        "systems": "systems_3",
+        "systems": "systems_4",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -59,12 +60,13 @@
     },
     "bun2nix-darwin-x64": {
       "inputs": {
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": [
+          "terminal",
           "omp",
           "nixpkgs-darwin-x64"
         ],
-        "systems": "systems_4",
+        "systems": "systems_5",
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
@@ -118,27 +120,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "nixvim",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1785627969,
-        "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": [
+          "terminal",
           "omp",
           "bun2nix",
           "nixpkgs"
@@ -158,9 +140,10 @@
         "type": "github"
       }
     },
-    "flake-parts_4": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
+          "terminal",
           "omp",
           "bun2nix-darwin-x64",
           "nixpkgs"
@@ -182,7 +165,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_5"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -663,9 +646,26 @@
         "type": "github"
       }
     },
+    "import-tree": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784254960,
+        "narHash": "sha256-iI88R3wHz8wTKQb5orvpc51L/Xr64AJyxid/0MKa/b8=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "4ebb10ae17d5f1ad366e7aef5b92cb8eecf24f69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
     "nix-bun": {
       "inputs": {
         "nixpkgs": [
+          "terminal",
           "omp",
           "nixpkgs"
         ]
@@ -733,11 +733,15 @@
     },
     "nixvim": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": [
+          "terminal",
+          "flake-parts"
+        ],
         "nixpkgs": [
+          "terminal",
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1787151631,
@@ -759,6 +763,7 @@
         "bun2nix-darwin-x64": "bun2nix-darwin-x64",
         "nix-bun": "nix-bun",
         "nixpkgs": [
+          "terminal",
           "nixpkgs"
         ],
         "nixpkgs-darwin-x64": "nixpkgs-darwin-x64",
@@ -829,16 +834,15 @@
         "hyprland": "hyprland",
         "hyprwinwrap": "hyprwinwrap",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim",
-        "omp": "omp",
         "qmd": "qmd",
-        "treehouse": "treehouse",
+        "terminal": "terminal",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
       }
     },
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
+          "terminal",
           "omp",
           "nixpkgs"
         ]
@@ -873,6 +877,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "flake": false,
       "locked": {
         "lastModified": 1774449309,
@@ -889,7 +908,7 @@
         "type": "github"
       }
     },
-    "systems_3": {
+    "systems_4": {
       "locked": {
         "lastModified": 1776166891,
         "narHash": "sha256-bI8yrEGjrohR5hkQox7UrxDH7XqrYMwI8SL/LrJ1+S8=",
@@ -904,7 +923,7 @@
         "type": "github"
       }
     },
-    "systems_4": {
+    "systems_5": {
       "locked": {
         "lastModified": 1680978224,
         "narHash": "sha256-+xT9B1ZbhMg/zpJqd00S06UCZb/A2URW9bqqrZ/JTOg=",
@@ -916,21 +935,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "x86_64-darwin",
-        "type": "github"
-      }
-    },
-    "systems_5": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
         "type": "github"
       }
     },
@@ -949,9 +953,36 @@
         "type": "github"
       }
     },
+    "terminal": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "home-manager": [
+          "home-manager"
+        ],
+        "import-tree": "import-tree",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixvim": "nixvim",
+        "omp": "omp",
+        "treehouse": "treehouse"
+      },
+      "locked": {
+        "path": "./flakes/terminal",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/terminal",
+        "type": "path"
+      },
+      "parent": []
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
+          "terminal",
           "omp",
           "bun2nix",
           "nixpkgs"
@@ -974,6 +1005,7 @@
     "treefmt-nix_2": {
       "inputs": {
         "nixpkgs": [
+          "terminal",
           "omp",
           "bun2nix-darwin-x64",
           "nixpkgs"
@@ -996,6 +1028,7 @@
     "treehouse": {
       "inputs": {
         "nixpkgs": [
+          "terminal",
           "nixpkgs"
         ]
       },

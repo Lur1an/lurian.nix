@@ -20,21 +20,20 @@ in {
   programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
 
   # Big local model also available in aichat (`aichat -m ollama:qwen3.6:27b`)
-  terminal.zshAi.extraModels = ["qwen3.8:27b"];
-
-  tmuxConfig = {
-    projectDirs = [
+  lurian.terminal = {
+    zshAi.extraModels = ["qwen3.8:27b"];
+    tmux.projectDirs = [
       "~/Projects"
       "/mnt/Data"
+      "~/lurian.nix"
     ];
+    treehouse = {
+      enable = true;
+      root = "/mnt/Data";
+    };
   };
 
-  treehouseConfig = {
-    enable = true;
-    root = "/mnt/Data";
-  };
-
-  systemd.user.services.opencode-web = {
+  systemd.user.services.opencode-web = lib.mkIf config.lurian.terminal.opencode.enable {
     Unit = {
       Description = "OpenCode Web Service";
       After = ["network-online.target"];
