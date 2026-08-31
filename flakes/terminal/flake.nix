@@ -3,19 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    import-tree = {
-      url = "github:vic/import-tree";
-      flake = false;
-    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
     omp = {
       url = "github:can1357/oh-my-pi";
@@ -27,12 +21,28 @@
     };
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [
-        inputs.home-manager.flakeModules.default
-        ((import inputs.import-tree).filterNot (inputs.nixpkgs.lib.hasSuffix ".pkg.nix") ./modules)
-      ];
-      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
-    };
+  outputs = inputs: let
+    systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+    forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+    module = import ./modules {inherit inputs;};
+    pkgsFor = system: import inputs.nixpkgs {inherit system;};
+  in {
+    homeModules.default = module;
+
+    packages = forAllSystems (system: let
+      pkgs = pkgsFor system;
+    in {
+      tree-sitter-verus = pkgs.callPackage ./modules/neovim/tree-sitter-verus.pkg.nix {};
+      tree-sitter-surrealql = pkgs.callPackage ./modules/neovim/tree-sitter-surrealql.pkg.nix {};
+      omp-undo-redo = pkgs.callPackage ./modules/omp/undo-redo.pkg.nix {};
+    });
+
+    formatter = forAllSystems (system: (pkgsFor system).alejandra);
+
+    checks = forAllSystems (system:
+      import ./checks.nix {
+        inherit inputs module system;
+        pkgs = pkgsFor system;
+      });
+  };
 }
