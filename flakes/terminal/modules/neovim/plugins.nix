@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (import ./helpers.pkg.nix) luaExpr luaFn;
+  cfg = config.lurian.terminal.neovim;
 
   debugpyPython = pkgs.python3.withPackages (pythonPackages: [pythonPackages.debugpy]);
   debugpyPythonExe = lib.getExe debugpyPython;
@@ -107,23 +108,23 @@ in {
 
       lsp.servers = {
         docker_compose_language_service = {
-          enable = true;
+          enable = cfg.lsps.docker_compose_language_service.enable;
           package = pkgs.docker-compose-language-service;
         };
         dockerls = {
-          enable = true;
+          enable = cfg.lsps.dockerls.enable;
           package = pkgs.dockerfile-language-server;
         };
         tailwindcss = {
-          enable = true;
+          enable = cfg.lsps.tailwindcss.enable;
           package = pkgs.tailwindcss-language-server;
         };
         svelte = {
-          enable = true;
+          enable = cfg.lsps.svelte.enable;
           package = pkgs.svelte-language-server;
         };
         lua_ls = {
-          enable = true;
+          enable = cfg.lsps.lua_ls.enable;
           package = pkgs.lua-language-server;
           config.settings.Lua = {
             runtime.version = "LuaJIT";
@@ -135,39 +136,39 @@ in {
           };
         };
         terraformls = {
-          enable = true;
+          enable = cfg.lsps.terraformls.enable;
           package = pkgs.terraform-ls;
         };
         ts_ls = {
-          enable = true;
+          enable = cfg.lsps.ts_ls.enable;
           package = pkgs.typescript-language-server;
         };
         just = {
-          enable = true;
+          enable = cfg.lsps.just.enable;
           package = pkgs.just-lsp;
         };
         ruff = {
-          enable = true;
+          enable = cfg.lsps.ruff.enable;
           package = pkgs.ruff;
         };
         nixd = {
-          enable = true;
+          enable = cfg.lsps.nixd.enable;
           package = pkgs.nixd;
         };
         helm_ls = {
-          enable = true;
+          enable = cfg.lsps.helm_ls.enable;
           package = pkgs.helm-ls;
         };
         marksman = {
-          enable = true;
+          enable = cfg.lsps.marksman.enable;
           package = pkgs.marksman;
         };
         html = {
-          enable = true;
+          enable = cfg.lsps.html.enable;
           package = pkgs.vscode-langservers-extracted;
         };
         basedpyright = {
-          enable = true;
+          enable = cfg.lsps.basedpyright.enable;
           package = pkgs.basedpyright;
           config.settings.basedpyright.analysis = {
             diagnosticMode = "workspace";

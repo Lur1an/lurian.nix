@@ -5,6 +5,22 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
+  lspNames = [
+    "docker_compose_language_service"
+    "dockerls"
+    "tailwindcss"
+    "svelte"
+    "lua_ls"
+    "terraformls"
+    "ts_ls"
+    "just"
+    "ruff"
+    "nixd"
+    "helm_ls"
+    "marksman"
+    "html"
+    "basedpyright"
+  ];
 in {
   options.lurian.terminal = {
     codeFont = mkOption {
@@ -33,6 +49,9 @@ in {
         default = true;
         description = "Whether to enable Markdown preview";
       };
+      lsps = lib.genAttrs lspNames (name: {
+        enable = mkEnableOption "${name} language server";
+      });
     };
     wal = {
       enable = mkEnableOption "pywal terminal theming";

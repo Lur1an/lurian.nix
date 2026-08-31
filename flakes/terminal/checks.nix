@@ -5,6 +5,22 @@
   pkgs,
 }: let
   lib = inputs.nixpkgs.lib;
+  lspNames = [
+    "docker_compose_language_service"
+    "dockerls"
+    "tailwindcss"
+    "svelte"
+    "lua_ls"
+    "terraformls"
+    "ts_ls"
+    "just"
+    "ruff"
+    "nixd"
+    "helm_ls"
+    "marksman"
+    "html"
+    "basedpyright"
+  ];
   testPkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -57,6 +73,7 @@
     {
       lurian.terminal = {
         neovim.enable = true;
+        neovim.lsps = lib.genAttrs lspNames (_name: {enable = true;});
         wal.enable = true;
         matugen.enable = true;
         fonts.enable = true;
@@ -100,6 +117,7 @@ in
       !inert.config.programs.nixvim.enable
       && !inert.config.programs.ghostty.enable
       && !inert.config.programs.tmux.enable
+      && lib.all (name: !inert.config.lurian.terminal.neovim.lsps.${name}.enable) lspNames
     );
     engines = assertCheck "terminal-empty-engines" (
       builtins.attrNames walOnly.config.lurian.terminal.wal.templates

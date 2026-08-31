@@ -30,6 +30,22 @@
     fonts.enable = true;
     neovim.enable = true;
     neovim.neocord.enable = true;
+    neovim.lsps = {
+      docker_compose_language_service.enable = true;
+      dockerls.enable = true;
+      tailwindcss.enable = true;
+      svelte.enable = true;
+      lua_ls.enable = true;
+      terraformls.enable = true;
+      ts_ls.enable = true;
+      just.enable = true;
+      ruff.enable = true;
+      nixd.enable = true;
+      helm_ls.enable = true;
+      marksman.enable = true;
+      html.enable = true;
+      basedpyright.enable = true;
+    };
     wal.enable = true;
     matugen.enable = true;
     ghostty.enable = true;
