@@ -70,36 +70,21 @@ in {
   options.programs.nixvim.plugins = {
     nvchad.enable = lib.mkOption {
       type = lib.types.bool;
-      default = false;
-      description = "Enable the coupled NvChad plugin stack";
+      default = true;
+      readOnly = true;
+      description = "Internal NvChad plugin stack state";
     };
     edgedb-vim.enable = lib.mkOption {
       type = lib.types.bool;
-      default = false;
-      description = "Enable EdgeDB Vim syntax support";
+      default = true;
+      readOnly = true;
+      description = "Internal EdgeDB syntax plugin state";
     };
   };
   config = lib.mkIf config.lurian.terminal.neovim.enable {
     programs.nixvim = {
       extraFiles."lua/nixvim/plugins.lua".source = ./files/lua/nixvim/plugins.lua;
-      globals = {
-        nixvim_debugpy_python = debugpyPythonExe;
-        lurian_features = {
-          nvchad = config.programs.nixvim.plugins.nvchad.enable;
-          telescope = config.programs.nixvim.plugins.telescope.enable;
-          trouble = config.programs.nixvim.plugins.trouble.enable;
-          cmp = config.programs.nixvim.plugins.cmp.enable;
-          dap = config.programs.nixvim.plugins.dap.enable;
-          dap_ui = config.programs.nixvim.plugins.dap-ui.enable;
-          opencode = config.programs.nixvim.plugins.opencode.enable;
-          snacks = config.programs.nixvim.plugins.snacks.enable;
-          treesitter = config.programs.nixvim.plugins.treesitter.enable;
-          luasnip = config.programs.nixvim.plugins.luasnip.enable;
-          autopairs = config.programs.nixvim.plugins.nvim-autopairs.enable;
-          rustaceanvim = config.programs.nixvim.plugins.rustaceanvim.enable;
-          neotest = config.programs.nixvim.plugins.neotest.enable;
-        };
-      };
+      globals.nixvim_debugpy_python = debugpyPythonExe;
 
       extraPlugins =
         lib.optionals config.programs.nixvim.plugins.edgedb-vim.enable [pkgs.vimPlugins.edgedb-vim]
@@ -122,23 +107,23 @@ in {
 
       lsp.servers = {
         docker_compose_language_service = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.docker-compose-language-service;
         };
         dockerls = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.dockerfile-language-server;
         };
         tailwindcss = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.tailwindcss-language-server;
         };
         svelte = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.svelte-language-server;
         };
         lua_ls = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.lua-language-server;
           config.settings.Lua = {
             runtime.version = "LuaJIT";
@@ -150,39 +135,39 @@ in {
           };
         };
         terraformls = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.terraform-ls;
         };
         ts_ls = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.typescript-language-server;
         };
         just = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.just-lsp;
         };
         ruff = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.ruff;
         };
         nixd = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.nixd;
         };
         helm_ls = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.helm-ls;
         };
         marksman = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.marksman;
         };
         html = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.vscode-langservers-extracted;
         };
         basedpyright = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.basedpyright;
           config.settings.basedpyright.analysis = {
             diagnosticMode = "workspace";
@@ -194,10 +179,8 @@ in {
       };
 
       plugins = {
-        nvchad.enable = lib.mkDefault true;
-        edgedb-vim.enable = lib.mkDefault true;
         web-devicons = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings.override = luaFn {
             module = "plugins";
             function = "devicons";
@@ -205,7 +188,7 @@ in {
         };
 
         indent-blankline = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             indent = {
               char = "│";
@@ -224,7 +207,7 @@ in {
         };
 
         gitsigns = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = luaFn {
             module = "plugins";
             function = "gitsigns_settings";
@@ -233,12 +216,12 @@ in {
         };
 
         which-key = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {};
         };
 
         nvim-tree = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = luaFn {
             module = "plugins";
             function = "nvim_tree_settings";
@@ -247,7 +230,7 @@ in {
         };
 
         telescope = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = luaFn {
             module = "plugins";
             function = "telescope_settings";
@@ -260,13 +243,13 @@ in {
           };
         };
 
-        vim-dadbod.enable = lib.mkDefault true;
-        vim-dadbod-completion.enable = lib.mkDefault true;
-        vim-dadbod-ui.enable = lib.mkDefault true;
-        lspconfig.enable = lib.mkDefault true;
+        vim-dadbod.enable = true;
+        vim-dadbod-completion.enable = true;
+        vim-dadbod-ui.enable = true;
+        lspconfig.enable = true;
 
         conform-nvim = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             yamlfix.env = {
               YAMLFIX_SEQUENCE_STYLE = "block_style";
@@ -295,7 +278,7 @@ in {
         };
 
         ts-autotag = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings.opts = {
             enable_rename = true;
             enable_close = true;
@@ -305,7 +288,7 @@ in {
         };
 
         neocord = {
-          enable = lib.mkDefault true;
+          enable = config.lurian.terminal.neovim.neocord.enable;
           settings = {
             main_image = "language";
             show_time = true;
@@ -318,18 +301,18 @@ in {
         };
 
         markview = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {};
         };
 
         markdown-preview = {
-          enable = lib.mkDefault true;
+          enable = config.lurian.terminal.neovim.markdownPreview.enable;
           package = pkgs.vimPlugins.markdown-preview-nvim;
           settings.filetypes = ["markdown"];
         };
 
         dap = {
-          enable = lib.mkDefault true;
+          enable = true;
           adapters.python = luaFn {
             module = "plugins";
             function = "python_dap_adapter";
@@ -369,22 +352,22 @@ in {
         };
 
         dap-ui = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {};
         };
 
         dap-python = {
-          enable = lib.mkDefault true;
+          enable = true;
           adapterPythonPath = debugpyPythonExe;
         };
 
         supermaven = {
-          enable = lib.mkDefault (pkgs.stdenv.hostPlatform.system == "x86_64-linux");
+          enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
           settings.keymaps.accept_suggestion = "<S-Tab>";
         };
 
         snacks = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             notifier.enabled = true;
             terminal.enabled = true;
@@ -394,7 +377,7 @@ in {
         };
 
         opencode = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             server.start = luaFn {
               module = "plugins";
@@ -412,12 +395,12 @@ in {
           };
         };
 
-        harpoon.enable = lib.mkDefault true;
-        fugitive.enable = lib.mkDefault true;
-        rustaceanvim.enable = lib.mkDefault true;
+        harpoon.enable = true;
+        fugitive.enable = true;
+        rustaceanvim.enable = true;
 
         neotest = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings.adapters = [
             (luaExpr {
               module = "plugins";
@@ -426,18 +409,18 @@ in {
             })
           ];
           adapters.python = {
-            enable = lib.mkDefault true;
+            enable = true;
             settings.dap.justMyCode = true;
           };
         };
 
         tmux-navigator = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings.no_mappings = 1;
         };
 
         zen-mode = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             window.width = 150;
             plugins.tmux.enabled = true;
@@ -445,12 +428,12 @@ in {
         };
 
         trouble = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {};
         };
 
         todo-comments = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             auto_jump = true;
             modes.diagnostics.auto_jump = true;
@@ -458,7 +441,7 @@ in {
         };
 
         cmp = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = luaFn {
             module = "plugins";
             function = "cmp_settings";
@@ -466,14 +449,14 @@ in {
           };
         };
 
-        cmp-nvim-lsp.enable = lib.mkDefault true;
-        cmp_luasnip.enable = lib.mkDefault true;
-        cmp-buffer.enable = lib.mkDefault true;
-        cmp-nvim-lua.enable = lib.mkDefault true;
-        cmp-async-path.enable = lib.mkDefault true;
+        cmp-nvim-lsp.enable = true;
+        cmp_luasnip.enable = true;
+        cmp-buffer.enable = true;
+        cmp-nvim-lua.enable = true;
+        cmp-async-path.enable = true;
 
         luasnip = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             history = true;
             update_events = "TextChanged,TextChangedI";
@@ -485,10 +468,10 @@ in {
           };
         };
 
-        friendly-snippets.enable = lib.mkDefault true;
+        friendly-snippets.enable = true;
 
         nvim-autopairs = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             fast_wrap = {};
             disable_filetype = ["TelescopePrompt" "vim"];
@@ -500,10 +483,10 @@ in {
           };
         };
 
-        nui.enable = lib.mkDefault true;
+        nui.enable = true;
 
         noice = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings = {
             routes = [
               {
@@ -574,18 +557,18 @@ in {
         };
 
         notify = {
-          enable = lib.mkDefault true;
+          enable = true;
           settings.background_colour = "#000000";
         };
 
         diffview = {
-          enable = lib.mkDefault true;
+          enable = true;
           package = pkgs.vimPlugins.diffview-plus-nvim;
         };
 
         treesitter = {
-          enable = lib.mkDefault true;
-          highlight.enable = lib.mkDefault true;
+          enable = true;
+          highlight.enable = true;
           grammarPackages =
             standardGrammars
             ++ [

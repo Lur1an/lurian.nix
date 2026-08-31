@@ -70,20 +70,12 @@
       };
     }
   ];
-  pluginsDisabled = mkHome [
+  togglesDisabled = mkHome [
     {
-      lurian.terminal.neovim.enable = true;
-      programs.nixvim.plugins = {
-        nvchad.enable = false;
-        telescope.enable = false;
-        trouble.enable = false;
-        cmp.enable = false;
-        dap.enable = false;
-        dap-ui.enable = false;
-        dap-python.enable = false;
-        opencode.enable = false;
-        snacks.enable = false;
-        treesitter.enable = false;
+      lurian.terminal.neovim = {
+        enable = true;
+        neocord.enable = false;
+        markdownPreview.enable = false;
       };
     }
   ];
@@ -128,7 +120,7 @@ in
   }
   // lib.optionalAttrs (system == "x86_64-linux") {
     full = full.activationPackage;
-    plugins-disabled = pluginsDisabled.activationPackage;
+    toggles-disabled = togglesDisabled.activationPackage;
     nvim-full = nvimCheck "terminal-nvim-full" full;
-    nvim-plugins-disabled = nvimCheck "terminal-nvim-plugins-disabled" pluginsDisabled;
+    nvim-toggles-disabled = nvimCheck "terminal-nvim-toggles-disabled" togglesDisabled;
   }

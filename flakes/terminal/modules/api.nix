@@ -21,7 +21,19 @@ in {
       description = "Directory containing OpenCode skill directories";
     };
     fonts.enable = mkEnableOption "consumer-provided Lurian font package";
-    neovim.enable = mkEnableOption "Lurian Neovim configuration";
+    neovim = {
+      enable = mkEnableOption "Lurian Neovim configuration";
+      neocord.enable = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Whether to enable Discord Rich Presence";
+      };
+      markdownPreview.enable = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Whether to enable Markdown preview";
+      };
+    };
     wal = {
       enable = mkEnableOption "pywal terminal theming";
       templates = mkOption {

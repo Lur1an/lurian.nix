@@ -29,6 +29,7 @@
     agents_md_path = ../../dotfiles/clankers/RULES.md;
     fonts.enable = true;
     neovim.enable = true;
+    neovim.neocord.enable = true;
     wal.enable = true;
     matugen.enable = true;
     ghostty.enable = true;
