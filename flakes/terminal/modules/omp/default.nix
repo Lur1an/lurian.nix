@@ -88,7 +88,7 @@ in {
       "app.display.reset" = "Alt+Shift+L";
     };
 
-    home.file.".omp/agent/RULES.md".source = ../agents/RULES.md;
+    home.file.".omp/agent/RULES.md".source = cfg.agents_md_path;
 
     # Ambient OMP extension: /undo and /redo session navigation.
     # https://github.com/Baylar55/omp-undo-redo

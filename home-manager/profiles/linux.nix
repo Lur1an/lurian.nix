@@ -9,7 +9,6 @@
     ../rice
     inputs.terminal.homeModules.default
     ../wallpapers.nix
-    ../fonts.nix
     ../terminal
     ../hyprland
     ../mimeapps.nix
@@ -27,6 +26,8 @@
 
   lurian.terminal = {
     codeFont = "ComicCodeLigatures Nerd Font";
+    agents_md_path = ../../dotfiles/clankers/RULES.md;
+    fonts.enable = true;
     neovim.enable = true;
     wal.enable = true;
     matugen.enable = true;

@@ -9,16 +9,6 @@
   hyprlandPlugins = pkgs.hyprlandPlugins.override {inherit hyprland;};
   vulpineos = pkgs.callPackage ./vulpine {};
 in {
-  lurianFonts = pkgs.stdenv.mkDerivation {
-    name = "lurianFonts";
-    src = ../dotfiles/fonts;
-    phases = ["installPhase"];
-    installPhase = ''
-      mkdir -p $out/share/fonts
-      cp -r $src/* $out/share/fonts
-    '';
-  };
-
   opencode = pkgs.callPackage ./opencode.nix {};
   inherit vulpineos;
   vulpineos-image = pkgs.callPackage ./vulpine/image.nix {inherit vulpineos;};

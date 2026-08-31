@@ -11,6 +11,16 @@ in {
       type = types.str;
       description = "Font used by terminal programs";
     };
+    agents_md_path = mkOption {
+      type = types.path;
+      description = "Consumer-provided AGENTS.md or RULES.md source";
+    };
+    skills = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+      description = "Directory containing OpenCode skill directories";
+    };
+    fonts.enable = mkEnableOption "consumer-provided Lurian font package";
     neovim.enable = mkEnableOption "Lurian Neovim configuration";
     wal = {
       enable = mkEnableOption "pywal terminal theming";

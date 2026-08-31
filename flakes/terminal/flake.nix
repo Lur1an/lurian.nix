@@ -35,6 +35,7 @@
       tree-sitter-verus = pkgs.callPackage ./modules/neovim/tree-sitter-verus.pkg.nix {};
       tree-sitter-surrealql = pkgs.callPackage ./modules/neovim/tree-sitter-surrealql.pkg.nix {};
       omp-undo-redo = pkgs.callPackage ./modules/omp/undo-redo.pkg.nix {};
+      lurianFonts = pkgs.callPackage ./modules/fonts/package.nix {};
     });
 
     formatter = forAllSystems (system: (pkgsFor system).alejandra);

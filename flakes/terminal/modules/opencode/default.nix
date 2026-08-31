@@ -46,7 +46,11 @@ in {
           }
           // lib.optionalAttrs cfg.wal.enable {theme = "wal";};
       };
-      xdg.configFile."opencode/AGENTS.md".source = ../agents/RULES.md;
+      xdg.configFile."opencode/AGENTS.md".source = cfg.agents_md_path;
+      xdg.configFile."opencode/skills" = lib.mkIf (cfg.skills != null) {
+        source = cfg.skills;
+        recursive = true;
+      };
     }
     (lib.mkIf cfg.wal.enable {
       lurian.terminal.wal.templates."opencode-wal.json" = ./wal.json;

@@ -1,6 +1,7 @@
 {inputs}: {
   imports = [
     ./api.nix
+    ./fonts
     ./wal.nix
     ./matugen.nix
     ./ghostty

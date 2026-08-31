@@ -25,7 +25,7 @@
   ];
   luaFileLinks = lib.genAttrs' luaFiles (file:
     lib.nameValuePair "hypr/${file}" {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/home-manager/hyprland/lua/${file}";
+      source = ./lua/${file};
     });
   machineConfig = {
     plugin = "${pkgs.hyprwinwrap}/lib/libhyprwinwrap.so";

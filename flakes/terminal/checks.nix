@@ -25,6 +25,7 @@
               stateVersion = "25.11";
             };
             lurian.terminal.codeFont = "monospace";
+            lurian.terminal.agents_md_path = builtins.toFile "RULES.md" "# Test rules\n";
           }
         ]
         ++ extraModules;
@@ -40,12 +41,25 @@
       };
     }
   ];
+  skillsSource = pkgs.runCommand "terminal-test-skills" {} ''
+    mkdir -p "$out/example"
+    touch "$out/example/SKILL.md"
+  '';
+  skillsHome = mkHome [
+    {
+      lurian.terminal = {
+        opencode.enable = true;
+        skills = skillsSource;
+      };
+    }
+  ];
   full = mkHome [
     {
       lurian.terminal = {
         neovim.enable = true;
         wal.enable = true;
         matugen.enable = true;
+        fonts.enable = true;
         ghostty.enable = true;
         tmux.enable = true;
         opencode.enable = true;
@@ -105,6 +119,11 @@ in
       builtins.attrNames opencodeWal.config.lurian.terminal.wal.templates
       == ["opencode-wal.json"]
       && opencodeWal.config.xdg.configFile ? "opencode/themes/wal.json"
+    );
+    skills = assertCheck "terminal-skills" (
+      skillsHome.config.xdg.configFile."opencode/skills".source
+      == skillsSource
+      && skillsHome.config.xdg.configFile."opencode/skills".recursive
     );
   }
   // lib.optionalAttrs (system == "x86_64-linux") {
