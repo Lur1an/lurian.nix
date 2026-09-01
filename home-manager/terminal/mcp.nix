@@ -87,8 +87,6 @@ in {
       };
     };
   };
-  programs.opencode.settings.mcp =
-    lib.mkIf config.lurian.terminal.opencode.enable config.programs.mcp.servers;
   home.file.".omp/agent/mcp.json".source =
     lib.mkIf config.lurian.terminal.omp.enable config.xdg.configFile."mcp/mcp.json".source;
 }
