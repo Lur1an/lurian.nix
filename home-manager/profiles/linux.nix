@@ -2,37 +2,63 @@
   pkgs,
   config,
   machineConfig,
+  inputs,
   ...
 }: {
   imports = [
     ../rice
-    ../wal
-    ../matugen
+    inputs.terminal.homeModules.default
     ../wallpapers.nix
-    ../fonts.nix
     ../terminal
     ../hyprland
     ../mimeapps.nix
     ../git.nix
     ../rofi
     ../waybar
-    ../k9s.nix
+    ../k9s
     ../python.nix
     ../node.nix
     ../rust.nix
     ../obs.nix
-    ../firefox.nix
-    ../neovim
+    ../firefox
     ../minecraft.nix
   ];
 
-  terminal = {
-    code_font = "ComicCodeLigatures Nerd Font";
+  lurian.terminal = {
+    codeFont = "ComicCodeLigatures Nerd Font";
+    agents_md_path = ../../dotfiles/clankers/RULES.md;
+    fonts.enable = true;
+    neovim.enable = true;
+    neovim.neocord.enable = true;
+    neovim.lsps = {
+      docker_compose_language_service.enable = true;
+      dockerls.enable = true;
+      tailwindcss.enable = true;
+      svelte.enable = true;
+      lua_ls.enable = true;
+      terraformls.enable = true;
+      ts_ls.enable = true;
+      just.enable = true;
+      ruff.enable = true;
+      nixd.enable = true;
+      helm_ls.enable = true;
+      marksman.enable = true;
+      html.enable = true;
+      basedpyright.enable = true;
+    };
+    wal.enable = true;
+    matugen.enable = true;
     ghostty.enable = true;
+    tmux.enable = true;
     opencode.enable = true;
+    zsh.enable = true;
+    omp.enable = true;
+    lazygit.enable = true;
     opencommit.enable = true;
     zshAi.enable = true;
   };
+
+  programs.zsh.shellAliases.update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
 
   rust = {
     debugger.enable = true;

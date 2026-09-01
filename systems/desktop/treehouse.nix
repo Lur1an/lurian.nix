@@ -1,6 +1,11 @@
-{config, ...}: let
-  cfg = config.home-manager.users.lurian.treehouseConfig;
+{
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.home-manager.users.lurian.lurian.terminal.treehouse;
 in {
-  # The pool must live on the mounted HDD rather than the root filesystem.
-  systemd.tmpfiles.rules = ["d ${cfg.root}/.treehouse 0750 lurian users - -"];
+  systemd.tmpfiles.rules = lib.optionals cfg.enable [
+    "d ${cfg.root}/.treehouse 0750 lurian users - -"
+  ];
 }

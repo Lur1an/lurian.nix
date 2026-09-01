@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: let
   vulpineosMcp = pkgs.writeShellApplication {
@@ -86,4 +87,6 @@ in {
       };
     };
   };
+  home.file.".omp/agent/mcp.json".source =
+    lib.mkIf config.lurian.terminal.omp.enable config.xdg.configFile."mcp/mcp.json".source;
 }

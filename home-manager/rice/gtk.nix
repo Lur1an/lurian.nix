@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   font = {
     name = "Ubuntu Nerd Font";
     package = pkgs.nerd-fonts.ubuntu-mono;
@@ -43,5 +48,19 @@ in {
   qt = {
     enable = true;
     platformTheme.name = "gtk2";
+  };
+  xdg.configFile = lib.mkIf config.lurian.terminal.matugen.enable {
+    "matugen/templates/gtk3.css".source = ./matugen-gtk3.css;
+    "matugen/templates/gtk4.css".source = ./matugen-gtk4.css;
+  };
+  lurian.terminal.matugen.templates = lib.mkIf config.lurian.terminal.matugen.enable {
+    gtk3 = {
+      input_path = "${config.xdg.configHome}/matugen/templates/gtk3.css";
+      output_path = "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css";
+    };
+    gtk4 = {
+      input_path = "${config.xdg.configHome}/matugen/templates/gtk4.css";
+      output_path = "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css";
+    };
   };
 }

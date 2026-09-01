@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  cfg = config.terminal.zshAi;
+  cfg = config.lurian.terminal.zshAi;
 
   yamlFormat = pkgs.formats.yaml {};
 
@@ -23,7 +23,7 @@
     ];
   };
 in {
-  options.terminal.zshAi = {
+  options.lurian.terminal.zshAi = {
     enable = lib.mkEnableOption "AI command generation in zsh via aichat + local ollama";
 
     model = lib.mkOption {

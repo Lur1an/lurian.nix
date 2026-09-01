@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -29,7 +30,7 @@
       click-to-exit = true;
     };
 
-    theme = let
+    theme = lib.mkIf config.lurian.terminal.matugen.enable (let
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "@theme" = "~/.cache/matugen/rofi-colors.rasi";
@@ -159,6 +160,14 @@
         text-color = mkLiteral "@error";
         padding = mkLiteral "16px";
       };
+    });
+  };
+  xdg.configFile."matugen/templates/rofi-colors.rasi".source =
+    lib.mkIf config.lurian.terminal.matugen.enable ./matugen-colors.rasi;
+  lurian.terminal.matugen.templates = lib.mkIf config.lurian.terminal.matugen.enable {
+    rofi-colors = {
+      input_path = "${config.xdg.configHome}/matugen/templates/rofi-colors.rasi";
+      output_path = "${config.home.homeDirectory}/.cache/matugen/rofi-colors.rasi";
     };
   };
 }

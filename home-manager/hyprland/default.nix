@@ -25,7 +25,7 @@
   ];
   luaFileLinks = lib.genAttrs' luaFiles (file:
     lib.nameValuePair "hypr/${file}" {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/lurian.nix/home-manager/hyprland/lua/${file}";
+      source = ./lua/${file};
     });
   machineConfig = {
     plugin = "${pkgs.hyprwinwrap}/lib/libhyprwinwrap.so";
@@ -36,6 +36,8 @@
     workspaceRules = cfg.workspaceRules;
     configOverrides = cfg.configOverrides;
     startupCommands = cfg.extraStartupCommands;
+    matugenEnabled = config.lurian.terminal.matugen.enable;
+    walEnabled = config.lurian.terminal.wal.enable;
     sessionStartupCommand = "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target";
   };
 in {
@@ -168,6 +170,9 @@ in {
         "hypr/machine.lua".text = ''
           return ${lib.generators.toLua {} machineConfig}
         '';
+        "matugen/templates/hyprland-colors.lua" = lib.mkIf config.lurian.terminal.matugen.enable {
+          source = ./matugen-colors.lua;
+        };
       };
 
     wayland.windowManager.hyprland = {
@@ -187,6 +192,12 @@ in {
       Wants = ["graphical-session-pre.target"];
       After = ["graphical-session-pre.target"];
       PropagatesStopTo = ["graphical-session.target"];
+    };
+    lurian.terminal.matugen.templates = lib.mkIf config.lurian.terminal.matugen.enable {
+      hyprland-colors = {
+        input_path = "${config.xdg.configHome}/matugen/templates/hyprland-colors.lua";
+        output_path = "${config.home.homeDirectory}/.cache/matugen/hyprland-colors.lua";
+      };
     };
   };
 }

@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -114,36 +115,42 @@
         ;;
     esac
 
-    if ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WALLPAPER"; then
-      if ! ${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl reload; then
-        echo "vpaper: warning: Hyprland reload failed" >&2
+    ${lib.optionalString config.lurian.terminal.matugen.enable ''
+      if ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WALLPAPER"; then
+        if ! ${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl reload; then
+          echo "vpaper: warning: Hyprland reload failed" >&2
+        fi
+      else
+        echo "vpaper: warning: matugen update failed" >&2
       fi
-    else
-      echo "vpaper: warning: matugen update failed" >&2
-    fi
-    ${pkgs.coreutils}/bin/rm -rf -- "$HOME/.cache/wal"
-    if ! ${pkgs.pywal16}/bin/wal -i "$WALLPAPER" -n --cols16 lighten; then
-      echo "vpaper: warning: pywal update failed" >&2
-    fi
-    if [ -n "''${XDG_RUNTIME_DIR:-}" ]; then
-      for server in "$XDG_RUNTIME_DIR"/nvim.*.0; do
-        [ -S "$server" ] || continue
-        ${config.programs.nixvim.build.package}/bin/nvim \
-          --server "$server" \
-          --remote-send '<Cmd>lua require("nixvim.theme").reload()<CR>' \
-          >/dev/null 2>&1 || true
-      done
-    fi
-    if ! ${pkgs.pywalfox-native}/bin/pywalfox update; then
-      echo "vpaper: warning: pywalfox update failed" >&2
-    fi
-
-    # wal's OSC 11 makes tmux paint opaque pane backgrounds; reset just tmux panes.
-    if ${pkgs.tmux}/bin/tmux ls >/dev/null 2>&1; then
-      for tty in $(${pkgs.tmux}/bin/tmux list-panes -a -F '#{pane_tty}'); do
-        [ -w "$tty" ] && printf '\033]111\033\\' >"$tty" &
-      done
-    fi
+    ''}
+    ${lib.optionalString config.lurian.terminal.wal.enable ''
+      ${pkgs.coreutils}/bin/rm -rf -- "$HOME/.cache/wal"
+      if ! ${pkgs.pywal16}/bin/wal -i "$WALLPAPER" -n --cols16 lighten; then
+        echo "vpaper: warning: pywal update failed" >&2
+      fi
+      ${lib.optionalString config.lurian.terminal.neovim.enable ''
+        if [ -n "''${XDG_RUNTIME_DIR:-}" ]; then
+          for server in "$XDG_RUNTIME_DIR"/nvim.*.0; do
+            [ -S "$server" ] || continue
+            ${config.programs.nixvim.build.package}/bin/nvim \
+              --server "$server" \
+              --remote-send '<Cmd>lua require("nixvim.theme").reload()<CR>' \
+              >/dev/null 2>&1 || true
+          done
+        fi
+      ''}
+      if ! ${pkgs.pywalfox-native}/bin/pywalfox update; then
+        echo "vpaper: warning: pywalfox update failed" >&2
+      fi
+      ${lib.optionalString config.lurian.terminal.tmux.enable ''
+        if ${pkgs.tmux}/bin/tmux ls >/dev/null 2>&1; then
+          for tty in $(${pkgs.tmux}/bin/tmux list-panes -a -F '#{pane_tty}'); do
+            [ -w "$tty" ] && printf '\033]111\033\\' >"$tty" &
+          done
+        fi
+      ''}
+    ''}
 
     ${pkgs.systemd}/bin/systemctl --user restart vpaper.service
   '';

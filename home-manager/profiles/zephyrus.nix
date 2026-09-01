@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.waybar = {
     settings.mainBar = {
       output = ["eDP-1"];
@@ -33,7 +37,7 @@
       };
     };
 
-    style = ''
+    style = lib.optionalString config.lurian.terminal.matugen.enable ''
       #battery {
         padding: 0 10px;
         color: @on-surface;

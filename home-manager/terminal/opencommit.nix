@@ -4,12 +4,11 @@
   config,
   ...
 }: let
-  cfg = config.terminal;
+  cfg = config.lurian.terminal.opencommit;
 in {
-  config = lib.mkIf cfg.opencommit.enable {
-    home.packages = with pkgs; [
-      opencommit
-    ];
+  options.lurian.terminal.opencommit.enable = lib.mkEnableOption "OpenCommit";
+  config = lib.mkIf cfg.enable {
+    home.packages = [pkgs.opencommit];
     home.sessionVariables = {
       OCO_AI_PROVIDER = "openai";
       OCO_API_URL = "https://openrouter.ai/api/v1";
