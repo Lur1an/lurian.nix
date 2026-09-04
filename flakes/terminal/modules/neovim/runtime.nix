@@ -102,8 +102,9 @@ in {
               };
               cargo = {
                 buildScripts.enable = true;
-                allFeatures = true;
+                features = "all";
               };
+              check.features = "all";
               procMacro.enable = true;
             };
           };

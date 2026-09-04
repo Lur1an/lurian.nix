@@ -488,6 +488,12 @@ in {
           }
           {
             mode = "n";
+            key = "<leader>mc";
+            action = "<cmd>RustLsp expandMacro<CR>";
+            options.desc = "expand Rust macro";
+          }
+          {
+            mode = "n";
             key = "S";
             action = luaFn {
               module = "keymaps";
