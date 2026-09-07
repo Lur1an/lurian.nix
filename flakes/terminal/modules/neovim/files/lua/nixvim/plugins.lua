@@ -7,7 +7,21 @@ function M.setup_indent_blankline()
 	local hooks = require("ibl.hooks")
 	hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
 end
-M.devicons = require("nvchad.icons.devicons")
+M.devicons = vim.deepcopy(require("nvchad.icons.devicons"))
+M.devicons.surql = {
+	icon = "\u{e00b}",
+	color = "#FF00A0",
+	cterm_color = "199",
+	name = "SurrealQL",
+}
+M.devicons_by_filename = {
+	justfile = {
+		icon = "",
+		color = "#E37933",
+		cterm_color = "166",
+		name = "Justfile",
+	},
+}
 function M.nvim_tree_settings()
 	return vim.tbl_deep_extend("force", require("nvchad.configs.nvimtree"), {
 		filters = { dotfiles = false },

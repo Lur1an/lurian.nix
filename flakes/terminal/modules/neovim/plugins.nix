@@ -182,9 +182,15 @@ in {
       plugins = {
         web-devicons = {
           enable = true;
-          settings.override = luaFn {
-            module = "plugins";
-            function = "devicons";
+          settings = {
+            override = luaFn {
+              module = "plugins";
+              function = "devicons";
+            };
+            override_by_filename = luaFn {
+              module = "plugins";
+              function = "devicons_by_filename";
+            };
           };
         };
 

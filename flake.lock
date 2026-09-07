@@ -816,11 +816,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782666588,
-        "narHash": "sha256-wDQLxdWCEyzfTU0ZRWoAdESrweHM57MUHHBtrsmBhek=",
+        "lastModified": 1788698095,
+        "narHash": "sha256-4WmmToaLZWwz3UkdQqcXIXsiQi9EmaLVgFZ2jyoE2Zw=",
         "owner": "Lur1an",
         "repo": "qmd",
-        "rev": "21793d320ac53459bbf232a2fc9c18af6c70aec3",
+        "rev": "f864a2d712105d97f47d74195b61250b3ae772f1",
         "type": "github"
       },
       "original": {

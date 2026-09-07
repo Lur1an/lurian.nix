@@ -29,8 +29,8 @@
     xdg-portal-hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     qmd = {
-      # Fork adds an overridable `acceleration` arg + fixes node-llama-cpp
-      # prebuilt loading (libstdc++ / CUDA runtime libs on LD_LIBRARY_PATH).
+      # Adds an overridable acceleration argument and the corresponding CUDA
+      # runtime libraries for node-llama-cpp's prebuilt backend.
       url = "github:Lur1an/qmd/fix/nix-gpu-acceleration";
       inputs.nixpkgs.follows = "nixpkgs";
     };

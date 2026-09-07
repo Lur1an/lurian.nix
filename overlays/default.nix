@@ -16,8 +16,6 @@
         '';
     });
 
-    # Build qmd against this machine's GPU. The fork exposes an overridable
-    # `acceleration` arg (null | "cuda" | "vulkan").
     qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default.override {
       acceleration = "cuda";
     };
