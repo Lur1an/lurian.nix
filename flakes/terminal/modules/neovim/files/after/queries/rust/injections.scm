@@ -7,6 +7,32 @@
   (#set! injection.language "javascript")
 )
 
+; SurrealQL strings assigned to a *surql binding
+((let_declaration
+  pattern: (identifier) @variable.name
+  value: [
+    (raw_string_literal (string_content) @injection.content)
+    (string_literal (string_content) @injection.content)
+  ])
+  (#match? @variable.name ".*surql$")
+  (#set! injection.language "surrealql")
+)
+
+; SurrealQL format templates assigned to a *surql binding
+((let_declaration
+  pattern: (identifier) @variable.name
+  value: (macro_invocation
+    macro: (identifier) @_macro
+    (token_tree
+      . [
+        (raw_string_literal (string_content) @injection.content)
+        (string_literal (string_content) @injection.content)
+      ])))
+  (#match? @variable.name ".*surql$")
+  (#eq? @_macro "format")
+  (#set! injection.language "surrealql")
+)
+
 ; sqlx::query! raw string
 ((macro_invocation
   (scoped_identifier

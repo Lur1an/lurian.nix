@@ -49,7 +49,7 @@ in {
       modelRoles = {
         default = "openai-codex/gpt-5.6-sol:low";
         smol = "openai-codex/gpt-5.6-terra:medium";
-        slow = "openai-codex/gpt-5.6-sol:max";
+        slow = "openai-codex/gpt-6-astra";
         tiny = "openai-codex/gpt-5.6-luna";
         cheap = "opencode-go/ox-alpha-free";
       };

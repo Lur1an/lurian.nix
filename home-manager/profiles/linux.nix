@@ -80,6 +80,7 @@
   home.packages = with pkgs; [
     # Dev Apps
     postman
+    opencode2
     # Deps
     protobuf
     devenv

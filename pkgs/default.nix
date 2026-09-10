@@ -10,6 +10,7 @@
   vulpineos = pkgs.callPackage ./vulpine {};
 in {
   opencode = pkgs.callPackage ./opencode.nix {};
+  opencode2 = pkgs.callPackage ./opencode2.nix {};
   inherit vulpineos;
   vulpineos-image = pkgs.callPackage ./vulpine/image.nix {inherit vulpineos;};
 

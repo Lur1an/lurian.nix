@@ -263,7 +263,7 @@ in {
               YAMLFIX_EXPLICIT_START = "false";
               YAMLFIX_WHITELINES = "1";
             };
-            formatters.rustfmt.options.nightly = true;
+            formatters.rustfmt.options.nightly = false;
             format_on_save = luaFn {
               module = "plugins";
               function = "conform_format_on_save";
