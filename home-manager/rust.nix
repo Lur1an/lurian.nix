@@ -32,6 +32,7 @@ in {
           cargo-nextest
           cargo-udeps
           cargo-watch
+          verus
         ])
       ++ lib.optionals cfg.debugger.enable [
         (pkgs.vscode-with-extensions.override {

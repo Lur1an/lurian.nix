@@ -102,6 +102,7 @@
     lazydocker
     minicom
     unzip
+    markitdown
     zip
     wireguard-tools
     htop
