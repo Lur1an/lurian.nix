@@ -25,6 +25,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
     install -Dm755 opencode $out/libexec/opencode
     makeWrapper $out/libexec/opencode $out/bin/opencode \
+      --set-default OPENCODE_CONFIG ../opencode.json \
       --prefix PATH : ${lib.makeBinPath [ripgrep]}
 
     runHook postInstall

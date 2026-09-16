@@ -18,6 +18,7 @@ in {
         enable = true;
         enableMcpIntegration = true;
         settings = {
+          agent.build.prompt = builtins.readFile ./build.md;
           permission = {
             external_directory."~/.cargo/registry/**" = "allow";
             bash = {

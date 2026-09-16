@@ -37,6 +37,11 @@ in {
 
   services.tailscale.enable = true;
 
+  # Avoid runtime suspend/resume failures on the onboard Bluetooth adapter.
+  services.udev.extraRules = ''
+    ACTION=="add|bind|change", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0489", ATTR{idProduct}=="e0e2", ATTR{power/control}="on", ATTR{power/autosuspend_delay_ms}="-1"
+  '';
+
   fileSystems = {
     "/mnt/Shared" = {
       device = "/dev/disk/by-uuid/18F7DC4E717D1349";
@@ -67,6 +72,7 @@ in {
   ];
 
   networking.hostName = "lurian-desktop";
+  networking.networkmanager.wifi.powersave = false;
 
   # Nvidia
   services.xserver.videoDrivers = ["nvidia"];

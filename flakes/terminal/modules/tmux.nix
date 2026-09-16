@@ -201,6 +201,9 @@ in {
         {
           plugin = continuum;
           extraConfig = ''
+            # Continuum prepends its autosave hook to status-right. Set our bar
+            # before it loads; programs.tmux.extraConfig runs after all plugins.
+            set-option -g status-right "${statusGit} ${statusPath} ${separator} ${statusTime}"
             set -g @continuum-restore 'on'
             set -g @continuum-save-interval '15'
           '';
@@ -260,7 +263,6 @@ in {
         set-option -g pane-border-style fg=black
         set-option -g status-style bg=black
         set-option -g status-left "${indicator}"
-        set-option -g status-right "${statusGit} ${statusPath} ${separator} ${statusTime}"
         set-option -g window-status-current-format "${currentWindow}"
         set-option -g window-status-format "${windowStatus}"
         set-option -g window-status-separator ""

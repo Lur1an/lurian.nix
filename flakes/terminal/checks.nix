@@ -47,6 +47,7 @@
         ++ extraModules;
     };
   inert = mkHome [];
+  tmuxOnly = mkHome [{lurian.terminal.tmux.enable = true;}];
   walOnly = mkHome [{lurian.terminal.wal.enable = true;}];
   matugenOnly = mkHome [{lurian.terminal.matugen.enable = true;}];
   opencodeWal = mkHome [
@@ -113,6 +114,23 @@
     '';
 in
   {
+    tmux-continuum =
+      pkgs.runCommand "terminal-tmux-continuum" {
+        nativeBuildInputs = [pkgs.python3];
+        tmuxConfig = tmuxOnly.config.xdg.configFile."tmux/tmux.conf".source;
+      } ''
+        python - <<'PY'
+        import os
+        from pathlib import Path
+
+        lines = Path(os.environ["tmuxConfig"]).read_text().splitlines()
+        continuum = next(i for i, line in enumerate(lines) if line.startswith("run-shell ") and line.endswith("/continuum.tmux"))
+        status = [i for i, line in enumerate(lines) if line.startswith("set-option -g status-right ")]
+        assert status, "Custom status-right is missing"
+        assert all(i < continuum for i in status), "status-right overwrites Continuum's autosave hook"
+        PY
+        touch "$out"
+      '';
     inert = assertCheck "terminal-inert" (
       !inert.config.programs.nixvim.enable
       && !inert.config.programs.ghostty.enable
@@ -130,6 +148,18 @@ in
       == ["opencode-wal.json"]
       && opencodeWal.config.xdg.configFile ? "opencode/themes/wal.json"
     );
+    opencode-build-execution = let
+      settings = opencodeWal.config.programs.opencode.settings;
+    in
+      assertCheck "terminal-opencode-build-execution" (
+        lib.hasInfix "explicitly waived" (settings.agent.build.prompt or "")
+        && builtins.attrNames settings.agent == ["build"]
+        && builtins.attrNames settings.agent.build == ["prompt"]
+        && builtins.length settings.plugin == 1
+        && lib.hasSuffix "/.opencode/plugins/superpowers.js" (builtins.head settings.plugin)
+        && settings.permission.bash.kubectl == "ask"
+        && settings.permission.bash.terraform == "ask"
+      );
     skills = assertCheck "terminal-skills" (
       skillsHome.config.xdg.configFile."opencode/skills".source
       == skillsSource
