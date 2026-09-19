@@ -77,9 +77,11 @@
     ]
     ++ machineConfig.bookmarks;
 
+  xdg.mimeApps.defaultApplications."x-scheme-handler/codex" = "chatgpt.desktop";
+
   home.packages = with pkgs; [
     # Dev Apps
-    postman
+    chatgpt
     opencode2
     # Deps
     protobuf

@@ -229,11 +229,11 @@ in {
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
 
-        # Repeatable pane resizing (prefix, then tap H/J/K/L)
-        bind -r H resize-pane -L 5
-        bind -r J resize-pane -D 5
-        bind -r K resize-pane -U 5
-        bind -r L resize-pane -R 5
+        # Repeatable pane resizing. H/L change this pane's width regardless of its position.
+        bind -r h resize-pane -R 5
+        bind -r j resize-pane -D 5
+        bind -r k resize-pane -U 5
+        bind -r l resize-pane -L 5
 
         bind v copy-mode
         bind-key -T copy-mode-vi v send-keys -X begin-selection

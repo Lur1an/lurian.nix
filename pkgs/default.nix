@@ -25,6 +25,7 @@
 in {
   inherit vulpineos;
 
+  chatgpt = pkgs.callPackage ./chatgpt {};
   opencode = pkgs.callPackage ./opencode.nix {};
   opencode2 = pkgs.callPackage ./opencode2.nix {};
   verus = pkgs.callPackage ./verus.nix {
