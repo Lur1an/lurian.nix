@@ -19,7 +19,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   src = fetchgit {
     url = "https://github.com/verus-lang/verus.git";
     rev = rev;
-    hash = "sha256-MY24fAFErIcLzarm/MJTWwhbGjLSeq/H5JPx4pQgetY=";
+    hash = "sha256-ZOGuiJYVWcbXnIBXxvCmvwNx1JeF78rIYTTJj09Kvmg=";
     leaveDotGit = true;
   };
 
