@@ -148,17 +148,51 @@ in
       == ["opencode-wal.json"]
       && opencodeWal.config.xdg.configFile ? "opencode/themes/wal.json"
     );
-    opencode-build-execution = let
+    opencode-config = let
       settings = opencodeWal.config.programs.opencode.settings;
     in
-      assertCheck "terminal-opencode-build-execution" (
-        lib.hasInfix "explicitly waived" (settings.agent.build.prompt or "")
-        && builtins.attrNames settings.agent == ["build"]
-        && builtins.attrNames settings.agent.build == ["prompt"]
-        && builtins.length settings.plugin == 1
-        && lib.hasSuffix "/.opencode/plugins/superpowers.js" (builtins.head settings.plugin)
-        && settings.permission.bash.kubectl == "ask"
-        && settings.permission.bash.terraform == "ask"
+      assertCheck "terminal-opencode-config" (
+        (settings.agents or {})
+        == {}
+        && (settings.plugins or []) == []
+        && (settings.skills or []) == []
+        && settings.permissions
+        == [
+          {
+            action = "external_directory";
+            resource = "~/.cargo/registry/**";
+            effect = "allow";
+          }
+          {
+            action = "shell";
+            resource = "*";
+            effect = "allow";
+          }
+          {
+            action = "shell";
+            resource = "kubectl";
+            effect = "ask";
+          }
+          {
+            action = "shell";
+            resource = "kubectl *";
+            effect = "ask";
+          }
+          {
+            action = "shell";
+            resource = "terraform";
+            effect = "ask";
+          }
+          {
+            action = "shell";
+            resource = "terraform *";
+            effect = "ask";
+          }
+        ]
+        && settings.update == "disable"
+        && lib.getVersion opencodeWal.config.programs.opencode.package == "2.0.18"
+        && opencodeWal.config.programs.opencode.tui == {}
+        && opencodeWal.config.xdg.configFile ? "opencode/cli.json"
       );
     skills = assertCheck "terminal-skills" (
       skillsHome.config.xdg.configFile."opencode/skills".source

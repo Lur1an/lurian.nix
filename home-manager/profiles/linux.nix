@@ -82,7 +82,6 @@
   home.packages = with pkgs; [
     # Dev Apps
     chatgpt
-    opencode2
     # Deps
     protobuf
     devenv

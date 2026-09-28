@@ -383,25 +383,6 @@ in {
           };
         };
 
-        opencode = {
-          enable = true;
-          settings = {
-            server.start = luaFn {
-              module = "plugins";
-              function = "opencode_start";
-            };
-            contexts."@git" = luaFn {
-              module = "plugins";
-              function = "opencode_git_context";
-            };
-            select.prompts.refactor = "Refactor @this to improve readability and maintainability";
-            events = {
-              enabled = true;
-              reload.enabled = true;
-            };
-          };
-        };
-
         harpoon.enable = true;
         fugitive.enable = true;
         rustaceanvim.enable = true;
@@ -514,10 +495,6 @@ in {
                   event = "notify";
                   find = "No information available";
                 };
-                opts.skip = true;
-              }
-              {
-                filter.find = "Failed to subscribe to SSE: No `opencode` processes";
                 opts.skip = true;
               }
               {

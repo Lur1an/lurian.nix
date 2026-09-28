@@ -66,21 +66,6 @@ function M.post()
 		dapui.close()
 	end
 
-	local group = vim.api.nvim_create_augroup("NixvimOpenCode", { clear = true })
-	vim.api.nvim_create_autocmd("User", {
-		group = group,
-		pattern = "OpencodeEvent:tui.command.execute",
-		callback = function(args)
-			local event = args.data and args.data.event
-			if event and event.properties and event.properties.command == "prompt.submit" then
-				local win = require("snacks.terminal").get("opencode --port", { create = false })
-				if win then
-					win:show()
-				end
-			end
-		end,
-	})
-
 	require("configs.verus-treesitter").setup()
 end
 

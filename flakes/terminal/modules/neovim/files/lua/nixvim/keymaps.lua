@@ -185,16 +185,12 @@ M.review_changes_diffview_toggle = function()
 end
 
 M.toggle_opencode = function()
-	require("snacks.terminal").toggle("opencode --port", {
+	require("snacks.terminal").toggle("opencode", {
 		win = {
 			position = "right",
 			enter = true,
 		},
 	})
-end
-
-M.ask_opencode = function()
-	require("opencode").ask("@this: ")
 end
 
 return M

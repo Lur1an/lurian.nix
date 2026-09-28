@@ -55,7 +55,6 @@ function M.cmp_settings()
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "async_path" },
-		{ name = "opencode", filetype = "opencode_ask" },
 	}
 	return settings
 end
@@ -86,18 +85,6 @@ function M.python_dap_adapter(cb, config)
 		args = { "-m", "debugpy.adapter" },
 		options = { justMyCode = true, source_filetype = "python" },
 	})
-end
-function M.opencode_start()
-	require("snacks.terminal").open("opencode --port", { win = { position = "right", enter = false } })
-end
-function M.opencode_git_context()
-	local handle = io.popen("git diff --cached")
-	if not handle then
-		return nil
-	end
-	local result = handle:read("*a")
-	handle:close()
-	return result ~= "" and result or nil
 end
 function M.conform_format_on_save(bufnr)
 	if vim.bo[bufnr].filetype ~= "python" and vim.bo[bufnr].filetype ~= "rust" then

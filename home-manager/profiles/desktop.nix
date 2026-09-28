@@ -7,10 +7,9 @@
   primary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009629";
   secondary = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22110B009657";
   primaryWaybar = "GIGA-BYTE TECHNOLOGY CO., LTD. M28U 22110B009629";
-  noOpen = pkgs.writeShellScriptBin "xdg-open" "exit 0";
   opencodeWeb = pkgs.writeShellScript "opencode-web" ''
-    export PATH=${lib.makeBinPath ([noOpen config.programs.opencode.package] ++ config.programs.opencode.extraPackages)}
-    exec opencode web --port 4098 --hostname 0.0.0.0
+    export PATH=${lib.makeBinPath ([config.programs.opencode.package] ++ config.programs.opencode.extraPackages)}
+    exec opencode serve --port 4098 --hostname 0.0.0.0
   '';
 in {
   imports = [
@@ -33,9 +32,10 @@ in {
     };
   };
 
+  # Keep the existing unit name and binding; v2 serves an API, not the v1 web UI.
   systemd.user.services.opencode-web = lib.mkIf config.lurian.terminal.opencode.enable {
     Unit = {
-      Description = "OpenCode Web Service";
+      Description = "OpenCode API Service";
       After = ["network-online.target"];
       Wants = ["network-online.target"];
     };

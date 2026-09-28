@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (import ./helpers.pkg.nix) luaFn;
@@ -655,7 +654,7 @@ in {
             options.desc = "tmux navigate right";
           }
 
-          # OpenCode plugin-spec mappings, kept callback-based so loading is action-driven.
+          # Launch OpenCode directly in a Snacks terminal.
           {
             mode = ["n" "t"];
             key = "<M-o>";
@@ -664,15 +663,6 @@ in {
               function = "toggle_opencode";
             };
             options.desc = "Toggle opencode";
-          }
-          {
-            mode = ["n" "x"];
-            key = "<leader>oa";
-            action = luaFn {
-              module = "keymaps";
-              function = "ask_opencode";
-            };
-            options.desc = "Ask opencode";
           }
         ];
     };

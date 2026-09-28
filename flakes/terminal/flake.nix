@@ -32,6 +32,7 @@
     packages = forAllSystems (system: let
       pkgs = pkgsFor system;
     in {
+      opencode = pkgs.callPackage ./modules/opencode/package.nix {};
       tree-sitter-verus = pkgs.callPackage ./modules/neovim/tree-sitter-verus.pkg.nix {};
       tree-sitter-surrealql = pkgs.callPackage ./modules/neovim/tree-sitter-surrealql.pkg.nix {};
       omp-undo-redo = pkgs.callPackage ./modules/omp/undo-redo.pkg.nix {};

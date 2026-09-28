@@ -5,48 +5,58 @@
   ...
 }: let
   cfg = config.lurian.terminal;
-  superpowers = pkgs.fetchFromGitHub {
-    owner = "obra";
-    repo = "superpowers";
-    rev = "v6.3.0";
-    hash = "sha256-EsGNO0dULWf5Bx6bGrCv2kI2Z8aKH0kRvGiuN23wChQ=";
-  };
 in {
   config = lib.mkIf cfg.opencode.enable (lib.mkMerge [
     {
       programs.opencode = {
         enable = true;
+        package = lib.mkDefault (pkgs.callPackage ./package.nix {});
+        # Home Manager emits supported V1 MCP entries; V2 normalizes them.
         enableMcpIntegration = true;
         settings = {
-          agent.build.prompt = builtins.readFile ./build.md;
-          permission = {
-            external_directory."~/.cargo/registry/**" = "allow";
-            bash = {
-              "*" = "allow";
-              kubectl = "ask";
-              "kubectl *" = "ask";
-              terraform = "ask";
-              "terraform *" = "ask";
-            };
-          };
-          provider.zai-coding-plan.options.timeout = 600000;
-          plugin = ["file://${superpowers}/.opencode/plugins/superpowers.js"];
+          update = "disable";
+          permissions =
+            [
+              {
+                action = "external_directory";
+                resource = "~/.cargo/registry/**";
+                effect = "allow";
+              }
+              {
+                action = "shell";
+                resource = "*";
+                effect = "allow";
+              }
+            ]
+            ++ map (resource: {
+              action = "shell";
+              inherit resource;
+              effect = "ask";
+            }) ["kubectl" "kubectl *" "terraform" "terraform *"];
+          providers.zai-coding-plan.settings.timeout = 600000;
         };
-        tui =
-          {
-            leader_timeout = 1000;
-            cursor = {
-              style = "block";
-              blinking = false;
-            };
-            attention = {
-              enabled = true;
-              notifications = true;
-              sound = false;
-            };
-          }
-          // lib.optionalAttrs cfg.wal.enable {theme = "wal";};
       };
+      xdg.configFile."opencode/cli.json".text = builtins.toJSON (
+        {
+          "$schema" = "https://opencode.ai/v2/cli.json";
+          leader.timeout = 1000;
+          keybinds = {
+            "prompt.editor" = "ctrl+e";
+            "input.line.end" = false;
+            "session.tab.next" = "tab,ctrl+tab,alt+down";
+            "prompt.autocomplete.complete" = false;
+          };
+          cursor = {
+            style = "block";
+            blinking = false;
+          };
+          attention = {
+            notifications = true;
+            sound = false;
+          };
+        }
+        // lib.optionalAttrs cfg.wal.enable {theme.name = "wal";}
+      );
       xdg.configFile."opencode/AGENTS.md".source = cfg.agents_md_path;
       xdg.configFile."opencode/skills" = lib.mkIf (cfg.skills != null) {
         source = cfg.skills;
