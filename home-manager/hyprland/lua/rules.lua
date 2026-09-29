@@ -12,6 +12,14 @@ local floatingClasses = {
 }
 
 return function(machine)
+	if machine.wallpaperPickerEnabled then
+		hl.window_rule({
+			match = { title = "^Wallpaper Picker$" },
+			float = true,
+			center = true,
+		})
+	end
+
 	for _, class in ipairs(machine.floatingWindows) do
 		table.insert(floatingClasses, class)
 	end

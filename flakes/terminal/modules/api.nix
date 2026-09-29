@@ -11,6 +11,7 @@
     "tailwindcss"
     "svelte"
     "lua_ls"
+    "qmlls"
     "terraformls"
     "ts_ls"
     "just"

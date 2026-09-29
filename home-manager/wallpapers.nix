@@ -28,7 +28,7 @@
 
   runWallpaper = pkgs.writeShellScript "run-wallpaper" ''
     if [ -f "${videoPath}" ]; then
-      exec ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop "${videoPath}"
+      exec ${pkgs.mpv}/bin/mpv --no-audio --panscan=1.0 --loop-file=inf "${videoPath}"
     fi
 
     if [ -f "${wallpaperPath}" ]; then
@@ -72,7 +72,7 @@
     EXTENSION=$(printf '%s' "$EXTENSION" | ${pkgs.coreutils}/bin/tr '[:upper:]' '[:lower:]')
 
     case "$EXTENSION" in
-      png|jpg|jpeg|webp|gif|bmp|tif|tiff|avif)
+      png|jpg|jpeg|webp|bmp|tif|tiff|avif)
         TMP_WALLPAPER=$(${pkgs.coreutils}/bin/mktemp "${configHome}/.wallpaper.XXXXXX")
         if ! ${pkgs.ffmpeg}/bin/ffmpeg -loglevel error -i "$INPUT" -frames:v 1 -c:v png -f image2 -y "$TMP_WALLPAPER"; then
           echo "vpaper: failed to convert image: $INPUT" >&2
@@ -155,41 +155,50 @@
     ${pkgs.systemd}/bin/systemctl --user restart vpaper.service
   '';
 in {
-  home.file."wallpapers".source = ../wallpapers;
+  options.lurian.wallpapers.package = lib.mkOption {
+    type = lib.types.package;
+    readOnly = true;
+    description = "The vpaper wallpaper application command.";
+  };
 
-  home.packages = [
-    pkgs.awww
-    vpaper
-  ];
+  config = {
+    lurian.wallpapers.package = vpaper;
+    home.file."wallpapers".source = ../wallpapers;
 
-  systemd.user.services = {
-    awww = {
-      Unit = {
-        Description = "Animated wallpaper daemon";
-        PartOf = ["hyprland-session.target"];
-      };
-      Service = {
-        ExecStart = "${pkgs.awww}/bin/awww-daemon";
-        ExecStartPost = "${waitForAwww}";
-        Restart = "on-failure";
-        RestartSec = 1;
-      };
-      Install.WantedBy = ["hyprland-session.target"];
-    };
+    home.packages = [
+      pkgs.awww
+      vpaper
+    ];
 
-    vpaper = {
-      Unit = {
-        Description = "Video or static wallpaper";
-        Requires = ["awww.service"];
-        After = ["awww.service"];
-        PartOf = ["hyprland-session.target"];
+    systemd.user.services = {
+      awww = {
+        Unit = {
+          Description = "Animated wallpaper daemon";
+          PartOf = ["hyprland-session.target"];
+        };
+        Service = {
+          ExecStart = "${pkgs.awww}/bin/awww-daemon";
+          ExecStartPost = "${waitForAwww}";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = ["hyprland-session.target"];
       };
-      Service = {
-        ExecStart = "${runWallpaper}";
-        Restart = "always";
-        RestartSec = 1;
+
+      vpaper = {
+        Unit = {
+          Description = "Video or static wallpaper";
+          Requires = ["awww.service"];
+          After = ["awww.service"];
+          PartOf = ["hyprland-session.target"];
+        };
+        Service = {
+          ExecStart = "${runWallpaper}";
+          Restart = "always";
+          RestartSec = 1;
+        };
+        Install.WantedBy = ["hyprland-session.target"];
       };
-      Install.WantedBy = ["hyprland-session.target"];
     };
   };
 }

@@ -18,6 +18,8 @@ in {
 
   programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
 
+  lurian.quickshell.wallpaperPicker.directories = ["/mnt/Shared/Videos/Vpapers"];
+
   # Big local model also available in aichat (`aichat -m ollama:qwen3.6:27b`)
   lurian.terminal = {
     zshAi.extraModels = ["qwen3.8:27b"];

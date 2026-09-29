@@ -38,6 +38,7 @@
     startupCommands = cfg.extraStartupCommands;
     matugenEnabled = config.lurian.terminal.matugen.enable;
     walEnabled = config.lurian.terminal.wal.enable;
+    wallpaperPickerEnabled = config.lurian.quickshell.enable && config.lurian.quickshell.wallpaperPicker.enable;
     sessionStartupCommand = "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target";
   };
 in {

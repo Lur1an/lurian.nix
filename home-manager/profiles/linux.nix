@@ -11,6 +11,7 @@
     ../wallpapers.nix
     ../terminal
     ../hyprland
+    ../quickshell
     ../mimeapps.nix
     ../git.nix
     ../rofi
@@ -23,6 +24,11 @@
     ../firefox
     ../minecraft.nix
   ];
+
+  lurian.quickshell = {
+    enable = true;
+    wallpaperPicker.enable = true;
+  };
 
   lurian.terminal = {
     codeFont = "ComicCodeLigatures Nerd Font";
@@ -37,6 +43,7 @@
       tailwindcss.enable = true;
       svelte.enable = true;
       lua_ls.enable = true;
+      qmlls.enable = true;
       terraformls.enable = true;
       ts_ls.enable = true;
       just.enable = true;

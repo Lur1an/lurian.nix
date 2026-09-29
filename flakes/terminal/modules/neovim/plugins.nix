@@ -135,6 +135,17 @@ in {
             };
           };
         };
+        qmlls = {
+          enable = cfg.lsps.qmlls.enable;
+          package = pkgs.qt6.qtdeclarative;
+          # Resolve Qt and Quickshell types without a project-specific environment.
+          config.cmd =
+            ["${pkgs.qt6.qtdeclarative}/bin/qmlls" "-E"]
+            ++ lib.concatMap (package: ["-I" "${package}/${pkgs.qt6.qtbase.qtQmlPrefix}"]) (
+              [pkgs.qt6.qtdeclarative pkgs.qt6.qtmultimedia]
+              ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [pkgs.quickshell]
+            );
+        };
         terraformls = {
           enable = cfg.lsps.terraformls.enable;
           package = pkgs.terraform-ls;
