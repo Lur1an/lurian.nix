@@ -132,6 +132,11 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail \
         'await b.default.cp(e,t,{recursive:!0,verbatimSymlinks:!0});return' \
         'await b.default.cp(e,t,{recursive:!0,verbatimSymlinks:!0});await cre(`${coreutils}/bin/chmod`,[`-R`,`u+w`,`--`,t]);return'
+    # detect-libc falls back to process.report.getReport() on NixOS, which
+    # traps in Electron's git worker. This package only supports glibc.
+    substituteInPlace app/node_modules/@parcel/watcher/index.js \
+      --replace-fail "const family = familySync();" "const family = 'glibc';"
+
     asar pack app usr/lib/chatgpt/resources/app.asar --unpack-dir node_modules
     rm -r app
   '';
