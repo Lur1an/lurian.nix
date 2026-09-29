@@ -242,6 +242,9 @@ in {
         bind-key b set-option status
         bind-key x kill-pane
 
+        # Prompt for a name and create a new session
+        bind n command-prompt -p "New session name:" "new-session -s '%%'"
+
         # Sessionizer: fuzzy-pick a project, get a session
         bind f display-popup -E -w 80% -h 60% "${sessionizer}/bin/tmux-sessionizer"
 

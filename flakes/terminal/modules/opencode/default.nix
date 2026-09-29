@@ -44,6 +44,7 @@ in {
             "prompt.editor" = "ctrl+e";
             "input.line.end" = false;
             "session.tab.next" = "tab,ctrl+tab,alt+down";
+            "session.tab.close" = "ctrl+q";
             "prompt.autocomplete.complete" = false;
           };
           cursor = {
