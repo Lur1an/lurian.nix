@@ -20,6 +20,8 @@ in {
           clipboard-paste-protection = false;
           confirm-close-surface = false;
           background-opacity = 0.88;
+          # Keep explicit TUI panel backgrounds translucent too.
+          background-opacity-cells = true;
           window-inherit-working-directory = false;
           window-padding-x = 10;
           window-padding-y = 5;
