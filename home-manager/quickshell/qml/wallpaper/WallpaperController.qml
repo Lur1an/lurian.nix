@@ -137,7 +137,12 @@ Scope {
         onExited: (code, status) => {
             controller.applying = false;
             if (code === 0 && status === 0) {
-                controller.dismiss();
+                const warnings = applyErrors.text.split("\n").filter(line => line.startsWith("vpaper: warning:"));
+                if (warnings.length) {
+                    controller.error = "Wallpaper applied with warnings:\n" + warnings.map(line => line.replace("vpaper: warning: ", "")).join("\n");
+                } else {
+                    controller.dismiss();
+                }
             } else {
                 controller.error = "Could not apply " + controller.applyingName + ". " + (applyErrors.text.trim().split("\n").slice(-1)[0] || "Check the Quickshell journal.");
             }

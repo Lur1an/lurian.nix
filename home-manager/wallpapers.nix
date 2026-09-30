@@ -116,7 +116,8 @@
     esac
 
     ${lib.optionalString config.lurian.terminal.matugen.enable ''
-      if ${pkgs.matugen}/bin/matugen -j hex "$MATUGEN_TYPE" "$WALLPAPER"; then
+      # The GUI has no terminal for Matugen's source-color selection prompt.
+      if ${pkgs.matugen}/bin/matugen --source-color-index 0 -j hex "$MATUGEN_TYPE" "$WALLPAPER"; then
         if ! ${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl reload; then
           echo "vpaper: warning: Hyprland reload failed" >&2
         fi
@@ -144,9 +145,14 @@
         echo "vpaper: warning: pywalfox update failed" >&2
       fi
       ${lib.optionalString config.lurian.terminal.tmux.enable ''
+        # GUI/systemd callers do not inherit Home Manager's shell session variables.
+        # Find the secure socket so OSC 111 clears pywal's opaque pane backgrounds.
+        ${lib.optionalString config.programs.tmux.secureSocket ''
+          export TMUX_TMPDIR="''${TMUX_TMPDIR:-''${XDG_RUNTIME_DIR:-/run/user/$(${pkgs.coreutils}/bin/id -u)}}"
+        ''}
         if ${pkgs.tmux}/bin/tmux ls >/dev/null 2>&1; then
           for tty in $(${pkgs.tmux}/bin/tmux list-panes -a -F '#{pane_tty}'); do
-            [ -w "$tty" ] && printf '\033]111\033\\' >"$tty" &
+            [ -w "$tty" ] && printf '\033]111\033\\' >"$tty"
           done
         fi
       ''}
