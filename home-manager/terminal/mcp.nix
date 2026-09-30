@@ -4,6 +4,15 @@
   config,
   ...
 }: let
+  slackMcp = pkgs.writeShellApplication {
+    name = "slack-mcp";
+    text = ''
+      export SLACK_MCP_XOXC_TOKEN='pass://Personal/slack-mcp/xoxc'
+      export SLACK_MCP_XOXD_TOKEN='pass://Personal/slack-mcp/xoxd'
+      exec ${lib.getExe pkgs.proton-pass-cli} run --no-masking -- \
+        ${lib.getExe pkgs.slack-mcp-server} --transport stdio
+    '';
+  };
   vulpineosMcp = pkgs.writeShellApplication {
     name = "vulpineos-mcp";
     runtimeInputs = [
@@ -33,6 +42,7 @@
   };
 in {
   home.packages = [
+    slackMcp
     vulpineosMcp
     vulpineosKey
   ];
@@ -40,6 +50,10 @@ in {
   programs.mcp = {
     enable = true;
     servers = {
+      slack = {
+        command = lib.getExe slackMcp;
+        enabled = true;
+      };
       vulpineos = {
         command = lib.getExe vulpineosMcp;
         enabled = true;
@@ -82,6 +96,7 @@ in {
       };
 
       nixos = {
+        enabled = false;
         command = "${pkgs.uv}/bin/uvx";
         args = ["mcp-nixos"];
       };

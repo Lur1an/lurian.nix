@@ -12,6 +12,13 @@ local floatingClasses = {
 }
 
 return function(machine)
+	hl.window_rule({
+		match = { class = "^com\\.mitchellh\\.ghostty\\.quick$" },
+		float = true,
+		size = "1040 585",
+		center = true,
+	})
+
 	if machine.wallpaperPickerEnabled then
 		hl.window_rule({
 			match = { title = "^Wallpaper Picker$" },

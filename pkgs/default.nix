@@ -27,6 +27,7 @@ in {
 
   chatgpt = pkgs.callPackage ./chatgpt {};
   opencode = pkgs.callPackage ./opencode.nix {};
+  slack-mcp-server = pkgs.callPackage ./slack-mcp-server.nix {};
   verus = pkgs.callPackage ./verus.nix {
     rustPlatform = verusRustPlatform;
     rustToolchain = verusRustToolchain;
