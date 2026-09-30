@@ -358,7 +358,13 @@ in {
 
       harpoon.enable = true;
       fugitive.enable = true;
-      rustaceanvim.enable = true;
+      rustaceanvim = {
+        enable = true;
+        settings.server.default_settings."rust-analyzer".cargo = {
+          features = ["valuable"];
+          extraEnv.RUSTFLAGS = "--cfg tracing_unstable";
+        };
+      };
 
       neotest = {
         enable = true;
