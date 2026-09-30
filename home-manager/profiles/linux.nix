@@ -27,6 +27,7 @@
   lurian.terminal = {
     codeFont = "ComicCodeLigatures Nerd Font";
     agents_md_path = ../../dotfiles/clankers/RULES.md;
+    skills = ../../dotfiles/clankers/skills;
     fonts.enable = true;
     neovim.enable = true;
     neovim.neocord.enable = true;

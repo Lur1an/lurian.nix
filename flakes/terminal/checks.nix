@@ -164,6 +164,21 @@ in
             effect = "allow";
           }
           {
+            action = "external_directory";
+            resource = "~/.cargo/git/**";
+            effect = "allow";
+          }
+          {
+            action = "external_directory";
+            resource = "*/.treehouse/**";
+            effect = "allow";
+          }
+          {
+            action = "external_directory";
+            resource = "*/treehouse/**";
+            effect = "allow";
+          }
+          {
             action = "shell";
             resource = "*";
             effect = "allow";

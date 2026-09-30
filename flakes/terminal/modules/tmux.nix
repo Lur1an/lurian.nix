@@ -112,6 +112,68 @@
     fi
   '';
 
+  searchOutput = mkTmuxScriptBin "tmux-search-output" ''
+    pane=$1
+    snapshot=$(mktemp -d)
+    entered_copy_mode=false
+    keep_copy_mode=false
+    cleanup() {
+      rm -rf "$snapshot"
+      if $entered_copy_mode && ! $keep_copy_mode; then
+        tmux send-keys -X -t "$pane" cancel || true
+      fi
+    }
+    trap cleanup EXIT
+
+    # Search the copy-mode snapshot so incoming output cannot shift our rows.
+    if [[ $(tmux display-message -p -t "$pane" '#{pane_in_mode}') == 0 ]]; then
+      tmux copy-mode -t "$pane"
+      entered_copy_mode=true
+    fi
+    # Keep wrapped screen rows separate to match copy-mode cursor movement.
+    tmux capture-pane -M -p -S - -E - -t "$pane" > "$snapshot/output"
+    nl -ba -w1 -s $'\t' "$snapshot/output" | tac > "$snapshot/rows"
+    selected=$(
+      fzf --no-sort --no-multi --layout=reverse --prompt='Output> ' \
+        --delimiter=$'\t' --with-nth=2.. --expect=ctrl-y \
+        --header='Enter: select in copy mode • Ctrl+y: copy row • Esc: cancel' \
+        < "$snapshot/rows"
+    ) || exit 0
+
+    key=''${selected%%$'\n'*}
+    selected=''${selected#*$'\n'}
+    row=''${selected%%$'\t'*}
+    if [[ $key == ctrl-y ]]; then
+      printf '%s' "''${selected#*$'\t'}" | tmux load-buffer -
+      tmux display-message -t "$pane" 'Copied row to tmux buffer (prefix + ] to paste)'
+    else
+      tmux send-keys -X -t "$pane" clear-selection
+      tmux send-keys -X -t "$pane" history-top
+      if (( row > 1 )); then
+        tmux send-keys -X -N "$((row - 1))" -t "$pane" cursor-down
+      fi
+      keep_copy_mode=true
+    fi
+  '';
+
+  teleportPane = mkTmuxScriptBin "tmux-teleport-pane" ''
+    target_pane=$1
+    selected=$(
+      tmux list-panes -a -f "#{!=:#{pane_id},$target_pane}" \
+        -F '#{pane_id} #{session_name}:#{window_index}.#{pane_index} | #{window_name} | #{pane_current_command} | #{pane_current_path}' |
+        fzf --layout=reverse --prompt='Teleport> ' \
+          --header='Enter: move pane into a side-by-side split • Esc: cancel'
+    ) || exit 0
+
+    source_pane=''${selected%% *}
+    if ! tmux move-pane -h -s "$source_pane" -t "$target_pane"; then
+      tmux display-message -t "$target_pane" 'Could not teleport pane'
+      exit 1
+    fi
+    # Window restoration indexes belong to the old location.
+    tmux set-option -up -t "$source_pane" @split_origin_index
+  '';
+
   joinWindow = mkTmuxScript "tmux-join-window" ''
     target_pane=$1
     source_index=$2
@@ -252,10 +314,14 @@ in {
         bind j command-prompt -p "Join window index:" "run-shell '${joinWindow} #{pane_id} %1'"
         bind u run-shell "${restoreWindow} '#{pane_id}'"
 
-        # Scratch popup terminal (toggle with prefix+g)
-        bind g if-shell -F '#{==:#{session_name},scratch}' \
-          'detach-client' \
-          'display-popup -E -w 80% -h 75% "tmux new-session -A -s scratch"'
+        # Git UI in the current pane's directory
+        bind g display-popup -E -w 80% -h 75% -d "#{pane_current_path}" "${pkgs.lazygit}/bin/lazygit"
+
+        # Search scrollback or bring a running pane here from any session
+        # run-shell expands pane/client formats; display-popup's shell command does not.
+        bind / run-shell -b '${tmuxBin} display-popup -c "#{client_name}" -E -w 80% -h 75% "${searchOutput}/bin/tmux-search-output #{pane_id}"'
+        # Lowercase t belongs to Treehouse.
+        bind T run-shell -b '${tmuxBin} display-popup -c "#{client_name}" -E -w 80% -h 75% "${teleportPane}/bin/tmux-teleport-pane #{pane_id}"'
 
         set-option -g @indicator_color "yellow"
         set-option -g @window_color "magenta"
