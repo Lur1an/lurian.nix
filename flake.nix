@@ -57,6 +57,16 @@
           // inputs.terminal.packages.${pkgs.stdenv.hostPlatform.system};
 
         formatter = pkgs.alejandra;
+
+        checks.qmllint = pkgs.runCommand "quickshell-qmllint" {env.LC_ALL = "C.UTF-8";} ''
+          cd ${./home-manager/quickshell/qml}
+          find . -name '*.qml' -print0 | xargs -0 ${pkgs.qt6.qtdeclarative}/bin/qmllint \
+            --max-warnings 0 \
+            -I ${pkgs.qt6.qtdeclarative}/${pkgs.qt6.qtbase.qtQmlPrefix} \
+            -I ${pkgs.qt6.qtmultimedia}/${pkgs.qt6.qtbase.qtQmlPrefix} \
+            -I ${pkgs.quickshell}/${pkgs.qt6.qtbase.qtQmlPrefix}
+          touch "$out"
+        '';
       };
 
       flake = {

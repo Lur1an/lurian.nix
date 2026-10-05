@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -6,7 +8,7 @@ ListView {
     id: list
 
     required property var controller
-    required property var palette
+    required property var theme
     signal chosen
 
     model: controller.results
@@ -31,7 +33,7 @@ ListView {
         width: list.width
         height: 66
         radius: 8
-        color: selected ? list.palette.primary : (mouse.containsMouse ? list.palette.container : "transparent")
+        color: selected ? list.theme.primary : (mouse.containsMouse ? list.theme.container : "transparent")
 
         RowLayout {
             anchors.fill: parent
@@ -40,8 +42,8 @@ ListView {
 
             Text {
                 text: row.modelData.kind === "image" ? "IMG" : (row.modelData.kind === "gif" ? "GIF" : "VID")
-                color: row.selected ? list.palette.onPrimary : list.palette.primary
-                font.family: list.palette.font
+                color: row.selected ? list.theme.onPrimary : list.theme.primary
+                font.family: list.theme.font
                 font.pixelSize: 10
                 font.bold: true
             }
@@ -53,8 +55,8 @@ ListView {
                     text: row.modelData.name
                     textFormat: Text.PlainText
                     elide: Text.ElideMiddle
-                    color: row.selected ? list.palette.onPrimary : list.palette.text
-                    font.family: list.palette.font
+                    color: row.selected ? list.theme.onPrimary : list.theme.text
+                    font.family: list.theme.font
                     font.pixelSize: 13
                 }
                 Text {
@@ -62,9 +64,9 @@ ListView {
                     text: row.modelData.relativePath
                     textFormat: Text.PlainText
                     elide: Text.ElideMiddle
-                    color: row.selected ? list.palette.onPrimary : list.palette.muted
+                    color: row.selected ? list.theme.onPrimary : list.theme.muted
                     opacity: 0.75
-                    font.family: list.palette.font
+                    font.family: list.theme.font
                     font.pixelSize: 10
                 }
             }
@@ -89,8 +91,8 @@ ListView {
         anchors.centerIn: parent
         visible: list.count === 0
         text: list.controller.scanning ? "Finding wallpapers…" : "No matching wallpapers"
-        color: list.palette.muted
-        font.family: list.palette.font
+        color: list.theme.muted
+        font.family: list.theme.font
         font.pixelSize: 12
     }
 }

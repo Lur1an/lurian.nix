@@ -105,7 +105,8 @@ Scope {
                     console.warn(text.trim());
             }
         }
-        onExited: (code, status) => {
+        // Quickshell's QML metadata does not expose QProcess::ExitStatus.
+        onExited: (code, status) => { // qmllint disable signal-handler-parameters
             if (!controller.scanCancelled && (code !== 0 || status !== 0))
                 controller.scanWarning = "Wallpaper scan failed; check the Quickshell journal.";
             if (controller.open && controller.rescanPending) {
@@ -134,7 +135,8 @@ Scope {
                     console.warn(text.trim());
             }
         }
-        onExited: (code, status) => {
+        // Keep checking crash status as well as the exit code despite the missing enum metadata.
+        onExited: (code, status) => { // qmllint disable signal-handler-parameters
             controller.applying = false;
             if (code === 0 && status === 0) {
                 const warnings = applyErrors.text.split("\n").filter(line => line.startsWith("vpaper: warning:"));

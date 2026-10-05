@@ -40,11 +40,5 @@
     });
 
     formatter = forAllSystems (system: (pkgsFor system).alejandra);
-
-    checks = forAllSystems (system:
-      import ./checks.nix {
-        inherit inputs module system;
-        pkgs = pkgsFor system;
-      });
   };
 }

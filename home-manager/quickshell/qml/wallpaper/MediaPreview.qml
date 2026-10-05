@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtMultimedia
@@ -5,11 +7,11 @@ import QtMultimedia
 Rectangle {
     id: preview
     required property var entry
-    required property var palette
+    required property var theme
     required property int delayMs
     property var loadedEntry: null
 
-    color: palette.container
+    color: theme.container
     radius: 10
     clip: true
 
@@ -42,6 +44,8 @@ Rectangle {
 
             Loader {
                 id: media
+                // The image, GIF and video components share these dynamic properties.
+                readonly property var previewItem: item
                 anchors.fill: parent
                 active: preview.loadedEntry !== null
                 sourceComponent: !preview.loadedEntry ? null : preview.loadedEntry.kind === "video" ? videoComponent : preview.loadedEntry.kind === "gif" ? gifComponent : imageComponent
@@ -52,10 +56,10 @@ Rectangle {
                 width: parent.width - 20
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.Wrap
-                color: preview.palette.muted
-                font.family: preview.palette.font
+                color: preview.theme.muted
+                font.family: preview.theme.font
                 font.pixelSize: 12
-                text: !preview.entry ? "Choose a wallpaper" : !media.item ? "Loading preview…" : media.item.failed ? "Preview unavailable\nYou can still try applying this wallpaper." : media.item.loading ? "Loading preview…" : ""
+                text: !preview.entry ? "Choose a wallpaper" : !media.previewItem ? "Loading preview…" : media.previewItem.failed ? "Preview unavailable\nYou can still try applying this wallpaper." : media.previewItem.loading ? "Loading preview…" : ""
             }
         }
 
@@ -64,8 +68,8 @@ Rectangle {
             text: preview.entry ? preview.entry.name : ""
             textFormat: Text.PlainText
             elide: Text.ElideMiddle
-            color: preview.palette.text
-            font.family: preview.palette.font
+            color: preview.theme.text
+            font.family: preview.theme.font
             font.pixelSize: 13
             font.bold: true
         }
@@ -74,8 +78,8 @@ Rectangle {
             text: preview.entry ? preview.entry.kind.toUpperCase() + "  ·  " + preview.entry.root : ""
             textFormat: Text.PlainText
             elide: Text.ElideMiddle
-            color: preview.palette.muted
-            font.family: preview.palette.font
+            color: preview.theme.muted
+            font.family: preview.theme.font
             font.pixelSize: 10
         }
     }

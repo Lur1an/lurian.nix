@@ -95,14 +95,14 @@ FloatingWindow {
                     Layout.preferredWidth: window.width * 0.38
                     Layout.fillHeight: true
                     controller: window.controller
-                    palette: window.palette
+                    theme: window.palette
                     onChosen: search.forceActiveFocus()
                 }
                 MediaPreview {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     entry: window.controller.selected
-                    palette: window.palette
+                    theme: window.palette
                     delayMs: window.controller.settings.previewDelayMs
                 }
             }
