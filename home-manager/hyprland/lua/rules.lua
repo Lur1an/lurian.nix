@@ -12,10 +12,17 @@ local floatingClasses = {
 }
 
 return function(machine)
+	hl.workspace_rule({
+		workspace = "special:quick-terminal",
+		on_created_empty = "ghostty --class=com.mitchellh.ghostty.quick --gtk-single-instance=false",
+		animation = "slidevert",
+	})
+
 	hl.window_rule({
 		match = { class = "^com\\.mitchellh\\.ghostty\\.quick$" },
+		workspace = "special:quick-terminal",
 		float = true,
-		size = "1040 585",
+		size = "1248 702",
 		center = true,
 	})
 
