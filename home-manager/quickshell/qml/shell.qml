@@ -23,6 +23,10 @@ ShellRoot {
         id: theme
     }
 
+    FormService {
+        palette: theme
+    }
+
     WallpaperController {
         id: wallpaperController
         settings: JSON.parse(settingsFile.text())

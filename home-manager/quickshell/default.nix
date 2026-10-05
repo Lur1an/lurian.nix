@@ -18,7 +18,7 @@
     meta.mainProgram = "quickshell";
   };
 in {
-  imports = [./wallpaper-picker.nix];
+  imports = [./wallpaper-picker.nix ./forms.nix];
 
   options.lurian.quickshell.enable = lib.mkEnableOption "the Lurian Quickshell components";
 

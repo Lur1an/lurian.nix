@@ -39,20 +39,6 @@ return function(machine)
 		center = true,
 	})
 
-	hl.workspace_rule({
-		workspace = "special:quick-notes",
-		on_created_empty = "obsidian",
-		animation = "slidevert",
-	})
-
-	hl.window_rule({
-		match = { class = "^(md\\.Obsidian|obsidian)$" },
-		workspace = "special:quick-notes",
-		float = true,
-		size = "1248 702",
-		center = true,
-	})
-
 	if machine.wallpaperPickerEnabled then
 		hl.window_rule({
 			match = { title = "^Wallpaper Picker$" },
@@ -60,6 +46,12 @@ return function(machine)
 			center = true,
 		})
 	end
+
+	hl.window_rule({
+		match = { class = "^(org\\.quickshell|lurian-quickshell)$", title = "^Form: .*" },
+		float = true,
+		center = true,
+	})
 
 	for _, class in ipairs(machine.floatingWindows) do
 		table.insert(floatingClasses, class)

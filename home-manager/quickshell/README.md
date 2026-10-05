@@ -53,3 +53,32 @@ systemctl --user status quickshell.service
 journalctl --user -u quickshell.service -b
 quickshell -c lurian ipc call wallpaperPicker ping
 ```
+
+## Reusable forms
+
+`quickshell-form form.json [CALLBACK ARG ...]` opens a themed floating form.
+Without a callback it prints submitted values as JSON; cancellation exits 1.
+With a callback it sends JSON values on stdin. Exit 0 closes the dialog;
+nonzero exit displays stderr (or stdout) inline and allows a retry.
+Commands execute in the caller's environment, not the Quickshell service's.
+
+```json
+{
+  "title": "Example",
+  "description": "Optional explanation",
+  "submitLabel": "Apply",
+  "fields": [
+    {"id": "name", "label": "Name", "required": true},
+    {"id": "mode", "label": "Mode", "type": "select", "options": ["One", "Two"]}
+  ]
+}
+```
+
+Text fields support `value`, `placeholder`, `pattern` (JavaScript regular
+expression), and `validationMessage`. Select fields also support `value`.
+Only one request is accepted at a time; another caller gets an error.
+
+Escape, Cancel, and window-manager close cancel before submission is consumed.
+Once the callback starts, closing only dismisses the UI; the callback completes.
+The client exits if the service disappears. A 15-second heartbeat lease clears
+abandoned requests if the client dies. Callbacks are never automatically retried.
