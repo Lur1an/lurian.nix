@@ -1,6 +1,5 @@
 local floatingClasses = {
 	"org.gnome.Calculator",
-	"org.gnome.Nautilus",
 	"pavucontrol",
 	"nm-connection-editor",
 	"blueberry.py",
@@ -21,6 +20,34 @@ return function(machine)
 	hl.window_rule({
 		match = { class = "^com\\.mitchellh\\.ghostty\\.quick$" },
 		workspace = "special:quick-terminal",
+		float = true,
+		size = "1248 702",
+		center = true,
+	})
+
+	hl.workspace_rule({
+		workspace = "special:quick-files",
+		on_created_empty = "nautilus --new-window",
+		animation = "slidevert",
+	})
+
+	hl.window_rule({
+		match = { class = "^org\\.gnome\\.Nautilus$" },
+		workspace = "special:quick-files",
+		float = true,
+		size = "1248 702",
+		center = true,
+	})
+
+	hl.workspace_rule({
+		workspace = "special:quick-notes",
+		on_created_empty = "obsidian",
+		animation = "slidevert",
+	})
+
+	hl.window_rule({
+		match = { class = "^(md\\.Obsidian|obsidian)$" },
+		workspace = "special:quick-notes",
 		float = true,
 		size = "1248 702",
 		center = true,
