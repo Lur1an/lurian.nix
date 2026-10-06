@@ -87,6 +87,9 @@
 
   xdg.mimeApps.defaultApplications."x-scheme-handler/codex" = "chatgpt.desktop";
 
+  # Persist the CLI session key across reboots using GNOME Keyring.
+  home.sessionVariables.PROTON_PASS_LINUX_KEYRING = "dbus";
+
   home.packages = with pkgs; [
     # Dev Apps
     chatgpt

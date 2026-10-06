@@ -7,6 +7,7 @@
   slackMcp = pkgs.writeShellApplication {
     name = "slack-mcp";
     text = ''
+      export PROTON_PASS_LINUX_KEYRING=dbus
       export SLACK_MCP_XOXC_TOKEN='pass://Personal/slack-mcp/xoxc'
       export SLACK_MCP_XOXD_TOKEN='pass://Personal/slack-mcp/xoxd'
       exec ${lib.getExe pkgs.proton-pass-cli} run --no-masking -- \
