@@ -103,6 +103,7 @@
     proton-pass
     fd
     wget
+    pv-migrate
     git-repo
     fastfetch
     tree
