@@ -7,7 +7,7 @@
     ./ghostty
     ./tmux.nix
     ./opencode
-    (import ./treehouse.nix {inherit inputs;})
+    (import ./treehouse {inherit inputs;})
     ./zsh
     (import ./omp {inherit inputs;})
     ./lazygit.nix

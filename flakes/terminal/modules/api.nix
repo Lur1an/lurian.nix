@@ -33,9 +33,10 @@ in {
       description = "Consumer-provided AGENTS.md or RULES.md source";
     };
     skills = mkOption {
-      type = types.nullOr types.path;
-      default = null;
-      description = "Directory containing OpenCode skill directories";
+      type = types.attrsOf types.path;
+      default = {};
+      example = lib.literalExpression ''{ my-skill = ./skills/my-skill; }'';
+      description = "OpenCode skill directories keyed by skill name; definitions from multiple modules are merged";
     };
     fonts.enable = mkEnableOption "consumer-provided Lurian font package";
     neovim = {

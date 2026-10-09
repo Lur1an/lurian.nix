@@ -104,6 +104,8 @@
   };
 in {
   config = lib.mkIf cfg.enable {
+    lurian.terminal.skills.treehouse = ./skill;
+
     assertions = [
       {
         assertion = lib.hasPrefix "/" cfg.root;
