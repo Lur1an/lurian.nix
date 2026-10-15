@@ -33,6 +33,9 @@ in {
   };
   home-manager.users.lurian = import ../../home-manager/profiles/desktop.nix;
 
+  # Start the OpenCode user services at boot and keep them running after logout.
+  users.users.lurian.linger = config.home-manager.users.lurian.lurian.terminal.opencode.enable;
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.tailscale.enable = true;

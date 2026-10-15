@@ -9,12 +9,14 @@
   primaryWaybar = "GIGA-BYTE TECHNOLOGY CO., LTD. M28U 22110B009629";
   opencodeWeb = pkgs.writeShellScript "opencode-web" ''
     export PATH=${lib.makeBinPath ([config.programs.opencode.package] ++ config.programs.opencode.extraPackages)}
-    exec opencode serve --port 4098 --hostname 0.0.0.0
+    # Register this server for automatic discovery by terminal clients.
+    exec opencode serve --service --port 4098 --hostname 127.0.0.1
   '';
 in {
   imports = [
     ./linux.nix
   ];
+
 
   programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
 
@@ -34,22 +36,66 @@ in {
     };
   };
 
-  # Keep the existing unit name and binding; v2 serves an API, not the v1 web UI.
-  systemd.user.services.opencode-web = lib.mkIf config.lurian.terminal.opencode.enable {
-    Unit = {
-      Description = "OpenCode API Service";
-      After = ["network-online.target"];
-      Wants = ["network-online.target"];
+  programs.zsh.shellAliases.tailscale-opencode = ''${pkgs.tailscale}/bin/tailscale --socket="$XDG_RUNTIME_DIR/opencode-tailscale/tailscaled.sock"'';
+
+  systemd.user.services = lib.mkIf config.lurian.terminal.opencode.enable {
+    opencode-web = {
+      Unit = {
+        Description = "OpenCode API Service";
+        StartLimitIntervalSec = 0;
+      };
+
+      Service = {
+        ExecStart = opencodeWeb;
+        WorkingDirectory = config.home.homeDirectory;
+        Restart = "always";
+        RestartSec = 5;
+      };
+
+      Install.WantedBy = ["default.target"];
     };
 
-    Service = {
-      ExecStart = opencodeWeb;
-      WorkingDirectory = config.home.homeDirectory;
-      Restart = "always";
-      RestartSec = 5;
+    # Sign in once through this daemon's private socket; its identity is persisted.
+    opencode-tailscale = {
+      Unit = {
+        Description = "OpenCode userspace Tailscale service";
+        StartLimitIntervalSec = 0;
+      };
+
+      Service = {
+        ExecStart = "${pkgs.tailscale}/bin/tailscaled --tun=userspace-networking --port=0 --statedir=%S/opencode-tailscale --socket=%t/opencode-tailscale/tailscaled.sock";
+        StateDirectory = "opencode-tailscale";
+        StateDirectoryMode = "0700";
+        RuntimeDirectory = "opencode-tailscale";
+        RuntimeDirectoryMode = "0700";
+        UMask = "0077";
+        Restart = "always";
+        RestartSec = 10;
+      };
+
+      Install.WantedBy = ["default.target"];
     };
 
-    Install.WantedBy = ["default.target"];
+    opencode-tailscale-serve = {
+      Unit = {
+        Description = "Expose OpenCode within the userspace tailnet";
+        Wants = ["opencode-tailscale.service" "opencode-web.service"];
+        After = ["opencode-tailscale.service" "opencode-web.service"];
+        PartOf = ["opencode-tailscale.service"];
+        StartLimitIntervalSec = 0;
+      };
+
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.tailscale}/bin/tailscale --socket=%t/opencode-tailscale/tailscaled.sock serve --bg --yes --tcp=4098 tcp://127.0.0.1:4098";
+        RemainAfterExit = true;
+        Restart = "on-failure";
+        RestartSec = 10;
+        TimeoutStartSec = 60;
+      };
+
+      Install.WantedBy = ["default.target"];
+    };
   };
 
   # With `"*" = 5`, waybar generates 5 persistent workspaces per monitor id.
