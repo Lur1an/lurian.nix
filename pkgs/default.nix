@@ -26,6 +26,7 @@ in {
   inherit vulpineos;
 
   chatgpt = pkgs.callPackage ./chatgpt {};
+  excalidraw-cli = pkgs.callPackage ./excalidraw-cli.nix {};
   opencode = pkgs.callPackage ./opencode.nix {};
   slack-mcp-server = pkgs.callPackage ./slack-mcp-server.nix {};
   verus = pkgs.callPackage ./verus.nix {

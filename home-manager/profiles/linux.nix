@@ -65,6 +65,8 @@
     zshAi.enable = true;
   };
 
+  programs.opencode.package = pkgs.opencode;
+
   programs.zsh.shellAliases.update = "find ~/.config -name '*hm-bak' -delete && find ~/.mozilla -name '*hm-bak' -delete && sudo nixos-rebuild switch --flake";
 
   rust = {
@@ -102,45 +104,33 @@
     proton-pass
     fd
     wget
-    pv-migrate
-    git-repo
     fastfetch
     tree
-    postgresql
-    cloudflared
     eza
-    xca
     kubeseal
     lazydocker
-    minicom
     unzip
     markitdown
     zip
     wireguard-tools
     htop
-    argocd
     jq
+    excalidraw-cli
     yq-go
     # Infra
     kustomize
+    pv-migrate
     kubectl
     kubectl-cnpg
     kubernetes-helm
     minikube
     terraform
-    packer
-    ansible
     # Misc
     google-chrome
-    brave
-    surrealist
-    element-desktop
     slack
-    discord
     vesktop
     signal-desktop
     remmina
-    zoom-us
     spotify
     telegram-desktop
     obsidian

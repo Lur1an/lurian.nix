@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.lurian.terminal;
@@ -10,7 +9,6 @@ in {
     {
       programs.opencode = {
         enable = true;
-        package = lib.mkDefault (pkgs.callPackage ./package.nix {});
         # Home Manager emits supported V1 MCP entries; V2 normalizes them.
         enableMcpIntegration = true;
         settings = {
