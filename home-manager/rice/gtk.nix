@@ -47,7 +47,7 @@ in {
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk2";
+    platformTheme.name = "gtk3";
   };
   xdg.configFile = lib.mkIf config.lurian.terminal.matugen.enable {
     "matugen/templates/gtk3.css".source = ./matugen-gtk3.css;

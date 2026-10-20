@@ -70,7 +70,7 @@
       stalled-download-timeout = 99999999;
       warn-dirty = false;
       # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
+      experimental-features = ["nix-command" "flakes"];
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
       trusted-users = ["lurian" "root"];

@@ -19,4 +19,4 @@ if [[ -n "${flags_file}" && -f "${flags_file}" ]]; then
   done <"${flags_file}"
 fi
 
-exec "${app}" "${user_flags[@]}" "$@"
+exec "${app}" --ozone-platform=wayland "${user_flags[@]}" "$@"

@@ -5,87 +5,99 @@
   git,
   openssl,
   fetchgit,
+  fetchFromGitHub,
   makeWrapper,
   pkg-config,
   writeShellScriptBin,
   z3,
 }: let
   rev = "e7af09458c63821995e87fd1468731d54fc1c56d";
+  # Verus requires this exact solver version, independently of nixpkgs updates.
+  verusZ3 = z3.overrideAttrs (_: {
+    version = "4.16.0";
+    src = fetchFromGitHub {
+      owner = "Z3Prover";
+      repo = "z3";
+      rev = "z3-4.16.0";
+      hash = "sha256-DnhX3kxggnFmyYwXEPBsBA1rh4oor1oIJR5TMJk/jvc=";
+    };
+  });
 in
-rustPlatform.buildRustPackage (finalAttrs: {
-  pname = "verus";
-  version = "unstable-2026-09-12";
+  rustPlatform.buildRustPackage (finalAttrs: {
+    pname = "verus";
+    version = "unstable-2026-09-12";
 
-  src = fetchgit {
-    url = "https://github.com/verus-lang/verus.git";
-    rev = rev;
-    hash = "sha256-ZOGuiJYVWcbXnIBXxvCmvwNx1JeF78rIYTTJj09Kvmg=";
-    leaveDotGit = true;
-  };
+    src = fetchgit {
+      url = "https://github.com/verus-lang/verus.git";
+      rev = rev;
+      hash = "sha256-ZOGuiJYVWcbXnIBXxvCmvwNx1JeF78rIYTTJj09Kvmg=";
+      leaveDotGit = true;
+    };
 
-  cargoRoot = "source";
-  cargoHash = "sha256-EjGj2Tdyjngjmf8eBZgEgTOOhHcO22EAnCOIlVJCQZc=";
-  doCheck = false;
+    cargoRoot = "source";
+    cargoHash = "sha256-EjGj2Tdyjngjmf8eBZgEgTOOhHcO22EAnCOIlVJCQZc=";
+    doCheck = false;
 
-  rustupShim = writeShellScriptBin "rustup" ''
-    if [ "$1" = "show" ] && [ "$2" = "active-toolchain" ]; then
-      echo "1.98.1-x86_64-unknown-linux-gnu (default)"
-      exit 0
-    fi
+    rustupShim = writeShellScriptBin "rustup" ''
+      if [ "$1" = "show" ] && [ "$2" = "active-toolchain" ]; then
+        echo "1.98.1-x86_64-unknown-linux-gnu (default)"
+        exit 0
+      fi
 
-    exit 1
-  '';
+      exit 1
+    '';
 
-  buildInputs = [
-    openssl
-  ];
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-    git
-    finalAttrs.rustupShim
-  ];
+    buildInputs = [
+      openssl
+    ];
+    nativeBuildInputs = [
+      makeWrapper
+      pkg-config
+      git
+      finalAttrs.rustupShim
+    ];
 
-  # The vstd build invokes Verus, which requires an available Z3 executable.
-  VERUS_Z3_PATH = "${z3}/bin/z3";
-  VERUS_USE_RUSTUP = "0";
-  CARGO = "${rustToolchain}/bin/cargo";
-  RUSTC = "${rustToolchain}/bin/rustc";
-  VARGO_BUILD_SHA = "e7af09458c63821995e87fd1468731d54fc1c56d";
-  VARGO_BUILD_VERSION = "0.2026.09.11.e7af094";
-  VARGO_TOOLCHAIN = "1.98.1-x86_64-unknown-linux-gnu";
+    # The vstd build invokes Verus, which requires an available Z3 executable.
+    VERUS_Z3_PATH = "${verusZ3}/bin/z3";
+    VERUS_USE_RUSTUP = "0";
+    CARGO = "${rustToolchain}/bin/cargo";
+    RUSTC = "${rustToolchain}/bin/rustc";
+    VARGO_BUILD_SHA = "e7af09458c63821995e87fd1468731d54fc1c56d";
+    VARGO_BUILD_VERSION = "0.2026.09.11.e7af094";
+    VARGO_TOOLCHAIN = "1.98.1-x86_64-unknown-linux-gnu";
 
-  buildPhase = ''
-    runHook preBuild
+    buildPhase = ''
+      runHook preBuild
 
-    cd source
-    $CARGO build --release
-    $CARGO run --release -p cargo-verus -- build --release --manifest-path vstd/Cargo.toml
+      cd source
+      $CARGO build --release
+      $CARGO run --release -p cargo-verus -- build --release --manifest-path vstd/Cargo.toml
 
-    runHook postBuild
-  '';
+      runHook postBuild
+    '';
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out/libexec
-    cp -r target-verus/release/. $out/libexec/
-    makeWrapper $out/libexec/verus $out/bin/verus \
-      --set VERUS_Z3_PATH ${z3}/bin/z3 \
-      --set VERUS_USE_RUSTUP 0
-    makeWrapper $out/libexec/cargo-verus $out/bin/cargo-verus \
-      --set CARGO ${rustToolchain}/bin/cargo \
-      --set RUSTC ${rustToolchain}/bin/rustc \
-      --set VERUS_USE_RUSTUP 0
+      mkdir -p $out/libexec
+      cp -r target-verus/release/. $out/libexec/
+      makeWrapper $out/libexec/verus $out/bin/verus \
+        --set VERUS_Z3_PATH ${verusZ3}/bin/z3 \
+        --set VERUS_USE_RUSTUP 0
+      makeWrapper $out/libexec/cargo-verus $out/bin/cargo-verus \
+        --set VERUS_Z3_PATH ${verusZ3}/bin/z3 \
+        --set CARGO ${rustToolchain}/bin/cargo \
+        --set RUSTC ${rustToolchain}/bin/rustc \
+        --set VERUS_USE_RUSTUP 0
 
-    runHook postInstall
-  '';
+      runHook postInstall
+    '';
 
-  meta = {
-    description = "Verified Rust for low-level systems code";
-    homepage = "https://github.com/verus-lang/verus";
-    license = lib.licenses.mit;
-    mainProgram = "verus";
-    platforms = lib.platforms.linux;
-  };
-})
+    meta = {
+      description = "Verified Rust for low-level systems code";
+      homepage = "https://github.com/verus-lang/verus";
+      license = lib.licenses.mit;
+      mainProgram = "verus";
+      platforms = lib.platforms.linux;
+    };
+  })
