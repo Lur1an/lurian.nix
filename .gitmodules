@@ -1,0 +1,3 @@
+[submodule "flakes/anthroxy"]
+	path = flakes/anthroxy
+	url = https://github.com/beppe2880/claude-api.git

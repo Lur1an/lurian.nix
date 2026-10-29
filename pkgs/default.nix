@@ -26,6 +26,8 @@ in {
 
   chatgpt = pkgs.callPackage ./chatgpt {};
   excalidraw-cli = pkgs.callPackage ./excalidraw-cli.nix {};
+  mcp-excalidraw-server = pkgs.callPackage ./mcp-excalidraw-server.nix {};
+  myfitnesspal-mcp = pkgs.callPackage ./myfitnesspal-mcp {};
   opencode = pkgs.callPackage ./opencode.nix {};
   slack-mcp-server = pkgs.callPackage ./slack-mcp-server.nix {};
   verus = pkgs.callPackage ./verus.nix {

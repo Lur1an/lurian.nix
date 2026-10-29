@@ -116,6 +116,7 @@
     htop
     jq
     excalidraw-cli
+    mcp-excalidraw-server
     yq-go
     # Infra
     kustomize

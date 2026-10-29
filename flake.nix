@@ -2,6 +2,9 @@
   description = "Lurian's Nix Config";
 
   inputs = {
+    # Include vendored Git submodules in the flake source.
+    self.submodules = true;
+
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -21,6 +24,11 @@
       url = "path:./flakes/terminal";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+    };
+
+    claude-api = {
+      url = "path:./flakes/anthroxy";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Wayland/Hyprland

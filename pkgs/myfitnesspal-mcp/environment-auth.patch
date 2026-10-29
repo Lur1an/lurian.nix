@@ -1,0 +1,55 @@
+diff --git a/src/mfp_mcp/server.py b/src/mfp_mcp/server.py
+--- a/src/mfp_mcp/server.py
++++ b/src/mfp_mcp/server.py
+@@ -621 +621,37 @@
+ def get_mfp_client():
++    """Use only explicitly injected cookies, without persistence or fallback."""
++    raw = os.environ.get("MFP_COOKIES_JSON", "")
++    try:
++        cookies = json.loads(raw)
++    except (ValueError, TypeError):
++        raise RuntimeError("MFP_COOKIES_JSON must contain a JSON cookie object") from None
++    if (
++        not isinstance(cookies, dict)
++        or not cookies
++        or not all(
++            isinstance(k, str) and k and isinstance(v, str) and v
++            and not any(c in k + v for c in "\r\n\x00")
++            for k, v in cookies.items()
++        )
++        or not _has_real_mfp_session(cookies)
++    ):
++        raise RuntimeError("MFP_COOKIES_JSON must contain non-empty session cookies")
++
++    import myfitnesspal
++    import requests
++    import cloudscraper
++
++    # Preserve upstream's workaround for MFP's Cloudflare TLS fingerprint check.
++    cloudscraper.create_scraper = lambda **kw: requests.Session()
++    try:
++        client = myfitnesspal.Client(cookiejar=dict_to_cookiejar(cookies))
++        client.get_date(date.today())
++        return client
++    except Exception:
++        # Neither log nor return authentication exceptions containing secrets.
++        raise RuntimeError(
++            "MyFitnessPal session authentication failed; replace MFP_COOKIES_JSON"
++        ) from None
++
++
++def _legacy_get_mfp_client():
+@@ -1223 +1259 @@
+-    food_id: str = Field(..., description="Food id (from mfp_create_custom_food or mfp_list_own_foods)", min_length=1)
++    food_id: str = Field(..., description="Food id (from mfp_create_custom_food or mfp_list_own_foods)", min_length=1, pattern=r"^[A-Za-z0-9_-]+$")
+@@ -1252,6 +1288,7 @@ class RemoveFoodFromDiaryInput(BaseModel):
+     )
+     entry_id: Optional[str] = Field(
+         default=None,
++        pattern=r"^[A-Za-z0-9_-]+$",
+         description=(
+             "Specific food_entry_id to remove. If omitted, name_contains is "
+             "used to match by name."
+@@ -2869 +2906 @@
+-@mcp.tool()
++# Not exposed: browser/keyring extraction is inappropriate for managed secrets.

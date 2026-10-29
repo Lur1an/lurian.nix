@@ -116,6 +116,22 @@
         "type": "github"
       }
     },
+    "claude-api": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./flakes/anthroxy",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/anthroxy",
+        "type": "path"
+      },
+      "parent": []
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -919,6 +935,7 @@
     },
     "root": {
       "inputs": {
+        "claude-api": "claude-api",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",

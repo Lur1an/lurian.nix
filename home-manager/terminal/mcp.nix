@@ -14,6 +14,15 @@
         ${lib.getExe pkgs.slack-mcp-server} --transport stdio
     '';
   };
+  myfitnesspalMcp = pkgs.writeShellApplication {
+    name = "myfitnesspal-mcp";
+    text = ''
+      export PROTON_PASS_LINUX_KEYRING=dbus
+      export MFP_COOKIES_JSON='pass://Personal/myfitnesspal-mcp/cookies'
+      exec ${lib.getExe pkgs.proton-pass-cli} run --no-masking -- \
+        ${lib.getExe pkgs.myfitnesspal-mcp}
+    '';
+  };
   vulpineosMcp = pkgs.writeShellApplication {
     name = "vulpineos-mcp";
     runtimeInputs = [
@@ -44,6 +53,7 @@
 in {
   home.packages = [
     slackMcp
+    myfitnesspalMcp
     vulpineosMcp
     vulpineosKey
   ];
@@ -53,7 +63,11 @@ in {
     servers = {
       slack = {
         command = lib.getExe slackMcp;
-        enabled = true;
+        enabled = false;
+      };
+      myfitnesspal = {
+        command = lib.getExe myfitnesspalMcp;
+        enabled = false;
       };
       vulpineos = {
         command = lib.getExe vulpineosMcp;
@@ -61,6 +75,10 @@ in {
       };
       grafana = {
         command = lib.getExe pkgs.mcp-grafana;
+        enabled = false;
+      };
+      excalidraw = {
+        command = lib.getExe pkgs.mcp-excalidraw-server;
         enabled = false;
       };
 

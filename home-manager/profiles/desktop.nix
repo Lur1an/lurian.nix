@@ -17,7 +17,6 @@ in {
     ./linux.nix
   ];
 
-
   programs.waybar.settings.mainBar.output = ["${primaryWaybar}"];
 
   lurian.quickshell.wallpaperPicker.directories = ["/mnt/Shared/Videos/Vpapers"];
@@ -33,6 +32,15 @@ in {
     treehouse = {
       enable = true;
       root = "/mnt/Data";
+    };
+  };
+
+  programs.opencode.settings.providers.anthropic = {
+    name = "Anthropic (Claude API proxy)";
+    settings = {
+      baseURL = "http://127.0.0.1:8787/v1";
+      # Authentication is handled by the local proxy using Claude Code credentials.
+      apiKey = "claude-api";
     };
   };
 
