@@ -306,6 +306,8 @@ in {
 
         # Prompt for a name and create a new session
         bind n command-prompt -p "New session name:" "new-session -s '%%'"
+        # Rename the current session, prefilled with its name
+        bind R command-prompt -I "#S" -p "Rename session:" "rename-session -- '%%'"
 
         # Sessionizer: fuzzy-pick a project, get a session
         bind f display-popup -E -w 80% -h 60% "${sessionizer}/bin/tmux-sessionizer"

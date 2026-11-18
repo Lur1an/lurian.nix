@@ -2,7 +2,6 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   config,
-  inputs,
   pkgs,
   ...
 }: let
@@ -18,7 +17,6 @@
 in {
   _module.args = {inherit machineConfig;};
   imports = [
-    inputs.claude-api.nixosModules.default
     ./hardware-configuration.nix
     ./openrgb.nix
     ./qemu.nix
@@ -41,14 +39,6 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.tailscale.enable = true;
-
-  services.claude-api = {
-    enable = true;
-    user = "lurian";
-    host = "127.0.0.1";
-    port = 8787;
-    environment.CLAUDE_CONFIG_DIR = "${config.users.users.lurian.home}/.claude";
-  };
 
   # Avoid runtime suspend/resume failures on the onboard Bluetooth adapter.
   services.udev.extraRules = ''

@@ -99,6 +99,8 @@
     devenv
     accountsservice
     # CLI Tools
+    claude-code
+    railway
     net-tools
     proton-pass-cli
     proton-pass

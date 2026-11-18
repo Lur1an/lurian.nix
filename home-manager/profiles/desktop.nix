@@ -35,15 +35,6 @@ in {
     };
   };
 
-  programs.opencode.settings.providers.anthropic = {
-    name = "Anthropic (Claude API proxy)";
-    settings = {
-      baseURL = "http://127.0.0.1:8787/v1";
-      # Authentication is handled by the local proxy using Claude Code credentials.
-      apiKey = "claude-api";
-    };
-  };
-
   programs.zsh.shellAliases.tailscale-opencode = ''${pkgs.tailscale}/bin/tailscale --socket="$XDG_RUNTIME_DIR/opencode-tailscale/tailscaled.sock"'';
 
   systemd.user.services = lib.mkIf config.lurian.terminal.opencode.enable {

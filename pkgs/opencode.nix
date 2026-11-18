@@ -9,14 +9,14 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode";
-  version = "2.0.30";
+  version = "2.2.5";
 
   src = fetchurl {
-    url = "https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cli-linux-x64-baseline-${finalAttrs.version}.tgz";
-    hash = "sha512-TLogU0tVEAyoRlXuqQSuvoeB6dVMy7u0SbM2GV8B0jfu4ErQubTxuZjn5zViX3VUWMoRwt7XzsifO0sysSnBxA==";
+    url = "https://github.com/anomalyco/opencode/releases/download/v${finalAttrs.version}/opencode-linux-x64-baseline.tar.gz";
+    hash = "sha256-CfRDAsEP0DaRL1nIH9Gu9d9F3Qb2SRl/nfybvip5YU4=";
   };
 
-  sourceRoot = "package";
+  sourceRoot = ".";
   dontConfigure = true;
   dontBuild = true;
   # Preserve the embedded Bun payload in the prebuilt executable.
@@ -28,7 +28,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   installPhase = ''
     runHook preInstall
 
-    install -Dm755 bin/opencode $out/libexec/opencode
+    install -Dm755 opencode $out/libexec/opencode
     makeWrapper $out/libexec/opencode $out/bin/opencode \
       --prefix PATH : ${lib.makeBinPath [ripgrep]}
 

@@ -16,6 +16,16 @@
         '';
     });
 
+    bazecor = final.symlinkJoin {
+      name = "bazecor";
+      paths = [prev.bazecor];
+      nativeBuildInputs = [final.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/bazecor --add-flags "--ozone-platform=wayland"
+      '';
+      inherit (prev.bazecor) meta;
+    };
+
     qmd = inputs.qmd.packages.${final.stdenv.hostPlatform.system}.default.override {
       acceleration = "cuda";
     };

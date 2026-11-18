@@ -11,6 +11,13 @@
   # Ensure the NTFS data drive is mounted before ollama starts
   systemd.services.ollama.unitConfig.RequiresMountsFor = ["/mnt/Data"];
 
+  # The NTFS drive forces uid=1000 ownership, so only lurian may chmod the model
+  # blobs. Run the server as that existing user instead of a dynamic one.
+  systemd.services.ollama.serviceConfig = {
+    User = "lurian";
+    Group = "users";
+  };
+
   services.open-webui = {
     enable = true;
     port = 8087; # same URL as the old docker setup

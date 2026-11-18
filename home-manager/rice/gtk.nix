@@ -43,7 +43,12 @@ in {
   gtk = {
     inherit font cursorTheme iconTheme;
     enable = true;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
   };
+
+  # libadwaita/GTK4 apps and portals read the color scheme from dconf
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
   qt = {
     enable = true;

@@ -63,8 +63,16 @@
     };
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
+      # Unwrapped apps (e.g. Qt apps using the gtk3 platform theme's file
+      # chooser) need the GTK GSettings schemas on the search path.
+      XDG_DATA_DIRS = [
+        "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+        "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+      ];
     };
   };
+
+  programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs;
     [

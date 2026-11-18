@@ -10,10 +10,9 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi;
-    font = "JetBrainsMono Nerd Font 11";
-    terminal = "ghostty";
-
-    extraConfig = {
+    settings = {
+      font = "JetBrainsMono Nerd Font 11";
+      terminal = "ghostty";
       modi = "drun,run,window";
       show-icons = true;
       display-drun = "";

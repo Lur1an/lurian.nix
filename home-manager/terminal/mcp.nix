@@ -104,6 +104,12 @@ in {
         enabled = false;
       };
 
+      railway = {
+        command = lib.getExe pkgs.railway;
+        args = ["mcp"];
+        enabled = false;
+      };
+
       linear = {
         url = "https://mcp.linear.app/mcp";
         enabled = false;
