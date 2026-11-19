@@ -25,6 +25,7 @@ in {
   inherit vulpineos;
 
   chatgpt = pkgs.callPackage ./chatgpt {};
+  donsetch = pkgs.callPackage ./donsetch.nix {};
   excalidraw-cli = pkgs.callPackage ./excalidraw-cli.nix {};
   mcp-excalidraw-server = pkgs.callPackage ./mcp-excalidraw-server.nix {};
   myfitnesspal-mcp = pkgs.callPackage ./myfitnesspal-mcp {};

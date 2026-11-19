@@ -42,6 +42,13 @@
       exit 1
     '';
   };
+  donsetchMcp = pkgs.writeShellApplication {
+    name = "donsetch-mcp";
+    text = ''
+      export DONGHOST_CHROME=${lib.getExe pkgs.chromium}
+      exec ${lib.getExe pkgs.donsetch} mcp --supervised "$@"
+    '';
+  };
   vulpineosKey = pkgs.writeShellApplication {
     name = "vulpineos-key";
     runtimeInputs = [pkgs.docker];
@@ -56,6 +63,7 @@ in {
     myfitnesspalMcp
     vulpineosMcp
     vulpineosKey
+    pkgs.donsetch
   ];
 
   programs.mcp = {
@@ -71,7 +79,11 @@ in {
       };
       vulpineos = {
         command = lib.getExe vulpineosMcp;
-        enabled = true;
+        enabled = false;
+      };
+      donsetch = {
+        command = lib.getExe donsetchMcp;
+        enabled = false;
       };
       grafana = {
         command = lib.getExe pkgs.mcp-grafana;
